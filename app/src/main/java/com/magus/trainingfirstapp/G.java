@@ -6,6 +6,7 @@ package com.magus.trainingfirstapp;
 public class G {
     public class HostConst{
         private static final boolean isQA = true;
+
     }
     public interface MessageConst{
         public static final String MESSAGE = "message";
