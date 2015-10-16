@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.magus.trainingfirstapp" >
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="false" />
+
+    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
+    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
+
+    <!--
+ To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" /> <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.TrainingFirstActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.OtherActivity"
+            android:label="@string/other_app_name"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.TrainingFirstActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <!-- meta-data 用于支持 support 4.0 以及以下来指明上级活动 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.TrainingFirstActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ActivityA"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity android:name=".activity.ActivityB" />
+        <activity android:name=".activity.ActivityC" />
+        <activity
+            android:name=".activity.DialogActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity android:name=".fragments.FragmentMainActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.magus.trainingfirstapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity
+            android:name=".activity.FileSelectActivity"
+            android:label="@string/file_selector" >
+            <intent-filter>
+                <action android:name="ANDROID.INTENT.ACTION.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:mimeType="text/aplain" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SwipeMenuDemoActvity" >
+        </activity>
+        <activity android:name=".photobyintent.PhotoIntentActivity" >
+        </activity>
+        <activity
+            android:name=".activity.images.DisplayingBitmapsActivity"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity android:name=".activity.opengl.OpenGLES20Activity" >
+        </activity>
+
+        <!-- 动画相关 start -->
+        <activity
+            android:name=".activity.animdemo.AnimDemoMainActivity"
+            android:label="@string/title_crossfade" >
+        </activity>
+        <activity
+            android:name=".activity.animdemo.CrossfadeActivity"
+            android:label="@string/title_crossfade"
+            android:parentActivityName=".activity.animdemo.AnimDemoMainActivity"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.animdemo.AnimDemoMainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.animdemo.CardFlipActivity"
+            android:label="@string/title_card_flip"
+            android:parentActivityName=".activity.animdemo.AnimDemoMainActivity"
+            android:theme="@style/DarkTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.animdemo.AnimDemoMainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.animdemo.ScreenSlideActivity"
+            android:label="@string/title_screen_slide"
+            android:parentActivityName=".activity.animdemo.AnimDemoMainActivity"
+            android:uiOptions="splitActionBarWhenNarrow" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.animdemo.AnimDemoMainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.animdemo.ZoomActivity"
+            android:label="@string/title_zoom"
+            android:parentActivityName=".activity.animdemo.AnimDemoMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.animdemo.AnimDemoMainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.animdemo.LayoutChangesActivity"
+            android:label="@string/title_layout_changes"
+            android:parentActivityName=".activity.animdemo.AnimDemoMainActivity" >
+>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.animdemo.AnimDemoMainActivity" />
+        </activity>
+        <!-- 动画相关 end -->
+        <activity android:name=".activity.myanim.MyAnimActivity" >
+        </activity>
+    </application>
+
+</manifest>

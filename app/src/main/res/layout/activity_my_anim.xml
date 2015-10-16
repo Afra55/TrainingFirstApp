@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.magus.trainingfirstapp.activity.myanim.MyAnimActivity">
+
+
+    <RadioGroup
+        android:id="@+id/my_anim_bottom__menu_rg"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_blue"
+        android:layout_height="50dp">
+        <RadioButton
+            android:id="@+id/my_anim_bottom_lesson_one_tb"
+            style="@style/AnimMenuRb"
+            android:checked="true"
+            android:text="Lesson 1"/>
+
+        <View style="@style/VerticalLine"/>
+
+        <RadioButton
+            android:id="@+id/my_anim_bottom_lesson_two_tb"
+            style="@style/AnimMenuRb"
+            android:text="Lesson 2"/>
+
+        <View style="@style/VerticalLine"/>
+
+        <RadioButton
+            android:id="@+id/my_anim_bottom_lesson_three_tb"
+            style="@style/AnimMenuRb"
+            android:text="Lesson 3"/>
+
+        <View style="@style/VerticalLine"/>
+
+        <RadioButton
+            android:id="@+id/my_anim_bottom_lesson_four_tb"
+            style="@style/AnimMenuRb"
+            android:text="Lesson 4"/>
+
+        <View style="@style/VerticalLine"/>
+
+        <RadioButton
+            android:id="@+id/my_anim_bottom_lesson_five_tb"
+            style="@style/AnimMenuRb"
+            android:text="Lesson 5"/>
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/my_anim_fragment_contaniner_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/my_anim_bottom__menu_rg"
+        />
+
+    <FrameLayout
+        android:id="@+id/my_anim_fragment_contaniner_flt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@id/my_anim_bottom__menu_rg"/>
+</RelativeLayout>

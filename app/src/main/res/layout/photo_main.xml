@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+   <LinearLayout 
+   android:orientation="horizontal"
+   android:layout_height="wrap_content"
+   android:layout_width="match_parent"
+   >
+    <Button android:text="@string/btnIntend" android:id="@+id/btnIntend"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1" />
+    <Button android:text="@string/btnIntendS" android:id="@+id/btnIntendS"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1" />
+    <Button android:text="@string/btnIntendV" android:id="@+id/btnIntendV"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1" />
+  </LinearLayout>
+  <ImageView 
+      android:layout_height="wrap_content" 
+      android:layout_width="wrap_content" 
+      android:visibility="visible"
+      android:id="@+id/imageView1" />
+  <VideoView 
+      android:layout_height="wrap_content" 
+      android:layout_width="wrap_content" 
+      android:visibility="invisible"
+      android:id="@+id/videoView1" />
+</LinearLayout>

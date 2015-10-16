@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/action_bar_rlt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_size"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            style="@style/myButton"
+            android:text="@string/cancel"
+            android:id="@+id/actionBar_left_btn" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:text="@string/title"
+            android:gravity="center"
+            android:id="@+id/actionBar_title_tv" />
+
+        <LinearLayout
+            android:id="@+id/actionBar_right_contenter_lly"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/myButton"
+                android:text="@string/center"
+                android:id="@+id/actionBar_right_btn"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/content_father_lly">
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.magus.trainingfirstapp.activity.myanim.LessonFourFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/lesson_four_img_one_ibt"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="1dp"
+            android:contentDescription="@string/description_image_1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/thumb1" />
+
+        <ImageButton
+            android:id="@+id/lesson_four_img_two_ibt"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="1dp"
+            android:contentDescription="@string/description_image_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/thumb2" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/lesson_for_expanded_img"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:contentDescription="@string/message_zoom_touch_expand"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

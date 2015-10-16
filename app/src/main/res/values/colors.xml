@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#7FFFD4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="light_blue">#A8DFF4</color>
+    <color name="light_green">#D3E992</color>
+    <color name="light_red">#FFAFAF</color>
+    <color name="light_yellow">#FFECC0</color>
+
+    <color name="dark_blue">#0099CC</color>
+    <color name="dark_green">#669900</color>
+    <color name="dark_red">#CC0000</color>
+    <color name="dark_yellow">#FF8A00</color>
+
+    <color name="red">#FF3B2F</color>
+    <color name="gray">#666666</color>
+    <color name="lightgray">#EDEDED</color>
+    <color name="purple">#7A3AB2</color>
+    <color name="devide">#afafbc</color>
+    <color name="transparentpurple">#667a3ab2</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+
+    <color name="hintgray">#c3c3c3</color>
+
+    <color name="hostcity">#666666</color>
+</resources>

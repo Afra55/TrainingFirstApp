@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">第一个app</string>
+
+    <string name="hello_world">你好</string>
+    <string name="action_settings">设置</string>
+    <string name="cancel">取消</string>
+    <string name="title">标题</string>
+    <string name="center">个人电脑</string>
+    <string name="title_activity_other">另一个</string>
+    <string name="search">搜索</string>
+    <string name="map">地图</string>
+    <string name="web">网页</string>
+    <string name="email">邮件</string>
+    <string name="sharebutton">分享按钮</string>
+    <string name="opennew">打开Activity</string>
+    <string name="hellowShuaiYang">杨帅你好</string>
+    <string name="other_app_name">第一个APP<br/>欢迎使用</string>
+    <string name="file_selector">文件选取</string>
+    <string name="open_swipe_demo">打开侧滑删除demo</string>
+    <string name="yangshuai">_杨帅</string>
+</resources>

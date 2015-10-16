@@ -1,0 +1,227 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".TrainingFisrtAcitivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progress_bg"
+            android:id="@+id/progressBar" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:onClick="sendMessage"
+            android:layout_height="wrap_content" android:text="@string/app_name"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/textView"
+            android:layout_below="@+id/activity_first_btn"
+            android:layout_centerHorizontal="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_et"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="match_parent"
+            android:onClick="sendMessage"
+            android:layout_height="@dimen/button_height" style="@style/myButton"
+            android:id="@+id/activity_first_btn"
+            android:layout_alignBottom="@+id/progressBar"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/progressBar2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/first_bitmap_decode_options_tv"
+            android:layout_below="@+id/message_et"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图像与动画相关"
+            android:id="@+id/first_open_bitmap_and_anim_activity"
+            android:layout_below="@+id/first_bitmap_decode_options_tv"
+            android:layout_alignRight="@+id/textView"
+            android:layout_alignEnd="@+id/textView" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的Dong话"
+            android:id="@+id/first_my_anim_demo_btn"
+            android:layout_alignBottom="@+id/first_open_bitmap_and_anim_activity"
+            android:layout_toRightOf="@+id/first_open_bitmap_and_anim_activity"
+            android:layout_toEndOf="@+id/first_open_bitmap_and_anim_activity" />
+
+    </RelativeLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment"
+                    android:id="@+id/fragment_btn"
+                    android:layout_alignLeft="@+id/intent_text_btn"
+                    android:layout_alignStart="@+id/intent_text_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/intent_test"
+                    android:id="@+id/intent_text_btn"
+                    style="@style/myButton"
+                    android:layout_below="@+id/fragment_btn"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/map"
+                    android:id="@+id/intent_map_btn"
+                    android:layout_below="@+id/intent_text_btn"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/web"
+                    android:id="@+id/intent_web_btn"
+                    android:layout_below="@+id/intent_map_btn"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:id="@+id/intent_email"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/first_take_phote_btn"
+                    android:layout_alignEnd="@+id/first_take_phote_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/opennew"
+                    android:id="@+id/first_open_new_activity_btn"
+                    android:layout_alignBottom="@+id/intent_text_btn"
+                    android:layout_toRightOf="@+id/intent_text_btn"
+                    android:layout_toEndOf="@+id/intent_text_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharebutton"
+                    android:id="@+id/first_share_btn"
+                    android:layout_below="@+id/intent_text_btn"
+                    android:layout_toRightOf="@+id/intent_map_btn"
+                    android:layout_toEndOf="@+id/intent_map_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TakePhoto_压缩"
+                    android:id="@+id/first_take_phote_btn"
+                    android:layout_below="@+id/fragment_btn"
+                    android:layout_toLeftOf="@+id/intent_text_btn"
+                    android:layout_toStartOf="@+id/intent_text_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TakePhotoDemo"
+                    android:id="@+id/first_take_phote_demo"
+                    android:layout_below="@+id/first_take_phote_btn"
+                    android:layout_toLeftOf="@+id/intent_web_btn"
+                    android:layout_toStartOf="@+id/intent_web_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TakePhoto_原图"
+                    android:id="@+id/first_take_photo_o_btn"
+                    android:layout_below="@+id/first_take_phote_demo"
+                    android:layout_toLeftOf="@+id/intent_web_btn"
+                    android:layout_toStartOf="@+id/intent_web_btn" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_swipe_demo"
+                    android:id="@+id/open_swipe_menu_btn"
+                    android:layout_above="@+id/intent_text_btn"
+                    android:layout_toRightOf="@+id/fragment_btn"
+                    android:layout_toEndOf="@+id/fragment_btn" />
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/first_photo_show_img"
+                android:layout_width="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nihao"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
