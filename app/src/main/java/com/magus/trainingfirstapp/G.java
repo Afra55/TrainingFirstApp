@@ -12,8 +12,6 @@ public class G {
     }
     public interface FlagsConst{
         public static final int SHOW_TOASH = 0;
-
-        
     }
 
 }
