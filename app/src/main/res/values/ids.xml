@@ -26,4 +26,16 @@
     <item type="id" name="action_next" />
     <item type="id" name="action_flip" />
 
+    <item type="id" name="fragment_btn"/>
+    <item type="id" name="intent_text_btn"/>
+    <item type="id" name="intent_map_btn"/>
+    <item type="id" name="intent_web_btn"/>
+    <item type="id" name="intent_email"/>
+    <item type="id" name="first_open_new_activity_btn"/>
+    <item type="id" name="first_share_btn"/>
+    <item type="id" name="first_take_phote_demo"/>
+    <item type="id" name="first_take_phote_btn"/>
+    <item type="id" name="first_take_photo_o_btn"/>
+    <item type="id" name="open_swipe_menu_btn"/>
+
 </resources>
