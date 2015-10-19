@@ -19,4 +19,6 @@
     <integer name="card_flip_time_half">150</integer>
     <integer name="anim_lesson_two_last_pager">1001</integer>
     <integer name="anim_lesson_two_next_pager">1002</integer>
+    <integer name="lesson_five_sub_view">1003</integer>
+    <integer name="lesson_five_sub_line">1004</integer>
 </resources>

@@ -1,26 +1,17 @@
 package com.magus.trainingfirstapp.activity.myanim;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.magus.trainingfirstapp.BaseActivity;
 import com.magus.trainingfirstapp.BaseFragment;
 import com.magus.trainingfirstapp.R;
-import com.magus.trainingfirstapp.utils.BitmapUtils;
 
 public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
 
@@ -52,7 +43,7 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
                 LessonTwoFragment.newInstance("", ""),
                 LessonThreeFragment.newInstance("", ""),
                 LessonFourFragment.newInstance("", ""),
-                LessonOnwFragment.newInstance("", "")};
+                LessonFiveFragment.newInstance("", "")};
 
         setActionBarTitle(fragments[0].getFragmentTitle());
 
