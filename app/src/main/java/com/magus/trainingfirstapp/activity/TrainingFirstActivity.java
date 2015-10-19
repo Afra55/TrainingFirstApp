@@ -49,6 +49,7 @@ public class TrainingFirstActivity extends BaseActivity {
     private ImageView takePhotoThenToShowImg;
 
     private LinearLayout llt_funbtn;
+
     private int[] ids = new int[]{R.id.fragment_btn, R.id.intent_text_btn,R.id.intent_map_btn,
             R.id.intent_web_btn,
             R.id.intent_email,
