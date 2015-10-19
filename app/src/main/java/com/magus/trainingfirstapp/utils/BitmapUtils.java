@@ -84,13 +84,7 @@ public class BitmapUtils {
     public static void loadBitmap(Context cont,int imageId, ImageView imageView){
 
         context = cont;
-
-        //首先在缓存中查找
-        final String imgKey = String.valueOf(imageId);
-        final Bitmap bitmap = getBitmapFromLruMemCache(imgKey);
-        if (bitmap != null){
-            imageView.setImageBitmap(bitmap);
-        }else if (cancelPotentialWork(imageId, imageView)){
+        if (cancelPotentialWork(imageId, imageView)){
             final BitmapWorkerTask bitmapWorkerTask = new BitmapWorkerTask(imageView);
             final AsyncDrawable asyncDrawable = new AsyncDrawable(bitmapWorkerTask);
             imageView.setImageDrawable(asyncDrawable);
@@ -181,9 +175,6 @@ public class BitmapUtils {
 
             }catch (Exception e){
             }
-
-            //将处理后的bitmap添加到缓存中
-            addBitmapToMemoryCache(String.valueOf(imageId), bitmap);
             return bitmap;
         }
 
@@ -200,31 +191,6 @@ public class BitmapUtils {
                 }
             }
         }
-    }
-
-    //内存缓存
-    private static LruCache<String, Bitmap> mMemoryCache;
-
-    /**
-     * 添加 bitmap到缓存中
-     * @param key
-     * @param bitmap
-     */
-    public static void addBitmapToMemoryCache(String key, Bitmap bitmap){
-
-        if (getBitmapFromLruMemCache(key) == null){
-            mMemoryCache.put(key, bitmap);
-        }
-    }
-
-
-    /**
-     * 从缓存中获取 Bitmap
-     * @param key
-     * @return
-     */
-    public static Bitmap getBitmapFromLruMemCache(String key){
-        return mMemoryCache.get(key);
     }
 
 }

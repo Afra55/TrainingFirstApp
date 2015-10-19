@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lesson_four_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.magus.trainingfirstapp.activity.myanim.LessonFourFragment">
@@ -29,7 +30,13 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/lesson_for_expanded_img"
+        android:id="@+id/lesson_four_expanded_img_1"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:contentDescription="@string/message_zoom_touch_expand"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/lesson_four_expanded_img_2"
         android:layout_width="match_parent"
         android:visibility="invisible"
         android:contentDescription="@string/message_zoom_touch_expand"

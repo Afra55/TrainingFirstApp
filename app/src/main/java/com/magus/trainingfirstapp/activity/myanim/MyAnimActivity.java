@@ -1,17 +1,26 @@
 package com.magus.trainingfirstapp.activity.myanim;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.magus.trainingfirstapp.BaseActivity;
 import com.magus.trainingfirstapp.BaseFragment;
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.utils.BitmapUtils;
 
 public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
 
@@ -20,10 +29,18 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
     private RadioGroup fragmentMenuRg;
     private BaseFragment[] fragments;
 
+    /**
+     * 动画延迟时间
+     */
+    private int mShortAnimationDuration;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_my_anim);
+
+        // 获取动画延迟时间
+        mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
 
         fragmentMenuRg = (RadioGroup) findViewById(R.id.my_anim_bottom__menu_rg);
@@ -64,7 +81,7 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
             @Override
             public void onPageSelected(int position) {
                 setActionBarTitle(fragments[position].getFragmentTitle());
-                switch (position){
+                switch (position) {
                     case 0:
                         changeBottomRbState(R.id.my_anim_bottom_lesson_one_tb);
                         break;
@@ -92,7 +109,7 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
         fragmentMenuRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.my_anim_bottom_lesson_one_tb:
                         fragmentContainerVP.setCurrentItem(0, true);
                         break;
@@ -141,82 +158,20 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
         if (fragmentContainerVP.getCurrentItem() == 2){
             if (view.getId() == R.id.fragment_actionBar_right_btn){
 
-                if (mShowingBack) {
-                    mShowingBack =false;
-                    getFragmentManager().popBackStack();
-                    return;
-                }
-
-                // Flip to the back.
-
-                mShowingBack = true;
-
-                CardBackFragment cardBackFragment = new CardBackFragment();
-                getFragmentManager()
-                        .beginTransaction()
-
-                                // Replace the default fragment animations with animator resources representing
-                                // rotations when switching to the back of the card, as well as animator
-                                // resources representing rotations when flipping back to the front (e.g. when
-                                // the system Back button is pressed).
-                        .setCustomAnimations(
-                                R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-                                R.animator.card_flip_left_in, R.animator.card_flip_left_out)
-
-                                // Replace any fragments currently in the container view with a fragment
-                                // representing the next page (indicated by the just-incremented currentPage
-                                // variable).
-                        .replace(R.id.lesson_three_card_container_flt, cardBackFragment)
-
-                                // Add this transaction to the back stack, allowing users to press Back
-                                // to get to the front of the card.
-                        .addToBackStack(null)
-
-                                // Commit the transaction.
-                        .commit();
+                lessonThreeAnim();
             }
         }
     }
 
-    private boolean mShowingBack = false;
+
+
+
     @Override
     public void onClick(View v) {
         if (fragmentContainerVP.getCurrentItem() == 2)
             if (v.getId() == R.id.actionBar_right_btn){
 
-                if (mShowingBack) {
-                    mShowingBack =false;
-                    getFragmentManager().popBackStack();
-                    return;
-                }
-
-                // Flip to the back.
-
-                mShowingBack = true;
-
-                CardBackFragment cardBackFragment = new CardBackFragment();
-                getFragmentManager()
-                        .beginTransaction()
-
-                                // Replace the default fragment animations with animator resources representing
-                                // rotations when switching to the back of the card, as well as animator
-                                // resources representing rotations when flipping back to the front (e.g. when
-                                // the system Back button is pressed).
-                        .setCustomAnimations(
-                                R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-                                R.animator.card_flip_left_in, R.animator.card_flip_left_out)
-
-                                // Replace any fragments currently in the container view with a fragment
-                                // representing the next page (indicated by the just-incremented currentPage
-                                // variable).
-                        .replace(R.id.lesson_three_card_container_flt, cardBackFragment)
-
-                                // Add this transaction to the back stack, allowing users to press Back
-                                // to get to the front of the card.
-                        .addToBackStack(null)
-
-                                // Commit the transaction.
-                        .commit();
+                lessonThreeAnim();
             }
         super.onClick(v);
     }
@@ -229,12 +184,59 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
             }
 
         }else if (fragmentContainerVP.getCurrentItem() == 2){
-            if (mShowingBack) {
+            if (mLessonThreeShowingBack) {
                 getFragmentManager().popBackStack();
-                mShowingBack = false;
+                mLessonThreeShowingBack = false;
                 return;
             }
         }else
         super.onBackPressed();
     }
+
+    //=====================================================leson 3 start
+    /**
+     * lesson 3 back Flags
+     */
+    private boolean mLessonThreeShowingBack = false;
+    /**
+     * lesson 3 动画
+     */
+    private void lessonThreeAnim() {
+        if (mLessonThreeShowingBack) {
+            mLessonThreeShowingBack =false;
+            getFragmentManager().popBackStack();
+            return;
+        }
+
+        // Flip to the back.
+
+        mLessonThreeShowingBack = true;
+
+        CardBackFragment cardBackFragment = new CardBackFragment();
+        getFragmentManager()
+                .beginTransaction()
+
+                        // Replace the default fragment animations with animator resources representing
+                        // rotations when switching to the back of the card, as well as animator
+                        // resources representing rotations when flipping back to the front (e.g. when
+                        // the system Back button is pressed).
+                .setCustomAnimations(
+                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
+                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
+
+                        // Replace any fragments currently in the container view with a fragment
+                        // representing the next page (indicated by the just-incremented currentPage
+                        // variable).
+                .replace(R.id.lesson_three_card_container_flt, cardBackFragment)
+
+                        // Add this transaction to the back stack, allowing users to press Back
+                        // to get to the front of the card.
+                .addToBackStack(null)
+
+                        // Commit the transaction.
+                .commit();
+    }
+
+    //=====================================================leson 3 end
+
 }

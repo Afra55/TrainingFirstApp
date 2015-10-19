@@ -185,7 +185,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         fragmentActionBarRlt.setVisibility(View.GONE);
     }
 
-    protected void setFragmentTitleSting(String titleText){
+    protected void setFragmentTitleToMiddelTv(String titleText){
         fragmentMiddleTv.setText(titleText);
     }
 
