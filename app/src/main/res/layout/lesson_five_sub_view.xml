@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_marginLeft="6dp"
+    android:layout_height="50dp">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lesson_five_sub_del_ibt"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_delete"
+        android:layout_centerVertical="true" />
+
+    <View android:layout_alignLeft="@id/lesson_five_sub_del_ibt" style="@style/VerticalLine"
+        android:layout_marginRight="8dp"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/lesson_five_sub_tv"
+        android:layout_alignParentLeft="true"
+        />
+
+</RelativeLayout>
