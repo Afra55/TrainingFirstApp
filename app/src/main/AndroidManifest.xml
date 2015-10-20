@@ -29,7 +29,6 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <application
@@ -176,6 +175,12 @@
         </activity>
         <!-- 动画相关 end -->
         <activity android:name=".activity.myanim.MyAnimActivity" >
+        </activity>
+        <activity android:name=".connectivity_cloud.WirelesslyConActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.TrainingFirstActivity" />
         </activity>
     </application>
 
