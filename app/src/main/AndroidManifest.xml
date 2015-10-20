@@ -28,6 +28,7 @@
 
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
+    <!--网络操作相关权限-->
     <uses-permission
         android:required="true"
         android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -200,6 +201,8 @@
         </activity>
         <activity android:label="SettingsActivity" android:name=".module.networkusage_demo.SettingsActivity">
             <intent-filter>
+
+                <!--管理指定应用程序网络数据使用情况的设置-->
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

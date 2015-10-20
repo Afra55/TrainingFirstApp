@@ -20,6 +20,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -1018,4 +1020,41 @@ public class CommontUtils {
 		final String cacheDir = "/Android/data/" + context.getPackageName() + "/cache/";
 		return new File(Environment.getExternalStorageDirectory().getPath() + cacheDir);
 	}
+
+	/**
+	 * 检测当前网络是否可用
+	 * @param context
+	 * @return
+	 */
+	public static boolean IsNetWorkAvailable(Context context){
+		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+//		可以通过这两个判断是wifi还是移动网络
+//		networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
+//		networkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+
+		return networkInfo != null && networkInfo.isConnected();
+	}
+
+	/**
+	 * 检测当前网络是否是Wifi
+	 * @param context
+	 * @return
+	 */
+	public static boolean IsWifiNetWorkAvailable(Context context){
+		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+		return networkInfo != null && networkInfo.isConnected();
+	}
+	/**
+	 * 检测当前网络是否是移动网络
+	 * @param context
+	 * @return
+	 */
+	public static boolean IsWifiMobileWorkAvailable(Context context){
+		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+		return networkInfo != null && networkInfo.isConnected();
+	}
+
 }

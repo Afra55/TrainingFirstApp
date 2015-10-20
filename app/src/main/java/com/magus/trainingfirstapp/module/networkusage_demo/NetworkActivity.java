@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.BaseActivity;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -49,19 +50,18 @@ import java.util.List;
 /**
  * Main Activity for the sample application.
  *
- * This activity does the following:
+ * 这个Activity做了如下的几件事情:
  *
- * o Presents a WebView screen to users. This WebView has a list of HTML links to the latest
- *   questions tagged 'android' on stackoverflow.com.
+ * o 给用户呈现了一个webView的界面. 这个 WebView 的 HTML 链接最新的在stackoverflow.com上标记为“android”的问题。
  *
- * o Parses the StackOverflow XML feed using XMLPullParser.
+ * o 使用XMLPullParser解析StackOverflow XML提要。
  *
- * o Uses AsyncTask to download and process the XML feed.
+ * o 使用AsyncTask下载和处理XML提要
  *
  * o Monitors preferences and the device's network connection to determine whether
  *   to refresh the WebView content.
  */
-public class NetworkActivity extends Activity {
+public class NetworkActivity extends BaseActivity {
     public static final String WIFI = "Wi-Fi";
     public static final String ANY = "Any";
     private static final String URL =
@@ -155,7 +155,7 @@ public class NetworkActivity extends Activity {
 
     // Displays an error if the app is unable to load content.
     private void showErrorPage() {
-        setContentView(R.layout.main);
+        setContentLayout(R.layout.network_main);
 
         // The specified network connection is not available. Displays error message.
         WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -167,7 +167,7 @@ public class NetworkActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mainmenu, menu);
+        inflater.inflate(R.menu.network_mainmenu, menu);
         return true;
     }
 
@@ -187,7 +187,7 @@ public class NetworkActivity extends Activity {
         }
     }
 
-    // Implementation of AsyncTask used to download XML feed from stackoverflow.com.
+    // 实现AsyncTask用来从stackoverflow.com下载XML feed。
     private class DownloadXmlTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -203,15 +203,16 @@ public class NetworkActivity extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-            setContentView(R.layout.main);
+            setContentView(R.layout.network_main);
             // Displays the HTML string in the UI via a WebView
             WebView myWebView = (WebView) findViewById(R.id.webview);
             myWebView.loadData(result, "text/html", null);
         }
     }
 
-    // Uploads XML from stackoverflow.com, parses it, and combines it with
-    // HTML markup. Returns HTML string.
+    /**
+     * 从stackoverflow.com获取数据并上传XML解析器,获取结果后结合HTML标记。返回的HTML字符串。
+     */
     private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
         InputStream stream = null;
         StackOverflowXmlParser stackOverflowXmlParser = new StackOverflowXmlParser();
@@ -234,25 +235,18 @@ public class NetworkActivity extends Activity {
         try {
             stream = downloadUrl(urlString);
             entries = stackOverflowXmlParser.parse(stream);
-        // Makes sure that the InputStream is closed after the app is
-        // finished using it.
+        // 确保应用程序使用完 InputStream 后关掉它。
         } finally {
             if (stream != null) {
                 stream.close();
             }
         }
 
-        // StackOverflowXmlParser returns a List (called "entries") of Entry objects.
-        // Each Entry object represents a single post in the XML feed.
-        // This section processes the entries list to combine each entry with HTML markup.
-        // Each entry is displayed in the UI as a link that optionally includes
-        // a text summary.
+        // 遍历结果，加上 HTML 标记
         for (StackOverflowXmlParser.Entry entry : entries) {
             htmlString.append("<p><a href='");
             htmlString.append(entry.link);
             htmlString.append("'>" + entry.title + "</a></p>");
-            // If the user set the preference to include summary text,
-            // adds it to the display.
             if (pref) {
                 htmlString.append(entry.summary);
             }
@@ -260,8 +254,9 @@ public class NetworkActivity extends Activity {
         return htmlString.toString();
     }
 
-    // Given a string representation of a URL, sets up a connection and gets
-    // an input stream.
+    /**
+     * 给定一个URL的字符串建立了一个连接, 获取输入流input stream.
+      */
     private InputStream downloadUrl(String urlString) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -269,7 +264,7 @@ public class NetworkActivity extends Activity {
         conn.setConnectTimeout(15000 /* milliseconds */);
         conn.setRequestMethod("GET");
         conn.setDoInput(true);
-        // Starts the query
+        // 开始查询
         conn.connect();
         InputStream stream = conn.getInputStream();
         return stream;

@@ -35,7 +35,6 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +54,7 @@ public class TrainingFirstActivity extends BaseActivity {
         setContentLayout(R.layout.activity_training_first);
         first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
+        ((TextView)findViewById(R.id.first_show_tv)).setText(Build.MODEL);
         initModule();
 
 
