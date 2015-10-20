@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,6 +32,9 @@ import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
+import com.magus.trainingfirstapp.utils.CommontUtils;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,14 +45,14 @@ import java.util.List;
 public class TrainingFirstActivity extends BaseActivity {
 
     private ImageView takePhotoThenToShowImg;
-    private LinearLayout llt_funbtn;
+    private LinearLayout first_module_content_lly;
     private final int MODULE_BUTTON_ITEM_ID = G.FlagsConst.BUTTON_ITEM_ID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_training_first);
-        llt_funbtn = (LinearLayout) findViewById(R.id.first_module_content_lly);
+        first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
 
         // 添加所有的按钮模块
@@ -62,12 +66,20 @@ public class TrainingFirstActivity extends BaseActivity {
      * @param tagId
      */
     private void addButton(int tagId) {
+        if (first_module_content_lly.getChildCount() >1){   //本来存放着一个ImageView因此当子布局大于1个的时候加线条
+            TextView textView = new TextView(this);
+            textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CommontUtils.dip2px(1)));
+            textView.setBackgroundColor(getResources().getColor(R.color.first_module_line));
+            first_module_content_lly.addView(textView);
+        }
+
         Button button = new Button(this);
         button.setText(G.getModuleBtnName(this, tagId));
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
-        llt_funbtn.addView(button);
+        button.setBackgroundResource(R.drawable.my_button_bg);
+        first_module_content_lly.addView(button);
     }
 
 
@@ -122,18 +134,18 @@ public class TrainingFirstActivity extends BaseActivity {
             case 0:
                 return new Intent(this, FragmentMainActivity.class);
             case 1:
-                Uri number = Uri.parse("tel:110");
+                Uri number = Uri.parse("tel:10086");
                 return new Intent(Intent.ACTION_DIAL, number);
             case 2:
                 try {
                     Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level
-                    return new Intent(Intent.ACTION_VIEW, location);
+                    startActivity(new Intent(Intent.ACTION_VIEW, location));
                 } catch (Exception e) {
                     showToast("没有地图");
-                    return null;
                 }
+                return null;
             case 3:
-                Uri webPage = Uri.parse("http://www.baidu.com");
+                Uri webPage = Uri.parse(G.UrlConst.CSDN_BLOG);
                 return  new Intent(Intent.ACTION_VIEW, webPage);
             case 4:
                 sendMsg("ssss");

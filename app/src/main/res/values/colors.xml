@@ -26,4 +26,5 @@
     <color name="hintgray">#c3c3c3</color>
 
     <color name="hostcity">#666666</color>
+    <color name="first_module_line">#4d71ae</color>
 </resources>

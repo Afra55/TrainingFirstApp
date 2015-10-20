@@ -11,6 +11,11 @@ public class G {
     public class HostConst{
         public static final boolean isQA = true;
     }
+
+    public interface UrlConst{
+        public static final String  CSDN_BLOG = "http://blog.csdn.net/yang786654260";
+    }
+
     public interface MessageConst{
         public static final String MESSAGE = "message";
     }
