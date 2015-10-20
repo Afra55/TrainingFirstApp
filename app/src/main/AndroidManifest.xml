@@ -178,6 +178,9 @@
         <!-- 动画相关 end -->
         <activity android:name=".activity.myanim.MyAnimActivity" >
         </activity>
+        <!-- 功能效果 -->
+        <activity android:name=".activity.function.CircleMenuActivity" >
+        </activity>
     </application>
 
 </manifest>
