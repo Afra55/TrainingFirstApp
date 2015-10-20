@@ -43,7 +43,7 @@
                  "ToughHighlightImageButton" ImageButton subclass helps achieve this by drawing
                  the standard system "pressed" and "focused" overlay upon user interaction. -->
 
-            <com.magus.trainingfirstapp.activity.animdemo.TouchHighlightImageButton
+            <com.magus.trainingfirstapp.view.TouchHighlightImageButton
                 android:id="@+id/thumb_button_1"
                 android:layout_width="100dp"
                 android:layout_height="75dp"
@@ -52,7 +52,7 @@
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/description_image_1" />
 
-            <com.magus.trainingfirstapp.activity.animdemo.TouchHighlightImageButton
+            <com.magus.trainingfirstapp.view.TouchHighlightImageButton
                 android:id="@+id/thumb_button_2"
                 android:layout_width="100dp"
                 android:layout_height="75dp"

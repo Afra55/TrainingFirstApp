@@ -3,7 +3,7 @@
     android:id="@+id/lesson_four_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.magus.trainingfirstapp.activity.myanim.LessonFourFragment">
+    tools:context="com.magus.trainingfirstapp.module.myanim.fragment.LessonFourFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

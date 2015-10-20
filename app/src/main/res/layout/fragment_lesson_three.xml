@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lesson_three_card_container_flt"
-    tools:context="com.magus.trainingfirstapp.activity.myanim.LessonThreeFragment">
+    tools:context="com.magus.trainingfirstapp.module.myanim.fragment.LessonThreeFragment">
 
     <Button
         android:layout_width="wrap_content"
