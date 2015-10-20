@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.magus.trainingfirstapp.BaseActivity;
 import com.magus.trainingfirstapp.G;
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.activity.function.CircleMenuActivity;
 import com.magus.trainingfirstapp.activity.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.activity.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.fragments.FragmentMainActivity;
@@ -58,7 +59,8 @@ public class TrainingFirstActivity extends BaseActivity {
             R.id.first_take_phote_demo,
             R.id.first_take_phote_btn,
             R.id.first_take_photo_o_btn,
-            R.id.open_swipe_menu_btn
+            R.id.open_swipe_menu_btn,
+            R.id.circlemenu
     };
        private String[] btnStrs = new String[]{"fragment","intentTest","map","webView","email","OpenNewActivityBtn","ShareButton",
 //            getResources().getString(R.string.intent_test),
@@ -67,7 +69,7 @@ public class TrainingFirstActivity extends BaseActivity {
 //            getResources().getString(R.string.email).toString(),
 //            getResources().getString(R.string.opennew).toString(),
 //            getResources().getString(R.string.sharebutton).toString(),
-            "TakePhoto_压缩","TakePhotoDemo","TakePhoto_原图","OpenSwipeMenuDemo"
+            "TakePhoto_压缩","TakePhotoDemo","TakePhoto_原图","OpenSwipeMenuDemo","仿建行原形菜单"
 //            getResources().getString(R.string.open_swipe_demo).toString()
     };
 
@@ -220,6 +222,9 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case R.id.first_my_anim_demo_btn:
                 startActivity(new Intent(TrainingFirstActivity.this, MyAnimActivity.class));
+                break;
+            case R.id.circlemenu:
+                startActivity(new Intent(TrainingFirstActivity.this, CircleMenuActivity.class));
                 break;
         }
     }
