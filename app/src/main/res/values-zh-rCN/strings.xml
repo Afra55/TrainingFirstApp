@@ -19,4 +19,8 @@
     <string name="file_selector">文件选取</string>
     <string name="open_swipe_demo">打开侧滑删除demo</string>
     <string name="yangshuai">_杨帅</string>
+    <string name="take_photo_s">TakePhoto_压缩</string>
+    <string name="take_photo_o">TakePhoto_原图</string>
+    <string name="imitate_ccb_menu">仿建行原形菜单</string>
+    <string name="my_anim">我的动画</string>
 </resources>

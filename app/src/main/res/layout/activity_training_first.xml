@@ -7,9 +7,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/first_relativeLayout"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_alignRight="@+id/scrollView"
@@ -18,34 +18,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateDrawable="@drawable/progress_bg"
-            android:id="@+id/progressBar" />
+            android:id="@+id/first_progressBar" />
         <TextView
             android:layout_width="wrap_content"
             android:onClick="sendMessage"
             android:layout_height="wrap_content" android:text="@string/app_name"
             android:layout_gravity="center_vertical"
-            android:id="@+id/textView"
-            android:layout_below="@+id/activity_first_btn"
+            android:id="@+id/first_show_tv"
             android:layout_centerHorizontal="true" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/message_et"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/first_show_tv"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-        <Button
-            android:layout_width="match_parent"
-            android:onClick="sendMessage"
-            android:layout_height="@dimen/button_height" style="@style/myButton"
-            android:id="@+id/activity_first_btn"
-            android:layout_alignBottom="@+id/progressBar"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/textView"
-            android:layout_alignStart="@+id/textView" />
-
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,77 +40,27 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/progressBar2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/first_bitmap_decode_options_tv"
-            android:layout_below="@+id/message_et"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="图像与动画相关"
-            android:id="@+id/first_open_bitmap_and_anim_activity"
-            android:layout_below="@+id/first_bitmap_decode_options_tv"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我的Dong话"
-            android:id="@+id/first_my_anim_demo_btn"
-            android:layout_alignBottom="@+id/first_open_bitmap_and_anim_activity"
-            android:layout_toRightOf="@+id/first_open_bitmap_and_anim_activity"
-            android:layout_toEndOf="@+id/first_open_bitmap_and_anim_activity" />
+            android:id="@+id/first_progressBar2" />
 
     </RelativeLayout>
-
-
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/first_relativeLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" >
         <LinearLayout
-            android:id="@+id/llt_funbtn"
+            android:id="@+id/first_module_content_lly"
             android:orientation="vertical"
             android:layout_width="match_parent"
+            android:animateLayoutChanges="true"
             android:layout_height="match_parent">
-
             <ImageView
-                android:id="@+id/first_photo_show_img"
-                android:layout_width="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_height="wrap_content" />
-
+                android:id="@+id/first_image_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"/>
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="nihao"
-            android:layout_marginTop="30dp"/>
-    </LinearLayout>
-
 </RelativeLayout>

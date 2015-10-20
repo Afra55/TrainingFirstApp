@@ -60,6 +60,10 @@
     <string name="other_app_name">第一个APP\n欢迎使用</string>
     <string name="file_selector">File Selector</string>
     <string name="open_swipe_demo">OpenSwipeMenuDemo</string>
+    <string name="take_photo_s">TakePhoto_压缩</string>
+    <string name="take_photo_demo">TakePhotoDemo</string>
+    <string name="take_photo_o">TakePhoto_原图</string>
+    <string name="imitate_ccb_menu">仿建行原形菜单</string>
 
     <string name="btnIntend">Take (big) Picture</string>
     <string name="btnIntendS">Take (small) Picture</string>
@@ -100,8 +104,11 @@
     <string name="card_back_description"><![CDATA[AAA啊哈的描述]]></string>
     <string name="lorem_ipsum"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et magna ut erat elementum cursus in quis ipsum. Nam faucibus ultrices eros, vel tempor leo semper sit amet. Duis magna quam, congue vitae interdum nec, condimentum ut lectus. Sed commodo venenatis eros a dignissim. Nunc adipiscing turpis nec magna venenatis at ultricies ipsum bibendum. Sed volutpat urna quis nisi vulputate egestas. Etiam eu dui a enim lacinia dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\nPhasellus orci mi, eleifend nec congue id, volutpat at neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer semper velit vel leo rutrum sed fermentum elit porta.]]></string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Fragment">Fragment</string>
+    <string name="my_anim">my anim</string>
+    <string name="activity_life">Activity生命周期</string>
+    <string name="img_anim_more">图像与动画相关</string>
 
 </resources>
