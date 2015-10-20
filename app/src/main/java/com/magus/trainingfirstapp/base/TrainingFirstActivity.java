@@ -29,6 +29,7 @@ import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
+import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
@@ -54,9 +55,14 @@ public class TrainingFirstActivity extends BaseActivity {
         setContentLayout(R.layout.activity_training_first);
         first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
+        initModule();
 
+
+    }
+
+    private void initModule() {
         // 添加所有的按钮模块
-        for(int i=0; i<G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++){
+        for(int i=0; i< G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++){
             addButton(i);
         }
     }
@@ -189,6 +195,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, DisplayingBitmapsActivity.class);
             case 14:
                 return new Intent(TrainingFirstActivity.this, MyAnimActivity.class);
+            case 15:
+                return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
         }
         return null;
     }

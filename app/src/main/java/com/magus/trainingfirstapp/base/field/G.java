@@ -36,7 +36,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 15;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 16;
     }
 
     /**
@@ -77,6 +77,8 @@ public class G {
                 return context.getResources().getString(R.string.img_anim_more);
             case 14:
                 return context.getResources().getString(R.string.my_anim);
+            case 15:
+                return context.getResources().getString(R.string.net_work_demo);
         }
         return "";
     }

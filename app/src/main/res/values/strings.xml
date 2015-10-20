@@ -110,5 +110,18 @@
     <string name="my_anim">my anim</string>
     <string name="activity_life">Activity生命周期</string>
     <string name="img_anim_more">图像与动画相关</string>
+    <string name="net_work_demo">NetworkActivityDemo</string>
+
+    <!--  Menu items -->
+    <string name="settings">Settings</string>
+    <string name="refresh">Refresh</string>
+
+    <!--  NetworkActivity -->
+    <string name="page_title">Newest StackOverflow questions tagged \'android\'</string>
+    <string name="updated">Last updated:</string>
+    <string name="lost_connection">Lost connection.</string>
+    <string name="wifi_connected">Wi-Fi reconnected.</string>
+    <string name="connection_error">Unable to load content. Check your network connection.</string>
+    <string name="xml_error">Error parsing XML.</string>
 
 </resources>
