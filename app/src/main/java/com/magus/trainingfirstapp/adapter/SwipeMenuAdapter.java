@@ -62,21 +62,16 @@ public class SwipeMenuAdapter extends BaseAdapter {
         ApplicationInfo item = getItem(position);
         holder.iv_icon.setImageDrawable(item.loadIcon(context.getPackageManager()));
         holder.tv_name.setText(item.loadLabel(context.getPackageManager()));
-        if (onFocusChangeListener!=null){
-            holder.editText.setOnFocusChangeListener(onFocusChangeListener);
-        }
         return convertView;
     }
 
     class ViewHolder {
         ImageView iv_icon;
         TextView tv_name;
-        EditText editText;
 
         public ViewHolder(View view) {
             iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
             tv_name = (TextView) view.findViewById(R.id.tv_name);
-            editText = (EditText) view.findViewById(R.id.swipe_item_etx);
             view.setTag(this);
         }
     }

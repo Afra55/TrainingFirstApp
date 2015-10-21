@@ -19,14 +19,4 @@
         android:text="name"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
-    <EditText
-        android:id="@+id/swipe_item_etx"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/tv_name"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:background="@null"
-        android:hint="备注"
-        android:layout_height="wrap_content" />
-
 </RelativeLayout>
