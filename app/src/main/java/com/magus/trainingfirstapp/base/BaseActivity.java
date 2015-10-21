@@ -43,7 +43,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
         SharedPreferenceUtil.init(this);
 
-        actionBarLeftBtn = (Button)findViewById(R.id.actionBar_left_btn);
+        actionBarLeftBtn = (Button) findViewById(R.id.actionBar_left_btn);
         actionBarRightBtn = (Button) findViewById(R.id.actionBar_right_btn);
         actionBarTitle = (TextView) findViewById(R.id.actionBar_title_tv);
         actionBarRlt = (RelativeLayout) findViewById(R.id.action_bar_rlt);
@@ -53,18 +53,18 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 //        fillLayoutView();   不推荐自动添加布局
     }
 
-    private void fillLayoutView(){
+    private void fillLayoutView() {
         String layoutName = getLayoutName();
-        int layoutId = getFieldValue("layout",layoutName,this);
-        if (layoutId != -1){
+        int layoutId = getFieldValue("layout", layoutName, this);
+        if (layoutId != -1) {
             setContentLayout(layoutId);
         }
 
     }
 
-    private String getLayoutName(){
+    private String getLayoutName() {
         String className = this.getClass().getSimpleName();
-        className = className.substring(0,1).toLowerCase() + className.substring(1,className.length());
+        className = className.substring(0, 1).toLowerCase() + className.substring(1, className.length());
         Pattern p = Pattern.compile("\\p{Upper}");
         Matcher m = p.matcher(className);
 
@@ -72,16 +72,16 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
         int index = 0;
         int lastIndex = index;
-        while(m.find()){
+        while (m.find()) {
             index = className.indexOf(m.group());
-            names.add(className.substring(lastIndex,index));
+            names.add(className.substring(lastIndex, index));
             lastIndex = index;
         }
         names.add(className.substring(lastIndex, className.length()));
 
 //        Collections.reverse(names);
-        className = names.get(names.size()-1);
-        for (int i = 0 ; i < names.size() - 1 ; i++ ){
+        className = names.get(names.size() - 1);
+        for (int i = 0; i < names.size() - 1; i++) {
             className += "_" + names.get(i);
         }
         return className.toLowerCase();
@@ -89,15 +89,16 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
     /**
      * 根据给定的类型名和字段名，返回R文件中的字段的值
-     * @param typeName 属于哪个类别的属性 （id,layout,drawable,string,color,attr......）
+     *
+     * @param typeName  属于哪个类别的属性 （id,layout,drawable,string,color,attr......）
      * @param fieldName 字段名
      * @return 字段的值
      * @throws Exception
      */
-    public static int getFieldValue(String typeName,String fieldName,Context context){
+    public static int getFieldValue(String typeName, String fieldName, Context context) {
         int i = -1;
         try {
-            Class<?> clazz = Class.forName(context.getPackageName() + ".R$"+typeName);
+            Class<?> clazz = Class.forName(context.getPackageName() + ".R$" + typeName);
             i = clazz.getField(fieldName).getInt(null);
         } catch (Exception e) {
             Log.d("" + context.getClass(), "没有找到" + context.getPackageName() + ".R$" + typeName + "类型资源 " + fieldName + "请copy相应文件到对应的目录.");
@@ -106,49 +107,49 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         return i;
     }
 
-    protected void setContentLayout(int layoutId){
-        View sonView = LayoutInflater.from(this).inflate(layoutId,null);
+    protected void setContentLayout(int layoutId) {
+        View sonView = LayoutInflater.from(this).inflate(layoutId, null);
         contentFatherLly.addView(sonView);
         getChildViewForm(getWindow().getDecorView());
     }
 
-    protected void setContentLayout(View view){
+    protected void setContentLayout(View view) {
         contentFatherLly.addView(view);
         getChildViewForm(getWindow().getDecorView());
     }
 
-    private void getChildViewForm(View view){
+    private void getChildViewForm(View view) {
         try {
-            if (view instanceof ViewGroup){
+            if (view instanceof ViewGroup) {
                 ViewGroup g = (ViewGroup) view;
-                for (int i = 0 ; i < g.getChildCount() ; i++) {
+                for (int i = 0; i < g.getChildCount(); i++) {
                     getChildViewForm(g.getChildAt(i));
                 }
-            }else if(view instanceof Button){
+            } else if (view instanceof Button) {
                 view.setOnClickListener(this);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected void showActionBar(){
+    protected void showActionBar() {
         actionBarRlt.setVisibility(View.VISIBLE);
     }
 
-    protected  void hideActionBar(){
+    protected void hideActionBar() {
         actionBarRlt.setVisibility(View.GONE);
     }
 
-    protected  void showActionBarLeftBtn(){
+    protected void showActionBarLeftBtn() {
         actionBarLeftBtn.setVisibility(View.VISIBLE);
     }
 
-    protected  void hideActionBarLeftBtn(){
+    protected void hideActionBarLeftBtn() {
         actionBarLeftBtn.setVisibility(View.GONE);
     }
 
-    protected void showActionBarRightBtn(){
+    protected void showActionBarRightBtn() {
         actionBarRightBtn.setVisibility(View.VISIBLE);
     }
 
@@ -160,27 +161,38 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         actionBarTitle.setVisibility(View.VISIBLE);
     }
 
-    protected void hideActionBarTitle(){
+    protected void hideActionBarTitle() {
         actionBarTitle.setVisibility(View.GONE);
     }
 
+    //设置中间标题的文本
     protected void setActionBarTitle(String title) {
         actionBarTitle.setText(title);
     }
 
-
-    protected void changeToastState(String s){
+    //设置toast文本
+    protected void changeToastState(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    //设置左侧按钮的文本
+    protected void setActionBarLeftBtnText(String text) {
+        actionBarLeftBtn.setText(text);
+    }
+
+    //设置左侧按钮的文本
+    protected void setActionBarRightBtnText(String text) {
+        actionBarRightBtn.setText(text);
     }
 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.actionBar_left_btn:
-                if (this instanceof TrainingFirstActivity){
+                if (this instanceof TrainingFirstActivity) {
                     exit();
-                }else{
+                } else {
                     finish();
                 }
 
@@ -188,9 +200,11 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    private long  exitTime = -1;
+    //双击退出
+    private long exitTime = -1;
+
     private void exit() {
-        if ((System.currentTimeMillis() - exitTime ) > 2000) {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
             changeToastState("再按一次退出程序");
             exitTime = System.currentTimeMillis();
         } else {
@@ -200,6 +214,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
+    //双击返回键退出
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((this instanceof TrainingFirstActivity) && event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK) {
@@ -209,17 +224,19 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         return super.onKeyDown(keyCode, event);
     }
 
+    //Toast公共方法
     private Toast toast = null;
+
     protected void showToast(String message) {
         if (toast == null) {
-            toast = Toast.makeText(this,message,Toast.LENGTH_SHORT);
-        }else{
+            toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        } else {
             toast.setText(message);
         }
         toast.show();
     }
 
-    protected void actionBarAddViewToRight(View view){
+    protected void actionBarAddViewToRight(View view) {
         actionBarRightContainerLly.addView(view);
     }
 

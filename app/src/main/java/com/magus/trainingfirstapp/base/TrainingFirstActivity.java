@@ -51,26 +51,30 @@ public class TrainingFirstActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_training_first);
+        setActionBarLeftBtnText("Exit");
+        setActionBarTitle("主界面");
+        setActionBarRightBtnText("look sha");
         first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
-        ((TextView)findViewById(R.id.first_show_tv)).setText(Build.MODEL);
+        ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
 
         initModule();
     }
 
     private void initModule() {
         // 添加所有的按钮模块
-        for(int i=0; i< G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++){
+        for (int i = 0; i < G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++) {
             addButton(i);
         }
     }
 
     /**
      * 添加模块按钮
+     *
      * @param tagId
      */
     private void addButton(int tagId) {
-        if (first_module_content_lly.getChildCount() >1){   //本来存放着一个ImageView因此当子布局大于1个的时候加线条
+        if (first_module_content_lly.getChildCount() > 1) {   //本来存放着一个ImageView因此当子布局大于1个的时候加线条
             TextView textView = new TextView(this);
             textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CommontUtils.dip2px(1)));
             textView.setBackgroundColor(getResources().getColor(R.color.first_module_line));
@@ -119,18 +123,19 @@ public class TrainingFirstActivity extends BaseActivity {
     public void onClick(View v) {
         super.onClick(v);
         Intent intent = null;
-        switch (v.getId()){
+        switch (v.getId()) {
             case MODULE_BUTTON_ITEM_ID:
                 intent = onModuleBtnClick((Integer) v.getTag());
                 break;
         }
-        if (intent!=null){
+        if (intent != null) {
             startActivity(intent);
         }
     }
 
     /**
      * 模块的点击事件
+     *
      * @param tagId
      */
     private Intent onModuleBtnClick(int tagId) {
@@ -150,7 +155,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 return null;
             case 3:
                 Uri webPage = Uri.parse(G.UrlConst.CSDN_BLOG);
-                return  new Intent(Intent.ACTION_VIEW, webPage);
+                return new Intent(Intent.ACTION_VIEW, webPage);
             case 4:
                 sendMsg("ssss");
             case 5:
