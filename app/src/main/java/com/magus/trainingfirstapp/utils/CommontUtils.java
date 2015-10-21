@@ -47,6 +47,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.magus.trainingfirstapp.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -1055,6 +1056,42 @@ public class CommontUtils {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 		return networkInfo != null && networkInfo.isConnected();
+	}
+
+	/*SDcard的动态路径*/
+	static String sdcardPath = Environment.getExternalStorageDirectory() + "";
+	public static boolean hasSDcard() {
+		boolean b = false;
+		try {
+			b = Environment.getExternalStorageState().equals(
+					Environment.MEDIA_MOUNTED);
+		} catch (Exception e) {
+		}
+		return b;
+	}
+	/**
+	 * 获得缓存的绝对路径
+	 * @param context
+	 * @return
+	 */
+	public static String cachePath(Context context){
+		String path;
+		if (hasSDcard()){
+			path = sdcardPath+File.separator+ context.getResources().getString(R.string.app_name);
+			File file = new File(path);
+			if (!file.isDirectory()){
+				file.delete();
+			}
+			if (file == null || !file.exists()){
+				file.mkdirs();
+			}
+			path += File.separator;
+
+		}else
+		{
+			path = context.getCacheDir().getAbsolutePath();
+		}
+		return path;
 	}
 
 }

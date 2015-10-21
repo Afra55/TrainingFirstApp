@@ -13,6 +13,7 @@ public class G {
     }
 
     public interface UrlConst{
+        public static final String E_APK = "http://www.yangguangeshequ.com/apk/app.apk";
         public static final String  CSDN_BLOG = "http://blog.csdn.net/yang786654260";
     }
 
@@ -36,7 +37,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 16;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 17;
     }
 
     /**
@@ -79,6 +80,8 @@ public class G {
                 return context.getResources().getString(R.string.my_anim);
             case 15:
                 return context.getResources().getString(R.string.net_work_demo);
+            case 16:
+                return context.getResources().getString(R.string.down_load);
         }
         return "";
     }

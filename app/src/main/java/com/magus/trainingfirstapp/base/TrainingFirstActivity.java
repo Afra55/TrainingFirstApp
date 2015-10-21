@@ -34,6 +34,7 @@ import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
+import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
 
 import java.io.File;
 import java.io.IOException;
@@ -200,6 +201,10 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, MyAnimActivity.class);
             case 15:
                 return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
+            case 16:
+                DownLoadService downLoadService = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
+                downLoadService.startDownLoad();
+                break;
         }
         return null;
     }
