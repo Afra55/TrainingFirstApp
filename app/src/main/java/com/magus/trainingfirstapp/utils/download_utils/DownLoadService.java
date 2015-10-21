@@ -7,12 +7,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.graphics.drawable.Icon;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.ConditionVariable;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -34,7 +35,8 @@ import java.net.URL;
 public class DownLoadService {
 
 	private Notification notification;
-	private NotificationManager mNotiManager;
+	private NotificationCompat.Builder mNotify;
+	private NotificationManagerCompat mNotiManager;
 	private ConditionVariable mCondition;
 	private int downLoadSize = 0; // 当前下载量
 	private int fileSize = -1;
@@ -83,16 +85,8 @@ public class DownLoadService {
 					InputStream stream = conn.getInputStream();
 					fileSize = conn.getContentLength();
 
-//					DefaultHttpClient client = new DefaultHttpClient();
-//
-//					HttpGet httpGet = new HttpGet(path);
-//					HttpResponse response = client.execute(httpGet);
-//
-//					HttpEntity httpEntity = response.getEntity();
-
-//					fileSize = (int) httpEntity.getContentLength() ;
-
 					int s = fileSize;
+					mNotify.setProgress(fileSize, 0, false);
 					File file = new File(fileName);
 					if(file.exists()&&file.length()==fileSize){ // 如果文件存在并且已经下载完毕
 						downLoadSize = fileSize;
@@ -131,34 +125,35 @@ public class DownLoadService {
 		CharSequence lable = mContext.getPackageManager().getApplicationLabel(
 				info);
 		apkName  = lable+"";
-		CharSequence title = "正在下载...";
+		CharSequence title = "正在下载新版本...";
 		long when = System.currentTimeMillis();
-		Notification.Builder mNotify = new Notification.Builder(mContext);
+		mNotify = new NotificationCompat.Builder(mContext)
+				.setOngoing(true)  // 通知栏不会被手动消除
+				.setAutoCancel(false)
+				.setUsesChronometer(false)
+				.setSmallIcon(R.mipmap.ic_launcher)
+				.setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.thumb1))
+				.setTicker(title)
+				.setAutoCancel(false)
+				.setColor(mContext.getResources().getColor(R.color.blue))
+				.setContentText(title)
+				.setContentTitle(mContext.getResources().getString(R.string.app_name));
 
-		mNotify.setWhen(when + 10000);
-
-		// 这里为空
-		mNotify.setSmallIcon(R.drawable.icon_logo_s);
-		mNotify.setTicker(title);
-		mNotify.setOngoing(true);
-		mNotify.setAutoCancel(false);
-
-
-
-		// 1、创建一个自定义的消息布局 view.xml
-		// 2、在程序代码中使用RemoteViews的方法来定义image和text。然后把RemoteViews对象传到contentView字段
-		RemoteViews remoteView = new RemoteViews(mContext.getPackageName(), R.layout.down_load_notifi);
-		remoteView.setProgressBar(R.id.progress_horizontal, fileSize, downLoadSize, true);
-		remoteView.setImageViewResource(R.id.image, R.drawable.icon_logo);
-		remoteView.setTextViewText(R.id.text, lable);
-		mNotify.setContent(remoteView);
 		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,new Intent(), 0);
 		mNotify.setContentIntent(contentIntent);
 
-		mNotiManager = (NotificationManager) mContext
-				.getSystemService(Context.NOTIFICATION_SERVICE);
+		// 1、创建一个自定义的消息布局 view.xml
+		// 2、在程序代码中使用RemoteViews的方法来定义image和text。然后把RemoteViews对象传到contentView字段
+//		RemoteViews remoteView = new RemoteViews(mContext.getPackageName(), R.layout.down_load_notifi);
+//		remoteView.setProgressBar(R.id.progress_horizontal, fileSize, downLoadSize, true);
+//		remoteView.setImageViewResource(R.id.image, R.drawable.icon_logo);
+//		remoteView.setImageViewResource(android.R.id.icon, R.drawable.icon_logo_s);
+//		remoteView.setTextViewText(R.id.text, lable);
+//		mNotify.setContent(remoteView);
 
-		notification = mNotify.getNotification();
+		mNotiManager = NotificationManagerCompat.from(mContext);
+
+		notification = mNotify.build();
 		mNotiManager.notify(NOTIFY_ID, notification);
 
 	}
@@ -192,9 +187,14 @@ public class DownLoadService {
 					PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,intent1, 0);
 					notification.contentIntent = contentIntent;
 				case MSG_DOWNLOAD:
-					notification.contentView.setProgressBar(R.id.progress_horizontal,
-							fileSize, downLoadSize, false);
-					notification.contentView.setTextViewText(R.id.text1,(int)(( Double.valueOf(downLoadSize)/Double.valueOf(fileSize))*100)+"%");
+
+					mNotify.setProgress(fileSize, downLoadSize, false);
+					mNotify.setContentInfo((int) ((Double.valueOf(downLoadSize) / Double.valueOf(fileSize)) * 100) + "%");
+					notification = mNotify.build();
+
+//					notification.contentView.setProgressBar(R.id.progress_horizontal,
+//							fileSize, downLoadSize, false);
+//					notification.contentView.setTextViewText(R.id.text1,(int)(( Double.valueOf(downLoadSize)/Double.valueOf(fileSize))*100)+"%");
 					mNotiManager.notify(NOTIFY_ID, notification);
 					break;
 				default:

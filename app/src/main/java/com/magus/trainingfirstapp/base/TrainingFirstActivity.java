@@ -202,7 +202,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case 15:
                 return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
             case 16:
-                DownLoadService downLoadService = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
+                DownLoadService downLoadService = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.GAME_APK);
                 downLoadService.startDownLoad();
                 break;
         }
