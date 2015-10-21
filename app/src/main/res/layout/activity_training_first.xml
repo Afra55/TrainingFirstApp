@@ -1,67 +1,88 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".TrainingFisrtAcitivity">
+    tools:context=".TrainingFisrtAcitivity">
 
     <RelativeLayout
+        android:id="@+id/first_relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/first_relativeLayout"
+        android:layout_alignEnd="@+id/scrollView"
+        android:layout_alignRight="@+id/scrollView"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView">
+        android:orientation="horizontal">
+
         <ProgressBar
+            android:id="@+id/first_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/progress_bg"
-            android:id="@+id/first_progressBar" />
+            android:indeterminateDrawable="@drawable/progress_bg" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:onClick="sendMessage"
-            android:layout_height="wrap_content" android:text="@string/app_name"
-            android:layout_gravity="center_vertical"
             android:id="@+id/first_show_tv"
-            android:layout_centerHorizontal="true" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_text_machine_type"
+            android:onClick="sendMessage"
+            android:paddingBottom="8dip"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip"
+            android:paddingTop="8dip"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="24dip" />
+
         <EditText
+            android:id="@+id/message_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/message_et"
-            android:layout_below="@+id/first_show_tv"
             android:layout_alignParentLeft="true"
-            android:text="下面是展示的module"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/first_progressBar"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="下面是展示的module" />
+
         <ProgressBar
+            android:id="@+id/first_progressBar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="false"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/first_progressBar2" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:indeterminate="false" />
 
     </RelativeLayout>
+
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
         android:layout_below="@+id/first_relativeLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="10dp">
+
         <LinearLayout
             android:id="@+id/first_module_content_lly"
-            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:animateLayoutChanges="true"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/first_image_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

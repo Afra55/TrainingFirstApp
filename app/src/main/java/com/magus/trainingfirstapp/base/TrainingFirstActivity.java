@@ -26,15 +26,14 @@ import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
+import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
-import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
-import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
+import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -55,9 +54,8 @@ public class TrainingFirstActivity extends BaseActivity {
         first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView)findViewById(R.id.first_show_tv)).setText(Build.MODEL);
+
         initModule();
-
-
     }
 
     private void initModule() {

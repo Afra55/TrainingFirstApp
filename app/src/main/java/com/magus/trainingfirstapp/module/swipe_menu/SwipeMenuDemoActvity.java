@@ -32,10 +32,10 @@ public class SwipeMenuDemoActvity extends BaseActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
 
-                if (!hasFocus){
-
-                    showToast(((EditText) v).getText().toString());
-                }
+//                if (!hasFocus){
+//
+//                    showToast(((EditText) v).getText().toString());
+//                }
 
             }
         });
