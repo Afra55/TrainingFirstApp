@@ -112,6 +112,7 @@
     <string name="img_anim_more">图像与动画相关</string>
     <string name="net_work_demo">NetworkActivityDemo</string>
     <string name="down_load">下载测试</string>
+    <string name="open_youxi_client">唤起有戏客户端</string>
 
     <!--  Menu items -->
     <string name="settings">Settings</string>

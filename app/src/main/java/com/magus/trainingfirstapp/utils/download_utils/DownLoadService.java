@@ -2,7 +2,6 @@ package com.magus.trainingfirstapp.utils.download_utils;
 
 import android.app.Activity;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +13,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.widget.RemoteViews;
 import android.widget.Toast;
 
 
@@ -48,11 +46,23 @@ public class DownLoadService {
 	private final int MSG_CONTINUATION = 6;// 继续下载
 	private final int MSG_REFESH_NOFI = 10;// 刷新notify
 	private final int MSG_SDCARD_ERROR = 11;// 刷新notify
+	private final int MSG_CANCEL_NOTIFACTION = 12;// 刷新notify
 	private String path = "";
 	private Activity mContext;
 	private String apkName = "";
 	private int NOTIFY_ID = 20;
 	private String fileName ="";
+
+	private CharSequence describeText = "正在下载新版本...";
+
+	/**
+	 * 设置描述文本
+	 * @param describeText
+	 */
+	public void setDescribeText(CharSequence describeText) {
+		this.describeText = describeText;
+	}
+
 	public DownLoadService(Activity mContext, String downPath) {
 		String [] items = downPath.split("/");
 		apkName = items[items.length-1];
@@ -125,7 +135,7 @@ public class DownLoadService {
 		CharSequence lable = mContext.getPackageManager().getApplicationLabel(
 				info);
 		apkName  = lable+"";
-		CharSequence title = "正在下载新版本...";
+
 		long when = System.currentTimeMillis();
 		mNotify = new NotificationCompat.Builder(mContext)
 				.setOngoing(true)  // 通知栏不会被手动消除
@@ -133,10 +143,10 @@ public class DownLoadService {
 				.setUsesChronometer(false)
 				.setSmallIcon(R.mipmap.ic_launcher)
 				.setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.thumb1))
-				.setTicker(title)
+				.setTicker(describeText)
 				.setAutoCancel(false)
 				.setColor(mContext.getResources().getColor(R.color.blue))
-				.setContentText(title)
+				.setContentText(describeText)
 				.setContentTitle(mContext.getResources().getString(R.string.app_name));
 
 		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,new Intent(), 0);
@@ -163,11 +173,11 @@ public class DownLoadService {
 			switch (msg.what) {
 				case MSG_ERROR:
 					Toast.makeText(mContext, "无法获取文件大小",Toast.LENGTH_SHORT).show();
-					mNotiManager.cancelAll();
+					mNotiManager.cancel(NOTIFY_ID);
 					break;
 				case MSG_SDCARD_ERROR:
 					Toast.makeText(mContext, "当前SDcard不存在，或不可用",Toast.LENGTH_SHORT).show();
-					mNotiManager.cancelAll();
+					mNotiManager.cancel(NOTIFY_ID);
 					break;
 				case MSG_REFESH_NOFI:
 					new Thread(new Runnable() {
@@ -183,19 +193,18 @@ public class DownLoadService {
 					}).start();
 					break;
 				case MSG_SUCESS:
+					this.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
 					Intent intent1 = installApk();
 					PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,intent1, 0);
 					notification.contentIntent = contentIntent;
 				case MSG_DOWNLOAD:
-
 					mNotify.setProgress(fileSize, downLoadSize, false);
 					mNotify.setContentInfo((int) ((Double.valueOf(downLoadSize) / Double.valueOf(fileSize)) * 100) + "%");
 					notification = mNotify.build();
-
-//					notification.contentView.setProgressBar(R.id.progress_horizontal,
-//							fileSize, downLoadSize, false);
-//					notification.contentView.setTextViewText(R.id.text1,(int)(( Double.valueOf(downLoadSize)/Double.valueOf(fileSize))*100)+"%");
 					mNotiManager.notify(NOTIFY_ID, notification);
+					break;
+				case MSG_CANCEL_NOTIFACTION:
+					mNotiManager.cancel(NOTIFY_ID);
 					break;
 				default:
 					break;

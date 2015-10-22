@@ -1,6 +1,11 @@
 package com.magus.trainingfirstapp.base;
 
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -34,6 +39,7 @@ import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
+import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
 
 import java.io.File;
@@ -204,6 +210,43 @@ public class TrainingFirstActivity extends BaseActivity {
             case 16:
                 DownLoadService downLoadService = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.GAME_APK);
                 downLoadService.startDownLoad();
+                break;
+            case 17:
+                PackageManager packageManager = getPackageManager();
+                PackageInfo packageInfo = null;
+                try {
+                    packageInfo = packageManager.getPackageInfo(G.MessageConst.YOUXI_PACKGAE_NAME, 0);
+                } catch (PackageManager.NameNotFoundException e) {
+                    showToast("没有有戏客户端，请选择下载");
+                    AlertUtils.showAlert(this, "提示", "确认下载有戏客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.YOUXI_APK);
+                            youxiDown.setDescribeText("正在下载有戏客户端...");
+                            youxiDown.startDownLoad();
+                        }
+                    }, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    break;
+                }
+                Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+                resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                resolveIntent.setPackage(packageInfo.packageName);
+                List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
+                ResolveInfo ri = apps.iterator().next();
+                if (ri != null ) {
+                    String className = ri.activityInfo.name;
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                    ComponentName cn = new ComponentName(packageInfo.packageName, className);
+                    intent.setComponent(cn);
+                    this.startActivity(intent);
+                }
                 break;
         }
         return null;
