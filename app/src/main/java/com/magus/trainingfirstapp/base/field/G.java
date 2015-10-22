@@ -12,6 +12,10 @@ public class G {
         public static final boolean isQA = true;
     }
 
+    public interface KeyConst{
+        public static final String tingyunKey = "b112b0d9829f4eaba156a579b2bb9084";
+    }
+
     public interface UrlConst{
         public static final String E_APK = "http://www.yangguangeshequ.com/apk/app.apk";
         public static final String GAME_APK = "http://down.androidgame-store.com/201510211741/4C67B53DD0FBDBB0D75E0D07E0B1768A/new/game1/33/91133/minecraftstorymode_1444916920122.dpk?f=web_1";

@@ -40,6 +40,9 @@
         android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+    <!--省心装-->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -208,6 +211,19 @@
             </intent-filter>
         </activity>
         <!--连接网络相关 end-->
+
+        <!--省心装-->
+        <service android:name=".module.accessibility_service.MAcessibilityService"
+            android:label="@string/acc_auto_install_service_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:enabled="@bool/atLeastIceCreamSandwich">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+        </service>
 
     </application>
 

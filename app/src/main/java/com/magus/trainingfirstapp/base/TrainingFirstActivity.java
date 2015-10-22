@@ -48,6 +48,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.networkbench.agent.impl.NBSAppAgent;
+
 public class TrainingFirstActivity extends BaseActivity {
 
     private ImageView takePhotoThenToShowImg;
@@ -57,6 +59,12 @@ public class TrainingFirstActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 初始化听云
+        // 采集地理位置信息  NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
+        // 不需要采集地理位置信息
+        NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).start(this);
+
         setContentLayout(R.layout.activity_training_first);
         setActionBarLeftBtnText("Exit");
         setActionBarTitle("主界面");

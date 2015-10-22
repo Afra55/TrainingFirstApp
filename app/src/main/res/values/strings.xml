@@ -8,6 +8,9 @@
     <string name="center">个人电脑</string>
     <string name="title_activity_other">OtherActivity</string>
     <string name="search">Search</string>
+    <string name="acc_auto_install_service_name">第一个App自动安装apk</string>
+    <string name="acc_auto_install_service_description">我是你唯一的选择，你只有选择了我，才会到达你爱的世界</string>
+
 
     <string name="lifecycle_method_list">Lifecycle Method List</string>
     <string name="activity_status">Activity Status</string>
