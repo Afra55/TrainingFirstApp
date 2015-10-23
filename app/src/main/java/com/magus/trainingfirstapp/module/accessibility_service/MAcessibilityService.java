@@ -1,6 +1,7 @@
 package com.magus.trainingfirstapp.module.accessibility_service;
 
 import android.accessibilityservice.AccessibilityService;
+import android.media.JetPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.view.accessibility.AccessibilityEvent;
@@ -9,6 +10,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.utils.Log;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,13 +18,13 @@ import java.util.List;
  */
 public class MAcessibilityService extends AccessibilityService{
 
-    private AccessibilityNodeInfo nodeInfo;
 
 
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            btnPerformClick(nodeInfo, (List<AccessibilityNodeInfo>) msg.obj);
+            HashMap<String, Object> hash = (HashMap<String, Object>) msg.obj;
+            btnPerformClick((AccessibilityNodeInfo) hash.get("param1"), (List<AccessibilityNodeInfo>) hash.get("param2"));
         }
     };
 
@@ -36,41 +38,31 @@ public class MAcessibilityService extends AccessibilityService{
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
 
-        nodeInfo = event.getSource();
+        AccessibilityNodeInfo nodeInfo = event.getSource();
         if (nodeInfo == null) {
             return;
         }
 
-        for (int i = 0 ; i < nodeInfo.getChildCount() ; i++) {
-            AccessibilityNodeInfo tmp = nodeInfo.getChild(i);
-            Log.d("MAcessibilityService", i + "nodeInfo.getChild(i).getText():" + tmp.getText());
-            tmp.recycle();
-        }
+//        for (int i = 0 ; i < nodeInfo.getChildCount() ; i++) {
+//            AccessibilityNodeInfo tmp = nodeInfo.getChild(i);
+//            Log.d("MAcessibilityService", i + "nodeInfo.getChild(i).getText():" + tmp.getText());
+//            tmp.recycle();
+//        }
 
-        if (nodeInfo.getChildCount() > 2) {
-            AccessibilityNodeInfo Flag = nodeInfo.getChild(2);
-
-            if (Flag != null) {
-                if (Flag.getText() != null && Flag.getText().equals("正在安装...")) {
-                    Flag.recycle();
-                    nodeInfo.recycle();
-                    return;
-                }
-                Flag.recycle();
-            }
-        }
 
         List<AccessibilityNodeInfo> nextBtn = null;
 
         if(((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("下一步"))!=null && nextBtn.size() > 0) ||
                 ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("安装")) !=null && nextBtn.size() > 0) ||
                 ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("完成")) !=null && nextBtn.size() > 0)){
+            HashMap<String, Object> hash = new HashMap<>();
+            hash.put("param1", nodeInfo);
+            hash.put("param2", nextBtn);
             Message message = new Message();
-            message.obj = nextBtn;
-            handler.sendMessageDelayed(message, 1000);
-        }
-
-        nodeInfo.recycle();
+            message.obj = hash;
+            handler.sendMessageDelayed(message, 300);
+        }else
+            nodeInfo.recycle();
     }
 
     private boolean btnPerformClick(AccessibilityNodeInfo nodeInfo, List<AccessibilityNodeInfo> nextBtn) {
