@@ -1,6 +1,8 @@
 package com.magus.trainingfirstapp.base.field;
 
 import android.content.Context;
+import android.content.Intent;
+import android.provider.Settings;
 
 import com.magus.trainingfirstapp.R;
 
@@ -10,6 +12,11 @@ import com.magus.trainingfirstapp.R;
 public class G {
     public class HostConst{
         public static final boolean isQA = true;
+    }
+
+    public interface IntentConst{
+        /** An intent for launching the system settings. */
+        public static final Intent ACCESSIBILITY_SETTINGS_INTENT = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
     }
 
     public interface KeyConst{

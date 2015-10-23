@@ -127,6 +127,7 @@ public class DownLoadService {
 					}
 				}catch (Exception e) {
 					e.printStackTrace();
+					handler.sendEmptyMessageDelayed(MSG_ERROR, 1000);
 				}
 				// 进行下载工作，这里需要更新downLoadQueue中对应的queue的进度信息
 				// 使用Handler更新notification信息

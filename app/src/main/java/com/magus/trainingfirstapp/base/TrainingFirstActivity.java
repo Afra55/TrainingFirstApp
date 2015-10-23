@@ -61,9 +61,9 @@ public class TrainingFirstActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // 初始化听云
-        // 采集地理位置信息  NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
-        // 不需要采集地理位置信息
-        NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).start(this);
+        // 采集地理位置信息
+         NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
+        // 不需要采集地理位置信息 NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).start(this);
 
         setContentLayout(R.layout.activity_training_first);
         setActionBarLeftBtnText("Exit");
@@ -216,48 +216,70 @@ public class TrainingFirstActivity extends BaseActivity {
             case 15:
                 return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
             case 16:
-                DownLoadService downLoadService = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.GAME_APK);
-                downLoadService.startDownLoad();
+                startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+                showToast("开启省心装自动安装应用包");
+                AlertUtils.showAlert(this, "提示", "确认下载阳光e客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
+                        youxiDown.setDescribeText("正在下载elife...");
+                        youxiDown.startDownLoad();
+                    }
+                }, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
                 break;
             case 17:
-                PackageManager packageManager = getPackageManager();
-                PackageInfo packageInfo = null;
-                try {
-                    packageInfo = packageManager.getPackageInfo(G.MessageConst.YOUXI_PACKGAE_NAME, 0);
-                } catch (PackageManager.NameNotFoundException e) {
-                    showToast("没有有戏客户端，请选择下载");
-                    AlertUtils.showAlert(this, "提示", "确认下载有戏客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.YOUXI_APK);
-                            youxiDown.setDescribeText("正在下载有戏客户端...");
-                            youxiDown.startDownLoad();
-                        }
-                    }, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    break;
-                }
-                Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
-                resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-                resolveIntent.setPackage(packageInfo.packageName);
-                List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
-                ResolveInfo ri = apps.iterator().next();
-                if (ri != null ) {
-                    String className = ri.activityInfo.name;
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                    ComponentName cn = new ComponentName(packageInfo.packageName, className);
-                    intent.setComponent(cn);
-                    this.startActivity(intent);
-                }
+                openYouXiClient();
                 break;
         }
         return null;
+    }
+
+    private void openYouXiClient() {
+
+
+        PackageManager packageManager = getPackageManager();
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = packageManager.getPackageInfo(G.MessageConst.YOUXI_PACKGAE_NAME, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            showToast("没有有戏客户端，请选择下载");
+            AlertUtils.showAlert(this, "提示", "确认下载有戏客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.YOUXI_APK);
+                    youxiDown.setDescribeText("正在下载有戏客户端...");
+                    youxiDown.startDownLoad();
+                }
+            }, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+            showToast("开启省心装自动安装应用包");
+            return;
+        }
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resolveIntent.setPackage(packageInfo.packageName);
+        List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
+        ResolveInfo ri = apps.iterator().next();
+        if (ri != null ) {
+            String className = ri.activityInfo.name;
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            ComponentName cn = new ComponentName(packageInfo.packageName, className);
+            intent.setComponent(cn);
+            this.startActivity(intent);
+        }
     }
 
     public void sendMessage(View view) {
