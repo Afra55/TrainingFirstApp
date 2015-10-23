@@ -55,6 +55,8 @@ public class DownLoadService {
 
 	private CharSequence describeText = "正在下载新版本...";
 
+	private static int notificationHadNotifyCount = 0;
+
 	/**
 	 * 设置描述文本
 	 * @param describeText
@@ -64,6 +66,10 @@ public class DownLoadService {
 	}
 
 	public DownLoadService(Activity mContext, String downPath) {
+
+		NOTIFY_ID += notificationHadNotifyCount;
+		notificationHadNotifyCount++;
+
 		String [] items = downPath.split("/");
 		apkName = items[items.length-1];
 		fileName = getApkCachePath(mContext) + File.separator + apkName;
