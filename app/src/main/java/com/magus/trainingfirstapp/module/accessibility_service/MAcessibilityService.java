@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+
+import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.utils.Log;
 import java.util.List;
 
@@ -77,13 +79,13 @@ public class MAcessibilityService extends AccessibilityService{
 
         List<AccessibilityNodeInfo> nextBtn = null;
 
-        if ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("正在安装...")) != null && (nextBtn.size() > 0)){   // 如果正在安装
+        if ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText(getString(R.string.installing))) != null && (nextBtn.size() > 0)){   // 如果正在安装
             Log.d("wahaha", "正在安装");
             nextBtn.get(0).recycle();
 
-        }else if((((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("下一步"))!=null && nextBtn.size() > 0) ||     // 获取下一步按钮控件
-                ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("安装")) !=null && nextBtn.size() > 0)||       // 获取安装按钮控件
-                ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText("完成")) !=null && nextBtn.size() > 0))         // 获取完成按钮控件
+        }else if((((nextBtn = nodeInfo.findAccessibilityNodeInfosByText(getString(R.string.next)))!=null && nextBtn.size() > 0) ||     // 获取下一步按钮控件
+                ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText(getString(R.string.install))) !=null && nextBtn.size() > 0)||       // 获取安装按钮控件
+                ((nextBtn = nodeInfo.findAccessibilityNodeInfosByText(getString(R.string.done))) !=null && nextBtn.size() > 0))         // 获取完成按钮控件
                 ) {
 
             // 模拟点击flag设置为true

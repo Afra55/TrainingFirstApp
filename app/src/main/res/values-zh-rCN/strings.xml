@@ -23,4 +23,10 @@
     <string name="take_photo_o">TakePhoto_原图</string>
     <string name="imitate_ccb_menu">仿建行原形菜单</string>
     <string name="my_anim">我的动画</string>
+
+    <!-- 省心装-->
+    <string name="install">安装</string>
+    <string name="installing">正在安装...</string>
+    <string name="done">完成</string>
+    <string name="next">下一步</string>
 </resources>
