@@ -91,7 +91,7 @@ public class MAcessibilityService extends AccessibilityService{
         Message message = new Message();
         message.what = FINISH_INSTALL;
         message.obj = this;
-        handler.sendMessageDelayed(message, 3000);
+        handler.sendMessageDelayed(message, 1000);
 
         nodeInfo.recycle();
 

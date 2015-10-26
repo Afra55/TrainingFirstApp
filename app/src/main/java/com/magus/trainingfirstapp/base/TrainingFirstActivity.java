@@ -216,8 +216,10 @@ public class TrainingFirstActivity extends BaseActivity {
             case 15:
                 return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
             case 16:
-                startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
-                showToast("开启省心装自动安装应用包");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+                    showToast("开启省心装自动安装应用包");
+                }
                 AlertUtils.showAlert(this, "提示", "确认下载阳光e客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -263,8 +265,11 @@ public class TrainingFirstActivity extends BaseActivity {
                     dialog.dismiss();
                 }
             });
-            startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
-            showToast("开启省心装自动安装应用包");
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+                showToast("开启省心装自动安装应用包");
+            }
             return;
         }
         Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
