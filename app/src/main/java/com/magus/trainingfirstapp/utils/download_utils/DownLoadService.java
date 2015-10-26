@@ -180,11 +180,11 @@ public class DownLoadService {
 			switch (msg.what) {
 				case MSG_ERROR:
 					Toast.makeText(mContext, "无法获取文件大小",Toast.LENGTH_SHORT).show();
-					mNotiManager.cancel(NOTIFY_ID);
+					this.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
 					break;
 				case MSG_SDCARD_ERROR:
 					Toast.makeText(mContext, "当前SDcard不存在，或不可用",Toast.LENGTH_SHORT).show();
-					mNotiManager.cancel(NOTIFY_ID);
+					this.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
 					break;
 				case MSG_REFESH_NOFI:
 					new Thread(new Runnable() {

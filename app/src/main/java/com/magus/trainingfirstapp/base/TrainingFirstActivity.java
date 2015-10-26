@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.field.G;
+import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
@@ -224,6 +225,7 @@ public class TrainingFirstActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        MAcessibilityService.setEnable(true);
                         DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
                         youxiDown.setDescribeText("正在下载elife...");
                         youxiDown.startDownLoad();
@@ -255,6 +257,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
+                    MAcessibilityService.setEnable(true);
                     DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.YOUXI_APK);
                     youxiDown.setDescribeText("正在下载有戏客户端...");
                     youxiDown.startDownLoad();
