@@ -76,6 +76,9 @@ public class MAcessibilityService extends AccessibilityService{
         if (nodeInfo == null) {
             return;
         }
+        for (int i = 0; i < nodeInfo.getChildCount(); i++) {
+           Log.d("MAcessibilityService", "nodeInfo.getChild(i):" + nodeInfo.getChild(i).getText());
+        }
 
 
         List<AccessibilityNodeInfo> nextBtn = null;
@@ -95,14 +98,15 @@ public class MAcessibilityService extends AccessibilityService{
             message.obj = nextBtn;
             message.what = CHECK_INSTALL;
             handler.sendMessageDelayed(message, 500);
-        }
+        }else {
 
-        // 判断是否完成安装
-        handler.removeMessages(FINISH_INSTALL);
-        Message message = new Message();
-        message.what = FINISH_INSTALL;
-        message.obj = this;
-        handler.sendMessageDelayed(message, 1800);
+            // 判断是否完成安装
+            handler.removeMessages(FINISH_INSTALL);
+            Message message = new Message();
+            message.what = FINISH_INSTALL;
+            message.obj = this;
+            handler.sendMessageDelayed(message, 1800);
+        }
 
         nodeInfo.recycle();
 
