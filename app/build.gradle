@@ -30,4 +30,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:support-v4:23.0.1'
     compile "com.networkbench.newlens.agent.android:nbs.newlens.agent:2.2.7"
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 }
