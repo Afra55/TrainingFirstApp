@@ -77,9 +77,10 @@ public class MAcessibilityService extends AccessibilityService{
         if (nodeInfo == null) {
             return;
         }
-        for (int i = 0; i < nodeInfo.getChildCount(); i++) {
-           Log.d("MAcessibilityService", "nodeInfo.getChild(i):" + nodeInfo.getChild(i).getText());
-        }
+
+//        for (int i = 0; i < nodeInfo.getChildCount(); i++) {
+//           Log.d("MAcessibilityService", "nodeInfo.getChild(i):" + nodeInfo.getChild(i).getText());
+//        }
 
 
         List<AccessibilityNodeInfo> nextBtn = null;
