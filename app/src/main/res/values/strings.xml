@@ -130,7 +130,9 @@
     <string name="xml_error">Error parsing XML.</string>
 
     <!-- 省心装-->
-    <string name="install">INSTALL</string>
+    <string name="INSTALL">INSTALL</string>
+    <string name="Install">Install</string>
+    <string name="install">安装</string>
     <string name="installing">Installing…</string>
     <string name="done">DONE</string>
     <string name="next">NEXT</string>
