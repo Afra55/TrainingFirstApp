@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by yangshuai in the 11:43 of 2015.10.22 .
  * https://developer.android.com/intl/zh-cn/guide/topics/ui/accessibility/services.html
+ * 省心装服务
  */
 public class MAcessibilityService extends AccessibilityService{
 
