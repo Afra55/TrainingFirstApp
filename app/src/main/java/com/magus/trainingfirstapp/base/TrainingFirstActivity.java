@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -96,12 +97,11 @@ public class TrainingFirstActivity extends BaseActivity {
             first_module_content_lly.addView(textView);
         }
 
-        Button button = new Button(this);
+        Button button = (Button) LayoutInflater.from(this).inflate(R.layout.view_button, null);
         button.setText(G.getModuleBtnName(this, tagId));
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
-        button.setBackgroundResource(R.drawable.my_button_bg);
         first_module_content_lly.addView(button);
     }
 

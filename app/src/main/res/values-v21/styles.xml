@@ -5,7 +5,7 @@
     </style>
 
     <style name="myButton" >
-        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
 </resources>
