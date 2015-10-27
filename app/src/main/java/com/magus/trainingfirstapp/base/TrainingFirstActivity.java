@@ -42,14 +42,13 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
+import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import com.networkbench.agent.impl.NBSAppAgent;
 
 public class TrainingFirstActivity extends BaseActivity {
 
