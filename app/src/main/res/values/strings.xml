@@ -137,4 +137,7 @@
     <string name="done">DONE</string>
     <string name="next">NEXT</string>
 
+    <!-- contacts -->
+    <string name="contacts">contacts</string>
+
 </resources>
