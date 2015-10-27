@@ -31,7 +31,7 @@ public class MAcessibilityService extends AccessibilityService{
     private boolean clicking = false;
 
     /* 模拟点击的次数, 完成安装后的返回没有计算在里面*/
-    private int onClickCount = 0;
+    private static int onClickCount = 0;
 
     private Handler handler = new Handler(){
         @Override
@@ -59,6 +59,7 @@ public class MAcessibilityService extends AccessibilityService{
      */
     public static void setEnable(boolean ok){
         enable = ok;
+        onClickCount = 0;
     }
 
     /**
