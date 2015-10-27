@@ -175,16 +175,17 @@ public class DownLoadService {
 
 	}
 
+	private boolean errorDown = false;
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 				case MSG_ERROR:
 					Toast.makeText(mContext, "无法获取文件大小",Toast.LENGTH_SHORT).show();
-					this.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
+					handler.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
 					break;
 				case MSG_SDCARD_ERROR:
 					Toast.makeText(mContext, "当前SDcard不存在，或不可用",Toast.LENGTH_SHORT).show();
-					this.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
+					handler.sendEmptyMessageDelayed(MSG_CANCEL_NOTIFACTION, 1000);
 					break;
 				case MSG_REFESH_NOFI:
 					new Thread(new Runnable() {
@@ -192,6 +193,7 @@ public class DownLoadService {
 						@Override
 						public void run() {
 							while (downLoadSize < fileSize) {
+								if (errorDown) return;
 								handler.sendEmptyMessage(MSG_DOWNLOAD);
 								mCondition.block(500);
 							}
@@ -211,6 +213,10 @@ public class DownLoadService {
 					mNotiManager.notify(NOTIFY_ID, notification);
 					break;
 				case MSG_CANCEL_NOTIFACTION:
+					errorDown = true;
+					handler.removeMessages(MSG_REFESH_NOFI);
+					handler.removeMessages(MSG_DOWNLOAD);
+					handler.removeMessages(MSG_SUCESS);
 					mNotiManager.cancel(NOTIFY_ID);
 					break;
 				default:
