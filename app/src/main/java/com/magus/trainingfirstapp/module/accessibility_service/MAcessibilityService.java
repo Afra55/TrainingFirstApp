@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by yangshuai in the 11:43 of 2015.10.22 .
  * https://developer.android.com/intl/zh-cn/guide/topics/ui/accessibility/services.html
+ * 省心装服务
  */
 public class MAcessibilityService extends AccessibilityService{
 
@@ -30,7 +31,7 @@ public class MAcessibilityService extends AccessibilityService{
     private boolean clicking = false;
 
     /* 模拟点击的次数, 完成安装后的返回没有计算在里面*/
-    private int onClickCount = 0;
+    private static int onClickCount = 0;
 
     private Handler handler = new Handler(){
         @Override
@@ -58,6 +59,7 @@ public class MAcessibilityService extends AccessibilityService{
      */
     public static void setEnable(boolean ok){
         enable = ok;
+        onClickCount = 0;
     }
 
     /**
@@ -75,6 +77,10 @@ public class MAcessibilityService extends AccessibilityService{
         if (nodeInfo == null) {
             return;
         }
+
+//        for (int i = 0; i < nodeInfo.getChildCount(); i++) {
+//           Log.d("MAcessibilityService", "nodeInfo.getChild(i):" + nodeInfo.getChild(i).getText());
+//        }
 
 
         List<AccessibilityNodeInfo> nextBtn = null;
@@ -94,14 +100,15 @@ public class MAcessibilityService extends AccessibilityService{
             message.obj = nextBtn;
             message.what = CHECK_INSTALL;
             handler.sendMessageDelayed(message, 500);
-        }
+        }else {
 
-        // 判断是否完成安装
-        handler.removeMessages(FINISH_INSTALL);
-        Message message = new Message();
-        message.what = FINISH_INSTALL;
-        message.obj = this;
-        handler.sendMessageDelayed(message, 1800);
+            // 判断是否完成安装
+            handler.removeMessages(FINISH_INSTALL);
+            Message message = new Message();
+            message.what = FINISH_INSTALL;
+            message.obj = this;
+            handler.sendMessageDelayed(message, 1800);
+        }
 
         nodeInfo.recycle();
 

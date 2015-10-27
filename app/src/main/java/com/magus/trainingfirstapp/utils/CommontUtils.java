@@ -72,7 +72,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/** 
+/**
  * @author yangshuai
  * @version 创建时间：2015-7-8 下午4:34:23 
  * 类说明 :
@@ -81,7 +81,7 @@ public class CommontUtils {
 
 	/**
 	 * 等比压缩
-	 * 
+	 *
 	 * @param bitmap
 	 * @param scala
 	 * @return
@@ -106,7 +106,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 封装链接上的键值对并保存到hashmap
-	 * 
+	 *
 	 * @param url
 	 * @return HashMap<key,value>
 	 */
@@ -149,7 +149,7 @@ public class CommontUtils {
 	}
 
 	public static final Bitmap drawText2Bitmap(Context context, Bitmap bitmap,
-			final String text) {
+											   final String text) {
 		int width = bitmap.getWidth();
 		int height = bitmap.getHeight();
 		Bitmap imgTemp = Bitmap.createBitmap(width, height,
@@ -176,7 +176,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 绘制带文字的图片
-	 * 
+	 *
 	 */
 	public static final Bitmap imageAddText(Context context, final String text) {
 		TextView txt = new TextView(context);
@@ -205,7 +205,7 @@ public class CommontUtils {
 
 	/**
 	 * 获取内部版本号全部信息，包括内部版本号与渠道信息
-	 * 
+	 *
 	 * @return
 	 */
 	public static final String getVersionCodeAll(Application application) {
@@ -295,7 +295,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 拼接URL。返回主机地址及参数
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -305,7 +305,7 @@ public class CommontUtils {
 
 	/**
 	 * hashmap生成url参数地址
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -328,7 +328,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 获取已完整安装签名信息
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getSignInfo(Context context) {
@@ -365,7 +365,7 @@ public class CommontUtils {
 
 	/**
 	 * dip 转 px
-	 * 
+	 *
 	 * @param dip
 	 * @return
 	 */
@@ -379,7 +379,7 @@ public class CommontUtils {
 
 	/**
 	 * 修改textView的字体
-	 * 
+	 *
 	 * @param textView
 	 */
 	public static final void setTypeFace(Context context,TextView textView) {
@@ -401,14 +401,14 @@ public class CommontUtils {
 
 	/**
 	 * 在指定的文件中读取数据
-	 * 
+	 *
 	 * @param fileName
 	 *            文件名称
 	 * @param objs
 	 *            数组{key,defaultValue}
 	 */
 	public static Object getSpFromFile(String fileName, Context context,
-			Object[] objs) {
+									   Object[] objs) {
 		try {
 			SharedPreferences sp = getSP(fileName, context);
 			if (objs[1] instanceof String) {
@@ -434,7 +434,7 @@ public class CommontUtils {
 
 	/**
 	 * 获得指定名称文件存储数据库
-	 * 
+	 *
 	 * @return
 	 */
 	private static SharedPreferences getSP(String name, Context context) {
@@ -443,14 +443,14 @@ public class CommontUtils {
 
 	/**
 	 * 在指定的文件中保存数据
-	 * 
+	 *
 	 * @param fileName
 	 *            文件名称
 	 * @param objs
 	 *            数组{key,value}
 	 */
 	public static void saveSp2File(String fileName, Context context,
-			Object[] objs) {
+								   Object[] objs) {
 		try {
 			SharedPreferences sp = getSP(fileName, context);
 			Editor editor = sp.edit();
@@ -477,7 +477,7 @@ public class CommontUtils {
 
 	/***
 	 * 将json字符串转换为map
-	 * 
+	 *
 	 * @param json
 	 * @return
 	 */
@@ -486,12 +486,12 @@ public class CommontUtils {
 		Gson g = gb.create();
 		Map<String, Object> map = g.fromJson(json,
 				new TypeToken<Map<String, Object>>() {
-		}.getType());
+				}.getType());
 		return map;
 	}
 	/***
 	 * 复制内容到系统的剪贴板
-	 * 
+	 *
 	 * @param str
 	 */
 	public static void copy(Context ctx, String str) {
@@ -503,7 +503,7 @@ public class CommontUtils {
 
 	/***
 	 * 实现粘贴功能
-	 * 
+	 *
 	 * @param ctx
 	 * @return
 	 */
@@ -515,7 +515,7 @@ public class CommontUtils {
 
 	/***
 	 * 从字符串中截取网址
-	 * 
+	 *
 	 * @param str
 	 *            字符串
 	 * @return
@@ -532,7 +532,7 @@ public class CommontUtils {
 	}
 	/***
 	 * 根据网址打开网页
-	 * 
+	 *
 	 * @param ctx
 	 * @param url
 	 *            网址
@@ -552,7 +552,7 @@ public class CommontUtils {
 	}
 	/****
 	 * 去除字符串中的空格、回车、换行符、制表符
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -567,7 +567,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 当前是否是html
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -579,7 +579,7 @@ public class CommontUtils {
 	}
 	/***
 	 * 将字节流转化成Bitmap
-	 * 
+	 *
 	 * @param code
 	 * @return
 	 */
@@ -598,7 +598,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 获取当前API Level
-	 * 
+	 *
 	 * @return
 	 */
 	public static int getCurrentApiLevel() {
@@ -606,7 +606,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 获取设备厂商
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getDeviceBrand() {
@@ -615,7 +615,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 最省内存的方式读取本地资源的图片
-	 * 
+	 *
 	 * @param context
 	 * @param resId
 	 * @return
@@ -639,9 +639,9 @@ public class CommontUtils {
 		if (((Activity) context).getCurrentFocus() != null
 				&& ((Activity) context).getCurrentFocus().getWindowToken() != null) {
 			((InputMethodManager) context.getSystemService(context.INPUT_METHOD_SERVICE))
-			.hideSoftInputFromWindow(
-					((Activity) context).getCurrentFocus().getWindowToken(),
-					InputMethodManager.HIDE_NOT_ALWAYS);
+					.hideSoftInputFromWindow(
+							((Activity) context).getCurrentFocus().getWindowToken(),
+							InputMethodManager.HIDE_NOT_ALWAYS);
 		}
 	}
 
@@ -663,7 +663,7 @@ public class CommontUtils {
 
 	/**
 	 * 防暴力点击
-	 * 
+	 *
 	 * @return ture:多次点击，不处理
 	 */
 	public static boolean isFastDoubleClick() {
@@ -795,7 +795,7 @@ public class CommontUtils {
 	}
 	/**
 	 * 安装.apk文件
-	 * 
+	 *
 	 * @param context
 	 */
 	public void install(Context context, String fileName)
@@ -820,7 +820,7 @@ public class CommontUtils {
 
 	/**
 	 * 安装.apk文件
-	 * 
+	 *
 	 * @param context
 	 */
 	public void install(Context context, File file)
@@ -907,32 +907,32 @@ public class CommontUtils {
 	 * 获取本地网络ip
 	 * @return
 	 */
-	public  static String getLocalIpAddress()  
-	{  
-		String IP = null; 
-		StringBuilder IPStringBuilder = new StringBuilder(); 
-		try { 
-			Enumeration<NetworkInterface> networkInterfaceEnumeration = NetworkInterface.getNetworkInterfaces(); 
-			while (networkInterfaceEnumeration.hasMoreElements()) { 
-				NetworkInterface networkInterface = networkInterfaceEnumeration.nextElement(); 
-				Enumeration<InetAddress> inetAddressEnumeration = networkInterface.getInetAddresses(); 
-				while (inetAddressEnumeration.hasMoreElements()) { 
-					InetAddress inetAddress = inetAddressEnumeration.nextElement(); 
-					if (!inetAddress.isLoopbackAddress()&&  
-							!inetAddress.isLinkLocalAddress()&&  
-							inetAddress.isSiteLocalAddress()) { 
-						IPStringBuilder.append(inetAddress.getHostAddress().toString()); 
-					} 
-				} 
-			} 
-		} catch (SocketException ex) { 
+	public  static String getLocalIpAddress()
+	{
+		String IP = null;
+		StringBuilder IPStringBuilder = new StringBuilder();
+		try {
+			Enumeration<NetworkInterface> networkInterfaceEnumeration = NetworkInterface.getNetworkInterfaces();
+			while (networkInterfaceEnumeration.hasMoreElements()) {
+				NetworkInterface networkInterface = networkInterfaceEnumeration.nextElement();
+				Enumeration<InetAddress> inetAddressEnumeration = networkInterface.getInetAddresses();
+				while (inetAddressEnumeration.hasMoreElements()) {
+					InetAddress inetAddress = inetAddressEnumeration.nextElement();
+					if (!inetAddress.isLoopbackAddress()&&
+							!inetAddress.isLinkLocalAddress()&&
+							inetAddress.isSiteLocalAddress()) {
+						IPStringBuilder.append(inetAddress.getHostAddress().toString());
+					}
+				}
+			}
+		} catch (SocketException ex) {
 			ex.printStackTrace();
-		} 
+		}
 
-		IP = IPStringBuilder.toString(); 
-		return IP; 
+		IP = IPStringBuilder.toString();
+		return IP;
 
-	}  
+	}
 
 	/**
 	 * dip转像素  
@@ -940,15 +940,15 @@ public class CommontUtils {
 	 * @param dip
 	 * @return
 	 */
-	public static int DipToPixels(Context context, int dip) {  
-		final float SCALE = context.getResources().getDisplayMetrics().density;  
+	public static int DipToPixels(Context context, int dip) {
+		final float SCALE = context.getResources().getDisplayMetrics().density;
 
-		float valueDips = dip;  
-		int valuePixels = (int) (valueDips * SCALE + 0.5f);  
+		float valueDips = dip;
+		int valuePixels = (int) (valueDips * SCALE + 0.5f);
 
-		return valuePixels;  
+		return valuePixels;
 
-	}  
+	}
 
 	/**
 	 * 像素转dip  
@@ -956,13 +956,13 @@ public class CommontUtils {
 	 * @param Pixels
 	 * @return
 	 */
-	public static float PixelsToDip(Context context, int Pixels) {  
-		final float SCALE = context.getResources().getDisplayMetrics().density;  
+	public static float PixelsToDip(Context context, int Pixels) {
+		final float SCALE = context.getResources().getDisplayMetrics().density;
 
-		float dips = Pixels / SCALE;  
+		float dips = Pixels / SCALE;
 
-		return dips;  
-	}  
+		return dips;
+	}
 
 	// 判断字符串是否为有效的url
 	public boolean isURL(String url) {
@@ -1092,6 +1092,20 @@ public class CommontUtils {
 			path = context.getCacheDir().getAbsolutePath();
 		}
 		return path;
+	}
+
+	/**
+	 * Returns a cache size equal to approximately three screens worth of images.
+	 */
+	public static int getCacheSize(Context ctx) {
+		final DisplayMetrics displayMetrics = ctx.getResources().
+				getDisplayMetrics();
+		final int screenWidth = displayMetrics.widthPixels;
+		final int screenHeight = displayMetrics.heightPixels;
+		// 4 bytes per pixel
+		final int screenBytes = screenWidth * screenHeight * 4;
+
+		return screenBytes * 3;
 	}
 
 }

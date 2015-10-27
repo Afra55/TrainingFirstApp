@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,14 +43,13 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
+import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import com.networkbench.agent.impl.NBSAppAgent;
 
 public class TrainingFirstActivity extends BaseActivity {
 
@@ -97,12 +97,11 @@ public class TrainingFirstActivity extends BaseActivity {
             first_module_content_lly.addView(textView);
         }
 
-        Button button = new Button(this);
+        Button button = (Button) LayoutInflater.from(this).inflate(R.layout.view_button, null);
         button.setText(G.getModuleBtnName(this, tagId));
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
-        button.setBackgroundResource(R.drawable.my_button_bg);
         first_module_content_lly.addView(button);
     }
 

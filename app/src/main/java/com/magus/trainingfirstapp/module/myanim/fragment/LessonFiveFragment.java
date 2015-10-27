@@ -65,6 +65,9 @@ public class LessonFiveFragment extends BaseFragment {
             case R.id.lesson_five_sub_del_ibt:
                 mContainer.removeView((View) v.getTag(R.integer.lesson_five_sub_view));
                 mContainer.removeView((View) v.getTag(R.integer.lesson_five_sub_line));
+                if (mContainer.getChildAt(0) instanceof TextView){
+                    mContainer.removeViewAt(0);
+                }
                 break;
         }
     }

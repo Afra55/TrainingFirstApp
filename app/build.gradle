@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.magus.trainingfirstapp"
-        minSdkVersion 14
+        minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,6 @@ dependencies {
     compile files('libs/gson-2.2.4.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:support-v4:23.0.1'
-    compile 'com.android.support:support-v13:23.0.1'
     compile "com.networkbench.newlens.agent.android:nbs.newlens.agent:2.2.7"
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 }

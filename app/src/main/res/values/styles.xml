@@ -6,7 +6,7 @@
     </style>
 
     <style name="myButton">
-        <item name="android:background">@color/blue</item>
+        <item name="android:background">@drawable/my_button_bg</item>
     </style>
 
     <style name="DarkTheme" parent="android:Theme.Holo">
