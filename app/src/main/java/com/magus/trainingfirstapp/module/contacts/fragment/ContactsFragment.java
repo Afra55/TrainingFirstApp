@@ -11,11 +11,13 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
@@ -69,11 +71,12 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
                     ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?";
 
     /* 定义了一个搜索字符串的变量 */
-    private String mSearchString = "yangshuai";
+    private String mSearchString = "";
 
     /* 定义了数组保存值用来替换 "?" */
     private String[] mSelectionArgs = { mSearchString };
 
+    private SearchView mSearchView;
     private ListView mContactsListView;
 
     /* 联系人Id */
@@ -109,6 +112,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contacts, container, false);
         mContactsListView = (ListView) view.findViewById(R.id.fragment_contacts_listView);
+        mSearchView = (SearchView) view.findViewById(R.id.fragment_contacts_serchview);
         return initLayoutView(inflater, container, view);
     }
 
@@ -119,6 +123,22 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
         mCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.fragment_contacts_list_item, null, FROM_COLUMNS, TO_IDS, 0);
         mContactsListView.setAdapter(mCursorAdapter);
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mSearchString = newText;
+                Log.d("ContactsFragment", mSearchString);
+                getLoaderManager().restartLoader(0, null, ContactsFragment.this);
+                return false;
+            }
+        });
 
     }
 
@@ -139,6 +159,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
+        Log.d("ContactsFragment", "onCreateLoader");
         /* 存储搜索的字符串 */
         mSelectionArgs[0] = "%" + mSearchString + "%";
         return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, PROJECTION, SELECTION, mSelectionArgs, null);
@@ -146,14 +167,15 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
+        Log.d("ContactsFragment", "onLoadFinished");
+        onLoaderReset(loader);
         /* 在listView 中展示结果 */
         mCursorAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        Log.d("ContactsFragment", "onLoaderReset");
         /* 删除现有的光标 */
         mCursorAdapter.swapCursor(null);
     }
