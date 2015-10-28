@@ -180,15 +180,23 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         public void onFragmentChildViewOnClick(View view);
     }
 
-    protected void showFragmentTitle(){
+    protected void showFragmentBar(){
         fragmentActionBarRlt.setVisibility(View.VISIBLE);
     }
 
-    protected void hideFragmentTitle(){
+    protected void hideFragmentTitleBar(){
         fragmentActionBarRlt.setVisibility(View.GONE);
     }
 
-    protected void setFragmentTitleToMiddelTv(String titleText){
+    protected void hideFragmentBarLeftBtn(){
+        fragmentActionBarLeftBtn.setVisibility(View.GONE);
+    }
+
+    protected void setFragmentBarRightText(String text){
+        fragmentActionBarRightBtn.setText(text);
+    }
+
+    protected void setFragmentBarToMiddelTv(String titleText){
         fragmentMiddleTv.setText(titleText);
     }
 

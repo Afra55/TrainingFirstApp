@@ -1,9 +1,7 @@
 package com.magus.trainingfirstapp.module.contacts;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -13,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
@@ -24,7 +20,6 @@ import com.magus.trainingfirstapp.base.BaseActivity;
 import com.magus.trainingfirstapp.base.BaseFragment;
 import com.magus.trainingfirstapp.module.contacts.fragment.ContactsDetailsFragment;
 import com.magus.trainingfirstapp.module.contacts.fragment.ContactsFragment;
-import com.magus.trainingfirstapp.utils.BitmapUtils;
 
 public class ContactsActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener{
 
@@ -36,6 +31,7 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_contacts);
+        setActionBarTitle(getResources().getString(R.string.contacts));
 
         if (savedInstanceState != null){
             return;
@@ -68,14 +64,19 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        if (contactsDetailsFragment == null){
+            contactsDetailsFragment = ContactsDetailsFragment.newInstance("details", "fragment");
+        }
+        contactsDetailsFragment.setContactUri(uri);
     }
 
     @Override
     public void onFragmentInteraction(String message) {
         String[] msg = message.split(",");
         initDetailFragment();
-        contactsDetailsFragment.setContactName(msg[0]);
-        contactsDetailsFragment.setLookupKey(msg[1]);
+        contactsDetailsFragment.setContactName(msg[ContactsFragment.CONATACT_NAME]);
+        contactsDetailsFragment.setLookupKey(msg[ContactsFragment.LOOKUP_KEY_INDEX]);
+        contactsDetailsFragment.setContactId(msg[ContactsFragment.CONTACT_ID_INDEX]);
     }
 
     private boolean detailfragmentIsShowing = false;
@@ -169,7 +170,8 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
                         .putExtra(ContactsContract.Intents.Insert.NAME, name)
                         .putExtra(ContactsContract.Intents.Insert.PHONE, phone)
                         .putExtra(ContactsContract.Intents.Insert.EMAIL, email)
-                        .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
+                        .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                        .putExtra("finishActivityOnSaveCompleted", true);
                 startActivity(addContactIntent);
 
                 popupWindow.dismiss();

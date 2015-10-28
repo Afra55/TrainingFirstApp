@@ -1,7 +1,9 @@
 package com.magus.trainingfirstapp.module.contacts.fragment;
 
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.LoaderManager;
@@ -57,13 +59,23 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
      */
     public void setLookupKey(String message){
         mLookupKey = message;
-//        getLoaderManager().restartLoader(DETAILS_QUERY_ID, null, this);
     }
 
     private String mContactName;
 
     public void setContactName(String mContactName) {
         this.mContactName = mContactName;
+    }
+
+    private String mContactId;
+
+    public void setContactId(String mContactId){
+        this.mContactId = mContactId;
+    }
+
+    private Uri mContactUri;
+    public void setContactUri(Uri mContactUri){
+        this.mContactUri = mContactUri;
     }
 
     /* 定义一个字符串,指定MIME类型的排序顺序,
@@ -99,12 +111,14 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contacts_details, container, false);
         resultShow = (TextView) view.findViewById(R.id.fragment_contacts_details_tv);
+        view.findViewById(R.id.fragment_contacts_details_edit_btn).setOnClickListener(this);
         return initLayoutView(inflater, container, view);
     }
 
     @Override
     protected void initData() {
-        hideFragmentTitle();
+        hideFragmentTitleBar();
+
     }
 
     @Override
@@ -148,5 +162,22 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
         }
 
         resultShow.setText(showText);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fragment_contacts_details_edit_btn:       // 编辑联系人
+                Intent editIntent = new Intent(Intent.ACTION_EDIT);
+                editIntent.setDataAndType(mContactUri, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+
+                /* 在Android 4.0（API版本14）和更高的版本，Contacts应用中的一个问题会导致错误的页面导航。
+                我们的应用发送一个编辑联系人的Intent到Contacts应用，用户编辑并保存这个联系人，当用户点击Back键的时候会看到联系人列表页面。
+                用户需要点击最近使用的应用，然后选择我们的应用，才能返回到我们自己的应用. */
+                editIntent.putExtra("finishActivityOnSaveCompleted", true);
+                startActivity(editIntent);
+                break;
+        }
+        super.onClick(v);
     }
 }

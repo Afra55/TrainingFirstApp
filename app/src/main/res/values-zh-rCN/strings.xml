@@ -36,4 +36,7 @@
     <string name="pop_phone">请输入你的手机号</string>
     <string name="confirm">确定</string>
     <string name="cancle">取消</string>
+    <string name="contact_detail">联系人详情</string>
+    <string name="edit_contact">编辑联系人</string>
+    <string name="edit">编辑</string>
 </resources>

@@ -145,5 +145,8 @@
     <string name="pop_phone">please input your phone</string>
     <string name="confirm">OK</string>
     <string name="cancle">NO</string>
+    <string name="contact_detail">Contact detail</string>
+    <string name="edit_contact">EditContact</string>
+    <string name="edit">Edit</string>
 
 </resources>

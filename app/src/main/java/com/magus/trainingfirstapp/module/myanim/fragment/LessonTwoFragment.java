@@ -53,7 +53,7 @@ public class LessonTwoFragment extends BaseFragment {
 
         setRightFragmentTitleBtnText("变换动画");
 
-        setFragmentTitleToMiddelTv("viewPager Anim");
+        setFragmentBarToMiddelTv("viewPager Anim");
 
         fragments = new BaseFragment[]{LessonTwoTestFragment.newInstance("1", "viewpager"), LessonTwoTestFragment.newInstance("2", "viewpager"), LessonTwoTestFragment.newInstance("3", "viewpager"), LessonTwoTestFragment.newInstance("4", "viewpager")};
 
