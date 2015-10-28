@@ -126,7 +126,7 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
 
             View view = LayoutInflater.from(this).inflate(R.layout.pop_contacts_add_view, null);
             popupWindow = new PopupWindow(view,
-                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
             popupWindow.setBackgroundDrawable(new BitmapDrawable());
             popupWindow.setOutsideTouchable(false);
             popupWindow.setAnimationStyle(R.style.pop_out_in);
@@ -165,7 +165,12 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
 
                 // 创建一个新的意图插入一个联系人
                 Intent addContactIntent = new Intent(ContactsContract.Intents.Insert.ACTION);
-                addContactIntent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                addContactIntent.setType(ContactsContract.RawContacts.CONTENT_TYPE)
+                        .putExtra(ContactsContract.Intents.Insert.NAME, name)
+                        .putExtra(ContactsContract.Intents.Insert.PHONE, phone)
+                        .putExtra(ContactsContract.Intents.Insert.EMAIL, email)
+                        .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
+                startActivity(addContactIntent);
 
                 popupWindow.dismiss();
                 break;

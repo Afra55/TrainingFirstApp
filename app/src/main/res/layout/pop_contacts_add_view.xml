@@ -28,7 +28,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="phone"
+        android:inputType="textEmailAddress"
         android:ems="10"
         android:hint="@string/pop_email"
         android:id="@+id/pop_contact_email_et"
@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
+        android:maxLength="11"
         android:hint="@string/pop_phone"
         android:id="@+id/pop_contact_phone_et"
         android:layout_centerHorizontal="true"
