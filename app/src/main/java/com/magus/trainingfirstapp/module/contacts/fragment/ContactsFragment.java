@@ -22,6 +22,8 @@ import android.widget.SearchView;
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
 
+import java.io.Serializable;
+
 /**
  * Created by yangshuai in the 11:43 of 2015.10.22 .
  */
@@ -59,6 +61,8 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     private static final int CONTACT_ID_INDEX = 0;
     // LOOKUP_KEY列的列索引
     private static final int LOOKUP_KEY_INDEX = 1;
+    // 联系人的名字
+    private static final int CONATACT_NAME = 2;
 
     /* 定义了文本表达, 去告诉provider我们需要的数据列和想要的值,
     * 对于文本表达式，定义一个常量，列出所有搜索到的列。尽管这个表达式可以包含变量值，但是建议用"?"占位符来替代这个值。
@@ -87,6 +91,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
     /* 选定联系人的内容 Uri */
     private Uri mContactUri;
+
+    /* 选定联系人的名字 */
+    private String mContactName;
 
     /* 光标的查询结果绑定到 ListView */
     private SimpleCursorAdapter mCursorAdapter;
@@ -199,10 +206,10 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         mContactId = cursor.getLong(CONTACT_ID_INDEX);
         mContactKey = cursor.getString(LOOKUP_KEY_INDEX);
         mContactUri = ContactsContract.Contacts.getLookupUri(mContactId, mContactKey);
+        mContactName = cursor.getString(CONATACT_NAME);
 
         /* my test */
-        Log.d("ContactsFragment", "mContactId="+ mContactId +" mContactKey="+ mContactKey +" mContactUri="+  mContactUri);
-        if (mListener != null) mListener.onFragmentInteraction(mContactKey);
+        Log.d("ContactsFragment", "mContactId=" + mContactId + "mContactName=" + mContactName + " mContactKey=" + mContactKey + " mContactUri=" + mContactUri);
+        if (mListener != null) mListener.onFragmentInteraction(mContactName + "," + mContactKey);
     }
-
 }

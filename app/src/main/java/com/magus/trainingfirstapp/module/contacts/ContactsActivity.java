@@ -39,9 +39,10 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
 
     @Override
     public void onFragmentInteraction(String message) {
-
+        String[] msg = message.split(",");
         initDetailFragment();
-        contactsDetailsFragment.setLookupKey(message);
+        contactsDetailsFragment.setContactName(msg[0]);
+        contactsDetailsFragment.setLookupKey(msg[1]);
     }
 
     private boolean detailfragmentIsShowing = false;
@@ -51,25 +52,8 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
         }
         getSupportFragmentManager()
                 .beginTransaction()
-
-                        // Replace the default fragment animations with animator resources representing
-                        // rotations when switching to the back of the card, as well as animator
-                        // resources representing rotations when flipping back to the front (e.g. when
-                        // the system Back button is pressed).
-                .setCustomAnimations(
-                        R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                        R.anim.card_flip_left_in, R.anim.card_flip_left_out)
-
-                        // Replace any fragments currently in the container view with a fragment
-                        // representing the next page (indicated by the just-incremented currentPage
-                        // variable).
                 .replace(R.id.activity_contacts_content_rly, contactsDetailsFragment)
-
-                        // Add this transaction to the back stack, allowing users to press Back
-                        // to get to the front of the card.
                 .addToBackStack(null)
-
-                        // Commit the transaction.
                 .commit();
         detailfragmentIsShowing = true;
     }
@@ -79,14 +63,14 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
 
     }
 
-    @Override
-    public void onBackPressed() {
 
+    @Override
+    public void finish() {
         if (detailfragmentIsShowing){
             getSupportFragmentManager().popBackStack();
             detailfragmentIsShowing = false;
             return;
         }
-        super.onBackPressed();
+        super.finish();
     }
 }

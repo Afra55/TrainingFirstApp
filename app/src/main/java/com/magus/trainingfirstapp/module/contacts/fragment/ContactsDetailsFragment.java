@@ -38,12 +38,13 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
                     ContactsContract.Contacts.Data.DATA12,
                     ContactsContract.Contacts.Data.DATA13,
                     ContactsContract.Contacts.Data.DATA14,
-                    ContactsContract.Contacts.Data.DATA15
+                    ContactsContract.Contacts.Data.DATA15,
             };
 
     /* 默认的筛选条件,
     * 在查询选择表达式中使用 “?”占位符，确保了搜索是由绑定生成而不是由SQL编译生成。这种方法消除了恶意SQL注入的可能性*/
-    private static final String SELECTION = ContactsContract.Data.LOOKUP_KEY + " = ?";
+    private static final String SELECTION =
+            ContactsContract.Data.LOOKUP_KEY + " = ?";
 
     /* 定义数组以保存搜索条件 */
     private String[] mSelectionArgs = { "" };
@@ -56,7 +57,13 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
      */
     public void setLookupKey(String message){
         mLookupKey = message;
-        getLoaderManager().restartLoader(DETAILS_QUERY_ID, null, this);
+//        getLoaderManager().restartLoader(DETAILS_QUERY_ID, null, this);
+    }
+
+    private String mContactName;
+
+    public void setContactName(String mContactName) {
+        this.mContactName = mContactName;
     }
 
     /* 定义一个字符串,指定MIME类型的排序顺序,
@@ -132,12 +139,12 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
 
     private void notifyResult(Cursor data){
 
-        String showText = "";
+        String showText = mContactName + "\n";
         Cursor cursor = data;
 
-        for (int i = 0; i < PROJECTION.length; i++){
+        for (int i = 0; i < cursor.getCount(); i++){
             cursor.moveToPosition(i);
-            showText += cursor.getString(i);
+            showText += cursor.getString(i) + "\n";
         }
 
         resultShow.setText(showText);
