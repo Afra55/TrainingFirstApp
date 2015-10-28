@@ -139,5 +139,11 @@
 
     <!-- contacts -->
     <string name="contacts">contacts</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="pop_name">please write your name~</string>
+    <string name="pop_email">please input your email</string>
+    <string name="pop_phone">please input your phone</string>
+    <string name="confirm">OK</string>
+    <string name="cancle">NO</string>
 
 </resources>

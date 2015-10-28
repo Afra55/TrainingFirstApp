@@ -233,8 +233,9 @@
                 android:resource="@xml/accessibility_config" />
         </service>
 
-        <activity android:name=".module.contacts.ContactsActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+        <activity
+            android:name=".module.contacts.ContactsActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />

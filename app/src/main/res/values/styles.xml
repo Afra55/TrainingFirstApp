@@ -45,5 +45,10 @@
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/transparent</item>
     </style>
+    
+    <style name="pop_out_in" >
+        <item name="android:windowEnterAnimation">@anim/pop_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_out</item>
+    </style>
 
 </resources>

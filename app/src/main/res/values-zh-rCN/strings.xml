@@ -30,4 +30,10 @@
     <string name="done">完成</string>
     <string name="next">下一步</string>
     <string name="contacts">联系人</string>
+    <string name="add_contact">添加联系人</string>
+    <string name="pop_name">请输入你的姓名</string>
+    <string name="pop_email">请输入你的邮箱</string>
+    <string name="pop_phone">请输入你的手机号</string>
+    <string name="confirm">确定</string>
+    <string name="cancle">取消</string>
 </resources>
