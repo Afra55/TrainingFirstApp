@@ -69,7 +69,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
                     ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?";
 
     /* 定义了一个搜索字符串的变量 */
-    private String mSearchString;
+    private String mSearchString = "yangshuai";
 
     /* 定义了数组保存值用来替换 "?" */
     private String[] mSelectionArgs = { mSearchString };
@@ -101,7 +101,6 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
     public ContactsFragment() {
         // Required empty public constructor
-        setFragmentTitle(getContext().getString(R.string.contacts));
     }
 
 
