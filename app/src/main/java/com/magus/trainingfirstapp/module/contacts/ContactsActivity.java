@@ -16,7 +16,6 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_contacts);
-        contactsListView = (ListView) findViewById(R.id.contacts_listView);
     }
 
     @Override
