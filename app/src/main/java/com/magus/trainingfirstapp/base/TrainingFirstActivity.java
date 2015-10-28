@@ -33,6 +33,7 @@ import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
+import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
@@ -239,6 +240,8 @@ public class TrainingFirstActivity extends BaseActivity {
             case 17:
                 openYouXiClient();
                 break;
+            case 18:
+                return new Intent(TrainingFirstActivity.this, ContactsActivity.class);
         }
         return null;
     }

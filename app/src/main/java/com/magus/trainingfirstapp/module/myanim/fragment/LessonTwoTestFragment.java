@@ -41,7 +41,7 @@ public class LessonTwoTestFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        hideFragmentTitle();
+        hideFragmentTitleBar();
         switch (Integer.parseInt(mParam1)){
             case 1:
                 content.setBackgroundColor(getResources().getColor(R.color.blue));

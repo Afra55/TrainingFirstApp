@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/pop_contact_title"
+        android:layout_marginTop="10dp"
+        style="@style/black20Text"
+        android:layout_centerHorizontal="true"
+        android:text="@string/add_contact"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/pop_name"
+        android:ems="10"
+        android:id="@+id/pop_contact_name_et"
+        android:layout_below="@id/pop_contact_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="@string/pop_email"
+        android:id="@+id/pop_contact_email_et"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/pop_contact_name_et"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:maxLength="11"
+        android:hint="@string/pop_phone"
+        android:id="@+id/pop_contact_phone_et"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/pop_contact_email_et"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pop_contact_phone_et"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/pop_contact_ok_btn"
+            style="@style/myButton"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:textSize="25sp"
+            android:text="@string/confirm"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/pop_contact_cancle_btn"
+            style="@style/myButton"
+            android:layout_margin="5dp"
+            android:textSize="25sp"
+            android:text="@string/cancle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

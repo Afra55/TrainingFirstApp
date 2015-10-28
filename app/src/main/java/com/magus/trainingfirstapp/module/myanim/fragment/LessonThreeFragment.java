@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import com.magus.trainingfirstapp.base.BaseFragment;
 import com.magus.trainingfirstapp.R;
 
+import java.net.URI;
+
 public class LessonThreeFragment extends BaseFragment {
 
     private FrameLayout container;
@@ -43,7 +45,7 @@ public class LessonThreeFragment extends BaseFragment {
     @Override
     protected void initData() {
         setRightFragmentTitleBtnText("翻转");
-        if (mListener != null) mListener.onFragmentInteraction(null);
+        if (mListener != null) mListener.onFragmentInteraction("");
     }
 
     @Override
