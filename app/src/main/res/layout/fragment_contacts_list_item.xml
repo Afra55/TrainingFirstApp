@@ -6,4 +6,6 @@
     android:gravity="center"
     style="@style/myButton"
     android:padding="10dp"
-    android:clickable="true"/>
+    android:focusable="false"
+    android:clickable="false"
+    android:focusableInTouchMode="false"/>

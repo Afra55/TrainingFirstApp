@@ -5,8 +5,9 @@
 
 
     <SearchView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/fragment_contacts_serchview"
         android:iconifiedByDefault="true"
         android:inputType="textPersonName"

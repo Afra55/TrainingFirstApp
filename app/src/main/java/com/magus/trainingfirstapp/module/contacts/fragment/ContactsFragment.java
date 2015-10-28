@@ -25,7 +25,7 @@ import com.magus.trainingfirstapp.base.BaseFragment;
 /**
  * Created by yangshuai in the 11:43 of 2015.10.22 .
  */
-public class ContactsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
+public class ContactsFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener {
 
     /* 光标去查询的联系人的列名,
     * 由于Contacts.DISPLAY_NAME_PRIMARY需要在Android 3.0（API版本11）或者更高的版本才能使用，
@@ -90,6 +90,8 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
     /* 光标的查询结果绑定到 ListView */
     private SimpleCursorAdapter mCursorAdapter;
+
+    private final int CONTACT_ID = 0;
 
     public static ContactsFragment newInstance(String param1, String param2) {
 
@@ -159,14 +161,20 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        Log.d("ContactsFragment", "onCreateLoader");
+        if (id == CONTACT_ID) {
+            Log.d("ContactsFragment", "onCreateLoader");
         /* 存储搜索的字符串 */
-        mSelectionArgs[0] = "%" + mSearchString + "%";
-        return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, PROJECTION, SELECTION, mSelectionArgs, null);
+            mSelectionArgs[0] = "%" + mSearchString + "%";
+            return new CursorLoader(getActivity(), ContactsContract.Contacts.CONTENT_URI, PROJECTION, SELECTION, mSelectionArgs, null);
+        }
+        return null;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        if (loader.getId() != CONTACT_ID) return;
+
         Log.d("ContactsFragment", "onLoadFinished");
         onLoaderReset(loader);
         /* 在listView 中展示结果 */
@@ -175,6 +183,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+
+        if (loader.getId() != CONTACT_ID) return;
+
         Log.d("ContactsFragment", "onLoaderReset");
         /* 删除现有的光标 */
         mCursorAdapter.swapCursor(null);
@@ -190,6 +201,8 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         mContactUri = ContactsContract.Contacts.getLookupUri(mContactId, mContactKey);
 
         /* my test */
-
+        Log.d("ContactsFragment", "mContactId="+ mContactId +" mContactKey="+ mContactKey +" mContactUri="+  mContactUri);
+        if (mListener != null) mListener.onFragmentInteraction(mContactKey);
     }
+
 }

@@ -148,7 +148,12 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
      */
     @Override
     public void onFragmentInteraction(Uri uri) {
-            getFragmentManager().beginTransaction().add(R.id.lesson_three_card_container_flt, new CardFrontFragment()).commit();
+
+    }
+
+    @Override
+    public void onFragmentInteraction(String message) {
+        getFragmentManager().beginTransaction().add(R.id.lesson_three_card_container_flt, new CardFrontFragment()).commit();
     }
 
     @Override

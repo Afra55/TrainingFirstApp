@@ -176,6 +176,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+        public void onFragmentInteraction(String message);
         public void onFragmentChildViewOnClick(View view);
     }
 
