@@ -36,7 +36,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
             Build.VERSION.SDK_INT
                     >= Build.VERSION_CODES.HONEYCOMB ?
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
-                    ContactsContract.Contacts.DISPLAY_NAME
+                    ContactsContract.Contacts.DISPLAY_NAME,
     };
 
     /* 光标列内容的布局Id */
@@ -51,8 +51,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
             ContactsContract.Contacts.LOOKUP_KEY,
             Build.VERSION.SDK_INT
                     >= Build.VERSION_CODES.HONEYCOMB ?
-                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
-                    ContactsContract.Contacts.DISPLAY_NAME
+                    ContactsContract.Contacts.DISPLAY_NAME_PRIMARY:
+                    ContactsContract.Contacts.DISPLAY_NAME,
+            ContactsContract.Contacts.PHOTO_THUMBNAIL_URI
     };
 
     // _ID列的列索引
@@ -61,6 +62,8 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     public static final int LOOKUP_KEY_INDEX = 1;
     // 联系人的名字
     public static final int CONATACT_NAME = 2;
+    // PHOTO_THUMBNAIL_URI
+    public static final int PHOTO_THUMBNAIL_URI = 3;
 
     /* 定义了文本表达, 去告诉provider我们需要的数据列和想要的值,
     * 对于文本表达式，定义一个常量，列出所有搜索到的列。尽管这个表达式可以包含变量值，但是建议用"?"占位符来替代这个值。
@@ -205,11 +208,19 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         mContactKey = cursor.getString(LOOKUP_KEY_INDEX);
         mContactUri = ContactsContract.Contacts.getLookupUri(mContactId, mContactKey);
         mContactName = cursor.getString(CONATACT_NAME);
+        int mThumbnailColumn;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mThumbnailColumn =
+                    cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI);
+        } else {
+            mThumbnailColumn = CONTACT_ID_INDEX;
+        }
+        String mThumbnailUri = cursor.getString(mThumbnailColumn);
 
         /* my test */
         Log.d("ContactsFragment", "mContactId=" + mContactId + "mContactName=" + mContactName + " mContactKey=" + mContactKey + " mContactUri=" + mContactUri);
         if (mListener != null) {
-            mListener.onFragmentInteraction(mContactId + "," + mContactKey + "," + mContactName);
+            mListener.onFragmentInteraction(mContactId + "," + mContactKey + "," + mContactName  + "," + mThumbnailUri);
             mListener.onFragmentInteraction(mContactUri);
         }
     }

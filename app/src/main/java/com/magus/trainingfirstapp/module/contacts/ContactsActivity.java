@@ -77,6 +77,7 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
         contactsDetailsFragment.setContactName(msg[ContactsFragment.CONATACT_NAME]);
         contactsDetailsFragment.setLookupKey(msg[ContactsFragment.LOOKUP_KEY_INDEX]);
         contactsDetailsFragment.setContactId(msg[ContactsFragment.CONTACT_ID_INDEX]);
+        contactsDetailsFragment.setThumbnailUri(msg[ContactsFragment.PHOTO_THUMBNAIL_URI]);
     }
 
     private boolean detailfragmentIsShowing = false;
