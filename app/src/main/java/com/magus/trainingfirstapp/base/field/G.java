@@ -26,7 +26,7 @@ public class G {
     public interface UrlConst{
         public static final String E_APK = "http://www.yangguangeshequ.com/apk/app.apk";
         public static final String GAME_APK = "http://down.androidgame-store.com/201510211741/4C67B53DD0FBDBB0D75E0D07E0B1768A/new/game1/33/91133/minecraftstorymode_1444916920122.dpk?f=web_1";
-        public static final String YOUXI_APK = "http://117.23.51.43/apk.r1.market.hiapk.com/data/upload/apkres/2015/10_24/14/com.example.youxiclient_020506.apk?wsiphost=local";
+        public static final String YOUXI_APK = "http://36.42.32.37/apk.r1.market.hiapk.com/data/upload/apkres/2015/10_29/9/com.example.youxiclient_095109.apk?wsiphost=local";
         public static final String  CSDN_BLOG = "http://blog.csdn.net/yang786654260";
     }
 
