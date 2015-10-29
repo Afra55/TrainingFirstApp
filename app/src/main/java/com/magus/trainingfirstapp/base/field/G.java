@@ -51,7 +51,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 19;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 20;
     }
 
     /**
@@ -100,6 +100,8 @@ public class G {
                 return context.getResources().getString(R.string.open_youxi_client);
             case 18:
                 return context.getResources().getString(R.string.contacts);
+            case 19:
+                return context.getString(R.string.effective_navigation);
         }
         return "";
     }

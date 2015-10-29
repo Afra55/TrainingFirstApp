@@ -34,6 +34,7 @@ import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityServ
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
+import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
@@ -242,6 +243,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case 18:
                 return new Intent(TrainingFirstActivity.this, ContactsActivity.class);
+            case 19:
+                return new Intent(TrainingFirstActivity.this, EffectiveNavigationActivity.class);
         }
         return null;
     }
