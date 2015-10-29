@@ -19,6 +19,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -82,6 +84,7 @@ public class PingService extends IntentService {
         snoozeIntent.setAction(CommonConstants.ACTION_SNOOZE);
         PendingIntent piSnooze = PendingIntent.getService(this, 0, snoozeIntent, 0);
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.earth);
         // Constructs the Builder object.
         builder =
                 new NotificationCompat.Builder(this)
@@ -96,8 +99,14 @@ public class PingService extends IntentService {
                  * These calls are ignored by the support library for
                  * pre-4.1 devices.
                  */
-                .setStyle(new NotificationCompat.BigTextStyle()
-                     .bigText(msg))
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                     .bigText(msg))
+//                .addAction (R.drawable.ic_stat_dismiss,
+//                        getString(R.string.dismiss), piDismiss)
+//                .addAction (R.drawable.ic_stat_snooze,
+//                        getString(R.string.snooze), piSnooze);
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                     .bigPicture(bitmap))
                 .addAction (R.drawable.ic_stat_dismiss,
                         getString(R.string.dismiss), piDismiss)
                 .addAction (R.drawable.ic_stat_snooze,
@@ -112,6 +121,8 @@ public class PingService extends IntentService {
          resultIntent.putExtra(CommonConstants.EXTRA_MESSAGE, msg);
          resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
+        /* 当从Notification中启动一个activity时，你必须保存用户的导航体验。
+        在下面的代码片段中，点击Notification启动一个新的activity，这个activity有效地扩展了Notification的行为。 */
          // Because clicking the notification opens a new ("special") activity, there's
          // no need to create an artificial back stack.
          PendingIntent resultPendingIntent =
@@ -122,6 +133,7 @@ public class PingService extends IntentService {
                  PendingIntent.FLAG_UPDATE_CURRENT
          );
 
+        /* 设置Notification的点击行为 */
          builder.setContentIntent(resultPendingIntent);
          startTimer(mMillis);
     }

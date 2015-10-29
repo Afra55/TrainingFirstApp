@@ -280,7 +280,13 @@
             android:label="Take Action"
             android:launchMode="singleTask"
             android:taskAffinity=""
-            android:excludeFromRecents="true"/>
+            android:excludeFromRecents="true"
+            android:parentActivityName=".module.pingme.PingMeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.pingme.PingMeActivity" />
+        </activity>
+
 
     </application>
 
