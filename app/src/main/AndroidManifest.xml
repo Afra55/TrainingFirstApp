@@ -45,6 +45,9 @@
     <!-- 省心装 -->
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
+    <!-- 允许震动 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:name=".utils.MApplication"
         android:allowBackup="true"
@@ -261,6 +264,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
+
+        <activity android:name=".module.pingme.PingMeActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
+        </activity>
+        <service
+            android:name=".module.pingme.PingService"
+            android:label="PingServiceLabel" android:enabled="true">
+        </service>
+        <activity
+            android:name=".module.pingme.PingMeResultActivity"
+            android:label="Take Action"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"/>
 
     </application>
 
