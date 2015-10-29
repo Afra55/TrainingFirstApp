@@ -240,6 +240,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
+
+        <activity android:name=".module.effectivenavigation.EffectiveNavigationActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
+        </activity>
+
+        <activity android:name=".module.effectivenavigation.CollectionDemoActivity"
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+        </activity>
+
     </application>
 
 </manifest>
