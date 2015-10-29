@@ -255,6 +255,13 @@
                 android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
 
+        <activity android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+        </activity>
+
     </application>
 
 </manifest>

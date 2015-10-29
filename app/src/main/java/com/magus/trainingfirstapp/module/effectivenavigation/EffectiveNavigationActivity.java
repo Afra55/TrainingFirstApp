@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity;
 
 public class EffectiveNavigationActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -63,7 +64,7 @@ public class EffectiveNavigationActivity extends FragmentActivity implements Act
         // parent.
         actionBar.setHomeButtonEnabled(false);
 
-        // Specify that we will be displaying tabs in the action bar.
+        // 指定在action bar中显示tab.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Set up the ViewPager, attaching the adapter and setting up a listener for when the
@@ -73,7 +74,7 @@ public class EffectiveNavigationActivity extends FragmentActivity implements Act
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                // When swiping between different app sections, select the corresponding tab.
+                // 当划屏切换页面时，选择相应的tab.
                 // We can also use ActionBar.Tab#select() to do this if we have a reference to the
                 // Tab.
                 actionBar.setSelectedNavigationItem(position);
@@ -94,16 +95,20 @@ public class EffectiveNavigationActivity extends FragmentActivity implements Act
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        // 隐藏指定的tab
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in the ViewPager.
+        // 显示指定的tab
+
+        // 当tab被选中时, 切换到ViewPager中相应的页面.
         mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        // 可以忽略这个事件
     }
 
     /**
@@ -161,6 +166,15 @@ public class EffectiveNavigationActivity extends FragmentActivity implements Act
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(getActivity(), CollectionDemoActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+            rootView.findViewById(R.id.demo_navigation_drawer_activity)
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), NavigationDrawerActivity.class);
                             startActivity(intent);
                         }
                     });
