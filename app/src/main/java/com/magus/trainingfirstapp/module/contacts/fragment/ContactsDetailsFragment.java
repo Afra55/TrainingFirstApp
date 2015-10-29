@@ -150,7 +150,10 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
     /* 初始化缩略图 */
     private void initThumbnailBadge() {
         mBadge.assignContactUri(mContactUri);
-        mBadge.setImageBitmap(loadContactPhotoThumbnail(mThumbnailUri));
+        if (!mThumbnailUri.equals("null")) {
+            mBadge.setImageBitmap(loadContactPhotoThumbnail(mThumbnailUri));
+        }else
+            mBadge.setImageResource(R.mipmap.ic_launcher);
     }
 
     @Override
@@ -211,7 +214,7 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
      * Load a contact photo thumbnail and return it as a Bitmap,
      * resizing the image to the provided image dimensions as needed.
      * @param photoData photo ID Prior to Honeycomb, the contact's _ID value.
-     * For Honeycomb and later, the value of PHOTO_THUMBNAIL_URI.
+     * For Honeycomb and later, the value of PHOTO_THUMBNAIL_URI_INDEX.
      * @return A thumbnail Bitmap, sized to the provided width and height.
      * Returns null if the thumbnail is not found.
      */
@@ -226,7 +229,7 @@ public class ContactsDetailsFragment extends BaseFragment implements LoaderManag
             if (Build.VERSION.SDK_INT
                     >=
                     Build.VERSION_CODES.HONEYCOMB) {
-                // Sets the URI from the incoming PHOTO_THUMBNAIL_URI
+                // Sets the URI from the incoming PHOTO_THUMBNAIL_URI_INDEX
                 thumbUri = Uri.parse(photoData);
             } else {
                 // Prior to Android 3.0, constructs a photo Uri using _ID
