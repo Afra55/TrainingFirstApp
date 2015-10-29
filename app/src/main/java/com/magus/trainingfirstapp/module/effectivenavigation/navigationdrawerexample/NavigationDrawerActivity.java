@@ -102,22 +102,26 @@ public class NavigationDrawerActivity extends Activity {
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
-                R.string.drawer_open,  /* "open drawer" description for accessibility */
-                R.string.drawer_close  /* "close drawer" description for accessibility */
+                this,                  /* 承载 Activity */
+                mDrawerLayout,         /* DrawerLayout 对象 */
+                R.drawable.ic_drawer,  /* nav drawer 图标用来替换'Up'符号 */
+                R.string.drawer_open,  /* "打开 drawer" 描述 */
+                R.string.drawer_close  /* "关闭 drawer" 描述 */
                 ) {
             public void onDrawerClosed(View view) {
+                /** 当drawer处于完全关闭的状态时调用 */
                 getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                invalidateOptionsMenu(); // 创建对onPrepareOptionsMenu()的调用
             }
 
             public void onDrawerOpened(View drawerView) {
+                /** 当drawer处于完全打开的状态时调用 */
                 getActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
+
+        // 设置drawer触发器为DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
@@ -132,10 +136,10 @@ public class NavigationDrawerActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /* Called whenever we call invalidateOptionsMenu() */
+    /* 当invalidateOptionsMenu()调用时调用 */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
+        // 如果nav drawer是打开的, 隐藏与内容视图相关联的action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
@@ -143,8 +147,7 @@ public class NavigationDrawerActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
+         // 将事件传递给ActionBarDrawerToggle, 如果返回true，表示app 图标点击事件已经被处理
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -174,8 +177,9 @@ public class NavigationDrawerActivity extends Activity {
         }
     }
 
+    /** 在主内容视图中交换fragment */
     private void selectItem(int position) {
-        // update the main content by replacing fragments
+        // 创建一个新的fragment并且根据行星的位置来显示
         Fragment fragment = new PlanetFragment();
         Bundle args = new Bundle();
         args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
@@ -184,7 +188,7 @@ public class NavigationDrawerActivity extends Activity {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-        // update selected item and title, then close the drawer
+        // 通过替换已存在的fragment来插入新的fragment
         mDrawerList.setItemChecked(position, true);
         setTitle(mPlanetTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
@@ -204,7 +208,7 @@ public class NavigationDrawerActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
+        // 在onRestoreInstanceState发生后，同步触发器状态.
         mDrawerToggle.syncState();
     }
 
