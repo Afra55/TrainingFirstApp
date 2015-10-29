@@ -74,10 +74,10 @@ public class ContactsActivity extends BaseActivity implements BaseFragment.OnFra
     public void onFragmentInteraction(String message) {
         String[] msg = message.split(",");
         initDetailFragment();
-        contactsDetailsFragment.setContactName(msg[ContactsFragment.CONATACT_NAME]);
+        contactsDetailsFragment.setContactName(msg[ContactsFragment.CONATACT_NAME_INDEX]);
         contactsDetailsFragment.setLookupKey(msg[ContactsFragment.LOOKUP_KEY_INDEX]);
         contactsDetailsFragment.setContactId(msg[ContactsFragment.CONTACT_ID_INDEX]);
-        contactsDetailsFragment.setThumbnailUri(msg[ContactsFragment.PHOTO_THUMBNAIL_URI]);
+        contactsDetailsFragment.setThumbnailUri(msg[ContactsFragment.PHOTO_THUMBNAIL_URI_INDEX]);
     }
 
     private boolean detailfragmentIsShowing = false;

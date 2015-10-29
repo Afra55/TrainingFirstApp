@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.adapter.ContactsAdapter;
 import com.magus.trainingfirstapp.base.BaseFragment;
 
 /**
@@ -53,7 +54,10 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
                     >= Build.VERSION_CODES.HONEYCOMB ?
                     ContactsContract.Contacts.DISPLAY_NAME_PRIMARY:
                     ContactsContract.Contacts.DISPLAY_NAME,
-            ContactsContract.Contacts.PHOTO_THUMBNAIL_URI
+            Build.VERSION.SDK_INT
+                    >= Build.VERSION_CODES.HONEYCOMB ?
+                    ContactsContract.Contacts.PHOTO_THUMBNAIL_URI:
+                    ContactsContract.Contacts._ID
     };
 
     // _ID列的列索引
@@ -61,9 +65,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     // LOOKUP_KEY列的列索引
     public static final int LOOKUP_KEY_INDEX = 1;
     // 联系人的名字
-    public static final int CONATACT_NAME = 2;
-    // PHOTO_THUMBNAIL_URI
-    public static final int PHOTO_THUMBNAIL_URI = 3;
+    public static final int CONATACT_NAME_INDEX = 2;
+    // PHOTO_THUMBNAIL_URI_INDEX
+    public static final int PHOTO_THUMBNAIL_URI_INDEX = 3;
 
     /* 定义了文本表达, 去告诉provider我们需要的数据列和想要的值,
     * 对于文本表达式，定义一个常量，列出所有搜索到的列。尽管这个表达式可以包含变量值，但是建议用"?"占位符来替代这个值。
@@ -97,9 +101,12 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     private String mContactName;
 
     /* 光标的查询结果绑定到 ListView */
-    private SimpleCursorAdapter mCursorAdapter;
+//    private SimpleCursorAdapter mCursorAdapter;
 
     private final int CONTACT_ID = 0;
+
+    /* adapter */
+    private ContactsAdapter mCursorAdapter;
 
     public static ContactsFragment newInstance(String param1, String param2) {
 
@@ -116,7 +123,6 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -131,7 +137,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     protected void initData() {
         hideFragmentTitleBar();
 
-        mCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.fragment_contacts_list_item, null, FROM_COLUMNS, TO_IDS, 0);
+//        mCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.fragment_contacts_list_item, null, FROM_COLUMNS, TO_IDS, 0);
+//        mContactsListView.setAdapter(mCursorAdapter);
+        mCursorAdapter = new ContactsAdapter(getActivity());
         mContactsListView.setAdapter(mCursorAdapter);
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -155,6 +163,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         mContactsListView.setOnItemClickListener(this);
 
@@ -202,12 +211,12 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Cursor cursor = ((SimpleCursorAdapter)parent.getAdapter()).getCursor();
+        Cursor cursor = ((ContactsAdapter)parent.getAdapter()).getCursor();
         cursor.moveToPosition(position);
         mContactId = cursor.getLong(CONTACT_ID_INDEX);
         mContactKey = cursor.getString(LOOKUP_KEY_INDEX);
         mContactUri = ContactsContract.Contacts.getLookupUri(mContactId, mContactKey);
-        mContactName = cursor.getString(CONATACT_NAME);
+        mContactName = cursor.getString(CONATACT_NAME_INDEX);
         int mThumbnailColumn;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             mThumbnailColumn =

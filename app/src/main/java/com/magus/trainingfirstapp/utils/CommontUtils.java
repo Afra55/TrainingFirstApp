@@ -12,6 +12,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,6 +30,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
 import android.text.TextUtils;
@@ -51,6 +53,8 @@ import com.magus.trainingfirstapp.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -1106,6 +1110,81 @@ public class CommontUtils {
 		final int screenBytes = screenWidth * screenHeight * 4;
 
 		return screenBytes * 3;
+	}
+
+	/**
+	 * Load a contact photo thumbnail and return it as a Bitmap,
+	 * resizing the image to the provided image dimensions as needed.
+	 * @param photoData photo ID Prior to Honeycomb, the contact's _ID value.
+	 * For Honeycomb and later, the value of PHOTO_THUMBNAIL_URI_INDEX.
+	 * @return A thumbnail Bitmap, sized to the provided width and height.
+	 * Returns null if the thumbnail is not found.
+	 */
+	public static Bitmap loadContactPhotoThumbnail(Activity activity, String photoData) {
+		// Creates an asset file descriptor for the thumbnail file.
+		AssetFileDescriptor afd = null;
+		// try-catch block for file not found
+		try {
+			// Creates a holder for the URI.
+			Uri thumbUri;
+			// If Android 3.0 or later
+			if (Build.VERSION.SDK_INT
+					>=
+					Build.VERSION_CODES.HONEYCOMB) {
+				// Sets the URI from the incoming PHOTO_THUMBNAIL_URI_INDEX
+				thumbUri = Uri.parse(photoData);
+			} else {
+				// Prior to Android 3.0, constructs a photo Uri using _ID
+            /*
+             * Creates a contact URI from the Contacts content URI
+             * incoming photoData (_ID)
+             */
+				final Uri contactUri = Uri.withAppendedPath(
+						ContactsContract.Contacts.CONTENT_URI, photoData);
+            /*
+             * Creates a photo URI by appending the content URI of
+             * Contacts.Photo.
+             */
+				thumbUri =
+						Uri.withAppendedPath(
+								contactUri, ContactsContract.Contacts.Photo.CONTENT_DIRECTORY);
+			}
+
+    /*
+     * Retrieves an AssetFileDescriptor object for the thumbnail
+     * URI
+     * using ContentResolver.openAssetFileDescriptor
+     */
+			afd = activity.getContentResolver().
+					openAssetFileDescriptor(thumbUri, "r");
+    /*
+     * Gets a file descriptor from the asset file descriptor.
+     * This object can be used across processes.
+     */
+			FileDescriptor fileDescriptor = afd.getFileDescriptor();
+			// Decode the photo file and return the result as a Bitmap
+			// If the file descriptor is valid
+			if (fileDescriptor != null) {
+				// Decodes the bitmap
+				return BitmapFactory.decodeFileDescriptor(
+						fileDescriptor, null, null);
+			}
+			// If the file isn't found
+		} catch (FileNotFoundException e) {
+        /*
+         * Handle file not found errors
+         */
+			return null;
+		}
+		// In all cases, close the asset file descriptor
+		finally {
+			if (afd != null) {
+				try {
+					afd.close();
+				} catch (IOException e) {}
+			}
+		}
+		return null;
 	}
 
 }
