@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -89,5 +92,29 @@ public class OtherActivity extends BaseActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_other, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+                    // 这个activity不是这个app任务的一部分, 所以当向上导航时创建
+                    // 用合成后退栈(synthesized back stack)创建一个新任务。
+                    TaskStackBuilder.create(this)
+                            // 添加这个activity的所有父activity到后退栈中
+                            .addNextIntentWithParentStack(upIntent)
+                                    // 向上导航到最近的一个父activity
+                            .startActivities();
+                } else {
+                    // 这个activity是这个app任务的一部分, 所以
+                    // 向上导航至逻辑父activity.
+                    NavUtils.navigateUpTo(this, upIntent);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

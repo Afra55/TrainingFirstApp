@@ -51,4 +51,14 @@
         <item name="android:windowExitAnimation">@anim/pop_out</item>
     </style>
 
+    <style name="NewsReaderStyle" parent="android:Theme.Light.NoTitleBar">
+    </style>
+
+    <style name="NewsReaderStyle_NoActionBar" parent="android:Theme.Light.NoTitleBar">
+    </style>
+
+    <style name="CategoryButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 </resources>

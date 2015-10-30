@@ -34,12 +34,16 @@ import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityServ
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
+import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
+import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
+import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
+import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
@@ -242,6 +246,14 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case 18:
                 return new Intent(TrainingFirstActivity.this, ContactsActivity.class);
+            case 19:
+                return new Intent(TrainingFirstActivity.this, EffectiveNavigationActivity.class);
+            case 20:
+                return new Intent(TrainingFirstActivity.this, PingMeActivity.class);
+            case 21:
+                return new Intent(TrainingFirstActivity.this, NewsReaderActivity.class);
+            case 22:
+                return new Intent(TrainingFirstActivity.this, CusstomViewActivity.class);
         }
         return null;
     }

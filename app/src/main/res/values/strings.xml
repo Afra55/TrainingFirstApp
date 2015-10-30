@@ -149,4 +149,46 @@
     <string name="edit_contact">EditContact</string>
     <string name="edit">Edit</string>
 
+    <!--EffectiveNavigation-->
+    <string name="dummy_section_text">Section %1d is just a dummy section.</string>
+    <string name="demo_external_activity">Demo External Activity</string>
+    <string name="demo_collection">Demo Collection</string>
+    <string name="effective_navigation">EffectiveNavigation</string>
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <!-- Notifying the User -->
+    <string name="notification">Ping Notification</string>
+    <!--  Buttons -->
+    <string name="ping">Ping!</string>
+    <string name="snooze">Snooze</string>
+    <string name="dismiss">Dismiss</string>
+    <!--  Text Views -->
+    <string name="ping_text">Set Seconds Until Ping</string>
+    <string name="done_snoozing">Done Snoozing.</string>
+    <string name="seconds_default">10</string>
+    <string name="reminder_label">Reminder Text</string>
+    <string name="reminder_text">Don\'t forget!</string>
+    <!--  Logging -->
+    <string name="snoozing">Snoozing!</string>
+    <string name="timer_start">Setting the timer</string>
+    <string name="sleep_error">Sleep failure</string>
+    <string name="timer_finished">Timer finished.</string>
+    <string name="news_reader">News Reader</string>
+    <string name="reset_button">Reset</string>
+    <string name="cusstom_chart">Chart CusstomView</string>
+
+
 </resources>
