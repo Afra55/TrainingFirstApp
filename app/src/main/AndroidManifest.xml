@@ -301,6 +301,11 @@
         <activity android:name=".module.newsreader.ArticleActivity"
             android:theme="@style/NewsReaderStyle_NoActionBar" />
 
+        <activity android:name=".module.customviews.CusstomViewActivity" android:parentActivityName=".base.TrainingFirstActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".base.TrainingFirstActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -187,6 +187,8 @@
     <string name="sleep_error">Sleep failure</string>
     <string name="timer_finished">Timer finished.</string>
     <string name="news_reader">News Reader</string>
+    <string name="reset_button">Reset</string>
+    <string name="cusstom_chart">Chart CusstomView</string>
 
 
 </resources>
