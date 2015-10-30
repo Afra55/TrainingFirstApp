@@ -39,6 +39,7 @@ import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
+import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
@@ -248,6 +249,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, EffectiveNavigationActivity.class);
             case 20:
                 return new Intent(TrainingFirstActivity.this, PingMeActivity.class);
+            case 21:
+                return new Intent(TrainingFirstActivity.this, NewsReaderActivity.class);
         }
         return null;
     }

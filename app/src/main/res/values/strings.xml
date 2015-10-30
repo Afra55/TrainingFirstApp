@@ -186,6 +186,7 @@
     <string name="timer_start">Setting the timer</string>
     <string name="sleep_error">Sleep failure</string>
     <string name="timer_finished">Timer finished.</string>
+    <string name="news_reader">News Reader</string>
 
 
 </resources>

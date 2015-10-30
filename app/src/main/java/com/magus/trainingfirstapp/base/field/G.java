@@ -51,7 +51,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 21;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 22;
     }
 
     /**
@@ -104,6 +104,8 @@ public class G {
                 return context.getString(R.string.effective_navigation);
             case 20:
                 return context.getString(R.string.notification);
+            case 21:
+                return context.getString(R.string.news_reader);
         }
         return "";
     }
