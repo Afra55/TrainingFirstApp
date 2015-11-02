@@ -311,6 +311,13 @@
         </activity>
         <activity android:name=".module.customviews.MyOwnCusstomViewActivity" >
         </activity>
+
+        <activity android:name=".module.tabcompat.TabCompatMainActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
+        </activity>
     </application>
 
 </manifest>
