@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -18,7 +19,7 @@ import com.magus.trainingfirstapp.R;
 public class MyCusstomView extends View {
     private String mExampleString; // TODO: use a default from R.string...
     private int mExampleColor = Color.RED; // TODO: use a default from R.color...
-    private float mExampleDimension = 0; // TODO: use a default from R.dimen...
+    private float mExampleDimension = 16; // TODO: use a default from R.dimen...
     private Drawable mExampleDrawable;
 
     private TextPaint mTextPaint;
@@ -83,8 +84,45 @@ public class MyCusstomView extends View {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width;
+        int height;
+        if (widthMode == MeasureSpec.EXACTLY){
+            width = widthSize;
+        }else{
+            mTextPaint.setTextSize(mExampleDimension);
+            Rect mBounds = new Rect();
+            mTextPaint.getTextBounds(mExampleString, 0, mExampleString.length(), mBounds);
+            float textWidth = mBounds.width();
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
+            width = desired;
+        }
+        if (heightMode == MeasureSpec.EXACTLY){
+            height = heightSize;
+        }else{
+            mTextPaint.setTextSize(mExampleDimension);
+            Rect mBounds = new Rect();
+            mTextPaint.getTextBounds(mExampleString, 0, mExampleString.length(), mBounds);
+            float textHeight = mBounds.height();
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom());
+            height = desired;
+        }
+
+        setMeasuredDimension(width, height);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        mTextPaint.setColor(Color.YELLOW);
+        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mTextPaint);
+
+        mTextPaint.setColor(mExampleColor);
 
         // TODO: consider storing these as member variables to reduce
         // allocations per draw cycle.

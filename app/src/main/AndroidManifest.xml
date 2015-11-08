@@ -46,12 +46,12 @@
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
     <!-- 允许震动 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
         android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
         android:xlargeScreens="true" />
 
     <application
@@ -249,62 +249,74 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
-
-        <activity android:name=".module.effectivenavigation.EffectiveNavigationActivity"
+        <activity
+            android:name=".module.effectivenavigation.EffectiveNavigationActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
+        </activity>
+        <activity
+            android:name=".module.effectivenavigation.CollectionDemoActivity"
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+        </activity>
+        <activity
+            android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+        </activity>
+        <activity
+            android:name=".module.pingme.PingMeActivity"
             android:parentActivityName=".base.TrainingFirstActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
 
-        <activity android:name=".module.effectivenavigation.CollectionDemoActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
-        </activity>
-
-        <activity android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
-        </activity>
-
-        <activity android:name=".module.pingme.PingMeActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
-        </activity>
         <service
             android:name=".module.pingme.PingService"
-            android:label="PingServiceLabel" android:enabled="true">
+            android:enabled="true"
+            android:label="PingServiceLabel" >
         </service>
+
         <activity
             android:name=".module.pingme.PingMeResultActivity"
+            android:excludeFromRecents="true"
             android:label="Take Action"
             android:launchMode="singleTask"
-            android:taskAffinity=""
-            android:excludeFromRecents="true"
-            android:parentActivityName=".module.pingme.PingMeActivity" >
+            android:parentActivityName=".module.pingme.PingMeActivity"
+            android:taskAffinity="" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.pingme.PingMeActivity" />
         </activity>
 
         <!-- newsReader -->
-        <activity android:name=".module.newsreader.NewsReaderActivity">
-
+        <activity android:name=".module.newsreader.NewsReaderActivity" >
+        </activity>
+        <activity
+            android:name=".module.newsreader.ArticleActivity"
+            android:theme="@style/NewsReaderStyle_NoActionBar" />
+        <activity
+            android:name=".module.customviews.CusstomViewActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
+        </activity>
+        <activity android:name=".module.customviews.MyOwnCusstomViewActivity" >
         </activity>
 
-        <activity android:name=".module.newsreader.ArticleActivity"
-            android:theme="@style/NewsReaderStyle_NoActionBar" />
-
-        <activity android:name=".module.customviews.CusstomViewActivity" android:parentActivityName=".base.TrainingFirstActivity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".base.TrainingFirstActivity" />
+        <activity android:name=".module.tabcompat.TabCompatMainActivity"
+            android:parentActivityName=".base.TrainingFirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".base.TrainingFirstActivity" />
         </activity>
     </application>
 

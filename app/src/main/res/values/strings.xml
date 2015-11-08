@@ -190,5 +190,9 @@
     <string name="reset_button">Reset</string>
     <string name="cusstom_chart">Chart CusstomView</string>
 
+    <!-- tabcompat -->
+    <string name="tab_photos">Photos</string>
+    <string name="tab_videos">Videos</string>
+
 
 </resources>

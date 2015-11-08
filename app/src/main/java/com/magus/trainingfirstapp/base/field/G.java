@@ -32,7 +32,7 @@ public class G {
 
     public interface MessageConst{
         public static final String MESSAGE = "message";
-        public static final String YOUXI_PACKGAE_NAME = "com.example.youxiclient";
+        public static final String YOUXI_PACKGAE_NAME = "com.magus.youxiclient";
     }
     public interface FlagsConst{
         public static final int REQUEST_IMAGE_CAPTURE = 1;

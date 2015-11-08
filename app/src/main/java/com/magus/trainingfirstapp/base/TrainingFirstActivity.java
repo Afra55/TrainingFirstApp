@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +27,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
@@ -242,7 +246,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 });
                 break;
             case 17:
-                openYouXiClient();
+//                openYouXiClient();
+                showPopAddContact();
                 break;
             case 18:
                 return new Intent(TrainingFirstActivity.this, ContactsActivity.class);
@@ -258,8 +263,7 @@ public class TrainingFirstActivity extends BaseActivity {
         return null;
     }
 
-    private void openYouXiClient() {
-
+    private void openYouXiClient(final String path) {
 
         PackageManager packageManager = getPackageManager();
         PackageInfo packageInfo = null;
@@ -272,7 +276,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                     MAcessibilityService.setEnable(true);
-                    DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.YOUXI_APK);
+                    DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, path);
                     youxiDown.setDescribeText("正在下载有戏客户端...");
                     youxiDown.startDownLoad();
                 }
@@ -283,10 +287,10 @@ public class TrainingFirstActivity extends BaseActivity {
                 }
             });
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
-                showToast("开启省心装自动安装应用包");
-            }
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+//                showToast("开启省心装自动安装应用包");
+//            }
             return;
         }
         Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -302,6 +306,40 @@ public class TrainingFirstActivity extends BaseActivity {
             intent.setComponent(cn);
             this.startActivity(intent);
         }
+    }
+
+    /* 弹出框 */
+    private PopupWindow popupWindow;
+    private EditText youxiPath;
+
+    /* 显示弹出框用来填写有戏的下载地址信息 */
+    private void showPopAddContact(){
+        if (popupWindow == null) {
+
+            View view = LayoutInflater.from(this).inflate(R.layout.pop_youxi_down_path_view, null);
+            popupWindow = new PopupWindow(view,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+            popupWindow.setBackgroundDrawable(new BitmapDrawable());
+            popupWindow.setOutsideTouchable(false);
+            popupWindow.setAnimationStyle(R.style.pop_out_in);
+            view.findViewById(R.id.pop_contact_ok_btn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                    openYouXiClient(youxiPath.getText().toString());
+                }
+            });
+            view.findViewById(R.id.pop_contact_cancle_btn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                    openYouXiClient(G.UrlConst.YOUXI_APK);
+                }
+            });
+            youxiPath = (EditText) view.findViewById(R.id.pop_youxi_path_et);
+        }
+        popupWindow.showAtLocation(getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+
     }
 
     public void sendMessage(View view) {
