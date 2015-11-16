@@ -11,7 +11,7 @@
     android:orientation="vertical"
     tools:context="com.magus.trainingfirstapp.module.customviews.MyOwnCusstomViewActivity">
 
-    <com.magus.trainingfirstapp.module.customviews.charting.MyCusstomView
+   <!-- <com.magus.trainingfirstapp.module.customviews.charting.MyCusstomView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:exampleString="你好啊，傻"
@@ -25,6 +25,11 @@
     <com.magus.trainingfirstapp.module.customviews.FlashTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="你傻比啊"/>
+        android:text="你傻比啊"/>-->
+
+    <com.magus.trainingfirstapp.module.customviews.CusstomScrollView
+        android:id="@+id/mCusstomScrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
