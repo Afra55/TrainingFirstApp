@@ -311,6 +311,8 @@
         </activity>
         <activity android:name=".module.customviews.MyOwnCusstomViewActivity" >
         </activity>
+        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" >
+        </activity>
 
         <activity android:name=".module.tabcompat.TabCompatMainActivity"
             android:parentActivityName=".base.TrainingFirstActivity" >
