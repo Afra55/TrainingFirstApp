@@ -180,6 +180,9 @@ public class CusstomScrollView extends ViewGroup {
     @Override
     public void computeScroll() {
         super.computeScroll();
+
+        Log.d("CusstomScrollView", "computeScroll");
+
         if (mScroller.computeScrollOffset()) {
             scrollTo(0, mScroller.getCurrY());
             postInvalidate();
