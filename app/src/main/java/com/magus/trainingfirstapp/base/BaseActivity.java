@@ -262,10 +262,10 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
 
         switch (flag) {
-            case 0:  // hide
+            case 0:  // show
                 mAnimator = ObjectAnimator.ofFloat(getActionBarView(), "translationY", getActionBarView().getTranslationY(), 0);
                 break;
-            case 1:  // show
+            case 1:  // hide
                 mAnimator = ObjectAnimator.ofFloat(getActionBarView(), "translationY", getActionBarView().getTranslationY(), -getActionBarView().getHeight());
                 break;
         }
@@ -281,12 +281,12 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case MotionEvent.ACTION_MOVE:
                 float mCurrentY = event.getY();
-                if (mFirstY - mCurrentY > mTouchSlop && !actionBarIsShown) {
+                if (mFirstY - mCurrentY > mTouchSlop && actionBarIsShown) {  // 向上 hide
                     actionBarAnim(1);
-                    actionBarIsShown = true;
-                } else if (mCurrentY - mFirstY > mTouchSlop && actionBarIsShown) {
-                    actionBarAnim(0);
                     actionBarIsShown = false;
+                } else if (mCurrentY - mFirstY > mTouchSlop && !actionBarIsShown) { // 向下 show
+                    actionBarAnim(0);
+                    actionBarIsShown = true;
                 }
                 break;
             case MotionEvent.ACTION_UP:
