@@ -1,12 +1,16 @@
 package com.magus.trainingfirstapp.base;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,12 +38,19 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     private LinearLayout contentFatherLly;
     private LinearLayout actionBarRightContainerLly;
 
+    private int mTouchSlop;
+    private Animator mAnimator;
+    private float mFirstY;
+    private boolean actionBarIsShown = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 //        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+        /* 获取用户滑动的最短距离 */
+        mTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
 
         SharedPreferenceUtil.init(this);
 
@@ -131,6 +142,10 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected View getActionBarView(){
+        return actionBarRlt;
     }
 
     protected void showActionBar() {
@@ -240,4 +255,43 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         actionBarRightContainerLly.addView(view);
     }
 
+
+    private void actionBarAnim(int flag) {
+        if (mAnimator != null && mAnimator.isRunning()) {
+            mAnimator.cancel();
+        }
+
+        switch (flag) {
+            case 0:  // hide
+                mAnimator = ObjectAnimator.ofFloat(getActionBarView(), "translationY", getActionBarView().getTranslationY(), 0);
+                break;
+            case 1:  // show
+                mAnimator = ObjectAnimator.ofFloat(getActionBarView(), "translationY", getActionBarView().getTranslationY(), -getActionBarView().getHeight());
+                break;
+        }
+        mAnimator.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        mAnimator.start();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mFirstY = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float mCurrentY = event.getY();
+                if (mFirstY - mCurrentY > mTouchSlop && !actionBarIsShown) {
+                    actionBarAnim(1);
+                    actionBarIsShown = true;
+                } else if (mCurrentY - mFirstY > mTouchSlop && actionBarIsShown) {
+                    actionBarAnim(0);
+                    actionBarIsShown = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
 }
