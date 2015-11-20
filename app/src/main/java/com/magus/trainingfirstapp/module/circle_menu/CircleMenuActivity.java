@@ -1,18 +1,20 @@
 package com.magus.trainingfirstapp.module.circle_menu;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.BaseActivity;
 import com.magus.trainingfirstapp.view.CircleMenuLayout;
 
 /**
  * Created by guanjun on 2015/10/19.
  */
-public class CircleMenuActivity extends Activity {
+public class CircleMenuActivity extends BaseActivity {
     private CircleMenuLayout mCircleMenuLayout;
 
     private String[] mItemTexts = new String[]{"安全中心 ", "特色服务", "投资理财",
@@ -23,11 +25,14 @@ public class CircleMenuActivity extends Activity {
             R.drawable.home_mbank_6_normal};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle);
+        setActionBarTitle("圆形菜单");
+        setActionBarLeftBtnText("Return");
+      //  hideActionBarRightBtn();
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //    getActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCircleMenuLayout = (CircleMenuLayout) findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);

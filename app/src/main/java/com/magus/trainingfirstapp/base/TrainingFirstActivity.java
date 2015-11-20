@@ -1,5 +1,7 @@
 package com.magus.trainingfirstapp.base;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,7 +23,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +44,7 @@ import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
+import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
@@ -46,6 +52,7 @@ import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
 import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
+import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
@@ -72,8 +79,9 @@ public class TrainingFirstActivity extends BaseActivity {
 
         // 初始化听云
         // 采集地理位置信息
-         NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
+        NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
         // 不需要采集地理位置信息 NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).start(this);
+
 
         setContentLayout(R.layout.activity_training_first);
         setActionBarLeftBtnText("Exit");
@@ -82,7 +90,6 @@ public class TrainingFirstActivity extends BaseActivity {
         first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
-
         initModule();
     }
 
@@ -259,6 +266,10 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, NewsReaderActivity.class);
             case 22:
                 return new Intent(TrainingFirstActivity.this, CusstomViewActivity.class);
+            case 23:
+                return new Intent(TrainingFirstActivity.this, PagerSlidingTabStripActivity.class);
+            case 24:
+                return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
         }
         return null;
     }
@@ -298,7 +309,7 @@ public class TrainingFirstActivity extends BaseActivity {
         resolveIntent.setPackage(packageInfo.packageName);
         List<ResolveInfo> apps = packageManager.queryIntentActivities(resolveIntent, 0);
         ResolveInfo ri = apps.iterator().next();
-        if (ri != null ) {
+        if (ri != null) {
             String className = ri.activityInfo.name;
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -313,7 +324,7 @@ public class TrainingFirstActivity extends BaseActivity {
     private EditText youxiPath;
 
     /* 显示弹出框用来填写有戏的下载地址信息 */
-    private void showPopAddContact(){
+    private void showPopAddContact() {
         if (popupWindow == null) {
 
             View view = LayoutInflater.from(this).inflate(R.layout.pop_youxi_down_path_view, null);
@@ -433,4 +444,5 @@ public class TrainingFirstActivity extends BaseActivity {
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
     }
+
 }
