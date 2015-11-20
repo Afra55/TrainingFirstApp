@@ -1,12 +1,12 @@
 package com.magus.trainingfirstapp.module.customviews;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseActivity;
+import com.magus.trainingfirstapp.module.customviews.charting.CusstomScrollView;
 
 public class MyOwnCusstomViewActivity extends BaseActivity {
 

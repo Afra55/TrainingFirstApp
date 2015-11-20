@@ -44,6 +44,7 @@ import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
+import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
@@ -267,6 +268,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, CusstomViewActivity.class);
             case 23:
                 return new Intent(TrainingFirstActivity.this, PagerSlidingTabStripActivity.class);
+            case 24:
+                return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
         }
         return null;
     }

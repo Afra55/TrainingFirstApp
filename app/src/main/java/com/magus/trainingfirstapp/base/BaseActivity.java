@@ -120,7 +120,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
     protected void setContentLayout(int layoutId) {
         View sonView = LayoutInflater.from(this).inflate(layoutId, null);
-        contentFatherLly.addView(sonView);
+        contentFatherLly.addView(sonView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         getChildViewForm(getWindow().getDecorView());
     }
 
