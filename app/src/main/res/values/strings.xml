@@ -197,6 +197,7 @@
     <string name="tab_photos">Photos</string>
     <string name="tab_videos">Videos</string>
     <string name="flash_view">闪瞎眼睛的可拖拽view</string>
+    <string name="slide_menu">侧滑菜单的简易实现</string>
 
 
 </resources>
