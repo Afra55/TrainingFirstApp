@@ -59,6 +59,7 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
+import com.magus.trainingfirstapp.view.DragViewTestGroup;
 import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
@@ -206,19 +207,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 }
                 return null;
             case 9:   //保存拍摄到的原图
-                Intent takePictureOintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureOintent.resolveActivity(getPackageManager()) != null) {
-                    File photoFile = null;
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    if (photoFile != null) {
-                        takePictureOintent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                        startActivityForResult(takePictureOintent, G.FlagsConst.REQUEST_IMAGE_CAPTURE_O);
-                    }
-                }
+                savePhoto();
                 return null;
             case 11:
                 return new Intent(TrainingFirstActivity.this, CircleMenuActivity.class);
@@ -232,25 +221,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case 15:
                 return new Intent(TrainingFirstActivity.this, NetworkActivity.class);
             case 16:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
-                    showToast("开启省心装自动安装应用包");
-                }
-                AlertUtils.showAlert(this, "提示", "确认下载阳光e客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        MAcessibilityService.setEnable(true);
-                        DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
-                        youxiDown.setDescribeText("正在下载elife...");
-                        youxiDown.startDownLoad();
-                    }
-                }, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                downLoadTemp();
                 break;
             case 17:
 //                openYouXiClient();
@@ -270,8 +241,48 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, PagerSlidingTabStripActivity.class);
             case 24:
                 return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
+            case 25:
+                return new Intent(TrainingFirstActivity.this, DragViewTestGroup.class);
         }
         return null;
+    }
+
+    private void downLoadTemp() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
+            showToast("开启省心装自动安装应用包");
+        }
+        AlertUtils.showAlert(this, "提示", "确认下载阳光e客户端？", "是的", "不要", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MAcessibilityService.setEnable(true);
+                DownLoadService youxiDown = new DownLoadService(TrainingFirstActivity.this, G.UrlConst.E_APK);
+                youxiDown.setDescribeText("正在下载elife...");
+                youxiDown.startDownLoad();
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void savePhoto() {
+        Intent takePictureOintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureOintent.resolveActivity(getPackageManager()) != null) {
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (photoFile != null) {
+                takePictureOintent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+                startActivityForResult(takePictureOintent, G.FlagsConst.REQUEST_IMAGE_CAPTURE_O);
+            }
+        }
     }
 
     private void openYouXiClient(final String path) {

@@ -51,7 +51,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 25;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 26;
     }
 
     /**
@@ -112,6 +112,8 @@ public class G {
                 return "PagerSlidingTabStrip";
             case 24:
                 return context.getString(R.string.flash_view);
+            case 25:
+                return context.getString(R.string.slide_menu);
         }
         return "";
     }
