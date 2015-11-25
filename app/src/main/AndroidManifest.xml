@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magus.trainingfirstapp" >
+    package="com.magus.trainingfirstapp">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -18,8 +18,10 @@
  To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
      option is required to comply with the Google+ Sign-In developer policies
     -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" /> <!-- To retrieve the account name (email) as part of sign-in: -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -59,12 +61,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".base.TrainingFirstActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -75,7 +77,7 @@
             android:name=".module.other_activity.OtherActivity"
             android:label="@string/other_app_name"
             android:launchMode="singleTop"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -104,21 +106,19 @@
         </activity>
         <activity
             android:name=".module.activity_life.ActivityA"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity android:name=".module.activity_life.ActivityB" />
         <activity android:name=".module.activity_life.ActivityC" />
         <activity
             android:name=".module.activity_life.DialogActivity"
-            android:theme="@android:style/Theme.Dialog" >
-        </activity>
+            android:theme="@android:style/Theme.Dialog"></activity>
         <activity android:name=".module.frgment_demo.FragmentMainActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.magus.trainingfirstapp.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
@@ -126,7 +126,7 @@
 
         <activity
             android:name=".module.other_activity.FileSelectActivity"
-            android:label="@string/file_selector" >
+            android:label="@string/file_selector">
             <intent-filter>
                 <action android:name="ANDROID.INTENT.ACTION.PICK" />
 
@@ -137,27 +137,22 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity" >
-        </activity>
-        <activity android:name=".module.photobyintent.PhotoIntentActivity" >
-        </activity>
+        <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity"></activity>
+        <activity android:name=".module.photobyintent.PhotoIntentActivity"></activity>
         <activity
             android:name=".module.images.DisplayingBitmapsActivity"
-            android:launchMode="singleTop" >
-        </activity>
-        <activity android:name=".module.opengl.OpenGLES20Activity" >
-        </activity>
+            android:launchMode="singleTop"></activity>
+        <activity android:name=".module.opengl.OpenGLES20Activity"></activity>
 
         <!-- 动画相关 start -->
         <activity
             android:name=".module.animdemo.AnimDemoMainActivity"
-            android:label="@string/title_crossfade" >
-        </activity>
+            android:label="@string/title_crossfade"></activity>
         <activity
             android:name=".module.animdemo.CrossfadeActivity"
             android:label="@string/title_crossfade"
             android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.animdemo.AnimDemoMainActivity" />
@@ -166,7 +161,7 @@
             android:name=".module.animdemo.CardFlipActivity"
             android:label="@string/title_card_flip"
             android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
-            android:theme="@style/DarkTheme" >
+            android:theme="@style/DarkTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.animdemo.AnimDemoMainActivity" />
@@ -175,7 +170,7 @@
             android:name=".module.animdemo.ScreenSlideActivity"
             android:label="@string/title_screen_slide"
             android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.animdemo.AnimDemoMainActivity" />
@@ -183,7 +178,7 @@
         <activity
             android:name=".module.animdemo.ZoomActivity"
             android:label="@string/title_zoom"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity" >
+            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.animdemo.AnimDemoMainActivity" />
@@ -191,31 +186,29 @@
         <activity
             android:name=".module.animdemo.LayoutChangesActivity"
             android:label="@string/title_layout_changes"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity" >
->
+            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.animdemo.AnimDemoMainActivity" />
         </activity>
         <!-- 动画相关 end -->
-        <activity android:name=".module.myanim.MyAnimActivity" >
-        </activity>
+        <activity android:name=".module.myanim.MyAnimActivity"></activity>
         <!-- 功能效果 -->
-        <activity android:name=".module.circle_menu.CircleMenuActivity" >
-        </activity>
+        <activity android:name=".module.circle_menu.CircleMenuActivity"></activity>
 
         <!-- 连接网络相关 start -->
         <activity
             android:name=".module.networkusage_demo.NetworkActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
         <activity
             android:name=".module.networkusage_demo.SettingsActivity"
-            android:label="SettingsActivity" >
+            android:label="SettingsActivity">
             <intent-filter>
 
                 <!-- 管理指定应用程序网络数据使用情况的设置 -->
@@ -232,7 +225,7 @@
             android:name=".module.accessibility_service.MAcessibilityService"
             android:enabled="@bool/atLeastIceCreamSandwich"
             android:label="@string/acc_auto_install_service_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -244,35 +237,35 @@
 
         <activity
             android:name=".module.contacts.ContactsActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
         <activity
             android:name=".module.effectivenavigation.EffectiveNavigationActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
         <activity
             android:name=".module.effectivenavigation.CollectionDemoActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
         <activity
             android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity" >
+            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
         <activity
             android:name=".module.pingme.PingMeActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
@@ -281,8 +274,7 @@
         <service
             android:name=".module.pingme.PingService"
             android:enabled="true"
-            android:label="PingServiceLabel" >
-        </service>
+            android:label="PingServiceLabel"></service>
 
         <activity
             android:name=".module.pingme.PingMeResultActivity"
@@ -290,38 +282,35 @@
             android:label="Take Action"
             android:launchMode="singleTask"
             android:parentActivityName=".module.pingme.PingMeActivity"
-            android:taskAffinity="" >
+            android:taskAffinity="">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".module.pingme.PingMeActivity" />
         </activity>
 
         <!-- newsReader -->
-        <activity android:name=".module.newsreader.NewsReaderActivity" >
-        </activity>
+        <activity android:name=".module.newsreader.NewsReaderActivity"></activity>
         <activity
             android:name=".module.newsreader.ArticleActivity"
             android:theme="@style/NewsReaderStyle_NoActionBar" />
         <activity
             android:name=".module.customviews.CusstomViewActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.MyOwnCusstomViewActivity" >
-        </activity>
-        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" >
-        </activity>
+        <activity android:name=".module.customviews.MyOwnCusstomViewActivity"></activity>
+        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity"></activity>
         <activity
             android:name=".module.tabcompat.TabCompatMainActivity"
-            android:parentActivityName=".base.TrainingFirstActivity" >
+            android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.CusstomViewTestActivity" >
-        </activity>
+        <activity android:name=".module.customviews.CusstomViewTestActivity"></activity>
+        <activity android:name=".module.customviews.charting.ViewDragHelperTestActivity"></activity>
     </application>
 
 </manifest>
