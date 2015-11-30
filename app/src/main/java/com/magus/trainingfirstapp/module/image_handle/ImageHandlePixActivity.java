@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,8 +17,6 @@ public class ImageHandlePixActivity extends BaseActivity {
 
     private ImageView imageView;
     private Bitmap bitmap;
-    private final int START = 1001;
-    private final int END = 1002;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
