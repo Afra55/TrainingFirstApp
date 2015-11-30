@@ -2,6 +2,7 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <!-- Customize your theme here. -->
+        <item name="android:windowAnimationStyle">@style/activty_fade_in_fade_out</item>
     </style>
 
     <style name="myButton" >
