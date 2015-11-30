@@ -106,12 +106,12 @@
         </activity>
         <activity
             android:name=".module.activity_life.ActivityA"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity android:name=".module.activity_life.ActivityB" />
         <activity android:name=".module.activity_life.ActivityC" />
         <activity
             android:name=".module.activity_life.DialogActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".module.frgment_demo.FragmentMainActivity" />
 
         <provider
@@ -137,17 +137,17 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity"></activity>
-        <activity android:name=".module.photobyintent.PhotoIntentActivity"></activity>
+        <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity" />
+        <activity android:name=".module.photobyintent.PhotoIntentActivity" />
         <activity
             android:name=".module.images.DisplayingBitmapsActivity"
-            android:launchMode="singleTop"></activity>
-        <activity android:name=".module.opengl.OpenGLES20Activity"></activity>
+            android:launchMode="singleTop" />
+        <activity android:name=".module.opengl.OpenGLES20Activity" />
 
         <!-- 动画相关 start -->
         <activity
             android:name=".module.animdemo.AnimDemoMainActivity"
-            android:label="@string/title_crossfade"></activity>
+            android:label="@string/title_crossfade" />
         <activity
             android:name=".module.animdemo.CrossfadeActivity"
             android:label="@string/title_crossfade"
@@ -193,9 +193,9 @@
                 android:value=".module.animdemo.AnimDemoMainActivity" />
         </activity>
         <!-- 动画相关 end -->
-        <activity android:name=".module.myanim.MyAnimActivity"></activity>
+        <activity android:name=".module.myanim.MyAnimActivity" />
         <!-- 功能效果 -->
-        <activity android:name=".module.circle_menu.CircleMenuActivity"></activity>
+        <activity android:name=".module.circle_menu.CircleMenuActivity" />
 
         <!-- 连接网络相关 start -->
         <activity
@@ -274,7 +274,7 @@
         <service
             android:name=".module.pingme.PingService"
             android:enabled="true"
-            android:label="PingServiceLabel"></service>
+            android:label="PingServiceLabel" />
 
         <activity
             android:name=".module.pingme.PingMeResultActivity"
@@ -289,7 +289,7 @@
         </activity>
 
         <!-- newsReader -->
-        <activity android:name=".module.newsreader.NewsReaderActivity"></activity>
+        <activity android:name=".module.newsreader.NewsReaderActivity" />
         <activity
             android:name=".module.newsreader.ArticleActivity"
             android:theme="@style/NewsReaderStyle_NoActionBar" />
@@ -300,8 +300,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.MyOwnCusstomViewActivity"></activity>
-        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity"></activity>
+        <activity android:name=".module.customviews.MyOwnCusstomViewActivity" />
+        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" />
         <activity
             android:name=".module.tabcompat.TabCompatMainActivity"
             android:parentActivityName=".base.TrainingFirstActivity">
@@ -309,8 +309,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.CusstomViewTestActivity"></activity>
-        <activity android:name=".module.customviews.charting.ViewDragHelperTestActivity"></activity>
+        <activity android:name=".module.customviews.CusstomViewTestActivity" />
+        <activity android:name=".module.customviews.ViewDragHelperTestActivity" />
+        <activity android:name=".module.image_handle.ImageHandlePixActivity"></activity>
     </application>
 
 </manifest>

@@ -198,6 +198,8 @@
     <string name="tab_videos">Videos</string>
     <string name="flash_view">闪瞎眼睛的可拖拽view</string>
     <string name="slide_menu">侧滑菜单的简易实现</string>
+    <string name="clock_s">秒表</string>
+    <string name="handle_img">图片处理</string>
 
 
 </resources>

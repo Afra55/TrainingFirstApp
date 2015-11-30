@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.view;
+package com.magus.trainingfirstapp.module.customviews.charting;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
