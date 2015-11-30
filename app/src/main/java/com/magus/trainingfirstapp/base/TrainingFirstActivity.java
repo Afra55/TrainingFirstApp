@@ -40,6 +40,7 @@ import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
+import com.magus.trainingfirstapp.module.customviews.ViewDragHelperTestActivity;
 import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
@@ -54,7 +55,6 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
-import com.magus.trainingfirstapp.module.customviews.charting.DragViewTestGroup;
 import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
@@ -237,7 +237,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case 24:
                 return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
             case 25:
-                return new Intent(TrainingFirstActivity.this, DragViewTestGroup.class);
+                return new Intent(TrainingFirstActivity.this, ViewDragHelperTestActivity.class);
         }
         return null;
     }
