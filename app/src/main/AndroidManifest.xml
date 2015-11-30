@@ -310,7 +310,7 @@
                 android:value=".base.TrainingFirstActivity" />
         </activity>
         <activity android:name=".module.customviews.CusstomViewTestActivity"></activity>
-        <activity android:name=".module.customviews.charting.ViewDragHelperTestActivity"></activity>
+        <activity android:name=".module.customviews.ViewDragHelperTestActivity"></activity>
     </application>
 
 </manifest>

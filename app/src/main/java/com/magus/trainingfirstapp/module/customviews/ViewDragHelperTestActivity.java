@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.module.customviews.charting;
+package com.magus.trainingfirstapp.module.customviews;
 
 import android.os.Bundle;
 

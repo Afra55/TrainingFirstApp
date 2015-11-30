@@ -1,7 +1,5 @@
 package com.magus.trainingfirstapp.base;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,10 +21,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +54,7 @@ import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
-import com.magus.trainingfirstapp.view.DragViewTestGroup;
+import com.magus.trainingfirstapp.module.customviews.charting.DragViewTestGroup;
 import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
