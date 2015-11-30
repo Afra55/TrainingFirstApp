@@ -22,7 +22,7 @@
             android:id="@+id/first_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/loading2" />
+            android:indeterminateDrawable="@drawable/progress_bg" />
 
         <TextView
             android:id="@+id/first_show_tv"
