@@ -36,7 +36,7 @@ public class MApplication extends Application {
                 .bitmapConfig(Bitmap.Config.RGB_565)  // 位图RGB_565比ARGB_8888消耗更少的内存
                 .imageScaleType(ImageScaleType.EXACTLY)  // 图像缩小尺寸刚好到目标大小（按比例缩小的宽度或高度将等于目标大小，依赖缩放类型） 注意：如果原始图片尺寸小于目标尺寸将不会缩放
                 .displayer(new FadeInBitmapDisplayer(300))  // “淡入”动画显示图像
-                .showImageOnLoading(R.drawable.loading)
+                .showImageOnLoading(R.drawable.beauty)
                 .showImageOnFail(R.mipmap.ic_launcher)
                 .showImageForEmptyUri(R.mipmap.ic_launcher)
                 .build();

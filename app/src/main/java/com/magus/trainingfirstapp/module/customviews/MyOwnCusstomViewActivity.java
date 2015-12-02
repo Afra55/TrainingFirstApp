@@ -20,7 +20,7 @@ public class MyOwnCusstomViewActivity extends BaseActivity {
         for (int i = 0; i < 3; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            imageView.setImageResource(R.drawable.loading);
+            imageView.setImageResource(R.drawable.beauty);
             mScrollView.addView(imageView);
         }
     }

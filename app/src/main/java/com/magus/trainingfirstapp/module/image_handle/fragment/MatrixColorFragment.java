@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
@@ -40,24 +39,24 @@ public class MatrixColorFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_matrix_color, container, false);
-        img = (ImageView) view.findViewById(R.id.fragment_matrix_img);
+        img = (ImageView) view.findViewById(R.id.fragment_xfermode_img_container);
         return initLayoutView(inflater, container, view);
     }
 
     @Override
     protected void initData() {
         hideFragmentTitleBar();
-        orientationBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading);
+        orientationBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beauty);
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
-            case R.id.fragment_matrix_gray_btn:
+            case R.id.fragment_xfermode_roundcorner_btn:
                 colorEfectMethod(ColorMatrixUtils.grayColorMatrix());
                 break;
-            case R.id.fragment_matrix_reversal_btn:
+            case R.id.fragment_xfermode_guaguale_btn:
                 colorEfectMethod(ColorMatrixUtils.reversalMatrix());
                 break;
             case R.id.fragment_matrix_reminiscence_btn:

@@ -37,7 +37,7 @@ public class PixHandleFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pix_handle, null);
         imageView = (ImageView) view.findViewById(R.id.image_handle_img);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.loading);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beauty);
         imageView.setImageBitmap(bitmap);
         return initLayoutView(inflater, container, view);
     }
