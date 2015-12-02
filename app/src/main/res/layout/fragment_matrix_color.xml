@@ -1,0 +1,69 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.magus.trainingfirstapp.module.image_handle.fragment.MatrixColorFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/fragment_matrix_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/loading" />
+
+        <Button
+            android:id="@+id/fragment_matrix_gray_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_matrix_img"
+            android:layout_toLeftOf="@+id/fragment_matrix_reversal_btn"
+            android:layout_toStartOf="@+id/fragment_matrix_reversal_btn"
+            android:text="灰度效果" />
+
+        <Button
+            android:id="@+id/fragment_matrix_reversal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_matrix_img"
+            android:layout_centerHorizontal="true"
+            android:text="反转效果" />
+
+        <Button
+            android:id="@+id/fragment_matrix_reminiscence_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_matrix_img"
+            android:layout_toEndOf="@+id/fragment_matrix_reversal_btn"
+            android:layout_toRightOf="@+id/fragment_matrix_reversal_btn"
+            android:text="怀旧效果" />
+
+        <Button
+            android:id="@+id/fragment_matrix_discoloration_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/fragment_matrix_gray_btn"
+            android:layout_alignStart="@+id/fragment_matrix_gray_btn"
+            android:layout_below="@+id/fragment_matrix_gray_btn"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:text="去色效果" />
+
+        <Button
+            android:id="@+id/fragment_matrix_high_sat_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/fragment_matrix_discoloration_btn"
+            android:layout_toRightOf="@+id/fragment_matrix_discoloration_btn"
+            android:text="高饱和度" />
+
+    </RelativeLayout>
+
+
+</ScrollView>

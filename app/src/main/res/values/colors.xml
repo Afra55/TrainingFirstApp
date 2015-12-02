@@ -37,4 +37,8 @@
     <!-- PagerSlidingTabStrip -->
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="background_window">#FFE5E5E5</color>
+
+    <!-- category_tab -->
+    <color name="category_tab_text">#ff707070</color>
+    <color name="category_tab_highlight_text">#fb664e</color>
 </resources>

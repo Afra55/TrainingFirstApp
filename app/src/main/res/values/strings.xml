@@ -55,7 +55,7 @@
 
     <string name="close">Close</string>
     <string name="dialog">Dialog</string>
-    <string name="fragment">fragment</string>
+    <string name="picture_processing">picture processing</string>
     <string name="intent_test">intentTest</string>
     <string name="map">map</string>
     <string name="web">webView</string>

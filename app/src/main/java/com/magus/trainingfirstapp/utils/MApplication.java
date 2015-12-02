@@ -4,7 +4,6 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.magus.trainingfirstapp.R;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -61,7 +60,5 @@ public class MApplication extends Application {
         //        PauseOnScrollListener listener = new PauseOnScrollListener(imageLoader, pauseOnScroll, pauseOnFling);
         //        listView.setOnScrollListener(listener);
 
-        /* Fresco */
-        Fresco.initialize(getApplicationContext());
     }
 }

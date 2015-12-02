@@ -106,6 +106,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         fragmentContentFatherLly.addView(subView);
         getChildViewForm(fragmentActionBarLeftBtn);
         getChildViewForm(fragmentActionBarRightBtn);
+        getChildViewForm(subView);
         initData();
         return view;
     }

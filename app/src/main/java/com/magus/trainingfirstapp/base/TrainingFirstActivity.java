@@ -43,6 +43,7 @@ import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.magus.trainingfirstapp.module.customviews.ViewDragHelperTestActivity;
 import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
+import com.magus.trainingfirstapp.module.image_handle.ImageHandlePixActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
@@ -102,14 +103,8 @@ public class TrainingFirstActivity extends BaseActivity {
      * @param tagId
      */
     private void addButton(int tagId) {
-        if (first_module_content_lly.getChildCount() > 1) {   //本来存放着一个ImageView因此当子布局大于1个的时候加线条
-            TextView textView = new TextView(this);
-            textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, CommontUtils.dip2px(1)));
-            textView.setBackgroundColor(getResources().getColor(R.color.first_module_line));
-            first_module_content_lly.addView(textView);
-        }
-
         Button button = (Button) LayoutInflater.from(this).inflate(R.layout.view_button, null);
+        button.setGravity(Gravity.CENTER);
         button.setText(G.getModuleBtnName(this, tagId));
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
@@ -168,10 +163,12 @@ public class TrainingFirstActivity extends BaseActivity {
     private Intent onModuleBtnClick(int tagId) {
         switch (tagId) {
             case 0:
-                return new Intent(this, FragmentMainActivity.class);
+                return new Intent(this, ImageHandlePixActivity.class);
             case 1:
                 Uri number = Uri.parse("tel:10086");
-                return new Intent(Intent.ACTION_DIAL, number);
+                Intent intent = new Intent(Intent.ACTION_DIAL, number);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                return intent;
             case 2:
                 try {
                     Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level

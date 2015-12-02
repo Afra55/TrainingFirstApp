@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.magus.trainingfirstapp.view.CategoryTabStrip
+        android:id="@+id/category_strip"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingLeft="6.0dip"
+        android:paddingRight="6.0dip" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/category_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:overScrollMode="never" />
+</LinearLayout>
