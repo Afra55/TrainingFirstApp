@@ -219,4 +219,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public boolean onBackPressed(){
         return true;
     }
+
+    public void reset(){}
+
 }

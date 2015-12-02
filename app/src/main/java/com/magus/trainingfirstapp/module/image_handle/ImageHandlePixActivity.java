@@ -18,17 +18,19 @@ public class ImageHandlePixActivity extends BaseActivity implements BaseFragment
 
     private CategoryTabStrip tabs;
     private ViewPager pager;
-
+    private int fragmentShownPosition = 0;
+    private BaseFragment[] fragments;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActionBarTitle(getString(R.string.handle_img));
+        setActionBarRightBtnText(getString(R.string.reset));
         setContentLayout(R.layout.activity_image_handle_pix);
         tabs = (CategoryTabStrip) findViewById(R.id.category_strip);
         pager = (ViewPager) findViewById(R.id.category_view_pager);
 
-        final Fragment[] fragments = new Fragment[]{
+        fragments = new BaseFragment[]{
                 PixHandleFragment.newInstance("image_handle", "pix"),
                 MatrixColorFragment.newInstance("image_handle", "matrix")};
 
@@ -56,6 +58,22 @@ public class ImageHandlePixActivity extends BaseActivity implements BaseFragment
             }
         });
         tabs.setViewPager(pager);
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                fragmentShownPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
@@ -71,5 +89,15 @@ public class ImageHandlePixActivity extends BaseActivity implements BaseFragment
     @Override
     public void onFragmentChildViewOnClick(View view) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.actionBar_right_btn:
+                fragments[fragmentShownPosition].reset();
+                break;
+        }
     }
 }

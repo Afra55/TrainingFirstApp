@@ -186,4 +186,10 @@ public class PixHandleFragment extends BaseFragment {
             return this;
         }
     }
+
+    @Override
+    public void reset() {
+        super.reset();
+        imageView.setImageBitmap(bitmap);
+    }
 }

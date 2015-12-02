@@ -3,11 +3,16 @@ package com.magus.trainingfirstapp.module.image_handle.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
@@ -50,20 +55,38 @@ public class MatrixColorFragment extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.fragment_matrix_gray_btn:
-
+                colorEfectMethod(ColorMatrixUtils.grayColorMatrix());
                 break;
             case R.id.fragment_matrix_reversal_btn:
-
+                colorEfectMethod(ColorMatrixUtils.reversalMatrix());
                 break;
             case R.id.fragment_matrix_reminiscence_btn:
-
+                colorEfectMethod(ColorMatrixUtils.reminiscenceMatrix());
                 break;
             case R.id.fragment_matrix_discoloration_btn:
-
+                colorEfectMethod(ColorMatrixUtils.discolorationMatrix());
                 break;
             case R.id.fragment_matrix_high_sat_btn:
-
+                colorEfectMethod(ColorMatrixUtils.highSatMatrix());
                 break;
         }
     }
+
+    private void colorEfectMethod(float color[]) {
+        Bitmap bitmap = Bitmap.createBitmap(orientationBitmap.getWidth(), orientationBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.set(color);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint();
+        paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+        canvas.drawBitmap(orientationBitmap, 0, 0, paint);
+        img.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void reset() {
+        super.reset();
+        img.setImageBitmap(orientationBitmap);
+    }
+
 }

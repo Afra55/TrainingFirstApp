@@ -201,5 +201,8 @@
     <string name="clock_s">秒表</string>
     <string name="handle_img">图片处理</string>
 
+    <string name="btn_is_shown_bottom">scroll to bottom</string>
+    <string name="reset">reset</string>
+
 
 </resources>
