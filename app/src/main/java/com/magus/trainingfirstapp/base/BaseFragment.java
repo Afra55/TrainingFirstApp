@@ -106,6 +106,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         fragmentContentFatherLly.addView(subView);
         getChildViewForm(fragmentActionBarLeftBtn);
         getChildViewForm(fragmentActionBarRightBtn);
+        getChildViewForm(subView);
         initData();
         return view;
     }
@@ -218,4 +219,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public boolean onBackPressed(){
         return true;
     }
+
+    public void reset(){}
+
 }

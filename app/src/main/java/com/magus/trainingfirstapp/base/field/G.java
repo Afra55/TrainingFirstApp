@@ -63,7 +63,7 @@ public class G {
     public static String getModuleBtnName(Context context, int tagId){
         switch (tagId){
             case 0:
-                return context.getResources().getString(R.string.fragment);
+                return context.getResources().getString(R.string.picture_processing);
             case 1:
                 return context.getResources().getString(R.string.intent_test);
             case 2:

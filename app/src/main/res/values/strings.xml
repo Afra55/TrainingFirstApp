@@ -55,7 +55,7 @@
 
     <string name="close">Close</string>
     <string name="dialog">Dialog</string>
-    <string name="fragment">fragment</string>
+    <string name="picture_processing">picture processing</string>
     <string name="intent_test">intentTest</string>
     <string name="map">map</string>
     <string name="web">webView</string>
@@ -200,6 +200,9 @@
     <string name="slide_menu">侧滑菜单的简易实现</string>
     <string name="clock_s">秒表</string>
     <string name="handle_img">图片处理</string>
+
+    <string name="btn_is_shown_bottom">scroll to bottom</string>
+    <string name="reset">reset</string>
 
 
 </resources>

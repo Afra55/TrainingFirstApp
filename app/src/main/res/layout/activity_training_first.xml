@@ -66,15 +66,15 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/first_relativeLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp">
 
-        <LinearLayout
+        <com.magus.trainingfirstapp.view.TwoViewALineLinearLayout
             android:id="@+id/first_module_content_lly"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:orientation="vertical">
 
@@ -82,7 +82,8 @@
                 android:id="@+id/first_image_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/dark_blue"
                 android:scaleType="centerCrop" />
-        </LinearLayout>
+        </com.magus.trainingfirstapp.view.TwoViewALineLinearLayout>
     </ScrollView>
 </RelativeLayout>
