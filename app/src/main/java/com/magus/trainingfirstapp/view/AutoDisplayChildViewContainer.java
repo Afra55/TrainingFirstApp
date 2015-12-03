@@ -1,6 +1,7 @@
 package com.magus.trainingfirstapp.view;
 
 import android.content.Context;
+import android.hardware.camera2.TotalCaptureResult;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class AutoDisplayChildViewContainer extends ViewGroup {
     private int totalTop = 0;
     private int margin = 10;
     private int maxChildHeight = 0;
+    private int totalRight = 0;
 
     public AutoDisplayChildViewContainer(Context context) {
         super(context);
@@ -81,6 +83,7 @@ public class AutoDisplayChildViewContainer extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
         int count = getChildCount();
+        int lineViewCount = 0;
 
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
@@ -93,9 +96,12 @@ public class AutoDisplayChildViewContainer extends ViewGroup {
                     totaleft = 0;
                     totalTop = 0;
                 }
-                int totalRight = totaleft + child.getMeasuredWidth();
+                totalRight = totaleft + child.getMeasuredWidth();
 
                 if (totalRight > parentWidth) {
+
+                    adjustLine(lineViewCount, i);
+                    lineViewCount = 0;
                     totalTop += maxChildHeight;
                     totaleft = 0;
                     maxChildHeight = child.getMeasuredHeight();
@@ -108,8 +114,22 @@ public class AutoDisplayChildViewContainer extends ViewGroup {
                         totalRight,
                         totalTop + child.getMeasuredHeight()
                 );
-
+                lineViewCount++;
             }
+        }
+
+        totaleft= totalRight + margin;
+        adjustLine(lineViewCount, count);
+
+    }
+
+    private void adjustLine(int lineViewCount, int i) {
+        totaleft = (parentWidth - totaleft) / 2;
+        for (int lineViewNumber = lineViewCount; lineViewNumber > 0; lineViewNumber--) {
+            View lineViewChild = getChildAt(i - lineViewNumber);
+            totalRight = totaleft + lineViewChild.getMeasuredWidth();
+            lineViewChild.layout(totaleft, totalTop, totalRight, totalTop + lineViewChild.getMeasuredHeight());
+            totaleft += lineViewChild.getMeasuredWidth() + margin;
         }
     }
 
