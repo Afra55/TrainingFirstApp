@@ -9,4 +9,7 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
+    <style name="myButtonCommont" >
+    </style>
+
 </resources>
