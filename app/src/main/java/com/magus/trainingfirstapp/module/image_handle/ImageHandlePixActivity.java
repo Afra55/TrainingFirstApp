@@ -13,6 +13,7 @@ import com.magus.trainingfirstapp.base.BaseFragment;
 import com.magus.trainingfirstapp.module.image_handle.fragment.MatrixColorFragment;
 import com.magus.trainingfirstapp.module.image_handle.fragment.PixHandleFragment;
 import com.magus.trainingfirstapp.module.image_handle.fragment.PorterDuffXfermodeTestFragment;
+import com.magus.trainingfirstapp.module.image_handle.fragment.ShaderTestFragment;
 import com.magus.trainingfirstapp.view.CategoryTabStrip;
 
 public class ImageHandlePixActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
@@ -34,7 +35,8 @@ public class ImageHandlePixActivity extends BaseActivity implements BaseFragment
         fragments = new BaseFragment[]{
                 PixHandleFragment.newInstance("image_handle", "pix"),
                 MatrixColorFragment.newInstance("image_handle", "matrix"),
-                PorterDuffXfermodeTestFragment.newInstance("image_handle", "xfermode")};
+                PorterDuffXfermodeTestFragment.newInstance("image_handle", "xfermode"),
+                ShaderTestFragment.newInstance("image_handle", "shader")};
 
         pager.setOffscreenPageLimit(fragments.length);
         pager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {

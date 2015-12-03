@@ -39,7 +39,7 @@ public class MatrixColorFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_matrix_color, container, false);
-        img = (ImageView) view.findViewById(R.id.fragment_xfermode_img_container);
+        img = (ImageView) view.findViewById(R.id.fragment_shader_img);
         return initLayoutView(inflater, container, view);
     }
 

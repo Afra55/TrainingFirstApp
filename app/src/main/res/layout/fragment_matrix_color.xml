@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/fragment_xfermode_img_container"
+            android:id="@+id/fragment_shader_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -21,7 +21,7 @@
             android:id="@+id/fragment_xfermode_roundcorner_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_xfermode_img_container"
+            android:layout_below="@+id/fragment_shader_img"
             android:layout_toLeftOf="@+id/fragment_xfermode_guaguale_btn"
             android:layout_toStartOf="@+id/fragment_xfermode_guaguale_btn"
             android:text="灰度效果" />
@@ -30,7 +30,7 @@
             android:id="@+id/fragment_xfermode_guaguale_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_xfermode_img_container"
+            android:layout_below="@+id/fragment_shader_img"
             android:layout_centerHorizontal="true"
             android:text="反转效果" />
 
@@ -38,7 +38,7 @@
             android:id="@+id/fragment_matrix_reminiscence_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_xfermode_img_container"
+            android:layout_below="@+id/fragment_shader_img"
             android:layout_toEndOf="@+id/fragment_xfermode_guaguale_btn"
             android:layout_toRightOf="@+id/fragment_xfermode_guaguale_btn"
             android:text="怀旧效果" />
