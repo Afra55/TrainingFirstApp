@@ -47,7 +47,7 @@ public class AutoDisplayChildViewContainer extends ViewGroup {
                 if (child.getMeasuredWidth() > parentWidth) {
                     child.measure(parentWidth, child.getMeasuredHeight());
                 } else
-                    child.measure(child.getMeasuredWidth(), child.getHeight());
+                    child.measure(child.getMeasuredWidth(), child.getMeasuredHeight());
 
                 tempMaxChildHeight = Math.max(tempMaxChildHeight, child.getMeasuredHeight());
                 tempTotalRight += child.getMeasuredWidth();
