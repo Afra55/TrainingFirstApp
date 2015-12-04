@@ -22,10 +22,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -95,6 +97,16 @@ public class TrainingFirstActivity extends BaseActivity {
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
+
+        childModuleShowAnim();
+    }
+
+    private void childModuleShowAnim() {
+        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(1000);
+        LayoutAnimationController animationController = new LayoutAnimationController(animation, 0.3f);
+        animationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        first_module_content_lly.setLayoutAnimation(animationController);
     }
 
     private void initModule() {

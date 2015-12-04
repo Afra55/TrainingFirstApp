@@ -10,6 +10,7 @@ import android.view.View;
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseActivity;
 import com.magus.trainingfirstapp.base.BaseFragment;
+import com.magus.trainingfirstapp.module.commont_animation.fragment.PropertyAnimatorFragment;
 import com.magus.trainingfirstapp.module.commont_animation.fragment.ViewAnimationFragment;
 import com.magus.trainingfirstapp.view.CategoryTabStrip;
 
@@ -28,7 +29,8 @@ public class CommontAnimationActivity extends BaseActivity implements BaseFragme
         pager = (ViewPager) findViewById(R.id.category_view_pager);
 
         fragments = new BaseFragment[]{
-                ViewAnimationFragment.newInstance("anim", "view")};
+                ViewAnimationFragment.newInstance("anim", "view"),
+                PropertyAnimatorFragment.newInstance("anim", "Object")};
 
         pager.setOffscreenPageLimit(fragments.length);
         pager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
@@ -48,7 +50,7 @@ public class CommontAnimationActivity extends BaseActivity implements BaseFragme
                     case 0:
                         return "视图动画";
                     case 1:
-                        return " ";
+                        return "属性动画";
                 }
                 return "动画";
             }
