@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +86,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         fragmentActionBarRlt = (RelativeLayout) view.findViewById(R.id.fragment_action_bar_rlt);
         fragmentContentFatherLly.addView(LayoutInflater.from(getContext()).inflate(subView, null));
         getChildViewForm(getView());
-
         return view;
     }
     /**
@@ -208,7 +208,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 for (int i = 0 ; i < g.getChildCount() ; i++) {
                     getChildViewForm(g.getChildAt(i));
                 }
-            }else if(view instanceof Button){
+            }else if(view instanceof Button) {
                 view.setOnClickListener(this);
             }
         }catch (Exception e){

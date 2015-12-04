@@ -37,6 +37,7 @@ import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
+import com.magus.trainingfirstapp.module.commont_animation.CommontAnimationActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
@@ -187,7 +188,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 Uri webPage = Uri.parse(G.UrlConst.CSDN_BLOG);
                 return new Intent(Intent.ACTION_VIEW, webPage);
             case 4:
-                sendMsg("ssss");
+                return new Intent(TrainingFirstActivity.this, CommontAnimationActivity.class);
             case 5:
                 Intent otherintent = new Intent(TrainingFirstActivity.this, SurfaceViewTestActivity.class);
                 return otherintent;

@@ -203,6 +203,8 @@
 
     <string name="btn_is_shown_bottom">scroll to bottom</string>
     <string name="reset">reset</string>
+    <string name="commont_anim">Commont Anim</string>
+    <string name="anim_development">anim_development</string>
 
 
 </resources>
