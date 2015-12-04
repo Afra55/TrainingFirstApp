@@ -73,7 +73,7 @@ public class G {
             case 4:
                 return context.getResources().getString(R.string.email);
             case 5:
-                return context.getResources().getString(R.string.opennew);
+                return context.getResources().getString(R.string.yangshuai);
             case 6:
                 return context.getResources().getString(R.string.sharebutton);
             case 7:

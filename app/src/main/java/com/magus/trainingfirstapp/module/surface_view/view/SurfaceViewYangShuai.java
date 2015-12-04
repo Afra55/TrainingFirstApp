@@ -16,7 +16,7 @@ import android.view.SurfaceView;
  * Created by yangshuai in the 14:53 of 2015.12.03 .
  * SurfaceView 绘画我的名字
  */
-public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Callback, Runnable {
+public class SurfaceViewYangShuai extends SurfaceView implements SurfaceHolder.Callback, Runnable {
 
     private SurfaceHolder mSurfaceHolder;
     private Canvas mCanvas;
@@ -30,7 +30,7 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
     private float mFontSize;
     private boolean moveFlag = true;
     private boolean drawOval = false;
-    private float speed = 5;
+    private float speed = 10;
     private int drawNow = 0;
 
     /* 杨 */
@@ -38,17 +38,21 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
     private float mYangCY;
     private float angle;
 
-    public SurfaceViewSinLine(Context context) {
+    /* 帅 */
+    private float mShuaiCX;
+    private float mShuaiCY;
+
+    public SurfaceViewYangShuai(Context context) {
         super(context);
         init();
     }
 
-    public SurfaceViewSinLine(Context context, AttributeSet attrs) {
+    public SurfaceViewYangShuai(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SurfaceViewSinLine(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SurfaceViewYangShuai(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -77,6 +81,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
         mFontSize = mParentWidth / 2 - 5;
         mYangCX = mParentWidth / 4 - 5;
         mYangCY = mParentHeight / 2;
+        mShuaiCX = mParentWidth / 4 * 3 + 5;
+        mShuaiCY = mParentHeight / 2;
         setMeasuredDimension(mParentWidth, mParentHeight);
     }
 
@@ -114,16 +120,17 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
     @Override
     public void run() {
         while (mIsDrawing) {
-            Log.d("SurfaceViewSinLine", "drawNow:" + drawNow);
             draw();
             switch (drawNow) {
-                case 0:
+
+                case 0:  //  一
                     if (x < mYangCX) {
                         x += speed;
                         y = mYangCY;
                     } else drawNow++;
                     break;
-                case 1:
+
+                case 1:  // 竖
                     if (moveFlag) {
                         moveFlag = false;
                         mPath.moveTo(x = mYangCX - mFontSize / 4, y = mYangCY - mFontSize / 2);
@@ -134,7 +141,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 2:
+
+                case 2:  // 丿
                     if (moveFlag) {
                         moveFlag = false;
                         mPath.moveTo(x = mYangCX - mFontSize / 4, y = mYangCY);
@@ -146,7 +154,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 3:
+
+                case 3:    // 呐
                     if (moveFlag) {
                         moveFlag = false;
                         mPath.moveTo(x = mYangCX - mFontSize / 4, y = mYangCY);
@@ -158,7 +167,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 4:
+
+                case 4:  // 半圆
                     if (moveFlag) {
                         moveFlag = false;
                         angle = 0;
@@ -173,7 +183,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 5:
+
+                case 5:  // 一
                     if (moveFlag) {
                         moveFlag = false;
                         mPath.moveTo(x = mYangCX + 20, y = mYangCY);
@@ -185,7 +196,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 6:
+
+                case 6:  // 竖
                     if (moveFlag) {
                         moveFlag = false;
                         mPath.moveTo(x = mYangCX + mFontSize / 2 + speed, y = mYangCY);
@@ -196,7 +208,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 7:
+
+                case 7:  // 1 丿
                     if (moveFlag) {
                         moveFlag = false;
                         angle = 0;
@@ -211,7 +224,8 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                         endFlag();
                     }
                     break;
-                case 8:
+
+                case 8: // 2 丿
                     if (moveFlag) {
                         moveFlag = false;
                         angle = 0;
@@ -227,6 +241,80 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
                     }
                     break;
 
+                /* 帅 */
+                case 9: // 竖
+                    if (moveFlag) {
+                        moveFlag = false;
+                        drawOval = false;
+                        mPath.moveTo(x = mShuaiCX - mFontSize / 4, y = mShuaiCY - mFontSize / 8);
+                    }
+                    if (y < mShuaiCY + mFontSize / 8) {
+                        y += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
+                case 10: // 竖
+                    if (moveFlag) {
+                        moveFlag = false;
+                        mPath.moveTo(x = mShuaiCX - mFontSize / 8, y = mShuaiCY - mFontSize / 4);
+                    }
+                    if (y < mShuaiCY + mFontSize / 4) {
+                        y += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
+                case 11: // 竖
+                    if (moveFlag) {
+                        moveFlag = false;
+                        mPath.moveTo(x = mShuaiCX, y = mShuaiCY - mFontSize / 8);
+                    }
+                    if (y < mShuaiCY + mFontSize / 8) {
+                        y += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
+                case 12: // 横
+                    if (moveFlag) {
+                        moveFlag = false;
+                        mPath.moveTo(x = mShuaiCX, y = mShuaiCY - mFontSize / 8);
+                    }
+                    if (x < mShuaiCX + mFontSize / 5 * 2) {
+                        x += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
+                case 13: // 竖
+                    if (moveFlag) {
+                        moveFlag = false;
+                        mPath.moveTo(x = mShuaiCX + mFontSize / 5, y = mShuaiCY - mFontSize / 2);
+                    }
+                    if (y < mShuaiCY + mFontSize / 2) {
+                        y += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
+                case 14: // 竖
+                    if (moveFlag) {
+                        moveFlag = false;
+                        mPath.moveTo(x = mShuaiCX + mFontSize / 5 * 2, y = mShuaiCY - mFontSize / 8);
+                    }
+                    if (y < mShuaiCY + mFontSize / 8) {
+                        y += speed;
+                    } else {
+                        endFlag();
+                    }
+                    break;
+
                 default:
                     mIsDrawing = false;
                     break;
@@ -234,7 +322,6 @@ public class SurfaceViewSinLine extends SurfaceView implements SurfaceHolder.Cal
             if (!drawOval) {
                 mPath.lineTo(x, y);
             }
-            Log.d("SurfaceViewSinLine", "x=" + x + ", y=" + y);
         }
     }
 

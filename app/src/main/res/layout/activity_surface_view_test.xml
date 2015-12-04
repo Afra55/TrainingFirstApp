@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity">
 
-    <com.magus.trainingfirstapp.module.surface_view.view.SurfaceViewSinLine
+    <com.magus.trainingfirstapp.module.surface_view.view.SurfaceViewYangShuai
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

@@ -51,6 +51,7 @@ import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
+import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
@@ -188,8 +189,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case 4:
                 sendMsg("ssss");
             case 5:
-                Intent otherintent = new Intent(TrainingFirstActivity.this, OtherActivity.class);
-                otherintent.putExtra("key", "key i come on");
+                Intent otherintent = new Intent(TrainingFirstActivity.this, SurfaceViewTestActivity.class);
                 return otherintent;
             case 6:
                 return Intent.createChooser(shareText(), "选啊你");
