@@ -22,13 +22,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
@@ -42,7 +42,6 @@ import com.magus.trainingfirstapp.module.customviews.CusstomViewActivity;
 import com.magus.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.magus.trainingfirstapp.module.customviews.ViewDragHelperTestActivity;
 import com.magus.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
-import com.magus.trainingfirstapp.module.frgment_demo.FragmentMainActivity;
 import com.magus.trainingfirstapp.module.image_handle.ImageHandlePixActivity;
 import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
@@ -52,10 +51,11 @@ import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
+import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
-import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
+import com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer;
 import com.networkbench.agent.impl.NBSAppAgent;
 
 import java.io.File;
@@ -67,8 +67,9 @@ import java.util.List;
 public class TrainingFirstActivity extends BaseActivity {
 
     private ImageView takePhotoThenToShowImg;
-    private LinearLayout first_module_content_lly;
+    private AutoDisplayChildViewContainer first_module_content_lly;
     private final int MODULE_BUTTON_ITEM_ID = G.FlagsConst.BUTTON_ITEM_ID;
+    private ScrollView scrollView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,10 +85,15 @@ public class TrainingFirstActivity extends BaseActivity {
         setActionBarLeftBtnText("Exit");
         setActionBarTitle("主界面");
         setActionBarRightBtnText("look sha");
-        first_module_content_lly = (LinearLayout) findViewById(R.id.first_module_content_lly);
+        initWidget();
+        initModule();
+    }
+
+    private void initWidget() {
+        first_module_content_lly = (AutoDisplayChildViewContainer) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
-        initModule();
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
     }
 
     private void initModule() {
@@ -183,8 +189,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case 4:
                 sendMsg("ssss");
             case 5:
-                Intent otherintent = new Intent(TrainingFirstActivity.this, OtherActivity.class);
-                otherintent.putExtra("key", "key i come on");
+                Intent otherintent = new Intent(TrainingFirstActivity.this, SurfaceViewTestActivity.class);
                 return otherintent;
             case 6:
                 return Intent.createChooser(shareText(), "选啊你");
@@ -415,6 +420,8 @@ public class TrainingFirstActivity extends BaseActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             takePhotoThenToShowImg.setImageBitmap(imageBitmap);
+            showToast("图片已经显示在蓝色布景上");
+            scrollView.smoothScrollTo(0, 0);
         }
     }
 

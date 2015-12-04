@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
-import com.magus.trainingfirstapp.base.TrainingFirstActivity;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;

@@ -311,7 +311,8 @@
         </activity>
         <activity android:name=".module.customviews.CusstomViewTestActivity" />
         <activity android:name=".module.customviews.ViewDragHelperTestActivity" />
-        <activity android:name=".module.image_handle.ImageHandlePixActivity"></activity>
+        <activity android:name=".module.image_handle.ImageHandlePixActivity" />
+        <activity android:name=".module.surface_view.SurfaceViewTestActivity"></activity>
     </application>
 
 </manifest>

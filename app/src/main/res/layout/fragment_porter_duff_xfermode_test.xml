@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.magus.trainingfirstapp.module.image_handle.fragment.PorterDuffXfermodeTestFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fragment_shader_img"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/fragment_xfermode_img"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/beauty" />
+
+            <com.magus.trainingfirstapp.module.image_handle.view.XfermodeView
+                android:id="@+id/fragment_xfermode_guaguale_view"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                android:layout_height="300dp" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/fragment_xfermode_roundcorner_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="圆角"
+            android:layout_alignTop="@+id/fragment_xfermode_guaguale_btn"
+            android:layout_alignLeft="@+id/fragment_shader_img"
+            android:layout_alignStart="@+id/fragment_shader_img" />
+
+        <Button
+            android:id="@+id/fragment_xfermode_guaguale_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="瓜瓜乐"
+            android:layout_below="@+id/fragment_shader_img"
+            android:layout_alignRight="@+id/fragment_shader_img"
+            android:layout_alignEnd="@+id/fragment_shader_img" />
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

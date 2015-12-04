@@ -9,28 +9,28 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/fragment_matrix_img"
+            android:id="@+id/fragment_shader_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/loading" />
+            android:src="@drawable/beauty" />
 
         <Button
-            android:id="@+id/fragment_matrix_gray_btn"
+            android:id="@+id/fragment_xfermode_roundcorner_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_matrix_img"
-            android:layout_toLeftOf="@+id/fragment_matrix_reversal_btn"
-            android:layout_toStartOf="@+id/fragment_matrix_reversal_btn"
+            android:layout_below="@+id/fragment_shader_img"
+            android:layout_toLeftOf="@+id/fragment_xfermode_guaguale_btn"
+            android:layout_toStartOf="@+id/fragment_xfermode_guaguale_btn"
             android:text="灰度效果" />
 
         <Button
-            android:id="@+id/fragment_matrix_reversal_btn"
+            android:id="@+id/fragment_xfermode_guaguale_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_matrix_img"
+            android:layout_below="@+id/fragment_shader_img"
             android:layout_centerHorizontal="true"
             android:text="反转效果" />
 
@@ -38,18 +38,18 @@
             android:id="@+id/fragment_matrix_reminiscence_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_matrix_img"
-            android:layout_toEndOf="@+id/fragment_matrix_reversal_btn"
-            android:layout_toRightOf="@+id/fragment_matrix_reversal_btn"
+            android:layout_below="@+id/fragment_shader_img"
+            android:layout_toEndOf="@+id/fragment_xfermode_guaguale_btn"
+            android:layout_toRightOf="@+id/fragment_xfermode_guaguale_btn"
             android:text="怀旧效果" />
 
         <Button
             android:id="@+id/fragment_matrix_discoloration_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/fragment_matrix_gray_btn"
-            android:layout_alignStart="@+id/fragment_matrix_gray_btn"
-            android:layout_below="@+id/fragment_matrix_gray_btn"
+            android:layout_alignLeft="@+id/fragment_xfermode_roundcorner_btn"
+            android:layout_alignStart="@+id/fragment_xfermode_roundcorner_btn"
+            android:layout_below="@+id/fragment_xfermode_roundcorner_btn"
             android:layout_marginLeft="34dp"
             android:layout_marginStart="34dp"
             android:text="去色效果" />
