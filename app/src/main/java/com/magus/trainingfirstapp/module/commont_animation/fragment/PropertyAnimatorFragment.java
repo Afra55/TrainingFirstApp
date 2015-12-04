@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
+import com.magus.trainingfirstapp.module.commont_animation.anim.CusstomAnim;
 
 /**
  * PropertyAnimatorFragment
@@ -49,6 +50,11 @@ public class PropertyAnimatorFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.fragment_anim_hellow:
                 animMethod(v);
+                break;
+            case R.id.fragment_anim_cusstom:
+                CusstomAnim anim = new CusstomAnim();
+                anim.setRotateY(30);
+                v.startAnimation(anim);
                 break;
         }
     }
