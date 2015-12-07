@@ -67,6 +67,9 @@ public class SVGTestFragment extends BaseFragment {
             case R.id.svg_trick:
                 animate((ImageView) v);
                 break;
+            case R.id.svg_earth_sun:
+                animate((ImageView) v);
+                break;
         }
     }
 

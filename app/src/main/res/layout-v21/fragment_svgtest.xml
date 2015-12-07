@@ -15,5 +15,12 @@
             android:layout_gravity="center"
             android:src="@drawable/trick_anim" />
 
+        <ImageView
+            android:id="@+id/svg_earth_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/earth_and_sun" />
+
     </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
 </ScrollView>
