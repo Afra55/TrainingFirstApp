@@ -63,13 +63,8 @@ public class SVGTestFragment extends BaseFragment {
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()) {
-            case R.id.svg_trick:
-                animate((ImageView) v);
-                break;
-            case R.id.svg_earth_sun:
-                animate((ImageView) v);
-                break;
+        if (v instanceof ImageView) {
+            animate((ImageView) v);
         }
     }
 
