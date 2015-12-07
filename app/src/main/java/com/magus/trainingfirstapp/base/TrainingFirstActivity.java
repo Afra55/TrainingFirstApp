@@ -378,7 +378,9 @@ public class TrainingFirstActivity extends BaseActivity {
         Intent intent = new Intent(TrainingFirstActivity.this, OtherActivity.class);
         EditText editText = (EditText) findViewById(R.id.message_et);
         String message = editText.getText().toString();
-        intent.putExtra(G.MessageConst.MESSAGE, message);
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
         startActivity(intent);
     }
 
