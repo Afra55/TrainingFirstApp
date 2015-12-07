@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 import com.magus.trainingfirstapp.R;
-import com.magus.trainingfirstapp.lib.PagerSlidingTabStrip;
-import com.magus.trainingfirstapp.lib.PagerSlidingTabStrip.IconTabProvider;
+import com.magus.trainingfirstapp.view.PagerSlidingTabStrip;
+import com.magus.trainingfirstapp.view.PagerSlidingTabStrip.IconTabProvider;
 
 public class QuickContactFragment extends DialogFragment {
 

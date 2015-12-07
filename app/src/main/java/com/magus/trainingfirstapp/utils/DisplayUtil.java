@@ -1,7 +1,13 @@
 package com.magus.trainingfirstapp.utils;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 
 /**
  * Created by yangshuai in the 15:40 of 2015.11.26 .
@@ -70,5 +76,46 @@ public class DisplayUtil {
      */
     public static int dp2px(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
+
+    public static void showDropView(Context context,View view) {
+        if (view.getVisibility() == View.VISIBLE) {
+            return;
+        }
+        view.setVisibility(View.VISIBLE);
+        ValueAnimator valueAnimator = dropAnim(view, 0, DisplayUtil.dip2px(context, 40));
+        valueAnimator.start();
+    }
+
+    public static void hideDropView(Context context, final View view) {
+        if (view.getVisibility() != View.VISIBLE) {
+            return;
+        }
+        ValueAnimator valueAnimator = dropAnim(view, DisplayUtil.dip2px(context, 40), 0);
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                view.setVisibility(View.GONE);
+            }
+        });
+
+        valueAnimator.start();
+    }
+
+    private static ValueAnimator dropAnim(final View view, int start, int end) {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(start, end);
+        valueAnimator.setInterpolator(new BounceInterpolator());
+        valueAnimator.setDuration(500);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int value = (int) animation.getAnimatedValue();
+                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                layoutParams.height = value;
+                view.setLayoutParams(layoutParams);
+            }
+        });
+        return valueAnimator;
     }
 }

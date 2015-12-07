@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.magus.trainingfirstapp.lib;
+package com.magus.trainingfirstapp.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

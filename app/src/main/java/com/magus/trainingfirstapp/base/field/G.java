@@ -71,7 +71,7 @@ public class G {
             case 3:
                 return context.getResources().getString(R.string.web);
             case 4:
-                return context.getResources().getString(R.string.email);
+                return context.getString(R.string.commont_anim);
             case 5:
                 return context.getResources().getString(R.string.yangshuai);
             case 6:

@@ -1,0 +1,33 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.magus.trainingfirstapp.module.commont_animation.fragment.SVGTestFragment">
+
+    <com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/svg_trick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/trick_anim" />
+
+        <ImageView
+            android:id="@+id/svg_earth_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/earth_and_sun" />
+
+        <ImageView
+            android:id="@+id/svg_trim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/svg_trim_anim" />
+
+    </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
+</ScrollView>

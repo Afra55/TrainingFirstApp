@@ -43,4 +43,7 @@
     <string name="picture_processing">图片处理</string>
     <string name="btn_is_shown_bottom">按钮在最底部</string>
     <string name="reset">还原</string>
+    <string name="commont_anim">普通动画</string>
+    <string name="anim_development">动画发展史</string>
+    <string name="hi_my_life">你好，生命中的你</string>
 </resources>
