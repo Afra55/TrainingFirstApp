@@ -10,6 +10,7 @@ import android.view.View;
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseActivity;
 import com.magus.trainingfirstapp.base.BaseFragment;
+import com.magus.trainingfirstapp.module.commont_animation.fragment.AnimationEffectsFragment;
 import com.magus.trainingfirstapp.module.commont_animation.fragment.PropertyAnimatorFragment;
 import com.magus.trainingfirstapp.module.commont_animation.fragment.SVGTestFragment;
 import com.magus.trainingfirstapp.module.commont_animation.fragment.ViewAnimationFragment;
@@ -32,7 +33,8 @@ public class CommontAnimationActivity extends BaseActivity implements BaseFragme
         fragments = new BaseFragment[]{
                 ViewAnimationFragment.newInstance("anim", "view"),
                 PropertyAnimatorFragment.newInstance("anim", "Object"),
-                SVGTestFragment.newInstance("anim", "SVG")};
+                SVGTestFragment.newInstance("anim", "SVG"),
+                AnimationEffectsFragment.newInstance("anim", "effects")};
 
         pager.setOffscreenPageLimit(fragments.length);
         pager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
@@ -55,6 +57,8 @@ public class CommontAnimationActivity extends BaseActivity implements BaseFragme
                         return "属性动画";
                     case 2:
                         return "SVG";
+                    case 3:
+                        return "动画特效";
                 }
                 return "动画";
             }

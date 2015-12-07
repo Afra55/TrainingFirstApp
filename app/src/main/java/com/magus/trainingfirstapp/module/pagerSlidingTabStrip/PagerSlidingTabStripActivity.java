@@ -20,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.magus.trainingfirstapp.R;
-import com.magus.trainingfirstapp.lib.PagerSlidingTabStrip;
+import com.magus.trainingfirstapp.view.PagerSlidingTabStrip;
 
 /**
  * Created by guanjun on 2015/11/16.
