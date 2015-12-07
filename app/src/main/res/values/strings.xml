@@ -206,6 +206,7 @@
     <string name="commont_anim">Commont Anim</string>
     <string name="anim_development">anim_development</string>
     <string name="hi_my_life">hello, my baby</string>
+    <string name="just_support">Preview only support Android 5.0 and higher API system</string>
 
 
 </resources>
