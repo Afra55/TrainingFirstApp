@@ -19,12 +19,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import cn.bmob.v3.Bmob;
 
 /**
  * Created by yangshuai on 2015/9/25 0025.
@@ -47,6 +50,10 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState) {
 //        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
+        /* 初始化Bomb*/
+        Bmob.initialize(this, G.KeyConst.BOMB_APPLICATION_KEY);
+
         setContentView(R.layout.activity_base);
 
         /* 获取用户滑动的最短距离 */

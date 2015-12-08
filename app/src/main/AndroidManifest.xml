@@ -23,7 +23,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -49,6 +48,9 @@
 
     <!-- 允许震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- bomb -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <supports-screens
         android:largeScreens="true"
@@ -315,7 +317,8 @@
         <activity android:name=".module.image_handle.ImageHandlePixActivity" />
         <activity android:name=".module.surface_view.SurfaceViewTestActivity" />
         <activity android:name=".module.commont_animation.CommontAnimationActivity" />
-        <activity android:name=".base.MobileOsInfoActivity"></activity>
+        <activity android:name=".base.MobileOsInfoActivity" />
+        <activity android:name=".module.bomb_test.BombCloudServiceTestActivity"></activity>
     </application>
 
 </manifest>
