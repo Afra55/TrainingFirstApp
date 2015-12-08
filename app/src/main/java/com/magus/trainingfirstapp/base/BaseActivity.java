@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
@@ -280,11 +281,14 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case MotionEvent.ACTION_MOVE:
                 float mCurrentY = event.getY();
+                float dimension = getResources().getDimension(R.dimen.action_bar_size);
                 if (mFirstY - mCurrentY > mTouchSlop && actionBarIsShown) {  // 向上 hide
-                    actionBarAnim(1);
+//                    actionBarAnim(1);
+                    DisplayUtil.hideDropView(this, getActionBarView(), dimension);
                     actionBarIsShown = false;
                 } else if (mCurrentY - mFirstY > mTouchSlop && !actionBarIsShown) { // 向下 show
-                    actionBarAnim(0);
+//                    actionBarAnim(0);
+                    DisplayUtil.showDropView(this, getActionBarView(), dimension);
                     actionBarIsShown = true;
                 }
                 break;
