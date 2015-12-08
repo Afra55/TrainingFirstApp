@@ -222,7 +222,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
                 if (this instanceof TrainingFirstActivity) {
                     exit();
                 } else {
-                    finish();
+                    onBackPressed();
                 }
 
                 break;
