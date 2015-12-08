@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/action_bar_size"
         android:background="@color/dark_blue"
+        android:transitionName="share"
         android:orientation="horizontal">
 
         <Button

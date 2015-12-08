@@ -3,8 +3,11 @@ package com.magus.trainingfirstapp.base;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.transition.Explode;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -48,13 +51,17 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
 
         /* 初始化Bomb*/
         Bmob.initialize(this, G.KeyConst.BOMB_APPLICATION_KEY);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setEnterTransition(new Explode());
+        }
+
         setContentView(R.layout.activity_base);
+
 
         /* 获取用户滑动的最短距离 */
         mTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();

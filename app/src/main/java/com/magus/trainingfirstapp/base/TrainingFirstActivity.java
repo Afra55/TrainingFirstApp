@@ -1,5 +1,6 @@
 package com.magus.trainingfirstapp.base;
 
+import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -173,7 +175,7 @@ public class TrainingFirstActivity extends BaseActivity {
             case R.id.actionBar_right_btn:
                 if (topProgressContent.getTag() != null) {
                     showToast("oh, my lover!");
-                }else if (topProgressContentIsShown) {
+                } else if (topProgressContentIsShown) {
                     DisplayUtil.hideDropView(this, topProgressContent, DisplayUtil.dip2px(this, 80));
                     topProgressContentIsShown = false;
                 } else {
@@ -183,7 +185,14 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
         }
         if (intent != null) {
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(
+                                this,
+                                Pair.create(v, "share")).toBundle());
+            } else {
+                startActivity(intent);
+            }
         }
     }
 
@@ -216,7 +225,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, CommontAnimationActivity.class);
             case 5:
                 Intent otherintent = new Intent(TrainingFirstActivity.this, SurfaceViewTestActivity.class);
-                return otherintent;
+                startActivity(otherintent);
+                return null;
             case 6:
                 return Intent.createChooser(shareText(), "选啊你");
             case 10:
