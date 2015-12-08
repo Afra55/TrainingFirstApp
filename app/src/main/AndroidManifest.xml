@@ -314,7 +314,8 @@
         <activity android:name=".module.customviews.ViewDragHelperTestActivity" />
         <activity android:name=".module.image_handle.ImageHandlePixActivity" />
         <activity android:name=".module.surface_view.SurfaceViewTestActivity" />
-        <activity android:name=".module.commont_animation.CommontAnimationActivity"></activity>
+        <activity android:name=".module.commont_animation.CommontAnimationActivity" />
+        <activity android:name=".base.MobileOsInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -384,6 +384,10 @@ public class TrainingFirstActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    public void showOsInfo(View view) {
+        startActivity(new Intent(this, MobileOsInfoActivity.class));
+    }
+
     private Intent shareText() {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);

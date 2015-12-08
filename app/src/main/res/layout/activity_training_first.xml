@@ -80,6 +80,7 @@
             <ImageView
                 android:id="@+id/first_image_content"
                 android:layout_width="wrap_content"
+                android:onClick="showOsInfo"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_launcher"
                 android:scaleType="centerCrop" />
