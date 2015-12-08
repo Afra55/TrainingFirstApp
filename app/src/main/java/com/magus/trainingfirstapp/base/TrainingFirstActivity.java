@@ -1,5 +1,6 @@
 package com.magus.trainingfirstapp.base;
 
+import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,12 +52,12 @@ import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
-import com.magus.trainingfirstapp.module.other_activity.OtherActivity;
 import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
 import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
+import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
 import com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer;
@@ -73,6 +75,8 @@ public class TrainingFirstActivity extends BaseActivity {
     private AutoDisplayChildViewContainer first_module_content_lly;
     private final int MODULE_BUTTON_ITEM_ID = G.FlagsConst.BUTTON_ITEM_ID;
     private ScrollView scrollView;
+    private boolean topProgressContentIsShown = true;
+    private RelativeLayout topProgressContent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,16 +87,16 @@ public class TrainingFirstActivity extends BaseActivity {
         NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
         // 不需要采集地理位置信息 NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).start(this);
 
-
         setContentLayout(R.layout.activity_training_first);
         setActionBarLeftBtnText("Exit");
         setActionBarTitle("主界面");
-        setActionBarRightBtnText("look sha");
+        setActionBarRightBtnText("Lover");
         initWidget();
         initModule();
     }
 
     private void initWidget() {
+        topProgressContent = (RelativeLayout) findViewById(R.id.first_relativeLayout);
         first_module_content_lly = (AutoDisplayChildViewContainer) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
@@ -168,9 +172,27 @@ public class TrainingFirstActivity extends BaseActivity {
             case MODULE_BUTTON_ITEM_ID:
                 intent = onModuleBtnClick((Integer) v.getTag());
                 break;
+            case R.id.actionBar_right_btn:
+                if (topProgressContent.getTag() != null) {
+                    showToast("oh, my lover!");
+                } else if (topProgressContentIsShown) {
+                    DisplayUtil.hideDropView(this, topProgressContent, DisplayUtil.dip2px(this, 80));
+                    topProgressContentIsShown = false;
+                } else {
+                    DisplayUtil.showDropView(this, topProgressContent, DisplayUtil.dip2px(this, 80));
+                    topProgressContentIsShown = true;
+                }
+                break;
         }
         if (intent != null) {
-            startActivity(intent);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(
+                                this,
+                                Pair.create(v, "share")).toBundle());
+            } else {
+                startActivity(intent);
+            }
         }
     }
 
@@ -203,7 +225,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, CommontAnimationActivity.class);
             case 5:
                 Intent otherintent = new Intent(TrainingFirstActivity.this, SurfaceViewTestActivity.class);
-                return otherintent;
+                startActivity(otherintent);
+                return null;
             case 6:
                 return Intent.createChooser(shareText(), "选啊你");
             case 10:
@@ -374,12 +397,8 @@ public class TrainingFirstActivity extends BaseActivity {
 
     }
 
-    public void sendMessage(View view) {
-        Intent intent = new Intent(TrainingFirstActivity.this, OtherActivity.class);
-        EditText editText = (EditText) findViewById(R.id.message_et);
-        String message = editText.getText().toString();
-        intent.putExtra(G.MessageConst.MESSAGE, message);
-        startActivity(intent);
+    public void showOsInfo(View view) {
+        startActivity(new Intent(this, MobileOsInfoActivity.class));
     }
 
     private Intent shareText() {

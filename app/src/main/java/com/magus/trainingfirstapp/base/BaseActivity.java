@@ -3,8 +3,11 @@ package com.magus.trainingfirstapp.base;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.transition.Explode;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,11 +22,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.field.G;
+import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import cn.bmob.v3.Bmob;
 
 /**
  * Created by yangshuai on 2015/9/25 0025.
@@ -44,9 +51,17 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
+        /* 初始化Bomb*/
+        Bmob.initialize(this, G.KeyConst.BOMB_APPLICATION_KEY);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setEnterTransition(new Explode());
+        }
+
         setContentView(R.layout.activity_base);
+
 
         /* 获取用户滑动的最短距离 */
         mTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
@@ -280,11 +295,14 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case MotionEvent.ACTION_MOVE:
                 float mCurrentY = event.getY();
+                float dimension = getResources().getDimension(R.dimen.action_bar_size);
                 if (mFirstY - mCurrentY > mTouchSlop && actionBarIsShown) {  // 向上 hide
-                    actionBarAnim(1);
+//                    actionBarAnim(1);
+                    DisplayUtil.hideDropView(this, getActionBarView(), dimension);
                     actionBarIsShown = false;
                 } else if (mCurrentY - mFirstY > mTouchSlop && !actionBarIsShown) { // 向下 show
-                    actionBarAnim(0);
+//                    actionBarAnim(0);
+                    DisplayUtil.showDropView(this, getActionBarView(), dimension);
                     actionBarIsShown = true;
                 }
                 break;

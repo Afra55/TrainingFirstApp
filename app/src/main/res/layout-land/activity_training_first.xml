@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context=".TrainingFisrtAcitivity">
+
+    <RelativeLayout
+        android:id="@+id/first_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="hide"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/first_show_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/first_relativeLayout"
+        android:layout_centerHorizontal="true"
+        >
+
+        <com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer
+            android:id="@+id/first_module_content_lly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/first_image_content"
+                android:layout_width="wrap_content"
+                android:onClick="showOsInfo"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_launcher"
+                android:scaleType="centerCrop" />
+        </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
+    </ScrollView>
+</RelativeLayout>

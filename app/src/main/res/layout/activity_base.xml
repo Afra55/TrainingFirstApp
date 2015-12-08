@@ -8,7 +8,8 @@
         android:id="@+id/action_bar_rlt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/action_bar_size"
-        android:background="@drawable/title_bar"
+        android:background="@color/dark_blue"
+        android:transitionName="share"
         android:orientation="horizontal">
 
         <Button
@@ -17,6 +18,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:background="@drawable/btn_exit_bg"
+            style="@style/white16Text"
             android:text="@string/cancel" />
 
         <TextView
@@ -25,6 +27,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
+            style="@style/white18Text"
             android:text="@string/title" />
 
         <LinearLayout
@@ -40,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:background="@drawable/btn_exit_bg"
                 android:layout_height="match_parent"
+                style="@style/white16Text"
                 android:text="@string/center" />
         </LinearLayout>
 
@@ -50,5 +54,5 @@
         android:id="@+id/content_father_lly"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"/>
 </LinearLayout>

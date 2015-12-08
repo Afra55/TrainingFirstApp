@@ -78,20 +78,21 @@ public class DisplayUtil {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
-    public static void showDropView(Context context,View view) {
+    /* height 单位是 px */
+    public static void showDropView(Context context,View view, float height) {
         if (view.getVisibility() == View.VISIBLE) {
             return;
         }
         view.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = dropAnim(view, 0, DisplayUtil.dip2px(context, 40));
+        ValueAnimator valueAnimator = dropAnim(view, 0, (int) height);
         valueAnimator.start();
     }
 
-    public static void hideDropView(Context context, final View view) {
+    public static void hideDropView(Context context, final View view, float height) {
         if (view.getVisibility() != View.VISIBLE) {
             return;
         }
-        ValueAnimator valueAnimator = dropAnim(view, DisplayUtil.dip2px(context, 40), 0);
+        ValueAnimator valueAnimator = dropAnim(view, (int) height, 0);
         valueAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {

@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="只支持Android 5.0预览"/>
+            android:text="@string/just_support"/>
 
     </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
 </ScrollView>

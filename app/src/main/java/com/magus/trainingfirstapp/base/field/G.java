@@ -21,6 +21,7 @@ public class G {
 
     public interface KeyConst{
         public static final String tingyunKey = "b112b0d9829f4eaba156a579b2bb9084";
+        public static final String BOMB_APPLICATION_KEY = "f460268ceabe7f86553e5d9b5eefd724";
     }
 
     public interface UrlConst{
