@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:background="@drawable/btn_exit_bg"
+            style="@style/white16Text"
             android:text="@string/cancel" />
 
         <TextView
@@ -25,7 +26,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            style="@style/black18Text"
+            style="@style/white18Text"
             android:text="@string/title" />
 
         <LinearLayout
@@ -41,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:background="@drawable/btn_exit_bg"
                 android:layout_height="match_parent"
+                style="@style/white16Text"
                 android:text="@string/center" />
         </LinearLayout>
 
