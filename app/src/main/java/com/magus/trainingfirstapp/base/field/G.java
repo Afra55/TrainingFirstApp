@@ -52,7 +52,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 26;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 27;
     }
 
     /**
@@ -115,6 +115,8 @@ public class G {
                 return context.getString(R.string.flash_view);
             case 25:
                 return context.getString(R.string.slide_menu);
+            case 26:
+                return context.getString(R.string.notification);
         }
         return "";
     }

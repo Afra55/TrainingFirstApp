@@ -58,6 +58,7 @@ import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
 import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
+import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
@@ -174,6 +175,10 @@ public class TrainingFirstActivity extends BaseActivity {
         Intent intent = null;
         switch (v.getId()) {
             case MODULE_BUTTON_ITEM_ID:
+                if (CommontUtils.isFastDoubleClick()) {
+                    showToast("正在加载中，请耐心等待哦~");
+                    return;
+                }
                 intent = onModuleBtnClick((Integer) v.getTag());
                 break;
             case R.id.actionBar_right_btn:

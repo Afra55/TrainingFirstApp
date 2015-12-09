@@ -3,7 +3,7 @@
 
     <item android:state_pressed="true">
         <set>
-            <objectAnimator android:duration="@android:integer/config_mediumAnimTime" android:propertyName="scaleY" android:repeatCount="infinite" android:repeatMode="reverse" android:valueFrom="-1" android:valueTo="1" android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_mediumAnimTime" android:propertyName="scaleY" android:repeatCount="infinite" android:repeatMode="reverse" android:valueFrom="1" android:valueTo="-1" android:valueType="floatType" />
         </set>
     </item>
     <item android:state_pressed="false">
