@@ -47,4 +47,5 @@
     <string name="anim_development">动画发展史</string>
     <string name="hi_my_life">你好，生命中的你</string>
     <string name="just_support">只支持Android 5.0及更高api系统预览</string>
+    <string name="notification">通知</string>
 </resources>

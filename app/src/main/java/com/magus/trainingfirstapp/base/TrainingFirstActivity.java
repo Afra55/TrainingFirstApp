@@ -1,5 +1,6 @@
 package com.magus.trainingfirstapp.base;
 
+import android.animation.AnimatorInflater;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -52,11 +53,13 @@ import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
+import com.magus.trainingfirstapp.module.notification.NotificationTestActivity;
 import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
 import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
+import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
@@ -132,6 +135,9 @@ public class TrainingFirstActivity extends BaseActivity {
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            button.setStateListAnimator(AnimatorInflater.loadStateListAnimator(this, R.drawable.state_list_anim_rotate));
+        }
         first_module_content_lly.addView(button);
     }
 
@@ -170,6 +176,10 @@ public class TrainingFirstActivity extends BaseActivity {
         Intent intent = null;
         switch (v.getId()) {
             case MODULE_BUTTON_ITEM_ID:
+                if (CommontUtils.isFastDoubleClick()) {
+                    showToast("正在加载中，请耐心等待哦~");
+                    return;
+                }
                 intent = onModuleBtnClick((Integer) v.getTag());
                 break;
             case R.id.actionBar_right_btn:
@@ -276,6 +286,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
             case 25:
                 return new Intent(TrainingFirstActivity.this, ViewDragHelperTestActivity.class);
+            case 26:
+                return new Intent(TrainingFirstActivity.this, NotificationTestActivity.class);
         }
         return null;
     }

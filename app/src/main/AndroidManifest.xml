@@ -318,7 +318,8 @@
         <activity android:name=".module.surface_view.SurfaceViewTestActivity" />
         <activity android:name=".module.commont_animation.CommontAnimationActivity" />
         <activity android:name=".base.MobileOsInfoActivity" />
-        <activity android:name=".module.bomb_test.BombCloudServiceTestActivity"></activity>
+        <activity android:name=".module.bomb_test.BombCloudServiceTestActivity" />
+        <activity android:name=".module.notification.NotificationTestActivity"></activity>
     </application>
 
 </manifest>

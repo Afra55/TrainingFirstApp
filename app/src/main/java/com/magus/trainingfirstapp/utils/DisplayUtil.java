@@ -3,9 +3,12 @@ package com.magus.trainingfirstapp.utils;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 
@@ -119,4 +122,29 @@ public class DisplayUtil {
         });
         return valueAnimator;
     }
+
+    /**
+     * 圆形展开动画
+     * @param v
+     * @param centerX
+     * @param centerY
+     * @param startRadius
+     * @param endRadius
+     * @return
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static Animator circularRevealAnim(View v, int centerX,  int centerY, float startRadius, float endRadius) {
+            return circularRevealAnim(v, centerX, centerY, startRadius, endRadius, 1500);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public static Animator circularRevealAnim(View v, int centerX,  int centerY, float startRadius, float endRadius, long animDuration) {
+        Animator animator = ViewAnimationUtils.createCircularReveal(v,
+                centerX, centerY, startRadius, endRadius);
+        animator.setDuration(1500);
+        animator.setInterpolator(new BounceInterpolator());
+        animator.start();
+        return animator;
+    }
+
 }

@@ -173,7 +173,7 @@
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
     <!-- Notifying the User -->
-    <string name="notification">Ping Notification</string>
+    <string name="notification">Notification</string>
     <!--  Buttons -->
     <string name="ping">Ping!</string>
     <string name="snooze">Snooze</string>
