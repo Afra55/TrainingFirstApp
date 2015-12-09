@@ -1,5 +1,6 @@
 package com.magus.trainingfirstapp.base;
 
+import android.animation.AnimatorInflater;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -132,6 +133,9 @@ public class TrainingFirstActivity extends BaseActivity {
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            button.setStateListAnimator(AnimatorInflater.loadStateListAnimator(this, R.drawable.state_list_anim_rotate));
+        }
         first_module_content_lly.addView(button);
     }
 

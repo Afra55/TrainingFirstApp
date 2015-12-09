@@ -44,6 +44,7 @@
                 android:background="@drawable/btn_exit_bg"
                 android:layout_height="match_parent"
                 style="@style/white16Text"
+                android:stateListAnimator="@drawable/state_list_anim"
                 android:text="@string/center" />
         </LinearLayout>
 
