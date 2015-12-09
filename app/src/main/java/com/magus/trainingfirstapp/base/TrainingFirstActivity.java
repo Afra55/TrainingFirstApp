@@ -53,6 +53,7 @@ import com.magus.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.magus.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.magus.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.magus.trainingfirstapp.module.newsreader.NewsReaderActivity;
+import com.magus.trainingfirstapp.module.notification.NotificationTestActivity;
 import com.magus.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.magus.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.magus.trainingfirstapp.module.pingme.PingMeActivity;
@@ -285,6 +286,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, CusstomViewTestActivity.class);
             case 25:
                 return new Intent(TrainingFirstActivity.this, ViewDragHelperTestActivity.class);
+            case 26:
+                return new Intent(TrainingFirstActivity.this, NotificationTestActivity.class);
         }
         return null;
     }
