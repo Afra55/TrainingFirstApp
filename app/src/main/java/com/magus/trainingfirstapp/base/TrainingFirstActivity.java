@@ -110,8 +110,8 @@ public class TrainingFirstActivity extends BaseActivity {
 
     private void childModuleShowAnim() {
         ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(1000);
-        LayoutAnimationController animationController = new LayoutAnimationController(animation, 0.3f);
+        animation.setDuration(500);
+        LayoutAnimationController animationController = new LayoutAnimationController(animation, 0.2f);
         animationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
         first_module_content_lly.setLayoutAnimation(animationController);
     }
