@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <!-- Customize your theme here. -->
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:launchMode">singleTop</item>
     </style>
 
     <style name="myButton" >
