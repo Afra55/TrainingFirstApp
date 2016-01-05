@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.MyUncaughtExceptionHandler;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -19,8 +20,8 @@ public class MApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        CrashHandler crashHandler = CrashHandler.getInstance();
-//        crashHandler.init(getApplicationContext());
+        /* 异常捕获(debug 时不捕获异常) */
+        Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
 
         /* imageLoader
         * http://blog.csdn.net/yang786654260/article/details/44300833 */
