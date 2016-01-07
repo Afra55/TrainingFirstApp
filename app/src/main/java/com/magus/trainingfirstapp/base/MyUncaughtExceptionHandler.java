@@ -30,7 +30,8 @@ public class MyUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
     public void uncaughtException(Thread thread, Throwable ex) {
         if (mApplication.getPackageName().equals(getProcessName(mApplication)))  {
 
-            if (Log.showLog) {
+            /* 一直捕获 */
+            if (Log.showLog && false) {
                 mUncaughtExceptionHandler.uncaughtException(thread, ex);
             } else {
                 toastSorry();
