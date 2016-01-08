@@ -319,7 +319,8 @@
         <activity android:name=".module.commont_animation.CommontAnimationActivity" />
         <activity android:name=".base.MobileOsInfoActivity" />
         <activity android:name=".module.bomb_test.BombCloudServiceTestActivity" />
-        <activity android:name=".module.notification.NotificationTestActivity"></activity>
+        <activity android:name=".module.notification.NotificationTestActivity" />
+        <activity android:name=".module.gesture_view.GestureViewActivity"></activity>
     </application>
 
 </manifest>
