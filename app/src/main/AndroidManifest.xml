@@ -52,6 +52,8 @@
     <!-- bomb -->
     <uses-permission android:name="android.permission.READ_LOGS" />
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"

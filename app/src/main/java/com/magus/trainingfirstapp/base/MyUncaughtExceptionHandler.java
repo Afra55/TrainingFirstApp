@@ -28,6 +28,7 @@ public class MyUncaughtExceptionHandler implements Thread.UncaughtExceptionHandl
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
+        Log.e(thread.getName(), ex.toString());
         if (mApplication.getPackageName().equals(getProcessName(mApplication)))  {
 
             /* 一直捕获 */

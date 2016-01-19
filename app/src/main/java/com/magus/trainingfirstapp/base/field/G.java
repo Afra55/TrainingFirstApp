@@ -52,7 +52,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 27;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 32;
     }
 
     /**
@@ -117,6 +117,16 @@ public class G {
                 return context.getString(R.string.slide_menu);
             case 26:
                 return context.getString(R.string.notification);
+            case 27:
+                return context.getString(R.string.call_phone);
+            case 28:
+                return context.getString(R.string.dialer);
+            case 29:
+                return context.getString(R.string.see_contacts);
+            case 30:
+                return context.getString(R.string.show_settings);
+            case 31:
+                return context.getString(R.string.show_wifi_setting);
         }
         return "";
     }
