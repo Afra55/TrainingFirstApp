@@ -68,7 +68,7 @@ public class MyAnimActivity extends BaseActivity implements BaseFragment.OnFragm
 
         fragmentContainerVP.setAdapter(adapter);
 
-        fragmentContainerVP.setOffscreenPageLimit(fragments.length);
+        fragmentContainerVP.setOffscreenPageLimit(fragments.length / 2);
 
         fragmentContainerVP.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
