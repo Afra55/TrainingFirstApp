@@ -10,7 +10,7 @@
     <string name="title_activity_other">另一个</string>
     <string name="search">搜索</string>
     <string name="map">地图</string>
-    <string name="web">网页</string>
+    <string name="web">调用系统浏览器</string>
     <string name="email">邮件</string>
     <string name="sharebutton">分享按钮</string>
     <string name="opennew">打开Activity</string>
@@ -48,4 +48,9 @@
     <string name="hi_my_life">你好，生命中的你</string>
     <string name="just_support">只支持Android 5.0及更高api系统预览</string>
     <string name="notification">通知</string>
+    <string name="call_phone">直接拨号</string>
+    <string name="dialer">调用拨号程序</string>
+    <string name="see_contacts">查看联系人</string>
+    <string name="show_settings">显示系统设置</string>
+    <string name="show_wifi_setting">显示wifi设置</string>
 </resources>

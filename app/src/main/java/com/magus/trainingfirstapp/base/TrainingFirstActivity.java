@@ -1,5 +1,6 @@
 package com.magus.trainingfirstapp.base;
 
+import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
@@ -16,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.util.Pair;
@@ -110,8 +112,8 @@ public class TrainingFirstActivity extends BaseActivity {
 
     private void childModuleShowAnim() {
         ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(500);
-        LayoutAnimationController animationController = new LayoutAnimationController(animation, 0.2f);
+        animation.setDuration(300);
+        LayoutAnimationController animationController = new LayoutAnimationController(animation, 0.1f);
         animationController.setOrder(LayoutAnimationController.ORDER_NORMAL);
         first_module_content_lly.setLayoutAnimation(animationController);
     }
@@ -219,7 +221,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 Uri number = Uri.parse("tel:10086");
                 Intent intent = new Intent(Intent.ACTION_DIAL, number);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-                return intent;
+                startActivity(intent);
+                break;
             case 2:
                 try {
                     Uri location = Uri.parse("geo:37.422219,-122.08364?z=14"); // z param is zoom level
@@ -288,6 +291,34 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(TrainingFirstActivity.this, ViewDragHelperTestActivity.class);
             case 26:
                 return new Intent(TrainingFirstActivity.this, NotificationTestActivity.class);
+            case 27:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return null;
+                }
+                Intent callDialogIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:10086"));
+                callDialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                startActivity(callDialogIntent);
+                break;
+            case 28:
+                Intent touchDialerIntent = new Intent("com.android.phone.action.TOUCH_DIALER");
+                touchDialerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                startActivity(touchDialerIntent);
+                break;
+            case 29:
+                Intent contactsIntent = new Intent("com.android.contacts.action.LIST_CONTACTS");
+                contactsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                startActivity(contactsIntent);
+                break;
+            case 30:
+                Intent settingIntent = new Intent("android.settings.SETTINGS");
+                settingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                startActivity(settingIntent);
+                break;
+            case 31:
+                Intent wifiSettingIntent = new Intent("android.settings.WIFI_SETTINGS");
+                wifiSettingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                startActivity(wifiSettingIntent);
+                break;
         }
         return null;
     }

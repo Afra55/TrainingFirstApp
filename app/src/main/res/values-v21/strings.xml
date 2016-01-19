@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="intent_test">intentTest</string>
     <string name="map">map</string>
     <string name="web">webView</string>
     <string name="email">email</string>
