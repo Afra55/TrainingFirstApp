@@ -10,6 +10,7 @@ import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import com.magus.trainingfirstapp.base.field.G;
+import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.lang.reflect.Method;
 
@@ -18,11 +19,6 @@ import java.lang.reflect.Method;
  */
 public class BroadcastTestReceiver extends BroadcastReceiver {
 
-    /* 监听短信 */
-    public static boolean MONITORING_SMS = false;
-
-    /* 拦截电话 */
-    public static boolean MONITORING_CALL = false;
 
     public static String MONITORING_CALL_NUM = "10086";
 
@@ -36,11 +32,11 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
         if (bundle != null) {
             switch (intent.getAction()) {
                 case "android.provider.Telephony.SMS_RECEIVED": // 短信
-                    if (MONITORING_SMS)
+                    if (SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_SMS))
                         MonitoringSms(context, bundle);
                     break;
                 case "android.intent.action.PHONE_STATE": // 电话
-                    if (MONITORING_CALL)
+                    if (SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL))
                         MonitorCallNumber(context, intent);
                     break;
             }
