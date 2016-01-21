@@ -53,6 +53,9 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!-- 短信监听权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -323,8 +326,18 @@
         <activity android:name=".module.notification.NotificationTestActivity" />
         <activity android:name=".module.gesture_view.GestureViewActivity" />
         <activity
-            android:theme="@style/dialog_activity"
-            android:name=".module.DialogThemeActivity"/>
+            android:name=".module.DialogThemeActivity"
+            android:theme="@style/dialog_activity" />
+
+        <!-- 短信监听 -->
+        <receiver
+            android:name=".module.sms_broadcast_receiver.SmsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>
