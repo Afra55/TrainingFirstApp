@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
+import com.magus.trainingfirstapp.base.TrainingFirstActivity;
 import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 
@@ -39,8 +40,17 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
                     if (SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL))
                         MonitorCallNumber(context, intent);
                     break;
+                case "android.intent.action.BOOT_COMPLETED": // 手机启动了
+                    openMyApp(context);
+                    break;
             }
         }
+    }
+
+    private void openMyApp(Context context) {
+        Intent openAppIntent = new Intent(context, TrainingFirstActivity.class);
+        openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(openAppIntent);
     }
 
     /* 监听来电电话 */
