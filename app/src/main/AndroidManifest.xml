@@ -56,6 +56,9 @@
     <!-- 短信监听权限 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
+    <!-- 监听来电状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -331,10 +334,11 @@
 
         <!-- 短信监听 -->
         <receiver
-            android:name=".module.sms_broadcast_receiver.SmsReceiver"
+            android:name=".module.broadcast_receiver.BroadcastTestReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
 
         </receiver>
