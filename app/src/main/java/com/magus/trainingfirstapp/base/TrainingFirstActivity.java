@@ -41,6 +41,7 @@ import android.widget.TextView;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.field.G;
+import com.magus.trainingfirstapp.module.DialogThemeActivity;
 import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
@@ -120,7 +121,7 @@ public class TrainingFirstActivity extends BaseActivity {
 
     private void initModule() {
         // 添加所有的按钮模块
-        for (int i = 0; i < G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++) {
+        for (int i = 0; i <= G.ModuleConst.FIRST_ACTIVITY_MODULE_BUTTON_COUNT; i++) {
             addButton(i);
         }
     }
@@ -134,6 +135,7 @@ public class TrainingFirstActivity extends BaseActivity {
         Button button = (Button) LayoutInflater.from(this).inflate(R.layout.view_button, null);
         button.setGravity(Gravity.CENTER);
         button.setText(G.getModuleBtnName(this, tagId));
+        Log.d("TrainingFirstActivity", G.getModuleBtnName(this, tagId));
         button.setId(MODULE_BUTTON_ITEM_ID);
         button.setTag(tagId);
         button.setOnClickListener(this);
@@ -319,6 +321,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 wifiSettingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                 startActivity(wifiSettingIntent);
                 break;
+            case 32:
+                return new Intent(this, DialogThemeActivity.class);
         }
         return null;
     }

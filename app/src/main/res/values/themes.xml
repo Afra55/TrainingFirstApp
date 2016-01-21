@@ -6,8 +6,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>-->
 
-    <style name="WTheme" parent="android:Theme.Holo.Light">
-    </style>
+    <style name="WTheme" parent="android:Theme.Holo.Light"></style>
 
 
     <style name="AppTheme" parent="WTheme">
@@ -25,5 +24,9 @@
         <item name="@android:activityOpenExitAnimation">@animator/shell_out_to_left</item>
         <item name="@android:activityCloseEnterAnimation">@animator/shell_in_from_left</item>
         <item name="@android:activityCloseExitAnimation">@animator/shell_out_to_right</item>
+    </style>
+
+    <style name="dialog_activity" parent="@android:style/Theme.Dialog">
+        <item name="android:background">@color/dark_green</item>
     </style>
 </resources>
