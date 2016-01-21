@@ -212,6 +212,7 @@
     <string name="see_contacts">see contacts</string>
     <string name="show_settings">show settings</string>
     <string name="show_wifi_setting">show wifi setting</string>
+    <string name="dialog_activity">dialog activity</string>
 
 
 </resources>

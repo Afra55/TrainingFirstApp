@@ -52,7 +52,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 32;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 35;
     }
 
     /**
@@ -127,8 +127,10 @@ public class G {
                 return context.getString(R.string.show_settings);
             case 31:
                 return context.getString(R.string.show_wifi_setting);
+            case 32:
+                return context.getString(R.string.dialog_activity);
         }
-        return "";
+        return "Lover";
     }
 
 }

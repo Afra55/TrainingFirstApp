@@ -51,7 +51,6 @@
 
     <!-- bomb -->
     <uses-permission android:name="android.permission.READ_LOGS" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <supports-screens
@@ -322,7 +321,10 @@
         <activity android:name=".base.MobileOsInfoActivity" />
         <activity android:name=".module.bomb_test.BombCloudServiceTestActivity" />
         <activity android:name=".module.notification.NotificationTestActivity" />
-        <activity android:name=".module.gesture_view.GestureViewActivity"></activity>
+        <activity android:name=".module.gesture_view.GestureViewActivity" />
+        <activity
+            android:theme="@style/dialog_activity"
+            android:name=".module.DialogThemeActivity"/>
     </application>
 
 </manifest>

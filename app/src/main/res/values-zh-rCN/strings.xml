@@ -53,4 +53,5 @@
     <string name="see_contacts">查看联系人</string>
     <string name="show_settings">显示系统设置</string>
     <string name="show_wifi_setting">显示wifi设置</string>
+    <string name="dialog_activity">对话框activity</string>
 </resources>
