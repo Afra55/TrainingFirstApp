@@ -66,6 +66,7 @@ import com.magus.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.magus.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.magus.trainingfirstapp.utils.CommontUtils;
 import com.magus.trainingfirstapp.utils.DisplayUtil;
+import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
 import com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer;
@@ -326,20 +327,20 @@ public class TrainingFirstActivity extends BaseActivity {
             case 32:
                 return new Intent(this, DialogThemeActivity.class);
             case 33:
-                if (!BroadcastTestReceiver.MONITORING_SMS) {
-                    BroadcastTestReceiver.MONITORING_SMS = true;
-                    showToast("开启短信拦截");
+                if (!SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_SMS)) {
+                    SharedPreferenceUtil.saveBooleanData(G.KeyConst.MONITORING_SMS, true);
+                    showToast("开启短信拦截" + SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_SMS));
                 } else {
-                    BroadcastTestReceiver.MONITORING_SMS = false;
-                    showToast("关闭短信拦截");
+                    SharedPreferenceUtil.saveBooleanData(G.KeyConst.MONITORING_SMS, false);
+                    showToast("关闭短信拦截"+SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_SMS));
                 }
                 break;
             case 34:
-                if (!BroadcastTestReceiver.MONITORING_CALL) {
+                if (!SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL)) {
                     showPopAddContact(G.getModuleBtnName(this, 34));
                 } else {
-                    BroadcastTestReceiver.MONITORING_CALL = false;
-                    showToast("关闭电话拦截");
+                    SharedPreferenceUtil.saveBooleanData(G.KeyConst.MONITORING_CALL, false);
+                    showToast("关闭电话拦截" + SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL));
                 }
                 break;
         }
@@ -460,9 +461,10 @@ public class TrainingFirstActivity extends BaseActivity {
                     if (module.equals(G.getModuleBtnName(TrainingFirstActivity.this, 17))) {
                         openYouXiClient(youxiPath.getText().toString());
                     } else if (module.equals(G.getModuleBtnName(TrainingFirstActivity.this, 34))) {
-                        BroadcastTestReceiver.MONITORING_CALL = true;
+                        SharedPreferenceUtil.saveBooleanData(G.KeyConst.MONITORING_CALL, true);
                         BroadcastTestReceiver.MONITORING_CALL_NUM = youxiPath.getText().toString().trim();
-                        showToast("开启电话拦截,黑名单手机号是：" + BroadcastTestReceiver.MONITORING_CALL_NUM);
+                        showToast("开启电话拦截"+ SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL)
+                                +"\n黑名单手机号是：" + BroadcastTestReceiver.MONITORING_CALL_NUM);
                     }
                 }
             });

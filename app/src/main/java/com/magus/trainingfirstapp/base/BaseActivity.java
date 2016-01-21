@@ -311,4 +311,10 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
         }
         return super.onTouchEvent(event);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferenceUtil.init(this);
+    }
 }
