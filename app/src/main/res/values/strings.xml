@@ -213,6 +213,8 @@
     <string name="show_settings">show settings</string>
     <string name="show_wifi_setting">show wifi setting</string>
     <string name="dialog_activity">dialog activity</string>
+    <string name="monitoring_sms">Monitoring sms</string>
+    <string name="monitoring_call">Monitoring call</string>
 
 
 </resources>

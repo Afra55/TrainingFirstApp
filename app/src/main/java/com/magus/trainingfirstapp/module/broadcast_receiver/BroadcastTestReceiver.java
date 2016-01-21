@@ -9,12 +9,23 @@ import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
+import com.magus.trainingfirstapp.base.field.G;
+
 import java.lang.reflect.Method;
 
 /**
  * 监听短信
  */
 public class BroadcastTestReceiver extends BroadcastReceiver {
+
+    /* 监听短信 */
+    public static boolean MONITORING_SMS = false;
+
+    /* 拦截电话 */
+    public static boolean MONITORING_CALL = false;
+
+    public static String MONITORING_CALL_NUM = "10086";
+
     public BroadcastTestReceiver() {
     }
 
@@ -25,10 +36,12 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
         if (bundle != null) {
             switch (intent.getAction()) {
                 case "android.provider.Telephony.SMS_RECEIVED": // 短信
-                    MonitoringSms(context, bundle);
+                    if (MONITORING_SMS)
+                        MonitoringSms(context, bundle);
                     break;
                 case "android.intent.action.PHONE_STATE": // 电话
-                    MonitorCallNumber(context, intent);
+                    if (MONITORING_CALL)
+                        MonitorCallNumber(context, intent);
                     break;
             }
         }
@@ -40,7 +53,7 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
         switch (telephonyManager.getCallState()) {
             case TelephonyManager.CALL_STATE_RINGING: // 响铃
                 String incommingNumber = intent.getStringExtra("incoming_number"); // 获得来电电话号码
-                if (incommingNumber.contains("10086")) { // 判断来电电话
+                if (incommingNumber.contains(BroadcastTestReceiver.MONITORING_CALL_NUM)) { // 判断来电电话
                     try {
                         Class<TelephonyManager> telephonyManagerClass = TelephonyManager.class;
 

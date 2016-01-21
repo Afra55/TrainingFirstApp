@@ -42,6 +42,7 @@ public class G {
          */
         public static final int REQUEST_IMAGE_CAPTURE_O = 2;
         public static final int BUTTON_ITEM_ID = 1001;
+
     }
 
     /**
@@ -129,6 +130,10 @@ public class G {
                 return context.getString(R.string.show_wifi_setting);
             case 32:
                 return context.getString(R.string.dialog_activity);
+            case 33:
+                return context.getString(R.string.monitoring_sms);
+            case 34:
+                return context.getString(R.string.monitoring_call);
         }
         return "Lover";
     }
