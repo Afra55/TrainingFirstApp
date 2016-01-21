@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.telephony.SmsManager;
+import android.text.InputType;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
@@ -44,6 +45,7 @@ import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.module.DialogThemeActivity;
 import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
+import com.magus.trainingfirstapp.module.broadcast_receiver.BroadcastTestReceiver;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.commont_animation.CommontAnimationActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
@@ -273,7 +275,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case 17:
 //                openYouXiClient();
-                showPopAddContact();
+                showPopAddContact(G.getModuleBtnName(this, 17));
                 break;
             case 18:
                 return new Intent(TrainingFirstActivity.this, ContactsActivity.class);
@@ -323,6 +325,23 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case 32:
                 return new Intent(this, DialogThemeActivity.class);
+            case 33:
+                if (!BroadcastTestReceiver.MONITORING_SMS) {
+                    BroadcastTestReceiver.MONITORING_SMS = true;
+                    showToast("开启短信拦截");
+                } else {
+                    BroadcastTestReceiver.MONITORING_SMS = false;
+                    showToast("关闭短信拦截");
+                }
+                break;
+            case 34:
+                if (!BroadcastTestReceiver.MONITORING_CALL) {
+                    showPopAddContact(G.getModuleBtnName(this, 34));
+                } else {
+                    BroadcastTestReceiver.MONITORING_CALL = false;
+                    showToast("关闭电话拦截");
+                }
+                break;
         }
         return null;
     }
@@ -415,10 +434,20 @@ public class TrainingFirstActivity extends BaseActivity {
     private EditText youxiPath;
 
     /* 显示弹出框用来填写有戏的下载地址信息 */
-    private void showPopAddContact() {
+    private void showPopAddContact(final String module) {
         if (popupWindow == null) {
 
             View view = LayoutInflater.from(this).inflate(R.layout.pop_youxi_down_path_view, null);
+            TextView title = (TextView) view.findViewById(R.id.pop_contact_title);
+            if (module.equals(G.getModuleBtnName(this, 34))) {
+                title.setText("请输入要拦截的电话号码");
+            }
+            youxiPath = (EditText) view.findViewById(R.id.pop_youxi_path_et);
+            if (module.equals(G.getModuleBtnName(this, 34))) {
+                youxiPath.setInputType(InputType.TYPE_CLASS_PHONE);
+            } else {
+                youxiPath.setInputType(InputType.TYPE_CLASS_TEXT);
+            }
             popupWindow = new PopupWindow(view,
                     RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
             popupWindow.setBackgroundDrawable(new BitmapDrawable());
@@ -428,20 +457,26 @@ public class TrainingFirstActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     popupWindow.dismiss();
-                    openYouXiClient(youxiPath.getText().toString());
+                    if (module.equals(G.getModuleBtnName(TrainingFirstActivity.this, 17))) {
+                        openYouXiClient(youxiPath.getText().toString());
+                    } else if (module.equals(G.getModuleBtnName(TrainingFirstActivity.this, 34))) {
+                        BroadcastTestReceiver.MONITORING_CALL = true;
+                        BroadcastTestReceiver.MONITORING_CALL_NUM = youxiPath.getText().toString().trim();
+                        showToast("开启电话拦截,黑名单手机号是：" + BroadcastTestReceiver.MONITORING_CALL_NUM);
+                    }
                 }
             });
             view.findViewById(R.id.pop_contact_cancle_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     popupWindow.dismiss();
-                    openYouXiClient(G.UrlConst.YOUXI_APK);
+                    if (module.equals(G.getModuleBtnName(TrainingFirstActivity.this, 17))) {
+                        openYouXiClient(G.UrlConst.YOUXI_APK);
+                    }
                 }
             });
-            youxiPath = (EditText) view.findViewById(R.id.pop_youxi_path_et);
         }
         popupWindow.showAtLocation(getWindow().getDecorView(), Gravity.CENTER, 0, 0);
-
     }
 
     public void showOsInfo(View view) {
