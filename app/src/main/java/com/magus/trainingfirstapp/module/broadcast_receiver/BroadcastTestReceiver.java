@@ -51,6 +51,7 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
         Intent openAppIntent = new Intent(context, TrainingFirstActivity.class);
         openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(openAppIntent);
+        Toast.makeText(context, "欢迎你开机", Toast.LENGTH_SHORT).show();
     }
 
     /* 监听来电电话 */
