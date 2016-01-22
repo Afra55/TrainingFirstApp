@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.module.customviews.charting;
+package com.magus.trainingfirstapp.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

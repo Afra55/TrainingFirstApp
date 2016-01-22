@@ -9,7 +9,7 @@
         android:layout_alignParentTop="true"
         />
 
-    <com.magus.trainingfirstapp.module.customviews.charting.TimekeeperView
+    <com.magus.trainingfirstapp.view.TimekeeperView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"

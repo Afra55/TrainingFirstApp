@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseActivity;
-import com.magus.trainingfirstapp.module.customviews.charting.CusstomScrollView;
+import com.magus.trainingfirstapp.view.CusstomScrollView;
 
 public class MyOwnCusstomViewActivity extends BaseActivity {
 
