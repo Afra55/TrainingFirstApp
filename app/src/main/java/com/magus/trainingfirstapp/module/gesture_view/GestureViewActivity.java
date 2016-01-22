@@ -20,6 +20,5 @@ public class GestureViewActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        gestureView.releaseView();
     }
 }

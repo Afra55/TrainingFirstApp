@@ -134,6 +134,12 @@ public class GestureView extends View implements GestureDetector.OnGestureListen
         }
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        releaseView();
+        super.onDetachedFromWindow();
+    }
+
     /* 手指触摸屏幕的一瞬间 */
     @Override
     public boolean onDown(MotionEvent e) {
