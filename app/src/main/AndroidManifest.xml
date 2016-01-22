@@ -343,14 +343,17 @@
                 <!-- 手机启动的action -->
             </intent-filter>
         </receiver>
-        <receiver android:name=".view.NewAppWidget">
+
+        <!-- 桌面小部件 -->
+        <receiver android:name=".view.DesktopSmallWidget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> <!-- 必须添加 -->
+                <action android:name="com.afra55.appwidget.action.CLICK" /> <!-- 小部件单机行为 -->
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/new_app_widget_info" />
+                android:resource="@xml/desktop_small_widget_info" />
         </receiver>
 
         <activity android:name=".module.remote_views.RemoteViewsTestActivity"></activity>
