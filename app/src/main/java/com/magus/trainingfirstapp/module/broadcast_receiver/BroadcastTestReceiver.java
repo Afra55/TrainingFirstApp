@@ -65,13 +65,13 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
                         Class<TelephonyManager> telephonyManagerClass = TelephonyManager.class;
 
                         /* 通过反射获取getITelephony方法对应的method对象 */
-                        Method telephonyMethod = telephonyManagerClass.getDeclaredMethod("getITelephony", null);
+                        Method telephonyMethod = telephonyManagerClass.getDeclaredMethod("getITelephony", (Class[])null);
 
                         /* 允许访问 getITelephony 方法 */
                         telephonyMethod.setAccessible(true);
 
                         /* 调用 getITelephony 方法获取 ITelephony 对象 */
-                        Object object = telephonyMethod.invoke(telephonyManager, null);
+                        Object object = telephonyMethod.invoke(telephonyManager, (Object[])null);
 
                         /* 获取与 endCall 方法对应的 Method 对象 */
                         Method endCallMethod = object.getClass().getMethod("endCall", null);

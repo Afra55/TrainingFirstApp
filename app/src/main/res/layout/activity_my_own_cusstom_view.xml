@@ -11,12 +11,7 @@
     android:orientation="vertical"
     tools:context="com.magus.trainingfirstapp.module.customviews.MyOwnCusstomViewActivity">
 
-   <!-- <com.magus.trainingfirstapp.view.MyCusstomView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:exampleString="你好啊，傻"
-        app:exampleDimension="16sp"
-        />
+   <!--
     <com.magus.trainingfirstapp.view.BorderTextview
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
