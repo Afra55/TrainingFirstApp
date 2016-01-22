@@ -66,7 +66,7 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name=".utils.MApplication"
+        android:name=".base.MApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -352,6 +352,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/new_app_widget_info" />
         </receiver>
+
+        <activity android:name=".module.remote_views.RemoteViewsTestActivity"></activity>
     </application>
 
 </manifest>

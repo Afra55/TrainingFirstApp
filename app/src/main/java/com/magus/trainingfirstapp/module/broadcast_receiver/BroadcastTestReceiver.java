@@ -74,13 +74,13 @@ public class BroadcastTestReceiver extends BroadcastReceiver {
                         Object object = telephonyMethod.invoke(telephonyManager, (Object[])null);
 
                         /* 获取与 endCall 方法对应的 Method 对象 */
-                        Method endCallMethod = object.getClass().getMethod("endCall", null);
+                        Method endCallMethod = object.getClass().getMethod("endCall", (Class[])null);
 
                         /* 允许访问 endCall 方法*/
                         endCallMethod.setAccessible(true);
 
                         /* 调用 endCall 方法挂断电话*/
-                        endCallMethod.invoke(object, null);
+                        endCallMethod.invoke(object, (Object[])null);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
