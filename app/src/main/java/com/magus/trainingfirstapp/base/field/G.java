@@ -49,6 +49,8 @@ public class G {
         public static final int REQUEST_IMAGE_CAPTURE_O = 2;
         public static final int BUTTON_ITEM_ID = 1001;
 
+        public static final String AUTO_INSTALL = "auto_install";
+
     }
 
     /**

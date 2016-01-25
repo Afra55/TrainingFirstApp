@@ -6,9 +6,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
 import com.magus.trainingfirstapp.R;
+import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.utils.Log;
+import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
+
 import java.util.List;
 
 /**
@@ -100,6 +104,8 @@ public class MAcessibilityService extends AccessibilityService{
             message.obj = nextBtn;
             message.what = CHECK_INSTALL;
             handler.sendMessageDelayed(message, 500);
+
+            SharedPreferenceUtil.saveBooleanData(G.FlagsConst.AUTO_INSTALL, true);
         }else {
 
             // 判断是否完成安装
@@ -139,5 +145,6 @@ public class MAcessibilityService extends AccessibilityService{
      */
     @Override
     public void onInterrupt() {
+        Toast.makeText(this, "onInterrupt", Toast.LENGTH_SHORT).show();
     }
 }

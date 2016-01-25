@@ -368,7 +368,7 @@ public class TrainingFirstActivity extends BaseActivity {
     }
 
     private void downLoadTemp() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && !SharedPreferenceUtil.getBooleanData(G.FlagsConst.AUTO_INSTALL)) {
             startActivity(G.IntentConst.ACCESSIBILITY_SETTINGS_INTENT);
             showToast("开启省心装自动安装应用包");
         }
