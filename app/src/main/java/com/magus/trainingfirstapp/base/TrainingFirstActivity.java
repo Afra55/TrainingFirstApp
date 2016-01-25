@@ -120,7 +120,7 @@ public class TrainingFirstActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-//        unregisterReceiver(screenOnOffReceiver);
+        unregisterReceiver(screenOnOffReceiver);
         super.onDestroy();
     }
 

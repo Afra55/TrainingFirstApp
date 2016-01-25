@@ -3,6 +3,7 @@ package com.magus.trainingfirstapp.base;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -237,9 +238,19 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
             changeToastState("再按一次退出程序");
             exitTime = System.currentTimeMillis();
         } else {
-            finish();
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
+//            finish();
+//            android.os.Process.killProcess(android.os.Process.myPid());
+//            System.exit(0);
+
+            //
+//            onBackPressed();
+            //
+
+            /* 模拟home键 */
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            this.startActivity(intent);
         }
     }
 

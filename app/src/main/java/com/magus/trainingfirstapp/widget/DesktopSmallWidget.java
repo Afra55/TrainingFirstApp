@@ -35,7 +35,7 @@ public class DesktopSmallWidget extends AppWidgetProvider {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.loading2);
+                    Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.beauty);
                     AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
                     for (int i = 0; i < 37; i++) {
                         float degree = (i * 10) % 360;
