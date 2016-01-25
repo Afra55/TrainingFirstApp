@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.view;
+package com.magus.trainingfirstapp.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;

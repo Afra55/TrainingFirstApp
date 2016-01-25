@@ -345,7 +345,7 @@
         </receiver>
 
         <!-- 桌面小部件 -->
-        <receiver android:name=".view.DesktopSmallWidget">
+        <receiver android:name=".widget.DesktopSmallWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> <!-- 必须添加 -->
                 <action android:name="com.afra55.appwidget.action.CLICK" /> <!-- 小部件单机行为 -->

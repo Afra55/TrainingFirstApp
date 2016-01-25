@@ -3,9 +3,11 @@ package com.magus.trainingfirstapp.base;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.app.ActivityOptions;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -46,6 +48,7 @@ import com.magus.trainingfirstapp.module.DialogThemeActivity;
 import com.magus.trainingfirstapp.module.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.module.broadcast_receiver.BroadcastTestReceiver;
+import com.magus.trainingfirstapp.module.broadcast_receiver.ScreenOnOffReceiver;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.commont_animation.CommontAnimationActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
@@ -77,6 +80,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class TrainingFirstActivity extends BaseActivity {
 
@@ -86,6 +90,7 @@ public class TrainingFirstActivity extends BaseActivity {
     private ScrollView scrollView;
     private boolean topProgressContentIsShown = true;
     private RelativeLayout topProgressContent;
+    private BroadcastReceiver screenOnOffReceiver; // 监听屏幕唤醒和休眠
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,6 +107,21 @@ public class TrainingFirstActivity extends BaseActivity {
         setActionBarRightBtnText("Lover");
         initWidget();
         initModule();
+
+        /* 注册屏幕唤醒和休眠监听 */
+        screenOnOffReceiver = new ScreenOnOffReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_SCREEN_ON);
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SharedPreferenceUtil.saveStringData(ScreenOnOffReceiver.DATE, simpleDateFormat.format(new Date()));
+        registerReceiver(screenOnOffReceiver, intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+//        unregisterReceiver(screenOnOffReceiver);
+        super.onDestroy();
     }
 
     private void initWidget() {

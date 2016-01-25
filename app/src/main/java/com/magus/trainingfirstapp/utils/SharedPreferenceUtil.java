@@ -30,7 +30,7 @@ public class SharedPreferenceUtil {
     }
     
     public static int getIntData(String key){
-        return sharedPreferences.getInt(key, -1);
+        return sharedPreferences.getInt(key, 0);
     }
     
     public static int getIntData(String key, int defaultValue){
@@ -43,7 +43,7 @@ public class SharedPreferenceUtil {
     }
     
     public static String getStringData(String key){
-        return sharedPreferences.getString(key, null);
+        return sharedPreferences.getString(key, "");
     }
     
     public static String getStringData(String key, String defaultValue){
@@ -69,7 +69,7 @@ public class SharedPreferenceUtil {
     }
     
     public static float getFloatData(String key){
-        return sharedPreferences.getFloat(key, -1);
+        return sharedPreferences.getFloat(key, 0);
     }
     
     public static float getFloatData(String key, float defaultValue){
