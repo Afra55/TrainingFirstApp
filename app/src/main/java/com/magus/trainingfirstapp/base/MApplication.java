@@ -21,7 +21,7 @@ public class MApplication extends Application {
     public void onCreate() {
         super.onCreate();
         /* 异常捕获(debug 时不捕获异常) */
-//        Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
+        Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
 
         /* imageLoader
         * http://blog.csdn.net/yang786654260/article/details/44300833 */
