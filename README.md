@@ -19,3 +19,9 @@ Android简单框架的搭建：
 
 ###SurfaceView
 ![SurfaceView](https://raw.githubusercontent.com/Afra55/TrainingFirstApp/master/readme_img/surfaceView_temp.gif)
+
+###各种动画
+![动画](https://raw.githubusercontent.com/Afra55/TrainingFirstApp/master/readme_img/anim_show.gif)
+
+###短信电话监听
+###异常捕获并重启应用
