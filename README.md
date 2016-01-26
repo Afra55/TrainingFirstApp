@@ -11,8 +11,11 @@ Android简单框架的搭建：
 [https://github.com/Afra55/AndroidBasicFramework](https://github.com/Afra55/AndroidBasicFramework)
 
 ##功能简述
-###主页部分功能点
+###主页布局展示
 ![home](https://raw.githubusercontent.com/Afra55/TrainingFirstApp/master/readme_img/show_home.gif)
 
 ###自动装
 ![自动装](https://raw.githubusercontent.com/Afra55/TrainingFirstApp/master/readme_img/auto_install.gif)
+
+###SurfaceView
+![SurfaceView](https://raw.githubusercontent.com/Afra55/TrainingFirstApp/master/readme_img/surfaceView_temp.gif)
