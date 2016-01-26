@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.module.broadcast_receiver;
+package com.magus.trainingfirstapp.utils.broadcast_receiver;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;

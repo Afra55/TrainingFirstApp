@@ -232,7 +232,7 @@
 
         <!-- 省心装 -->
         <service
-            android:name=".module.accessibility_service.MAcessibilityService"
+            android:name=".utils.accessibility_service.MAcessibilityService"
             android:enabled="@bool/atLeastIceCreamSandwich"
             android:label="@string/acc_auto_install_service_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
@@ -334,7 +334,7 @@
 
         <!-- 短信监听 -->
         <receiver
-            android:name=".module.broadcast_receiver.BroadcastTestReceiver"
+            android:name=".utils.broadcast_receiver.BroadcastTestReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
@@ -347,8 +347,10 @@
         <!-- 桌面小部件 -->
         <receiver android:name=".widget.DesktopSmallWidget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> <!-- 必须添加 -->
-                <action android:name="com.afra55.appwidget.action.CLICK" /> <!-- 小部件单机行为 -->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <!-- 必须添加 -->
+                <action android:name="com.afra55.appwidget.action.CLICK" />
+                <!-- 小部件单机行为 -->
             </intent-filter>
 
             <meta-data
@@ -356,7 +358,12 @@
                 android:resource="@xml/desktop_small_widget_info" />
         </receiver>
 
-        <activity android:name=".module.remote_views.RemoteViewsTestActivity"></activity>
+        <activity android:name=".module.remote_views.RemoteViewsTestActivity" />
+
+        <service
+            android:name=".utils.service.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

@@ -1,11 +1,13 @@
 package com.magus.trainingfirstapp.base;
 
 import android.app.Application;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.MyUncaughtExceptionHandler;
+import com.magus.trainingfirstapp.utils.service.MyService;
 import com.nostra13.universalimageloader.cache.disc.naming.FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,6 +24,9 @@ public class MApplication extends Application {
         super.onCreate();
         /* 异常捕获(debug 时不捕获异常) */
         Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
+
+        /* 启动屏幕唤醒监听服务 */
+        startService(new Intent(this, MyService.class));
 
         /* imageLoader
         * http://blog.csdn.net/yang786654260/article/details/44300833 */

@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.module.accessibility_service;
+package com.magus.trainingfirstapp.utils.accessibility_service;
 
 import android.accessibilityservice.AccessibilityService;
 import android.os.Build;
