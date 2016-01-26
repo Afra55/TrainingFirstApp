@@ -198,7 +198,7 @@ public class CommontUtils {
 	 * 获取版本号,默认1
 	 * @return
 	 */
-	public String getVersionName(Context context){
+	public static String getVersionName(Context context){
 		try {
 			return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
 		} catch (PackageManager.NameNotFoundException e) {

@@ -1,18 +1,20 @@
 package com.magus.trainingfirstapp.utils;
 
+import android.content.Context;
 import android.os.Build;
 
 public class SystemInfoTools {
 
-    public static String makeInfoString(String[] description, String[] prop) {
+    public static String makeInfoString(Context context, String[] description, String[] prop) {
         StringBuilder sb = new StringBuilder();
+        sb.append("App版本号 : ").append(CommontUtils.getVersionName(context)).append("\r\n");
         for (int i = 0; i < prop.length; i++) {
             sb.append(description[i]).append(" : ").append(prop[i]).append("\r\n");
         }
         return sb.toString();
     }
 
-    public static String getBuildInfo() {
+    public static String getBuildInfo(Context context) {
         String board = Build.BOARD; // 主板
         String brand = Build.BRAND; // Android 系统定制商
         String supported_abis = null; // CPU 指令集
@@ -83,10 +85,10 @@ public class SystemInfoTools {
                 "User名(user)",
                 "编译时间(time)"
         };
-        return makeInfoString(description, prop);
+        return makeInfoString(context, description, prop);
     }
 
-    public static String getSystemPropertyInfo() {
+    public static String getSystemPropertyInfo(Context context) {
         String os_version = System.getProperty("os.version"); // OS 版本
         String os_name = System.getProperty("os.name"); // OS 名称
         String os_arch = System.getProperty("os.arch"); // OS 架构
@@ -139,6 +141,6 @@ public class SystemInfoTools {
                 "java_version",
                 "java_home"
         };
-        return makeInfoString(description, prop);
+        return makeInfoString(context, description, prop);
     }
 }

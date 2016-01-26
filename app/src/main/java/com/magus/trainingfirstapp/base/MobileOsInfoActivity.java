@@ -34,9 +34,9 @@ public class MobileOsInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_mobile_os_info);
         osInfo = (TextView) findViewById(R.id.base_mobile_os_info_tv);
-        String systemInfoStr = SystemInfoTools.getBuildInfo();
+        String systemInfoStr = SystemInfoTools.getBuildInfo(this);
         systemInfoStr += "-------------------------------------\r\n";
-        systemInfoStr += SystemInfoTools.getSystemPropertyInfo();
+        systemInfoStr += SystemInfoTools.getSystemPropertyInfo(this);
         osInfo.setText(systemInfoStr);
         osInfo.setOnClickListener(this);
 
