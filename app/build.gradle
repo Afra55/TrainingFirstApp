@@ -2,21 +2,34 @@ apply plugin: 'com.android.application'
 apply plugin: 'newlens'
 
 android {
+    signingConfigs {
+        debug {
+            keyAlias 'afra55'
+            keyPassword '123456'
+            storeFile file('keystore/afra_temp.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
     defaultConfig {
         applicationId "com.magus.trainingfirstapp"
         minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    productFlavors {
     }
 }
 
