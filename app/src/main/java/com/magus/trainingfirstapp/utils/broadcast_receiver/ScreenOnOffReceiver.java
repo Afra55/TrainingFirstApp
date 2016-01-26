@@ -31,6 +31,7 @@ public class ScreenOnOffReceiver extends BroadcastReceiver {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         switch (intent.getAction()) {
             case Intent.ACTION_SCREEN_ON:
+            case Intent.ACTION_USER_PRESENT:
                 Toast.makeText(context, "今天已锁屏" + sharedPreferences.getInt(SCREEN_OFF_TIMES, 0) + "次", Toast.LENGTH_SHORT).show();
                 break;
             case Intent.ACTION_SCREEN_OFF:

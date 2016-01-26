@@ -7,11 +7,9 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 import com.magus.trainingfirstapp.utils.broadcast_receiver.ScreenOnOffReceiver;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class MyService extends Service {
@@ -32,7 +30,7 @@ public class MyService extends Service {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        intentFilter.addAction(Intent.ACTION_USER_PRESENT);
         registerReceiver(screenOnOffReceiver, intentFilter);
         Log.d("MyService", "onCreate");
     }
