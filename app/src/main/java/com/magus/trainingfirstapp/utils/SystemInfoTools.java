@@ -39,6 +39,7 @@ public class SystemInfoTools {
         String host = Build.HOST; // Host 值
         String user = Build.USER; // User 名
         String time = "" + Build.TIME; // 编译时间
+        String sign = CommontUtils.getSign(context, context.getPackageName());
         String[] prop = {
                 board,
                 brand,
@@ -60,7 +61,8 @@ public class SystemInfoTools {
                 sdk_int,
                 host,
                 user,
-                time
+                time,
+                sign
         };
         String[] description = {
                 "主板(board)",
@@ -83,7 +85,8 @@ public class SystemInfoTools {
                 "版本号(sdk_int)",
                 "Host值(host)",
                 "User名(user)",
-                "编译时间(time)"
+                "编译时间(time)",
+                "App签名信息"
         };
         return makeInfoString(context, description, prop);
     }
@@ -143,4 +146,5 @@ public class SystemInfoTools {
         };
         return makeInfoString(context, description, prop);
     }
+
 }

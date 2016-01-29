@@ -1113,4 +1113,40 @@ public class CommontUtils {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (pxValue / scale + 0.5f);
 	}
+
+	/**
+	 * App 签名信息
+	 * @param context
+	 * @param packageName
+	 * @return
+	 */
+	public static String getSign(Context context, String packageName) {
+		Signature[] signs = getRawSignature(context, packageName);
+		if ((signs == null) || (signs.length == 0)) {
+			return null;
+		} else {
+			Signature sign = signs[0];
+			return sign.toCharsString() + "";
+		}
+	}
+
+
+	public static Signature[] getRawSignature(Context context,
+											  String packageName) {
+		if ((packageName == null) || (packageName.length() == 0)) {
+			return null;
+		}
+		PackageManager pkgMgr = context.getPackageManager();
+		PackageInfo info = null;
+		try {
+			info = pkgMgr.getPackageInfo(packageName,
+					PackageManager.GET_SIGNATURES);
+		} catch (PackageManager.NameNotFoundException e) {
+			return null;
+		}
+		if (info == null) {
+			return null;
+		}
+		return info.signatures;
+	}
 }
