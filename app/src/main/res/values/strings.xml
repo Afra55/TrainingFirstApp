@@ -217,6 +217,7 @@
     <string name="monitoring_call">Monitoring call</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="alert">alert</string>
 
 
 </resources>

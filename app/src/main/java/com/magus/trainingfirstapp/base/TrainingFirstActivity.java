@@ -3,11 +3,9 @@ package com.magus.trainingfirstapp.base;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.app.ActivityOptions;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -45,10 +43,10 @@ import android.widget.TextView;
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.field.G;
 import com.magus.trainingfirstapp.module.DialogThemeActivity;
+import com.magus.trainingfirstapp.module.alert.AlerTestActivity;
 import com.magus.trainingfirstapp.utils.accessibility_service.MAcessibilityService;
 import com.magus.trainingfirstapp.module.activity_life.ActivityA;
 import com.magus.trainingfirstapp.utils.broadcast_receiver.BroadcastTestReceiver;
-import com.magus.trainingfirstapp.utils.broadcast_receiver.ScreenOnOffReceiver;
 import com.magus.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.magus.trainingfirstapp.module.commont_animation.CommontAnimationActivity;
 import com.magus.trainingfirstapp.module.contacts.ContactsActivity;
@@ -72,7 +70,6 @@ import com.magus.trainingfirstapp.utils.DisplayUtil;
 import com.magus.trainingfirstapp.utils.SharedPreferenceUtil;
 import com.magus.trainingfirstapp.utils.alert_utils.AlertUtils;
 import com.magus.trainingfirstapp.utils.download_utils.DownLoadService;
-import com.magus.trainingfirstapp.utils.service.MyService;
 import com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer;
 import com.networkbench.agent.impl.NBSAppAgent;
 
@@ -81,7 +78,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class TrainingFirstActivity extends BaseActivity {
 
@@ -354,6 +350,8 @@ public class TrainingFirstActivity extends BaseActivity {
                     showToast("关闭电话拦截" + SharedPreferenceUtil.getBooleanData(G.KeyConst.MONITORING_CALL));
                 }
                 break;
+            case 35:
+                return new Intent(this, AlerTestActivity.class);
         }
         return null;
     }

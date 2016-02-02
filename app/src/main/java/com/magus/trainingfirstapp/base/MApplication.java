@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 
+import com.magus.trainingfirstapp.BuildConfig;
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.MyUncaughtExceptionHandler;
 import com.magus.trainingfirstapp.utils.service.MyService;
@@ -23,7 +24,8 @@ public class MApplication extends Application {
     public void onCreate() {
         super.onCreate();
         /* 异常捕获(debug 时不捕获异常) */
-        Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
+        if (!BuildConfig.DEBUG)
+            Thread.setDefaultUncaughtExceptionHandler(new MyUncaughtExceptionHandler(this));
 
         /* 启动屏幕唤醒监听服务 */
         startService(new Intent(this, MyService.class));
@@ -53,7 +55,7 @@ public class MApplication extends Application {
                 .diskCacheFileNameGenerator(new FileNameGenerator() {   // new Md5FileNameGenerator()
                     @Override
                     public String generate(String imageUri) {
-                        return getString(R.string.app_name)+ "_" + imageUri;
+                        return getString(R.string.app_name) + "_" + imageUri;
                     }
                 })
                 .build();

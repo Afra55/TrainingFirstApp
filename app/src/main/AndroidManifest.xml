@@ -363,7 +363,9 @@
         <service
             android:name=".utils.service.MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".module.alert.AlerTestActivity"></activity>
     </application>
 
 </manifest>

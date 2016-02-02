@@ -61,7 +61,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 35;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 38;
     }
 
     /**
@@ -142,6 +142,8 @@ public class G {
                 return context.getString(R.string.monitoring_sms);
             case 34:
                 return context.getString(R.string.monitoring_call);
+            case 35:
+                return context.getString(R.string.alert);
         }
         return "Lover";
     }
