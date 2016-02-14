@@ -3,6 +3,7 @@ package com.magus.trainingfirstapp.module.alert;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -37,7 +38,19 @@ public class AlerTestActivity extends BaseActivity {
             case R.id.alert_four_btn:
                 four();
                 break;
+
+            case R.id.alert_five_btn:
+                five();
+                break;
         }
+    }
+
+    private void five() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setMessage("右上角").setPositiveButton("ok", null).create();
+        Window window = alertDialog.getWindow();
+        window.setGravity(Gravity.END | Gravity.TOP);
+        alertDialog.show();
     }
 
     private void four() {
