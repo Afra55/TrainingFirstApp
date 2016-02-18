@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
-import com.magus.trainingfirstapp.module.commont_animation.anim.CusstomAnim;
+import com.magus.trainingfirstapp.utils.anim.CusstomAnim;
 
 /**
  * PropertyAnimatorFragment

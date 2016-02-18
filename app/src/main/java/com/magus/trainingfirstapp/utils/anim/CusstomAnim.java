@@ -1,4 +1,4 @@
-package com.magus.trainingfirstapp.module.commont_animation.anim;
+package com.magus.trainingfirstapp.utils.anim;
 
 import android.graphics.Camera;
 import android.graphics.Matrix;

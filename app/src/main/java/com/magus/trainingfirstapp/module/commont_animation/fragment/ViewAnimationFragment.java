@@ -2,7 +2,6 @@ package com.magus.trainingfirstapp.module.commont_animation.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import android.view.animation.TranslateAnimation;
 
 import com.magus.trainingfirstapp.R;
 import com.magus.trainingfirstapp.base.BaseFragment;
+import com.magus.trainingfirstapp.utils.anim.Rotate3dAnimation;
 
 /**
  * 视图动画
@@ -75,6 +75,10 @@ public class ViewAnimationFragment extends BaseFragment {
                 break;
             case R.id.btnSet:
                 btnSet(v);
+                break;
+            case R.id.cusstomAnim:
+                Rotate3dAnimation rotate3dAnimation = new Rotate3dAnimation(0, 360, 10, true);
+                v.startAnimation(rotate3dAnimation);
                 break;
         }
     }
