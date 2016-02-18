@@ -66,6 +66,13 @@
             android:layout_margin="10dp"
             android:text="cusstomAnim" />
 
+        <Button
+            android:id="@+id/backgroundAnim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="backgroundAnim" />
+
     </LinearLayout>
 
 </ScrollView>

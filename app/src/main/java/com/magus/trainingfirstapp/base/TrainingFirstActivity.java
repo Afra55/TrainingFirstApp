@@ -2,6 +2,9 @@ package com.magus.trainingfirstapp.base;
 
 import android.Manifest;
 import android.animation.AnimatorInflater;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.ActivityOptions;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -113,12 +116,24 @@ public class TrainingFirstActivity extends BaseActivity {
 
     private void initWidget() {
         topProgressContent = (RelativeLayout) findViewById(R.id.first_relativeLayout);
+
+        addTopBackgroundAnim();
+
         first_module_content_lly = (AutoDisplayChildViewContainer) findViewById(R.id.first_module_content_lly);
         takePhotoThenToShowImg = (ImageView) findViewById(R.id.first_image_content);
         ((TextView) findViewById(R.id.first_show_tv)).setText(Build.MODEL);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         childModuleShowAnim();
+    }
+
+    private void addTopBackgroundAnim() {
+        ValueAnimator colorAnim = ObjectAnimator.ofInt(topProgressContent, "backgroundColor", /*Red*/0xFFFF8080, /*Blue*/0xFF8080FF);
+        colorAnim.setDuration(3000);
+        colorAnim.setEvaluator(new ArgbEvaluator());
+        colorAnim.setRepeatCount(ValueAnimator.INFINITE);
+        colorAnim.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnim.start();
     }
 
     private void childModuleShowAnim() {
