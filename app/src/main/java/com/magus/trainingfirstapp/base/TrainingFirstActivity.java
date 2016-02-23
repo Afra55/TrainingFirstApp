@@ -106,7 +106,7 @@ public class TrainingFirstActivity extends BaseActivity {
         setActionBarRightBtnText("Lover");
         initWidget();
         initModule();
-
+        com.magus.trainingfirstapp.utils.Log.i("info" , CommontUtils.collectDeviceInfoStr(this));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.magus.trainingfirstapp.module.commont_animation.fragment;
 
 
+import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -90,6 +91,21 @@ public class ViewAnimationFragment extends BaseFragment {
                 colorAnim.setRepeatCount(ValueAnimator.INFINITE);
                 colorAnim.setRepeatMode(ValueAnimator.REVERSE);
                 colorAnim.start();
+                break;
+            case R.id.togetherAnim:
+                AnimatorSet set = new AnimatorSet();
+                set.playTogether(
+                        ObjectAnimator.ofFloat(v, "rotationX", 0, 360),
+                        ObjectAnimator.ofFloat(v, "rotationY", 0, 180),
+//                        ObjectAnimator.ofFloat(v, "rotation", 0, -90),
+                        ObjectAnimator.ofFloat(v, "translationX", 0, 90),
+//                        ObjectAnimator.ofFloat(v, "translationY", 0, 90),
+                        ObjectAnimator.ofFloat(v, "scaleX", 1, 1.5f),
+                        ObjectAnimator.ofFloat(v, "scaleY", 1, 0.5f),
+                        ObjectAnimator.ofFloat(v, "alpha", 1, 0.25f, 1)
+                );
+                set.setDuration(5 * 1000).start();
+
                 break;
         }
     }

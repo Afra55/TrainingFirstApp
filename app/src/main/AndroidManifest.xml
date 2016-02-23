@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.magus.trainingfirstapp">
 
+    <!-- 唤醒屏幕并解锁 -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
@@ -361,6 +367,7 @@
         <activity android:name=".module.remote_views.RemoteViewsTestActivity" />
 
         <service
+
             android:name=".utils.service.MyService"
             android:enabled="true"
             android:exported="true" />
