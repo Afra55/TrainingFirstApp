@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.magus.trainingfirstapp.module.notification.NotificationTestActivity">
+    tools:context="com.afra55.trainingfirstapp.module.notification.NotificationTestActivity">
 
     <Button
         android:layout_width="wrap_content"

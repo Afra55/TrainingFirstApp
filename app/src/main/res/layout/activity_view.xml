@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".module.gesture_view.GestureViewActivity">
 
-    <com.magus.trainingfirstapp.view.GestureView
+    <com.afra55.trainingfirstapp.view.GestureView
         android:id="@+id/view_gesture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

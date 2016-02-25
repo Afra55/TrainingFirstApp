@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.magus.trainingfirstapp">
+    package="com.afra55.trainingfirstapp">
 
     <!-- 唤醒屏幕并解锁 -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
@@ -72,13 +72,13 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name=".base.MApplication"
+        android:name="com.afra55.trainingfirstapp.base.MApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".base.TrainingFirstActivity"
+            android:name="com.afra55.trainingfirstapp.base.TrainingFirstActivity"
             android:clearTaskOnLaunch="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -90,10 +90,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".module.other_activity.OtherActivity"
+            android:name="com.afra55.trainingfirstapp.module.other_activity.OtherActivity"
             android:label="@string/other_app_name"
             android:launchMode="singleTop"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -118,21 +118,21 @@
             <!-- meta-data 用于支持 support 4.0 以及以下来指明上级活动 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.activity_life.ActivityA"
+            android:name="com.afra55.trainingfirstapp.module.activity_life.ActivityA"
             android:launchMode="singleTask" />
-        <activity android:name=".module.activity_life.ActivityB" />
-        <activity android:name=".module.activity_life.ActivityC" />
+        <activity android:name="com.afra55.trainingfirstapp.module.activity_life.ActivityB" />
+        <activity android:name="com.afra55.trainingfirstapp.module.activity_life.ActivityC" />
         <activity
-            android:name=".module.activity_life.DialogActivity"
+            android:name="com.afra55.trainingfirstapp.module.activity_life.DialogActivity"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".module.frgment_demo.FragmentMainActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.frgment_demo.FragmentMainActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.magus.trainingfirstapp.fileprovider"
+            android:authorities="com.afra55.trainingfirstapp.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -141,7 +141,7 @@
         </provider>
 
         <activity
-            android:name=".module.other_activity.FileSelectActivity"
+            android:name="com.afra55.trainingfirstapp.module.other_activity.FileSelectActivity"
             android:label="@string/file_selector">
             <intent-filter>
                 <action android:name="ANDROID.INTENT.ACTION.PICK" />
@@ -153,77 +153,77 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity" />
-        <activity android:name=".module.photobyintent.PhotoIntentActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.photobyintent.PhotoIntentActivity" />
         <activity
-            android:name=".module.images.DisplayingBitmapsActivity"
+            android:name="com.afra55.trainingfirstapp.module.images.DisplayingBitmapsActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".module.opengl.OpenGLES20Activity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.opengl.OpenGLES20Activity" />
 
         <!-- 动画相关 start -->
         <activity
-            android:name=".module.animdemo.AnimDemoMainActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity"
             android:label="@string/title_crossfade" />
         <activity
-            android:name=".module.animdemo.CrossfadeActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.CrossfadeActivity"
             android:label="@string/title_crossfade"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.CardFlipActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.CardFlipActivity"
             android:label="@string/title_card_flip"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity"
             android:theme="@style/DarkTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.ScreenSlideActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.ScreenSlideActivity"
             android:label="@string/title_screen_slide"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.ZoomActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.ZoomActivity"
             android:label="@string/title_zoom"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
+            android:parentActivityName="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.LayoutChangesActivity"
+            android:name="com.afra55.trainingfirstapp.module.animdemo.LayoutChangesActivity"
             android:label="@string/title_layout_changes"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
+            android:parentActivityName="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity">
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
         </activity>
         <!-- 动画相关 end -->
-        <activity android:name=".module.myanim.MyAnimActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.myanim.MyAnimActivity" />
         <!-- 功能效果 -->
-        <activity android:name=".module.circle_menu.CircleMenuActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.circle_menu.CircleMenuActivity" />
 
         <!-- 连接网络相关 start -->
         <activity
-            android:name=".module.networkusage_demo.NetworkActivity"
+            android:name="com.afra55.trainingfirstapp.module.networkusage_demo.NetworkActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.networkusage_demo.SettingsActivity"
+            android:name="com.afra55.trainingfirstapp.module.networkusage_demo.SettingsActivity"
             android:label="SettingsActivity">
             <intent-filter>
 
@@ -238,7 +238,7 @@
 
         <!-- 省心装 -->
         <service
-            android:name=".utils.accessibility_service.MAcessibilityService"
+            android:name="com.afra55.trainingfirstapp.utils.accessibility_service.MAcessibilityService"
             android:enabled="@bool/atLeastIceCreamSandwich"
             android:label="@string/acc_auto_install_service_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
@@ -252,95 +252,95 @@
         </service>
 
         <activity
-            android:name=".module.contacts.ContactsActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:name="com.afra55.trainingfirstapp.module.contacts.ContactsActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.EffectiveNavigationActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:name="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.CollectionDemoActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
+            android:name="com.afra55.trainingfirstapp.module.effectivenavigation.CollectionDemoActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+                android:value="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
+            android:name="com.afra55.trainingfirstapp.module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.effectivenavigation.EffectiveNavigationActivity" />
+                android:value="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity" />
         </activity>
         <activity
-            android:name=".module.pingme.PingMeActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:name="com.afra55.trainingfirstapp.module.pingme.PingMeActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
 
         <service
-            android:name=".module.pingme.PingService"
+            android:name="com.afra55.trainingfirstapp.module.pingme.PingService"
             android:enabled="true"
             android:label="PingServiceLabel" />
 
         <activity
-            android:name=".module.pingme.PingMeResultActivity"
+            android:name="com.afra55.trainingfirstapp.module.pingme.PingMeResultActivity"
             android:excludeFromRecents="true"
             android:label="Take Action"
             android:launchMode="singleTask"
-            android:parentActivityName=".module.pingme.PingMeActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.module.pingme.PingMeActivity"
             android:taskAffinity="">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".module.pingme.PingMeActivity" />
+                android:value="com.afra55.trainingfirstapp.module.pingme.PingMeActivity" />
         </activity>
 
         <!-- newsReader -->
-        <activity android:name=".module.newsreader.NewsReaderActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.newsreader.NewsReaderActivity" />
         <activity
-            android:name=".module.newsreader.ArticleActivity"
+            android:name="com.afra55.trainingfirstapp.module.newsreader.ArticleActivity"
             android:theme="@style/NewsReaderStyle_NoActionBar" />
         <activity
-            android:name=".module.customviews.CusstomViewActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:name="com.afra55.trainingfirstapp.module.customviews.CusstomViewActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.MyOwnCusstomViewActivity" />
-        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.customviews.MyOwnCusstomViewActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" />
         <activity
-            android:name=".module.tabcompat.TabCompatMainActivity"
-            android:parentActivityName=".base.TrainingFirstActivity">
+            android:name="com.afra55.trainingfirstapp.module.tabcompat.TabCompatMainActivity"
+            android:parentActivityName="com.afra55.trainingfirstapp.base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".base.TrainingFirstActivity" />
+                android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
-        <activity android:name=".module.customviews.CusstomViewTestActivity" />
-        <activity android:name=".module.customviews.ViewDragHelperTestActivity" />
-        <activity android:name=".module.image_handle.ImageHandlePixActivity" />
-        <activity android:name=".module.surface_view.SurfaceViewTestActivity" />
-        <activity android:name=".module.commont_animation.CommontAnimationActivity" />
-        <activity android:name=".base.MobileOsInfoActivity" />
-        <activity android:name=".module.bomb_test.BombCloudServiceTestActivity" />
-        <activity android:name=".module.notification.NotificationTestActivity" />
-        <activity android:name=".module.gesture_view.GestureViewActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.customviews.CusstomViewTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.customviews.ViewDragHelperTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.image_handle.ImageHandlePixActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.surface_view.SurfaceViewTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.commont_animation.CommontAnimationActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.base.MobileOsInfoActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.bomb_test.BombCloudServiceTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.notification.NotificationTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.gesture_view.GestureViewActivity" />
         <activity
-            android:name=".module.DialogThemeActivity"
+            android:name="com.afra55.trainingfirstapp.module.DialogThemeActivity"
             android:theme="@style/dialog_activity" />
 
         <!-- 短信监听 -->
         <receiver
-            android:name=".utils.broadcast_receiver.BroadcastTestReceiver"
+            android:name="com.afra55.trainingfirstapp.utils.broadcast_receiver.BroadcastTestReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
@@ -351,7 +351,7 @@
         </receiver>
 
         <!-- 桌面小部件 -->
-        <receiver android:name=".widget.DesktopSmallWidget">
+        <receiver android:name="com.afra55.trainingfirstapp.widget.DesktopSmallWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <!-- 必须添加 -->
@@ -364,15 +364,15 @@
                 android:resource="@xml/desktop_small_widget_info" />
         </receiver>
 
-        <activity android:name=".module.remote_views.RemoteViewsTestActivity" />
+        <activity android:name="com.afra55.trainingfirstapp.module.remote_views.RemoteViewsTestActivity" />
 
         <service
 
-            android:name=".utils.service.MyService"
+            android:name="com.afra55.trainingfirstapp.utils.service.MyService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".module.alert.AlerTestActivity"></activity>
+        <activity android:name="com.afra55.trainingfirstapp.module.alert_and_toast.AlerAndToastTestActivity"></activity>
     </application>
 
 </manifest>

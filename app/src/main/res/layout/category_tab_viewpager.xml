@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.magus.trainingfirstapp.view.CategoryTabStrip
+    <com.afra55.trainingfirstapp.view.CategoryTabStrip
         android:id="@+id/category_strip"
         android:layout_width="match_parent"
         android:layout_height="40dip"

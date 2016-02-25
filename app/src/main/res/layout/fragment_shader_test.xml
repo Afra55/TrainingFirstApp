@@ -15,7 +15,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/beauty" />
 
-        <com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer
+        <com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer
             android:layout_width="match_parent"
             android:layout_below="@id/fragment_shader_img"
             android:layout_height="wrap_content">
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8圆形图片ddddddd"/>
-        </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
+        </com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer>
     </RelativeLayout>
 
 

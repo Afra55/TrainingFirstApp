@@ -7,9 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".module.alert.AlerTestActivity">
+    tools:context=".module.alert_and_toast.AlerAndToastTestActivity">
 
-    <com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer
+    <com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,32 +17,44 @@
             android:id="@+id/alert_one_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="普通按钮" />
+            android:text="普通alert" />
 
         <Button
             android:id="@+id/alert_two_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮2" />
+            android:text="alert2" />
 
         <Button
             android:id="@+id/alert_three_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮3" />
+            android:text="alert3" />
 
         <Button
             android:id="@+id/alert_four_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮4" />
+            android:text="alert4" />
 
         <Button
             android:id="@+id/alert_five_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按钮5" />
+            android:text="alert5" />
+
+        <Button
+            android:id="@+id/alert_six_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="alert6" />
+
+        <Button
+            android:id="@+id/toast_one_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toast1" />
 
 
-    </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
+    </com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer>
 </RelativeLayout>

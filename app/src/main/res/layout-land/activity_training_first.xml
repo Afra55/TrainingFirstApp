@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         >
 
-        <com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer
+        <com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer
             android:id="@+id/first_module_content_lly"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,6 +42,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_launcher"
                 android:scaleType="centerCrop" />
-        </com.magus.trainingfirstapp.view.AutoDisplayChildViewContainer>
+        </com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer>
     </ScrollView>
 </RelativeLayout>

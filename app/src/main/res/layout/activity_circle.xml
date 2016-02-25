@@ -5,7 +5,7 @@
     android:background="@drawable/bg"
     android:orientation="vertical">
 
-    <com.magus.trainingfirstapp.view.CircleMenuLayout
+    <com.afra55.trainingfirstapp.view.CircleMenuLayout
         android:id="@+id/id_menulayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,5 +29,5 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/turnplate_mask_unlogin_normal" />
         </RelativeLayout>
-    </com.magus.trainingfirstapp.view.CircleMenuLayout>
+    </com.afra55.trainingfirstapp.view.CircleMenuLayout>
 </LinearLayout>

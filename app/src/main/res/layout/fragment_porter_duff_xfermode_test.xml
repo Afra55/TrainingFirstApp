@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.magus.trainingfirstapp.module.image_handle.fragment.PorterDuffXfermodeTestFragment">
+    tools:context="com.afra55.trainingfirstapp.module.image_handle.fragment.PorterDuffXfermodeTestFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/beauty" />
 
-            <com.magus.trainingfirstapp.module.image_handle.view.XfermodeView
+            <com.afra55.trainingfirstapp.module.image_handle.view.XfermodeView
                 android:id="@+id/fragment_xfermode_guaguale_view"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
