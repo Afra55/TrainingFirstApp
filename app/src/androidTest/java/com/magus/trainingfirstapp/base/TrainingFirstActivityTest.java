@@ -25,7 +25,6 @@ public class TrainingFirstActivityTest extends ActivityInstrumentationTestCase2<
         super.setUp();
         trainingFirstActivity = getActivity();
         openOtherActivityBtn = (Button) trainingFirstActivity.findViewById(R.id.first_open_new_activity_btn);
-        messageEt = (EditText) trainingFirstActivity.findViewById(R.id.message_et);
     }
 
     /**
