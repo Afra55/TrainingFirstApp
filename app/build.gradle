@@ -13,7 +13,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
     defaultConfig {
-        applicationId "com.magus.trainingfirstapp"
+        applicationId 'com.afra55.trainingfirstapp'
         minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
@@ -41,11 +41,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/gson-2.2.4.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:support-v4:23.1.1'
     compile 'com.networkbench.newlens.agent.android:nbs.newlens.agent:2.2.7'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
     compile 'com.squareup.okio:okio:1.6.0'
     compile files('libs/Bmob_Push_V0.6beta_20150408.jar')
     compile files('libs/BmobSDK_V3.4.5_1111.jar')
+    compile 'com.android.support:support-v4:23.1.0'
 }
