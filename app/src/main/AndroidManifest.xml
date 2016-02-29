@@ -372,7 +372,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name="com.afra55.trainingfirstapp.module.alert_and_toast.AlerAndToastTestActivity"></activity>
+        <activity android:name=".module.alert.AlerTestActivity"></activity>
     </application>
 
 </manifest>

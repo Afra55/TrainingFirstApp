@@ -46,7 +46,7 @@ import android.widget.TextView;
 import com.afra55.trainingfirstapp.R;
 import com.afra55.trainingfirstapp.base.field.G;
 import com.afra55.trainingfirstapp.module.DialogThemeActivity;
-import com.afra55.trainingfirstapp.module.alert_and_toast.AlerAndToastTestActivity;
+import com.afra55.trainingfirstapp.module.alert.AlerTestActivity;
 import com.afra55.trainingfirstapp.utils.accessibility_service.MAcessibilityService;
 import com.afra55.trainingfirstapp.module.activity_life.ActivityA;
 import com.afra55.trainingfirstapp.utils.broadcast_receiver.BroadcastTestReceiver;
@@ -366,7 +366,7 @@ public class TrainingFirstActivity extends BaseActivity {
                 }
                 break;
             case 35:
-                return new Intent(this, AlerAndToastTestActivity.class);
+                return new Intent(this, AlerTestActivity.class);
         }
         return null;
     }
