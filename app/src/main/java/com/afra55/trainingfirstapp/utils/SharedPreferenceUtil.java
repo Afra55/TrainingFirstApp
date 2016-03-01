@@ -2,8 +2,20 @@ package com.afra55.trainingfirstapp.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
+import android.util.Base64;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
 import java.util.Map;
 
 /**
@@ -78,5 +90,80 @@ public class SharedPreferenceUtil {
     
     public static Map<String, ?> getAllData(){
        return sharedPreferences.getAll();
+    }
+
+    public static String useFileStreamReadSharedPreferencesData(Context context) {
+        String content = "";
+        String path = android.os.Environment.getDataDirectory().getAbsolutePath()
+                + "/data/" + context.getPackageName() + "/shared_prefs/abc.xml";
+        try {
+            FileInputStream fileInputStream = new FileInputStream(path);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            content = bufferedReader.readLine();
+            fileInputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+    public void saveToSDcard(Context context) {
+        try {
+            /* 获取 ContextWrapper 对象中的 mBase 变量 */
+            Field field = ContextWrapper.class.getDeclaredField("mBase");
+            field.setAccessible(true);
+
+            /* 获取mBase变量的值 */
+            Object object = field.get(context);
+
+            /* 获取 ContextImpl.mPreferencesDir 变量 */
+            field = object.getClass().getDeclaredField("mPreferencesDir");
+            field.setAccessible(true);
+
+            /* 创建自定义路径 */
+            File file = new File("/sdcard");
+
+            /* 修改 mPreferencesDir 变量的值 */
+            field.set(object, file);
+
+            /* 执行该语句，在 /sdcard 目录中创建一个 save_data.xml 文件 */
+            SharedPreferences sharedPreferences = context.getSharedPreferences("save_data", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("afra55", "AAA啊哈");
+            editor.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Field field = ContextWrapper.class.getDeclaredField("mBase");
+            field.setAccessible(true);
+            Object object = field.get(context);
+            object.getClass().getName(); // 获取到名字
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /* 存储一个序列化（实现 Serializable接口）的对象 */
+    public static void saveSerializableObject(String key, Object object) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(object);
+        saveStringData(key, Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT));
+    }
+
+    /* 获取序列化对象 */
+    public static Object getSerializableObject(String key) throws IOException {
+        byte[] base64Bytes = Base64.decode(getStringData(key).getBytes(), Base64.DEFAULT);
+        ByteArrayInputStream bais = new ByteArrayInputStream(base64Bytes);
+        ObjectInputStream ois = new ObjectInputStream(bais);
+        try {
+            return ois.readObject();
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
     }
 }
