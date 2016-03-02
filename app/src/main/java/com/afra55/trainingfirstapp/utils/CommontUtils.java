@@ -39,7 +39,7 @@ import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import com.afra55.trainingfirstapp.utils.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -54,12 +54,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.afra55.trainingfirstapp.R;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
@@ -1166,7 +1169,7 @@ public class CommontUtils {
             return null;
         } else {
             Signature sign = signs[0];
-            return sign.toCharsString() + "";
+            return sign.hashCode() + "";
         }
     }
 
@@ -1471,4 +1474,35 @@ public class CommontUtils {
 
     /* 邮箱正则 */
     public static final String REG_EMAIL = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+
+    /* 检测是否运行在模拟器中, 通过检测 ro.kernel.qemu(通常在模拟器中是1， 在正常手机中没有该属性) */
+    public static boolean isRunningInEmualtor() {
+        boolean qemukernel = false;
+        Process process = null;
+        DataOutputStream os = null;
+        try {
+            process = Runtime.getRuntime().exec("getprop ro.kernel.qemu");
+            os = new DataOutputStream(process.getOutputStream()); // 获取执行getprop 后的输出流
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+            os.writeBytes("exit\n"); // 执行退出
+            os.flush(); // 刷新输出流
+            process.waitFor();
+            qemukernel = (Integer.valueOf(in.readLine()) == 1); // ro.kernel.qemu 属性是否为1
+            com.afra55.trainingfirstapp.utils.Log.d("CommontUtils", "检测到模拟器：" + qemukernel);
+
+        } catch (Exception e) {
+            qemukernel = false; // 出现异常则判断在正常手机上
+            com.afra55.trainingfirstapp.utils.Log.d("CommontUtils", e.toString());
+        } finally {
+            try {
+
+                if (os != null) {
+                    os.close();
+                }
+                process.destroy();
+            } catch (Exception e) {
+            }
+        }
+        return qemukernel;
+    }
 }
