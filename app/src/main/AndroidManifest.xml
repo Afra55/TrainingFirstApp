@@ -373,6 +373,7 @@
             android:exported="true" />
 
         <activity android:name=".module.alert.AlerTestActivity"></activity>
+        <activity android:name=".base.MPreferenceActivity"></activity>
     </application>
 
 </manifest>

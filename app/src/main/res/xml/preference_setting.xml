@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="PreferenceCategory">
+        <CheckBoxPreference
+            android:key="settings_checkbox"
+            android:summary="CheckBoxPreferenceSummary"
+            android:title="CheckBoxPreference" />
+        <CheckBoxPreference
+            android:key="settings_checkbox2"
+            android:summary="CheckBoxPreferenceSummary2"
+            android:title="CheckBoxPreference2" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="PreferenceCategory2">
+        <CheckBoxPreference
+            android:key="settings_checkbox3"
+            android:summary="CheckBoxPreferenceSummary3"
+            android:title="CheckBoxPreference3" />
+        <EditTextPreference
+            android:key="settings_edittext"
+            android:summary="EditTextPreferenceSummary"
+            android:title="EditTextPreference" />
+        <PreferenceScreen
+            android:key="settings_preference_screen"
+            android:summary="PreferenceScreenSummary"
+            android:title="PreferenceScreen">
+            <CheckBoxPreference
+                android:key="settings_checkbox3"
+                android:title="CheckBoxPreference4" />
+            <EditTextPreference
+                android:key="settings_edittext2"
+                android:summary="EditTextPreferenceSummary2"
+                android:title="EditTextPreference2" />
+
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>
