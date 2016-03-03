@@ -95,6 +95,7 @@ public class TrainingFirstActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         // 初始化听云
         // 采集地理位置信息
         NBSAppAgent.setLicenseKey(G.KeyConst.tingyunKey).withLocationServiceEnabled(true).start(this);
@@ -107,6 +108,14 @@ public class TrainingFirstActivity extends BaseActivity {
         initWidget();
         initModule();
         com.afra55.trainingfirstapp.utils.Log.i("info" , CommontUtils.collectDeviceInfoStr(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (CommontUtils.isRunningInEmualtor()) {
+            showToast(getString(R.string.running_in_Emualtor));
+        }
     }
 
     @Override

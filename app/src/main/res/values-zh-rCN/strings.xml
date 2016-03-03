@@ -56,4 +56,5 @@
     <string name="dialog_activity">对话框activity</string>
     <string name="monitoring_sms">拦截短信</string>
     <string name="monitoring_call">电话拦截</string>
+    <string name="running_in_Emualtor">正在模拟器中运行</string>
 </resources>

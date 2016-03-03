@@ -1476,33 +1476,83 @@ public class CommontUtils {
     public static final String REG_EMAIL = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
 
     /* 检测是否运行在模拟器中, 通过检测 ro.kernel.qemu(通常在模拟器中是1， 在正常手机中没有该属性) */
+//    public static boolean isRunningInEmualtor() {
+//        boolean qemukernel = false;
+//        Process process = null;
+//        DataOutputStream os = null;
+//        try {
+//            process = Runtime.getRuntime().exec("getprop ro.kernel.qemu");
+//            os = new DataOutputStream(process.getOutputStream()); // 获取执行getprop 后的输出流
+//            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+//            os.writeBytes("exit\n"); // 执行退出
+//            os.flush(); // 刷新输出流
+//            process.waitFor();
+//            String s = in.readLine();
+//            Log.d("isRunningInEmualtor", s);
+//            Integer integer = Integer.parseInt(s);
+//            Log.d("isRunningInEmualtor", "integer:" + integer);
+//            qemukernel = (integer == 1); // ro.kernel.qemu 属性是否为1
+//            com.afra55.trainingfirstapp.utils.Log.d("isRunningInEmualtor", "检测到模拟器：" + qemukernel);
+//
+//        } catch (Exception e) {
+//            qemukernel = false; // 出现异常则判断在正常手机上
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//
+//                if (os != null) {
+//                    os.close();
+//                }
+//                process.destroy();
+//            } catch (Exception e) {
+//            }
+//        }
+//        return qemukernel;
+//    }
+
     public static boolean isRunningInEmualtor() {
-        boolean qemukernel = false;
+        boolean qemuKernel = false;
         Process process = null;
         DataOutputStream os = null;
-        try {
-            process = Runtime.getRuntime().exec("getprop ro.kernel.qemu");
-            os = new DataOutputStream(process.getOutputStream()); // 获取执行getprop 后的输出流
-            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
-            os.writeBytes("exit\n"); // 执行退出
-            os.flush(); // 刷新输出流
-            process.waitFor();
-            qemukernel = (Integer.valueOf(in.readLine()) == 1); // ro.kernel.qemu 属性是否为1
-            com.afra55.trainingfirstapp.utils.Log.d("CommontUtils", "检测到模拟器：" + qemukernel);
-
-        } catch (Exception e) {
-            qemukernel = false; // 出现异常则判断在正常手机上
-            com.afra55.trainingfirstapp.utils.Log.d("CommontUtils", e.toString());
-        } finally {
-            try {
-
-                if (os != null) {
-                    os.close();
-                }
-                process.destroy();
-            } catch (Exception e) {
-            }
+        String Tag = "isRunningInEmualtor";
+        qemuKernel = isQemuKernel(process, os, "getprop ro.kernel.qemu");
+        if (!qemuKernel) {
+            qemuKernel = isQemuKernel(process, os, "getprop ro.product.model");
         }
-        return qemukernel;
+        if (!qemuKernel) {
+            qemuKernel = isQemuKernel(process, os, "getprop ro.build.tags");
+        }
+        try {
+            if (os != null) {
+                os.close();
+            }
+            process.destroy();
+        } catch (Exception e) {
+
+        }
+        Log.d(Tag, "run finally");
+        return qemuKernel;
+    }
+
+    private static boolean isQemuKernel(Process process, DataOutputStream os, String command) {
+        boolean qemuKernel;
+        try {
+            process = Runtime.getRuntime().exec(command);
+            os = new DataOutputStream(process.getOutputStream());
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+            os.writeBytes("exit\n");
+            os.flush();
+            process.waitFor();
+            // getprop ro.kernel.qemu == 1  在模拟器
+            // getprop ro.product.model == "sdk"  在模拟器
+            // getprop ro.build.tags == "test-keys"  在模拟器
+            String s = in.readLine();
+            qemuKernel = s.equals("1") || s.equals("sdk") || s.equals("test-keys");
+            Log.d("isQemuKernel", "检测到模拟器:" + qemuKernel);
+        } catch (Exception e) {
+            qemuKernel = false;
+            Log.d("isQemuKernel", "run failed" + e.getMessage());
+        }
+        return qemuKernel;
     }
 }
