@@ -753,24 +753,6 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * 设置页面之间的 margin.
-     *
-     * @param marginPixels Distance between adjacent pages in pixels
-     * @see #getPageMargin()
-     * @see #setPageMarginDrawable(Drawable)
-     * @see #setPageMarginDrawable(int)
-     */
-    public void setPageMargin(int marginPixels) {
-        final int oldMargin = mPageMargin;
-        mPageMargin = marginPixels;
-
-        final int width = getWidth();
-        recomputeScrollPosition(width, width, marginPixels, oldMargin);
-
-        requestLayout();
-    }
-
-    /**
      * 返回页面之间的 margin。
      *
      * @return The size of the margin in pixels
@@ -1308,6 +1290,24 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
+     * 设置页面之间的 margin.
+     *
+     * @param marginPixels Distance between adjacent pages in pixels
+     * @see #getPageMargin()
+     * @see #setPageMarginDrawable(Drawable)
+     * @see #setPageMarginDrawable(int)
+     */
+    public void setPageMargin(int marginPixels) {
+        final int oldMargin = mPageMargin;
+        mPageMargin = marginPixels;
+
+        final int width = getWidth();
+        recomputeScrollPosition(width, width, marginPixels, oldMargin);
+
+        requestLayout();
+    }
+
+    /**
      * 这个持久状态由 ViewPager 保存。Only needed
      * if you are creating a sublass of ViewPager that must save its own
      * state, in which case it should implement a subclass of this which
@@ -1469,11 +1469,9 @@ public class ViewPager extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // For simple implementation, our internal size is always 0.
-        // We depend on the container to specify the layout size of
-        // our view.  We can't really know what it is since we will be
-        // adding and removing different arbitrary views and do not
-        // want the layout to change as this happens.
+        // 对于简单的实现，内部的尺寸总是0。
+        // 我们依赖容器来指定我们的布局大小。我们不能真正的知道什么时候我们会添加或者删除任意的 view，
+        // 而且发生这种事时，我们不想视图有所改变。
         setMeasuredDimension(getDefaultSize(0, widthMeasureSpec),
                 getDefaultSize(0, heightMeasureSpec));
 
@@ -1481,22 +1479,27 @@ public class ViewPager extends ViewGroup {
         final int maxGutterSize = measuredWidth / 10;
         mGutterSize = Math.min(maxGutterSize, mDefaultGutterSize);
 
-        // Children are just made to fill our space.
+        // Children 只是用来填补空间。
         int childWidthSize = measuredWidth - getPaddingLeft() - getPaddingRight();
         int childHeightSize = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
 
         /*
-         * Make sure all children have been properly measured. Decor views first.
+         * 确定每个 child view 都被正确的测量。首先是Decor views。
+         * 现在我们使用通过假设 decor view 不会有交互的欺骗手段认为这些view不那么复杂。
+         *  Make sure all children have been properly measured. Decor views first.
          * Right now we cheat and make this less complicated by assuming decor
          * views won't intersect. We will pin to edges based on gravity.
          */
         int size = getChildCount();
+        // 遍历所有child view
         for (int i = 0; i < size; ++i) {
             final View child = getChildAt(i);
             if (child.getVisibility() != GONE) {
                 final LayoutParams lp = (LayoutParams) child.getLayoutParams();
                 if (lp != null && lp.isDecor) {
+                    // 水平 gravity
                     final int hgrav = lp.gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
+                    // 处置 gravity
                     final int vgrav = lp.gravity & Gravity.VERTICAL_GRAVITY_MASK;
                     int widthMode = MeasureSpec.AT_MOST;
                     int heightMode = MeasureSpec.AT_MOST;
@@ -1512,8 +1515,10 @@ public class ViewPager extends ViewGroup {
                     int widthSize = childWidthSize;
                     int heightSize = childHeightSize;
                     if (lp.width != LayoutParams.WRAP_CONTENT) {
+                        // 如果宽不是 WRAP_CONTENT, 那么就是精确值模式，即给控件宽高指定明确的数值，或者match_parent
                         widthMode = MeasureSpec.EXACTLY;
                         if (lp.width != LayoutParams.FILL_PARENT) {
+                            // 如果不是 match_parent，则是给了明确的数值
                             widthSize = lp.width;
                         }
                     }
@@ -1525,6 +1530,7 @@ public class ViewPager extends ViewGroup {
                     }
                     final int widthSpec = MeasureSpec.makeMeasureSpec(widthSize, widthMode);
                     final int heightSpec = MeasureSpec.makeMeasureSpec(heightSize, heightMode);
+                    // 测量 child view
                     child.measure(widthSpec, heightSpec);
 
                     if (consumeVertical) {
@@ -1539,7 +1545,7 @@ public class ViewPager extends ViewGroup {
         mChildWidthMeasureSpec = MeasureSpec.makeMeasureSpec(childWidthSize, MeasureSpec.EXACTLY);
         mChildHeightMeasureSpec = MeasureSpec.makeMeasureSpec(childHeightSize, MeasureSpec.EXACTLY);
 
-        // Make sure we have created all fragments that we need to have shown.
+        // 确保我们已经创建了所有我们需要显示的 fragments。
         mInLayout = true;
         populate();
         mInLayout = false;
@@ -1566,6 +1572,7 @@ public class ViewPager extends ViewGroup {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
+        // 确保滚动的位置是设置正确的
         // Make sure scroll position is set correctly.
         if (w != oldw) {
             recomputeScrollPosition(w, oldw, mPageMargin, mPageMargin);
@@ -1578,6 +1585,7 @@ public class ViewPager extends ViewGroup {
             final int oldWidthWithMargin = oldWidth - getPaddingLeft() - getPaddingRight()
                     + oldMargin;
             final int xpos = getScrollX();
+            // 获取当前页所在的位置
             final float pageOffset = (float) xpos / oldWidthWithMargin;
             final int newOffsetPixels = (int) (pageOffset * widthWithMargin);
 
@@ -1603,7 +1611,7 @@ public class ViewPager extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        final int count = getChildCount();
+        final int count = getChildCount(); // 子 view 的数量
         int width = r - l;
         int height = b - t;
         int paddingLeft = getPaddingLeft();
@@ -1669,6 +1677,7 @@ public class ViewPager extends ViewGroup {
         }
 
         final int childWidth = width - paddingLeft - paddingRight;
+        // 页面视图。
         // Page views. Do this once we have the right padding offsets from above.
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
@@ -1677,7 +1686,7 @@ public class ViewPager extends ViewGroup {
                 ItemInfo ii;
                 if (!lp.isDecor && (ii = infoForChild(child)) != null) {
                     int loff = (int) (childWidth * ii.offset);
-                    int childLeft = paddingLeft + loff;
+                    int childLeft = paddingLeft + loff; // 页面的左边框位置,px
                     int childTop = paddingTop;
                     if (lp.needsMeasure) {
                         // This was added during layout and needs measurement.
@@ -1704,6 +1713,7 @@ public class ViewPager extends ViewGroup {
         mBottomPageBounds = height - paddingBottom;
         mDecorChildCount = decorCount;
 
+        // 如果是第一次布局，则滑动到当前设置的页面位置
         if (mFirstLayout) {
             scrollToItem(mCurItem, false, 0, false);
         }
@@ -1950,21 +1960,22 @@ public class ViewPager extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         /*
-         * This method JUST determines whether we want to intercept the motion.
-         * If we return true, onMotionEvent will be called and we do the actual
-         * scrolling there.
+         * 这个方法决定我们是否需要拦截动作行为。
+         * 如果返回true，onMotionEvent方法就会被调用，在那里进行实际的滚蛋你个操作。
          */
 
         final int action = ev.getAction() & MotionEventCompat.ACTION_MASK;
 
+        // 总是要判断触摸手势是否已经完成。
         // Always take care of the touch gesture being complete.
         if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
-            // Release the drag.
+            // 释放拖拽.
             if (DEBUG) Log.v(TAG, "Intercept done!");
             resetTouch();
             return false;
         }
 
+        // 如果已经决定是否拖拽，则不要做更多的事。
         // Nothing more to do here if we have decided whether or not we
         // are dragging.
         if (action != MotionEvent.ACTION_DOWN) {
@@ -1981,8 +1992,7 @@ public class ViewPager extends ViewGroup {
         switch (action) {
             case MotionEvent.ACTION_MOVE: {
                 /*
-                 * mIsBeingDragged == false, otherwise the shortcut would have caught it. Check
-                 * whether the user has moved far enough from his original down touch.
+                 * mIsBeingDragged == false, 否则事件已经被拦截。检查是否用户从原始的按下触摸点移动到足够远的地方。
                  */
 
                 /*
@@ -1991,7 +2001,7 @@ public class ViewPager extends ViewGroup {
                 */
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
-                    // If we don't have a valid id, the touch down wasn't on content.
+                    // 如果我们没有一个有效的id， 那么我们就没有按下触摸事件没有发生在content中。
                     break;
                 }
 
@@ -2039,8 +2049,9 @@ public class ViewPager extends ViewGroup {
 
             case MotionEvent.ACTION_DOWN: {
                 /*
+                 * 记录按下触摸的位置。
                  * Remember location of down touch.
-                 * ACTION_DOWN always refers to pointer index 0.
+                 * ACTION_DOWN 总是指第0个索引的触摸点，即当前触摸的第一个手指的触摸点.
                  */
                 mLastMotionX = mInitialMotionX = ev.getX();
                 mLastMotionY = mInitialMotionY = ev.getY();
@@ -2050,13 +2061,17 @@ public class ViewPager extends ViewGroup {
                 mScroller.computeScrollOffset();
                 if (mScrollState == SCROLL_STATE_SETTLING &&
                         Math.abs(mScroller.getFinalX() - mScroller.getCurrX()) > mCloseEnough) {
+                    // 如果页面用户触摸的页面处于 SCROLL_STATE_SETTLING 状态
+                    // mScroller.getFinalX()指页面移动结束的位置。
+
+                    // 让用户“抓住”页面。
                     // Let the user 'catch' the pager as it animates.
                     mScroller.abortAnimation();
                     mPopulatePending = false;
                     populate();
-                    mIsBeingDragged = true;
+                    mIsBeingDragged = true; // 开始拖拽
                     requestParentDisallowInterceptTouchEvent(true);
-                    setScrollState(SCROLL_STATE_DRAGGING);
+                    setScrollState(SCROLL_STATE_DRAGGING); // 设置 滚动 状态为拖拽
                 } else {
                     completeScroll(false);
                     mIsBeingDragged = false;
