@@ -137,6 +137,10 @@ public class ViewPager extends ViewGroup {
     private PagerObserver mObserver;
 
     private int mPageMargin;
+
+    /**
+     * 用来填充页面之间margin的drawable
+     */
     private Drawable mMarginDrawable;
     private int mTopPageBounds;
     private int mBottomPageBounds;
@@ -409,7 +413,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Set a PagerAdapter that will supply views for this pager as needed.
+     * 设置adapter.
      *
      * @param adapter Adapter to use
      */
@@ -474,7 +478,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Retrieve the current adapter supplying pages.
+     * 获取当前adapter.
      *
      * @return The currently registered PagerAdapter
      */
@@ -725,20 +729,14 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * 设置在 idle 状态下的视图层次中当前页左右两边均会被保留页面数量
-     * Set the number of pages that should be retained to either side of the
-     * current page in the view hierarchy in an idle state. Pages beyond this
-     * limit will be recreated from the adapter when needed.
+     * 设置在 idle 状态下的视图层次中当前页左右两边均会被保留页面数量.
+     * 页面除了这些保留的其他的都会哎 adapter 需要的时候重新创建。
      *
-     * <p>This is offered as an optimization. If you know in advance the number
-     * of pages you will need to support or have lazy-loading mechanisms in place
-     * on your pages, tweaking this setting can have benefits in perceived smoothness
-     * of paging animations and interaction. If you have a small number of pages (3-4)
-     * that you can keep active all at once, less time will be spent in layout for
-     * newly created view subtrees as the user pages back and forth.</p>
+     * <p>作为一种优化。如果你预先知道有几个页面需要支持或者有适当的延迟加载机制，
+     *    调整这个设置，可以对分页动画和交互有更好的用户体验。如果要保留的页面数量比较小（3-4页），可以设置所有
+     *    页面都保持活跃，就可以在来回切换时用更少的时间新建视图子树。</p>
      *
-     * <p>You should keep this limit low, especially if your pages have complex layouts.
-     * This setting defaults to 1.</p>
+     * <p>应该保证这个限制比较低，特备是你的页面有复杂的布局的时候。这个设置默认值是1.</p>
      *
      * @param limit How many pages will be kept offscreen in an idle state.
      */
@@ -755,7 +753,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Set the margin between pages.
+     * 设置页面之间的 margin.
      *
      * @param marginPixels Distance between adjacent pages in pixels
      * @see #getPageMargin()
@@ -773,7 +771,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Return the margin between pages.
+     * 返回页面之间的 margin。
      *
      * @return The size of the margin in pixels
      */
@@ -782,9 +780,9 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Set a drawable that will be used to fill the margin between pages.
+     * 设置一个 drawable 用来填充页面之间的 margin。
      *
-     * @param d Drawable to display between pages
+     * @param d 显示在页面之间的drawable
      */
     public void setPageMarginDrawable(Drawable d) {
         mMarginDrawable = d;
@@ -794,7 +792,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * Set a drawable that will be used to fill the margin between pages.
+     * 设置一个 drawable 用来填充页面之间的 margin。
      *
      * @param resId Resource ID of a drawable to display between pages
      */
@@ -837,7 +835,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * 像 {@link View#scrollBy}, 但滑动是平滑的而不是立刻.
+     * 类似{@link View#scrollBy}, 但滑动是平滑的而不是立刻.
      *
      * @param x 在 x 轴滚动的像素点
      * @param y 在 y 轴滚动的像素点
@@ -878,6 +876,7 @@ public class ViewPager extends ViewGroup {
             final float pageDelta = (float) Math.abs(dx) / (pageWidth + mPageMargin);
             duration = (int) ((pageDelta + 1) * 100);
         }
+        // 可以看到 duration 最大是0.6s
         duration = Math.min(duration, MAX_SETTLE_DURATION);
 
         mScroller.startScroll(sx, sy, dx, dy, duration);
@@ -1309,7 +1308,7 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
-     * This is the persistent state that is saved by ViewPager.  Only needed
+     * 这个持久状态由 ViewPager 保存。Only needed
      * if you are creating a sublass of ViewPager that must save its own
      * state, in which case it should implement a subclass of this which
      * contains that state.

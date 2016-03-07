@@ -9,16 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.afra55.trainingfirstapp.R;
 import com.afra55.trainingfirstapp.base.BaseActivity;
+import com.afra55.trainingfirstapp.utils.Log;
 
 public class AlerTestActivity extends BaseActivity {
+
+    private View viewById;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentLayout(R.layout.activity_alert);
+        viewById = findViewById(R.id.toast_one_btn);
+        Log.d("onCreate getLeft", viewById.getLeft() + "");
+        Log.d("onCreate getLeft", viewById.getRight() + "");
+        Log.d("onCreate getWidth", viewById.getWidth() + "");
+        Log.d("onCreate getMeasuredWidth", viewById.getMeasuredWidth() + "");
     }
 
     @Override
@@ -50,6 +59,10 @@ public class AlerTestActivity extends BaseActivity {
                 break;
             case R.id.toast_one_btn:
                 registerForContextMenu(v);
+                Log.d("onCreate onClick getLeft", viewById.getLeft() + "");
+                Log.d("onCreate onClick getLeft", viewById.getRight() + "");
+                Log.d("onCreate onClick getWidth", viewById.getWidth() + "");
+                Log.d("onCreate onClick getMeasuredWidth", viewById.getMeasuredWidth() + "");
                 break;
         }
     }
