@@ -297,7 +297,9 @@ public class TrainingFirstActivity extends BaseActivity {
                 showToast("大家好");
                 return new Intent(TrainingFirstActivity.this, ActivityA.class);
             case 13:
-                return new Intent(TrainingFirstActivity.this, DisplayingBitmapsActivity.class);
+                showToast("此功能暂时不开放");
+                return null;
+//                return new Intent(TrainingFirstActivity.this, DisplayingBitmapsActivity.class);
             case 14:
                 return new Intent(TrainingFirstActivity.this, MyAnimActivity.class);
             case 15:
