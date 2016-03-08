@@ -1,9 +1,11 @@
-package com.afra55.trainingfirstapp.view;
+package com.afra55.trainingfirstapp.source_code;
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.afra55.trainingfirstapp.source_code.ViewPager;
 
 /**
  * Base class providing the adapter to populate pages inside of
