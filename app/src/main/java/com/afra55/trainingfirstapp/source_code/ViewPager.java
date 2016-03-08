@@ -3096,17 +3096,21 @@ public class ViewPager extends ViewGroup {
     }
 
     /**
+     * 这些加入到ViewPager的页面应该提供 这些布局参数。
      * Layout parameters that should be supplied for views added to a
      * ViewPager.
      */
     public static class LayoutParams extends ViewGroup.LayoutParams {
         /**
+         * 如果是 true 则说明 这个 视图是个挂件，会一直显示在页面上，不随页面滚动而移动。
+         * 挂件视图不论你的宽设置多少，跟视图同高的整个宽都会被占用。而且页面也会出现问题，所以不推荐使用。
          * true if this view is a decoration on the pager itself and not
          * a view supplied by the adapter.
          */
         public boolean isDecor;
 
         /**
+         * 只有是挂件视图时才可以使用。
          * Gravity setting for use on decor views only:
          * Where to position the view page within the overall ViewPager
          * container; constants are defined in {@link android.view.Gravity}.
@@ -3114,22 +3118,26 @@ public class ViewPager extends ViewGroup {
         public int gravity;
 
         /**
+         * 范围是 0-1。
          * Width as a 0-1 multiplier of the measured pager width
          */
         float widthFactor = 0.f;
 
         /**
+         * 是否需要在添加视图之前进行测量
          * true if this view was added during layout and needs to be measured
          * before being positioned.
          */
         boolean needsMeasure;
 
         /**
+         * 只有不是挂件视图才可用
          * Adapter position this view is for if !isDecor
          */
         int position;
 
         /**
+         * 这个视图在viewpager里面占据的页面索引
          * Current child index within the ViewPager that this view occupies
          */
         int childIndex;
