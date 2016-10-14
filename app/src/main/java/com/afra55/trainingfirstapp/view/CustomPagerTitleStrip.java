@@ -3,6 +3,7 @@ package com.afra55.trainingfirstapp.view;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,11 @@ import android.widget.TextView;
 
 public class CustomPagerTitleStrip extends HorizontalScrollView {
 
+    private final String TAG = CustomPagerTitleStrip.class.getSimpleName();
+
     private ViewPager mViewPager;
+
+    private PageChangeListener mPageChangeListener = new PageChangeListener();
 
     private LinearLayout mContainer;
 
@@ -26,7 +31,8 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
     private int mWidth;
 
     private int mContainerStartPadding;
-    private int mContainerEndPadding;
+
+    private int mCurrentPosiotion = 0;
 
     private LinearLayout.LayoutParams defaultChildLayoutParams;
 
@@ -79,13 +85,14 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
             mContainer.setGravity(Gravity.CENTER);
         } else {
             View childAtStart = mContainer.getChildAt(0);
-            mContainerStartPadding =
-                    (mWidth - childAtStart.getMeasuredWidth()) / 2;
+            mContainerStartPadding = (mWidth - childAtStart.getMeasuredWidth()) / 2;
 
             View childAtEnd = mContainer.getChildAt(mContainerChildCount - 1);
-            mContainerEndPadding =
-                    (mWidth - childAtEnd.getMeasuredWidth()) / 2;
+            int mContainerEndPadding = (mWidth - childAtEnd.getMeasuredWidth()) / 2;
             mContainer.setPadding(mContainerStartPadding, 0, mContainerEndPadding, 0);
+
+            Log.d(TAG, "mContainerStartPadding = " + mContainerStartPadding);
+            Log.d(TAG, "mContainerEndPadding = " + mContainerEndPadding);
         }
     }
 
@@ -96,6 +103,8 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         if (mViewPager.getAdapter() == null) {
             throw new IllegalStateException("ViewPager does not have adapter instance.");
         }
+
+        mViewPager.addOnPageChangeListener(mPageChangeListener);
 
         mChildCount = mViewPager.getAdapter().getCount();
 
@@ -133,10 +142,26 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         mContainer.addView(textView, position, defaultChildLayoutParams);
     }
 
-    private void toMeasureChild(View view) {
-        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
-        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec((1 << 30) - 1, View.MeasureSpec.AT_MOST);
-        view.measure(widthMeasureSpec, heightMeasureSpec);
+    private class PageChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            mCurrentPosiotion = position;
+            View view = mContainer.getChildAt(position);
+            int left = view.getLeft();
+            smoothScrollTo(left - mContainerStartPadding, 0);
+            Log.d(TAG, "child left = " + left);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
     }
 
 }
