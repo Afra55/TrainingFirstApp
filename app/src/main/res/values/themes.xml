@@ -12,7 +12,6 @@
     <style name="AppTheme" parent="WTheme">
         <item name="android:windowAnimationStyle">@style/activty_fade_in_fade_out</item>
         <item name="android:launchMode">singleTop</item>
-        <item name="android:windowBackground">@drawable/beauty_lover</item>
     </style>
 
     <style name="SplashTheme" parent="WTheme">˙

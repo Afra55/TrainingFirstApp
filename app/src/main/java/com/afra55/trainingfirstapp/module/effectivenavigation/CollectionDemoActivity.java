@@ -33,8 +33,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.afra55.trainingfirstapp.R;
+import com.afra55.trainingfirstapp.view.CustomPagerTitleStrip;
 
 public class CollectionDemoActivity extends FragmentActivity {
+
+    private CustomPagerTitleStrip mPagerTTs;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide fragments representing
@@ -54,6 +57,8 @@ public class CollectionDemoActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection_demo);
 
+        mPagerTTs = (CustomPagerTitleStrip) findViewById(R.id.mPagerTTs);
+
         // Create an adapter that when requested, will return a fragment representing an object in
         // the collection.
         // 
@@ -71,6 +76,7 @@ public class CollectionDemoActivity extends FragmentActivity {
         // Set up the ViewPager, attaching the adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+        mPagerTTs.setViewPager(mViewPager);
     }
 
     @Override
