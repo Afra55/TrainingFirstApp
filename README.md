@@ -7,9 +7,6 @@
 
 *此项目仅仅是各种测试功能点的集合，不适用于框架搭建。*
 
-请修改gradle文件：
-classpath 'com.android.tools.build:gradle:1.3.0'
-
 Android简单框架的搭建：
 [https://github.com/Afra55/AndroidBasicFramework](https://github.com/Afra55/AndroidBasicFramework)
 
