@@ -161,4 +161,27 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         }
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        MotionEvent tempMotionEvent = ev;
+        tempMotionEvent.setLocation(ev.getX(), 0);
+        mViewPager.dispatchTouchEvent(tempMotionEvent);
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        MotionEvent tempMotionEvent = ev;
+        tempMotionEvent.setLocation(ev.getX(), 0);
+        mViewPager.onInterceptTouchEvent(tempMotionEvent);
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        MotionEvent tempMotionEvent = ev;
+        tempMotionEvent.setLocation(ev.getX(), 0);
+        mViewPager.onTouchEvent(tempMotionEvent);
+        return true;
+    }
 }
