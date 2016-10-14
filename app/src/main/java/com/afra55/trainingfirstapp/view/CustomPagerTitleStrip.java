@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -31,8 +32,6 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
     private int mWidth;
 
     private int mContainerStartPadding;
-
-    private int mCurrentPosiotion = 0;
 
     private LinearLayout.LayoutParams defaultChildLayoutParams;
 
@@ -147,15 +146,13 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            View view = mContainer.getChildAt(position);
+            int left = view.getLeft();
+            smoothScrollTo((int) (left - mContainerStartPadding + positionOffset * view.getMeasuredWidth()), 0);
         }
 
         @Override
         public void onPageSelected(int position) {
-            mCurrentPosiotion = position;
-            View view = mContainer.getChildAt(position);
-            int left = view.getLeft();
-            smoothScrollTo(left - mContainerStartPadding, 0);
-            Log.d(TAG, "child left = " + left);
         }
 
         @Override
