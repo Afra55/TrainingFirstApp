@@ -164,14 +164,20 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         mContainer.addView(textView, position, defaultChildLayoutParams);
     }
 
-    private class PageChangeListener implements ViewPager.OnPageChangeListener{
+    private class PageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             View view = mContainer.getChildAt(position);
             int left = view.getLeft();
-            scrollTo((int) (left - mContainerStartPadding + positionOffset * view.getMeasuredWidth()), 0);
+            int childWidth = view.getMeasuredWidth();
+            int moveLength = childWidth;
+            if (position + 1 < mChildCount) {
+                moveLength += mContainer.getChildAt(position + 1).getMeasuredWidth();
+            }
+            moveLength /= 2;
+            scrollTo((int) (left - (mWidth - childWidth) / 2 + positionOffset * moveLength), 0);
         }
 
         @Override
