@@ -1,13 +1,16 @@
 package com.afra55.trainingfirstapp.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +36,11 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
 
     private int mContainerStartPadding;
 
+    private Paint mPaint;
+
     private LinearLayout.LayoutParams defaultChildLayoutParams;
+
+    private Path mTrianglePath = new Path();
 
     public CustomPagerTitleStrip(Context context) {
         super(context);
@@ -54,6 +61,11 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         setFillViewport(true);
         setWillNotDraw(false);
 
+        setHorizontalScrollBarEnabled(false);
+
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setColor(Color.BLACK);
 
         mContainer = new LinearLayout(context);
         mContainer.setOrientation(LinearLayout.HORIZONTAL);
@@ -183,5 +195,15 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
         tempMotionEvent.setLocation(ev.getX(), 0);
         mViewPager.onTouchEvent(tempMotionEvent);
         return true;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        mTrianglePath.reset();
+        mTrianglePath.moveTo(getScrollX() + getMeasuredWidth() / 2 - 10, 0);
+        mTrianglePath.lineTo(getScrollX() + getMeasuredWidth() / 2 + 10, 0);
+        mTrianglePath.lineTo(getScrollX() + getMeasuredWidth() / 2, 20);
+        canvas.drawPath(mTrianglePath, mPaint);
     }
 }
