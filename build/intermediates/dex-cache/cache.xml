@@ -2,130 +2,103 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\libs\umeng-analytics-v5.2.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="0f9eccf79ae6006e4346725b09114182dca0c023">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\umeng-analytics-v5.2.4_255f4f12765ac5922cd7c38317b5106bfee1a74a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="7fc0a10a23c66e73e58f02f92b34daa3618f757b">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_70d65ec1dc36994f79db85b218b653d2bfe469c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\libs\BmobSDK_V3.4.5_1111.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="44e559d18fd5a4826b0a4c0354308213e4f658a2">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\BmobSDK_V3.4.5_1111_63fed34e140f862d6d7948ee9a59e142203cdc1a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1_deb453a129c64b797649f3c7f6e2d3a529ebeff5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0_c820c2757b9c153a2fdd49f347072aa131e38fe7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\libs\gson-2.2.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\gson-2.2.4_3ae8b1a490027c743c6dfb189f3530a8433e7168.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.4\dd9eeb557650c4ad7394df23f0f5cf27a7cfc697\universal-image-loader-1.9.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.4_107050d9d794a9323f2f1202dcbc0b41a0d91c89.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0_3a565a0729c76adf2973f100a1fddc15ec80eeb5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\okio-1.6.0_59de01fe25e27c5d93666a28093d8bba66fa4381.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.0_de704e20c075aba5a8f706d9a7596b915a9575fa.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Demo\TrainingFirstApp\app\libs\Bmob_Push_V0.6beta_20150408.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.1"
-        sha1="db21ec99c2c7bf91c67bf80f5c5c49a92dd0562e">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\Bmob_Push_V0.6beta_20150408_b8e5c8bbe9cff77e88c92870471a67eb11b01c55.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="D:\Demo\TrainingFirstApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="7d5152d5541fb58d3a4cdb37cc9c6e5b82901377">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\instant-run_b76265ebb7a8b0b5e22d568df1267f195f3d3e68.jar" />
+        sha1="80e7873ab283cd66abb88a3bcc15baf297fd6829">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b76265ebb7a8b0b5e22d568df1267f195f3d3e68\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_b8330ed6e69fe94658b20593d6a1582659de714d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f69c7d1c50b8c77e371f1557ca065bb52851c4e7">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_70d65ec1dc36994f79db85b218b653d2bfe469c4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.networkbench.newlens.agent.android\nbs.newlens.agent\2.2.7\c52077e2aed871ea21025f307c9aff23a81a1c0f\nbs.newlens.agent-2.2.7.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
         sha1="c52077e2aed871ea21025f307c9aff23a81a1c0f">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\nbs.newlens.agent-2.2.7_752c07ef5aa72389031e46f86914909a0451eb79.jar" />
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\nbs.newlens.agent-2.2.7_752c07ef5aa72389031e46f86914909a0451eb79\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.1.0_c820c2757b9c153a2fdd49f347072aa131e38fe7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.1.0_3a565a0729c76adf2973f100a1fddc15ec80eeb5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.4\dd9eeb557650c4ad7394df23f0f5cf27a7cfc697\universal-image-loader-1.9.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\universal-image-loader-1.9.4_107050d9d794a9323f2f1202dcbc0b41a0d91c89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-7.0.1_deb453a129c64b797649f3c7f6e2d3a529ebeff5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0_59de01fe25e27c5d93666a28093d8bba66fa4381\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.1.0_de704e20c075aba5a8f706d9a7596b915a9575fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
         sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\pre-dexed\debug\okhttp-2.6.0_92511363711381cd722fdd710257bb2284dd2570.jar" />
+        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-2.6.0_92511363711381cd722fdd710257bb2284dd2570\classes.dex" />
     </item>
 
 </items>

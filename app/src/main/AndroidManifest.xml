@@ -331,7 +331,6 @@
         <activity android:name="com.afra55.trainingfirstapp.module.surface_view.SurfaceViewTestActivity" />
         <activity android:name="com.afra55.trainingfirstapp.module.commont_animation.CommontAnimationActivity" />
         <activity android:name="com.afra55.trainingfirstapp.base.MobileOsInfoActivity" />
-        <activity android:name="com.afra55.trainingfirstapp.module.bomb_test.BombCloudServiceTestActivity" />
         <activity android:name="com.afra55.trainingfirstapp.module.notification.NotificationTestActivity" />
         <activity android:name="com.afra55.trainingfirstapp.module.gesture_view.GestureViewActivity" />
         <activity

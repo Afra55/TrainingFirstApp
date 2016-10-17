@@ -22,15 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afra55.trainingfirstapp.R;
-import com.afra55.trainingfirstapp.base.field.G;
 import com.afra55.trainingfirstapp.utils.DisplayUtil;
 import com.afra55.trainingfirstapp.utils.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import cn.bmob.v3.Bmob;
 
 /**
  * Created by yangshuai on 2015/9/25 0025.
@@ -52,9 +49,6 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /* 初始化Bomb*/
-        Bmob.initialize(this, G.KeyConst.BOMB_APPLICATION_KEY);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setEnterTransition(new Explode());
