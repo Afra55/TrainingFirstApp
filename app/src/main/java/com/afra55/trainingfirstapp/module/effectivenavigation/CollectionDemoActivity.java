@@ -76,7 +76,7 @@ public class CollectionDemoActivity extends FragmentActivity {
         // Set up the ViewPager, attaching the adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
-        mPagerTTs.setViewPager(mViewPager);
+        mPagerTTs.setViewPager(mViewPager, mDemoCollectionPagerAdapter.getCount() / 2);
     }
 
     @Override

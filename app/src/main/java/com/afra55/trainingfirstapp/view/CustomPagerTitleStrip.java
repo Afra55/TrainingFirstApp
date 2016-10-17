@@ -109,6 +109,10 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
 
 
     public void setViewPager(ViewPager viewPager) {
+        setViewPager(viewPager, 0);
+    }
+
+    public void setViewPager(ViewPager viewPager, int currentNum) {
         mViewPager = viewPager;
 
         if (mViewPager.getAdapter() == null) {
@@ -119,10 +123,14 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
 
         mChildCount = mViewPager.getAdapter().getCount();
 
-        notifyDataSetChanged();
+        if (currentNum < 0 || currentNum >= mChildCount) {
+            throw new IllegalStateException("Current page num must bigger than 0 and small than child count.");
+        }
+
+        notifyDataSetChanged(currentNum);
     }
 
-    public void notifyDataSetChanged() {
+    public void notifyDataSetChanged(int currentNum) {
         if (mViewPager == null || mChildCount <= 0) {
             return;
         }
@@ -132,6 +140,9 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
             addChild(i, mViewPager.getAdapter().getPageTitle(i).toString());
         }
 
+        if (currentNum > 0 && currentNum < mChildCount) {
+            mViewPager.setCurrentItem(currentNum, false);
+        }
 
     }
 
@@ -160,7 +171,7 @@ public class CustomPagerTitleStrip extends HorizontalScrollView {
 
             View view = mContainer.getChildAt(position);
             int left = view.getLeft();
-            smoothScrollTo((int) (left - mContainerStartPadding + positionOffset * view.getMeasuredWidth()), 0);
+            scrollTo((int) (left - mContainerStartPadding + positionOffset * view.getMeasuredWidth()), 0);
         }
 
         @Override
