@@ -15,7 +15,9 @@ import android.view.View;
 
 public class BesselViewOne extends View {
 
-    Paint mPaint;
+    private Paint mPaint;
+    private Paint mRedPaint;
+    private Paint mBluePaint;
 
     public BesselViewOne(Context context) {
         super(context);
@@ -39,35 +41,41 @@ public class BesselViewOne extends View {
 
         // 创建画笔
         mPaint = new Paint();
+        mRedPaint = new Paint();
+        mBluePaint = new Paint();
 
         // 画笔颜色 - 黑色
         mPaint.setColor(Color.BLACK);
+        mRedPaint.setColor(Color.RED);
+        mBluePaint.setColor(Color.BLUE);
 
         // 填充模式 - 描边
         mPaint.setStyle(Paint.Style.STROKE);
+        mRedPaint.setStyle(Paint.Style.STROKE);
+        mBluePaint.setStyle(Paint.Style.STROKE);
 
         // 边框宽度 - 10
         mPaint.setStrokeWidth(10);
+        mRedPaint.setStrokeWidth(1);
+        mBluePaint.setStrokeWidth(1);
 
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int paddingLeft = getPaddingLeft();
-        int paddingTop = getPaddingTop();
-        int paddingRight = getPaddingRight();
-        int paddingBottom = getPaddingBottom();
 
-        int contentWidth = getWidth() - paddingLeft - paddingRight;
-        int contentHeight = getHeight() - paddingTop - paddingBottom;
+        int one = canvas.save();
+        canvas.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2, mRedPaint);
+        canvas.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight(), mRedPaint);
+        canvas.restoreToCount(one);
 
-        canvas.translate(contentWidth / 2, contentHeight / 2);
+        canvas.translate(getWidth() / 2, getHeight() / 2);
 
         Path path = new Path();
 
-        path.lineTo(200, 200);                      // lineTo
-        path.lineTo(200,0);
+        path.lineTo(200, 0);                      // lineTo
+        path.lineTo(200,200);
 
         canvas.drawPath(path, mPaint);              // 绘制Path
     }
