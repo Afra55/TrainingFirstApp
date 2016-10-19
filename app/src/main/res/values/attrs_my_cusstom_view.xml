@@ -13,7 +13,7 @@
         <attr name="labelY" format="dimension" />
         <attr name="pieRotation" format="integer" />
         <attr name="pointerRadius" format="dimension" />
-        <attr name="showText" format="boolean" />
+        <attr name="showTextStr" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="MoveView">
