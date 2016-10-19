@@ -144,6 +144,8 @@ public class G {
                 return context.getString(R.string.monitoring_call);
             case 35:
                 return context.getString(R.string.alert);
+            case 36:
+                return context.getString(R.string.bessel_path);
         }
         return "Lover";
     }

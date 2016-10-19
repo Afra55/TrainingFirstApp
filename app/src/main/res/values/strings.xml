@@ -219,6 +219,7 @@
     <string name="add_widget">Add widget</string>
     <string name="alert">alert</string>
     <string name="running_in_Emualtor">running in emualtor</string>
+    <string name="bessel_path">贝塞尔曲线</string>
 
 
 </resources>

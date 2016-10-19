@@ -46,10 +46,9 @@ import android.widget.TextView;
 import com.afra55.trainingfirstapp.R;
 import com.afra55.trainingfirstapp.base.field.G;
 import com.afra55.trainingfirstapp.module.DialogThemeActivity;
-import com.afra55.trainingfirstapp.module.alert.AlerTestActivity;
-import com.afra55.trainingfirstapp.utils.accessibility_service.MAcessibilityService;
 import com.afra55.trainingfirstapp.module.activity_life.ActivityA;
-import com.afra55.trainingfirstapp.utils.broadcast_receiver.BroadcastTestReceiver;
+import com.afra55.trainingfirstapp.module.alert.AlerTestActivity;
+import com.afra55.trainingfirstapp.module.bessel.BesselActivity;
 import com.afra55.trainingfirstapp.module.circle_menu.CircleMenuActivity;
 import com.afra55.trainingfirstapp.module.commont_animation.CommontAnimationActivity;
 import com.afra55.trainingfirstapp.module.contacts.ContactsActivity;
@@ -58,7 +57,6 @@ import com.afra55.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.afra55.trainingfirstapp.module.customviews.ViewDragHelperTestActivity;
 import com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.afra55.trainingfirstapp.module.image_handle.ImageHandlePixActivity;
-import com.afra55.trainingfirstapp.module.images.DisplayingBitmapsActivity;
 import com.afra55.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.afra55.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.afra55.trainingfirstapp.module.newsreader.NewsReaderActivity;
@@ -71,7 +69,9 @@ import com.afra55.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.afra55.trainingfirstapp.utils.CommontUtils;
 import com.afra55.trainingfirstapp.utils.DisplayUtil;
 import com.afra55.trainingfirstapp.utils.SharedPreferenceUtil;
+import com.afra55.trainingfirstapp.utils.accessibility_service.MAcessibilityService;
 import com.afra55.trainingfirstapp.utils.alert_utils.AlertUtils;
+import com.afra55.trainingfirstapp.utils.broadcast_receiver.BroadcastTestReceiver;
 import com.afra55.trainingfirstapp.utils.download_utils.DownLoadService;
 import com.afra55.trainingfirstapp.view.AutoDisplayChildViewContainer;
 import com.networkbench.agent.impl.NBSAppAgent;
@@ -378,6 +378,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 break;
             case 35:
                 return new Intent(this, AlerTestActivity.class);
+            case 36:
+                return new Intent(this, BesselActivity.class);
         }
         return null;
     }
