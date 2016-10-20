@@ -5,8 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -19,9 +21,12 @@ public class BesselViewOne extends View {
     private Paint mPaint;
     private Paint mGridPaint;
     private Paint mBluePaint;
+    private Paint mRedPaint;
     private Path mOnePath;
     private Path mTwoPath;
-    private RectF mCricleRectF;
+    private Path mOneBesselPath;
+    private RectF mCircleRectF;
+    private PointF mStartPoint, mMovePoint, mEndPoint;
 
     public BesselViewOne(Context context) {
         super(context);
@@ -47,25 +52,50 @@ public class BesselViewOne extends View {
         mPaint = new Paint();
         mGridPaint = new Paint();
         mBluePaint = new Paint();
+        mRedPaint = new Paint();
 
-        // 画笔颜色 - 黑色
-        mPaint.setColor(Color.BLACK);
-        mGridPaint.setColor(Color.RED);
-        mBluePaint.setColor(Color.BLUE);
-
-        // 填充模式 - 描边
-        mPaint.setStyle(Paint.Style.STROKE);
-        mGridPaint.setStyle(Paint.Style.STROKE);
-        mBluePaint.setStyle(Paint.Style.STROKE);
-
-        // 边框宽度 - 10
-        mPaint.setStrokeWidth(10);
-        mGridPaint.setStrokeWidth(1);
-        mBluePaint.setStrokeWidth(1);
+        initPaint(mPaint, Paint.Style.STROKE, Color.BLACK, 10);
+        initPaint(mGridPaint, Paint.Style.STROKE, Color.RED, 1);
+        initPaint(mBluePaint, Paint.Style.STROKE, Color.BLUE, 1);
+        initPaint(mRedPaint, Paint.Style.STROKE, Color.RED, 1);
 
         mOnePath = new Path();
         mTwoPath = new Path();
-        mCricleRectF = new RectF(-100, -100, 100, 100);
+        mOneBesselPath = new Path();
+        mCircleRectF = new RectF(-100, -100, 100, 100);
+
+        mStartPoint = new PointF(0, 0);
+        mMovePoint = new PointF(0, 0);
+        mEndPoint = new PointF(0, 0);
+    }
+
+    private void initPaint(Paint paint, Paint.Style style, int color, int width) {
+        paint.setStyle(style);
+        paint.setColor(color);
+        paint.setStrokeWidth(width);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mStartPoint.set(getWidth() / 4 * 3, getHeight() / 2);
+        mEndPoint.set(mStartPoint.x + 200, mStartPoint.y);
+        mMovePoint.set((mStartPoint.x + mEndPoint.x) / 2, mStartPoint.y);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                mMovePoint.set(event.getX(), event.getY());
+                break;
+            case MotionEvent.ACTION_UP:
+                mMovePoint.set((mStartPoint.x + mEndPoint.x) / 2, mStartPoint.y);
+                break;
+        }
+        invalidate();
+        return true;
     }
 
     @Override
@@ -94,14 +124,14 @@ public class BesselViewOne extends View {
         canvas.restoreToCount(two);
 
         int three = canvas.save();
-        canvas.translate(getWidth() /4 * 3, getHeight() / 4);
+        canvas.translate(getWidth() / 4 * 3, getHeight() / 4);
         mPaint.setColor(Color.CYAN);
         mOnePath.reset();
 
         // Path.Direction.CCW 的绘制顺序是 从左上角 左下角，右下，右上，即逆时针绘制。
         // Path.Direction.CW 的绘制顺序是 从左上角  ，右上 右下，左下角， 即顺时针绘制。
         mOnePath.addRect(-100, -100, 100, 100, Path.Direction.CW);
-        mOnePath.setLastPoint(300,-300);
+        mOnePath.setLastPoint(300, -300);
         canvas.drawPath(mOnePath, mPaint);
         canvas.restoreToCount(three);
 
@@ -109,12 +139,30 @@ public class BesselViewOne extends View {
         canvas.translate(getWidth() / 4, getHeight() / 2);
         mOnePath.reset();
         mOnePath.lineTo(0, -50);
-        mOnePath.arcTo(mCricleRectF, 0, -180, false); // false 不连接上个点到 弧线的起点， true 连接。
+        mOnePath.arcTo(mCircleRectF, 0, -180, false); // false 不连接上个点到 弧线的起点， true 连接。
         mOnePath.offset(0, 110, mTwoPath);  //  mTwoPath 用于存储 mOnePath 移动后的状态
         canvas.drawPath(mOnePath, mPaint);
         mPaint.setColor(Color.CYAN - 100);
         canvas.drawPath(mTwoPath, mPaint);
         canvas.restoreToCount(four);
+
+        int five = canvas.save();
+        mBluePaint.setAlpha(125);
+        mBluePaint.setStrokeWidth(2);
+        canvas.drawLine(mMovePoint.x, mMovePoint.y, mStartPoint.x, mStartPoint.y, mBluePaint);
+        canvas.drawLine(mMovePoint.x, mMovePoint.y, mEndPoint.x, mEndPoint.y, mBluePaint);
+        mBluePaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mBluePaint.setAlpha(255);
+        canvas.drawCircle(mStartPoint.x, mStartPoint.y, 10, mBluePaint);
+        canvas.drawCircle(mMovePoint.x, mMovePoint.y, 10, mBluePaint);
+        canvas.drawCircle(mEndPoint.x, mEndPoint.y, 10, mBluePaint);
+        mBluePaint.setColor(Color.BLUE - 100);
+        mBluePaint.setStyle(Paint.Style.STROKE);
+        mOneBesselPath.reset();
+        mOneBesselPath.moveTo(mStartPoint.x, mStartPoint.y);
+        mOneBesselPath.quadTo(mMovePoint.x, mMovePoint.y, mEndPoint.x, mEndPoint.y);
+        canvas.drawPath(mOneBesselPath, mBluePaint);
+        canvas.restoreToCount(five);
 
     }
 }
