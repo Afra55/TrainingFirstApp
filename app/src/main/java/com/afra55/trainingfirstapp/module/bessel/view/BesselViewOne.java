@@ -113,11 +113,8 @@ public class BesselViewOne extends View {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
                 setMovePoint(eventX, eventY);
-                if (event.getPointerCount() > 1) {
-                    setMovePoint(event, 1);
-                }
-                if (event.getPointerCount() > 2) {
-                    setMovePoint(event, 2);
+                for (int i = 1 ; i < event.getPointerCount(); i++) {
+                    setMovePoint(event, i);
                 }
                 break;
             case MotionEvent.ACTION_UP:
