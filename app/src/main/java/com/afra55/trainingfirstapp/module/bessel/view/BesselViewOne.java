@@ -26,7 +26,7 @@ public class BesselViewOne extends View {
     private Path mTwoPath;
     private Path mOneBesselPath;
     private RectF mCircleRectF;
-    private PointF mStartPoint, mMovePoint, mEndPoint;
+    private PointF mTwoLevelBesselStartPoint, mTwoLevelBesselMovePoint, mTwoLevelBesselEndPoint;
 
     public BesselViewOne(Context context) {
         super(context);
@@ -64,9 +64,9 @@ public class BesselViewOne extends View {
         mOneBesselPath = new Path();
         mCircleRectF = new RectF(-100, -100, 100, 100);
 
-        mStartPoint = new PointF(0, 0);
-        mMovePoint = new PointF(0, 0);
-        mEndPoint = new PointF(0, 0);
+        mTwoLevelBesselStartPoint = new PointF(0, 0);
+        mTwoLevelBesselMovePoint = new PointF(0, 0);
+        mTwoLevelBesselEndPoint = new PointF(0, 0);
     }
 
     private void initPaint(Paint paint, Paint.Style style, int color, int width) {
@@ -78,20 +78,26 @@ public class BesselViewOne extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mStartPoint.set(getWidth() / 4 * 3, getHeight() / 2);
-        mEndPoint.set(mStartPoint.x + 200, mStartPoint.y);
-        mMovePoint.set((mStartPoint.x + mEndPoint.x) / 2, mStartPoint.y);
+        mTwoLevelBesselStartPoint.set(getWidth() / 4 * 3 - 100, getHeight() / 2);
+        mTwoLevelBesselEndPoint.set(mTwoLevelBesselStartPoint.x + 200, mTwoLevelBesselStartPoint.y);
+        mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        float eventX = event.getX();
+        float eventY = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
-                mMovePoint.set(event.getX(), event.getY());
+                if (eventX >= getWidth() / 2 && eventY >= getHeight() / 4 && eventY <= getHeight() / 4 * 3) {
+                    mTwoLevelBesselMovePoint.set(eventX, eventY);
+                } else {
+                    mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
+                }
                 break;
             case MotionEvent.ACTION_UP:
-                mMovePoint.set((mStartPoint.x + mEndPoint.x) / 2, mStartPoint.y);
+                mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
                 break;
         }
         invalidate();
@@ -113,6 +119,7 @@ public class BesselViewOne extends View {
 
         int two = canvas.save();
         canvas.translate(getWidth() / 4, getHeight() / 4);
+        mPaint.setColor(Color.BLACK);
         mOnePath.reset();
         mOnePath.lineTo(200, 0);  // lineTo
         mOnePath.lineTo(200, 200);
@@ -149,20 +156,20 @@ public class BesselViewOne extends View {
         int five = canvas.save();
         mBluePaint.setAlpha(125);
         mBluePaint.setStrokeWidth(2);
-        canvas.drawLine(mMovePoint.x, mMovePoint.y, mStartPoint.x, mStartPoint.y, mBluePaint);
-        canvas.drawLine(mMovePoint.x, mMovePoint.y, mEndPoint.x, mEndPoint.y, mBluePaint);
+        canvas.drawLine(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, mTwoLevelBesselStartPoint.x, mTwoLevelBesselStartPoint.y, mBluePaint);
+        canvas.drawLine(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, mTwoLevelBesselEndPoint.x, mTwoLevelBesselEndPoint.y, mBluePaint);
         mBluePaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mBluePaint.setAlpha(255);
-        canvas.drawCircle(mStartPoint.x, mStartPoint.y, 10, mBluePaint);
-        canvas.drawCircle(mMovePoint.x, mMovePoint.y, 10, mBluePaint);
-        canvas.drawCircle(mEndPoint.x, mEndPoint.y, 10, mBluePaint);
+        canvas.drawCircle(mTwoLevelBesselStartPoint.x, mTwoLevelBesselStartPoint.y, 10, mBluePaint);
+        canvas.drawCircle(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, 10, mBluePaint);
+        canvas.drawCircle(mTwoLevelBesselEndPoint.x, mTwoLevelBesselEndPoint.y, 10, mBluePaint);
         mBluePaint.setColor(Color.BLUE - 100);
         mBluePaint.setStyle(Paint.Style.STROKE);
         mOneBesselPath.reset();
 
-        // 一介贝塞尔曲线
-        mOneBesselPath.moveTo(mStartPoint.x, mStartPoint.y);
-        mOneBesselPath.quadTo(mMovePoint.x, mMovePoint.y, mEndPoint.x, mEndPoint.y);
+        // 二阶贝塞尔曲线
+        mOneBesselPath.moveTo(mTwoLevelBesselStartPoint.x, mTwoLevelBesselStartPoint.y);
+        mOneBesselPath.quadTo(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, mTwoLevelBesselEndPoint.x, mTwoLevelBesselEndPoint.y);
         canvas.drawPath(mOneBesselPath, mBluePaint);
         canvas.restoreToCount(five);
 
