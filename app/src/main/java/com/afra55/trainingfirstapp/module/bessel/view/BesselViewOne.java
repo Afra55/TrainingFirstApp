@@ -13,7 +13,7 @@ import android.view.View;
 
 /**
  * Created by Victor Yang on 2016/10/19.
- * 一阶贝塞尔曲线
+ * 贝塞尔曲线
  */
 
 public class BesselViewOne extends View {
