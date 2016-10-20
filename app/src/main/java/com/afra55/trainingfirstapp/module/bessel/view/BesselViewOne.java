@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.view.View;
  */
 
 public class BesselViewOne extends View {
+
+    private final String TAG = BesselViewOne.class.getSimpleName();
 
     private Paint mPaint;
     private Paint mGridPaint;
@@ -102,31 +105,19 @@ public class BesselViewOne extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float eventX = event.getX();
-        float eventY = event.getY();
-        switch (event.getAction()) {
+        // 多点触摸实现
+        int index = MotionEventCompat.getActionIndex(event);
+        float eventX = MotionEventCompat.getX(event, index);
+        float eventY = MotionEventCompat.getY(event, index);
+        switch (MotionEventCompat.getActionMasked(event)) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
-                if (eventX >= getWidth() / 2 && eventY >= getHeight() / 4 && eventY <= getHeight() / 4 * 3) {
-                    mTwoLevelBesselMovePoint.set(eventX, eventY);
-                } else {
-                    mTwoLevelBesselMovePoint.set(
-                            (mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2
-                            , mTwoLevelBesselStartPoint.y + 100);
-                    if (eventX <= getWidth() / 2
-                            && eventY >= getHeight() / 2) {
-                        if (getDistanceBetweenPoints(eventX
-                                , eventY
-                                , mThreeLevelBesselMoveOnePoint.x
-                                , mThreeLevelBesselMoveOnePoint.y) < 80) {
-                            mThreeLevelBesselMoveOnePoint.set(eventX, eventY);
-                        } else if (getDistanceBetweenPoints(eventX
-                                , eventY
-                                , mThreeLevelBesselMoveTwoPoint.x
-                                , mThreeLevelBesselMoveTwoPoint.y) < 80){
-                            mThreeLevelBesselMoveTwoPoint.set(eventX, eventY);
-                        }
-                    }
+                setMovePoint(eventX, eventY);
+                if (event.getPointerCount() > 1) {
+                    setMovePoint(event, 1);
+                }
+                if (event.getPointerCount() > 2) {
+                    setMovePoint(event, 2);
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -137,6 +128,36 @@ public class BesselViewOne extends View {
         }
         invalidate();
         return true;
+    }
+
+    private void setMovePoint(MotionEvent event, int index) {
+        float eventX = MotionEventCompat.getX(event, index);
+        float eventY = MotionEventCompat.getY(event, index);
+        setMovePoint(eventX, eventY);
+    }
+
+    private void setMovePoint(float eventX, float eventY) {
+        if (eventX >= getWidth() / 2 && eventY >= getHeight() / 4 && eventY <= getHeight() / 4 * 3) {
+            mTwoLevelBesselMovePoint.set(eventX, eventY);
+        } else {
+            mTwoLevelBesselMovePoint.set(
+                    (mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2
+                    , mTwoLevelBesselStartPoint.y + 100);
+            if (eventX <= getWidth() / 2
+                    && eventY >= getHeight() / 2) {
+                if (getDistanceBetweenPoints(eventX
+                        , eventY
+                        , mThreeLevelBesselMoveOnePoint.x
+                        , mThreeLevelBesselMoveOnePoint.y) < 80) {
+                    mThreeLevelBesselMoveOnePoint.set(eventX, eventY);
+                } else if (getDistanceBetweenPoints(eventX
+                        , eventY
+                        , mThreeLevelBesselMoveTwoPoint.x
+                        , mThreeLevelBesselMoveTwoPoint.y) < 80){
+                    mThreeLevelBesselMoveTwoPoint.set(eventX, eventY);
+                }
+            }
+        }
     }
 
     private double getDistanceBetweenPoints(float oneX, float oneY, float twoX, float twoY) {
