@@ -18,6 +18,7 @@ public class BesselViewOne extends View {
     private Paint mPaint;
     private Paint mRedPaint;
     private Paint mBluePaint;
+    private Path mOnePath;
 
     public BesselViewOne(Context context) {
         super(context);
@@ -59,6 +60,8 @@ public class BesselViewOne extends View {
         mRedPaint.setStrokeWidth(1);
         mBluePaint.setStrokeWidth(1);
 
+        mOnePath = new Path();
+
     }
 
     @Override
@@ -70,17 +73,31 @@ public class BesselViewOne extends View {
         canvas.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight(), mRedPaint);
         canvas.restoreToCount(one);
 
+        int two = canvas.save();
         canvas.translate(getWidth() / 2, getHeight() / 2);
+        mOnePath.reset();
+        mOnePath.lineTo(200, 0);  // lineTo
+        mOnePath.lineTo(200, 200);
+        // mOnePath.moveTo(-100, 0);
+        mOnePath.setLastPoint(-200, -200); // 重改上一个点
+        mOnePath.lineTo(-20, 111);
+        mOnePath.close(); // 连接第一个点和最后一个点，如果路径无法封闭，则不连接。
+        canvas.drawPath(mOnePath, mPaint);   // 绘制Path
+        canvas.restoreToCount(two);
 
-        Path path = new Path();
+        int three = canvas.save();
+        canvas.translate(getWidth() / 2, getHeight() / 2);
+        mPaint.setColor(Color.CYAN);
+        mOnePath.reset();
 
-        path.lineTo(200, 0);                      // lineTo
-        path.lineTo(200,200);
+        // Path.Direction.CCW 的绘制顺序是 从左上角 左下角，右下，右上，即逆时针绘制。
+        // Path.Direction.CW 的绘制顺序是 从左上角  ，右上 右下，左下角， 即顺时针绘制。
+        mOnePath.addRect(-199, -100, 100, 100, Path.Direction.CCW);
+        mOnePath.setLastPoint(-300,300);
+        canvas.drawPath(mOnePath, mPaint);
+        canvas.restoreToCount(three);
 
-        path.moveTo(-100, 0);
-        path.setLastPoint(-200, -200); // 重改上一个点
-        path.lineTo(-20, 111);
 
-        canvas.drawPath(path, mPaint);              // 绘制Path
+
     }
 }
