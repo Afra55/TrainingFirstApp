@@ -159,6 +159,8 @@ public class BesselViewOne extends View {
         mBluePaint.setColor(Color.BLUE - 100);
         mBluePaint.setStyle(Paint.Style.STROKE);
         mOneBesselPath.reset();
+
+        // 一介贝塞尔曲线
         mOneBesselPath.moveTo(mStartPoint.x, mStartPoint.y);
         mOneBesselPath.quadTo(mMovePoint.x, mMovePoint.y, mEndPoint.x, mEndPoint.y);
         canvas.drawPath(mOneBesselPath, mBluePaint);
