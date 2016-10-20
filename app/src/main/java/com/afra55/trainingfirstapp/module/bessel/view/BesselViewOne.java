@@ -77,6 +77,10 @@ public class BesselViewOne extends View {
         path.lineTo(200, 0);                      // lineTo
         path.lineTo(200,200);
 
+        path.moveTo(-100, 0);
+        path.setLastPoint(-200, -200); // 重改上一个点
+        path.lineTo(-20, 111);
+
         canvas.drawPath(path, mPaint);              // 绘制Path
     }
 }
