@@ -20,6 +20,7 @@ public class BesselViewOne extends View {
     private Paint mGridPaint;
     private Paint mBluePaint;
     private Path mOnePath;
+    private Path mTwoPath;
     private RectF mCricleRectF;
 
     public BesselViewOne(Context context) {
@@ -63,6 +64,7 @@ public class BesselViewOne extends View {
         mBluePaint.setStrokeWidth(1);
 
         mOnePath = new Path();
+        mTwoPath = new Path();
         mCricleRectF = new RectF(-100, -100, 100, 100);
     }
 
@@ -108,7 +110,10 @@ public class BesselViewOne extends View {
         mOnePath.reset();
         mOnePath.lineTo(0, -50);
         mOnePath.arcTo(mCricleRectF, 0, -180, false); // false 不连接上个点到 弧线的起点， true 连接。
+        mOnePath.offset(0, 110, mTwoPath);  //  mTwoPath 用于存储 mOnePath 移动后的状态
         canvas.drawPath(mOnePath, mPaint);
+        mPaint.setColor(Color.CYAN - 100);
+        canvas.drawPath(mTwoPath, mPaint);
         canvas.restoreToCount(four);
 
     }
