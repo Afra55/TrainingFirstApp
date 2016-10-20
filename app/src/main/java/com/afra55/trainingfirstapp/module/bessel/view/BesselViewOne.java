@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -19,6 +20,7 @@ public class BesselViewOne extends View {
     private Paint mGridPaint;
     private Paint mBluePaint;
     private Path mOnePath;
+    private RectF mCricleRectF;
 
     public BesselViewOne(Context context) {
         super(context);
@@ -61,7 +63,7 @@ public class BesselViewOne extends View {
         mBluePaint.setStrokeWidth(1);
 
         mOnePath = new Path();
-
+        mCricleRectF = new RectF(-100, -100, 100, 100);
     }
 
     @Override
@@ -97,11 +99,17 @@ public class BesselViewOne extends View {
         // Path.Direction.CCW 的绘制顺序是 从左上角 左下角，右下，右上，即逆时针绘制。
         // Path.Direction.CW 的绘制顺序是 从左上角  ，右上 右下，左下角， 即顺时针绘制。
         mOnePath.addRect(-100, -100, 100, 100, Path.Direction.CW);
-        mOnePath.setLastPoint(-300,300);
+        mOnePath.setLastPoint(300,-300);
         canvas.drawPath(mOnePath, mPaint);
         canvas.restoreToCount(three);
 
-
+        int four = canvas.save();
+        canvas.translate(getWidth() / 4, getHeight() / 2);
+        mOnePath.reset();
+        mOnePath.lineTo(0, -50);
+        mOnePath.arcTo(mCricleRectF, 0, -180, false); // false 不连接上个点到 弧线的起点， true 连接。
+        canvas.drawPath(mOnePath, mPaint);
+        canvas.restoreToCount(four);
 
     }
 }
