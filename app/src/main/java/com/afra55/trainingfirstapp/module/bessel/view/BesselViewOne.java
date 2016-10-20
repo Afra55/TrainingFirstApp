@@ -90,7 +90,9 @@ public class BesselViewOne extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mTwoLevelBesselStartPoint.set(getWidth() / 4 * 3 - 100, getHeight() / 2);
         mTwoLevelBesselEndPoint.set(mTwoLevelBesselStartPoint.x + 200, mTwoLevelBesselStartPoint.y);
-        mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
+        mTwoLevelBesselMovePoint.set(
+                (mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2
+                , mTwoLevelBesselStartPoint.y + 100);
 
         mThreeLevelBesselStartPoint.set(getWidth() / 4 - 100, getHeight() / 4 * 3);
         mThreeLevelBesselEndPoint.set(mThreeLevelBesselStartPoint.x + 200, mThreeLevelBesselStartPoint.y);
@@ -108,25 +110,29 @@ public class BesselViewOne extends View {
                 if (eventX >= getWidth() / 2 && eventY >= getHeight() / 4 && eventY <= getHeight() / 4 * 3) {
                     mTwoLevelBesselMovePoint.set(eventX, eventY);
                 } else {
-                    mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
+                    mTwoLevelBesselMovePoint.set(
+                            (mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2
+                            , mTwoLevelBesselStartPoint.y + 100);
                     if (eventX <= getWidth() / 2
                             && eventY >= getHeight() / 2) {
                         if (getDistanceBetweenPoints(eventX
                                 , eventY
                                 , mThreeLevelBesselMoveOnePoint.x
-                                , mThreeLevelBesselMoveOnePoint.y) < 50) {
+                                , mThreeLevelBesselMoveOnePoint.y) < 80) {
                             mThreeLevelBesselMoveOnePoint.set(eventX, eventY);
                         } else if (getDistanceBetweenPoints(eventX
                                 , eventY
                                 , mThreeLevelBesselMoveTwoPoint.x
-                                , mThreeLevelBesselMoveTwoPoint.y) < 50){
+                                , mThreeLevelBesselMoveTwoPoint.y) < 80){
                             mThreeLevelBesselMoveTwoPoint.set(eventX, eventY);
                         }
                     }
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                mTwoLevelBesselMovePoint.set((mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2, mTwoLevelBesselStartPoint.y);
+                mTwoLevelBesselMovePoint.set(
+                        (mTwoLevelBesselStartPoint.x + mTwoLevelBesselEndPoint.x) / 2
+                        , mTwoLevelBesselStartPoint.y + 100);
                 break;
         }
         invalidate();
@@ -144,15 +150,41 @@ public class BesselViewOne extends View {
         super.onDraw(canvas);
 
         int one = canvas.save();
+        drawBackgroundGridLine(canvas);
+        canvas.restoreToCount(one);
+
+        int two = canvas.save();
+        drawFirstPathView(canvas);
+        canvas.restoreToCount(two);
+
+        int three = canvas.save();
+        drawSeccondPathView(canvas);
+        canvas.restoreToCount(three);
+
+        int four = canvas.save();
+        drawThirdPathView(canvas);
+        canvas.restoreToCount(four);
+
+        int five = canvas.save();
+        drawTwoLevelBesselPath(canvas);
+        canvas.restoreToCount(five);
+
+        int six = canvas.save();
+        drawThreeLevelBesselPath(canvas);
+        canvas.restoreToCount(six);
+
+    }
+
+    private void drawBackgroundGridLine(Canvas canvas) {
         canvas.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2, mGridPaint);
         canvas.drawLine(0, getHeight() / 4, getWidth(), getHeight() / 4, mGridPaint);
         canvas.drawLine(0, getHeight() / 4 * 3, getWidth(), getHeight() / 4 * 3, mGridPaint);
         canvas.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight(), mGridPaint);
         canvas.drawLine(getWidth() / 4, 0, getWidth() / 4, getHeight(), mGridPaint);
         canvas.drawLine(getWidth() / 4 * 3, 0, getWidth() / 4 * 3, getHeight(), mGridPaint);
-        canvas.restoreToCount(one);
+    }
 
-        int two = canvas.save();
+    private void drawFirstPathView(Canvas canvas) {
         canvas.translate(getWidth() / 4, getHeight() / 4);
         mPaint.setColor(Color.BLACK);
         mOnePath.reset();
@@ -163,9 +195,9 @@ public class BesselViewOne extends View {
         mOnePath.lineTo(-20, 111);
         mOnePath.close(); // 连接第一个点和最后一个点，如果路径无法封闭，则不连接。
         canvas.drawPath(mOnePath, mPaint);   // 绘制Path
-        canvas.restoreToCount(two);
+    }
 
-        int three = canvas.save();
+    private void drawSeccondPathView(Canvas canvas) {
         canvas.translate(getWidth() / 4 * 3, getHeight() / 4);
         mPaint.setColor(Color.CYAN);
         mOnePath.reset();
@@ -175,9 +207,9 @@ public class BesselViewOne extends View {
         mOnePath.addRect(-100, -100, 100, 100, Path.Direction.CW);
         mOnePath.setLastPoint(300, -300);
         canvas.drawPath(mOnePath, mPaint);
-        canvas.restoreToCount(three);
+    }
 
-        int four = canvas.save();
+    private void drawThirdPathView(Canvas canvas) {
         canvas.translate(getWidth() / 4, getHeight() / 2);
         mOnePath.reset();
         mOnePath.lineTo(0, -50);
@@ -186,9 +218,13 @@ public class BesselViewOne extends View {
         canvas.drawPath(mOnePath, mPaint);
         mPaint.setColor(Color.CYAN - 100);
         canvas.drawPath(mTwoPath, mPaint);
-        canvas.restoreToCount(four);
+    }
 
-        int five = canvas.save();
+    /**
+     * 二阶贝塞尔曲线
+     * @param canvas Canvas
+     */
+    private void drawTwoLevelBesselPath(Canvas canvas) {
         mBluePaint.setAlpha(125);
         mBluePaint.setStrokeWidth(2);
         canvas.drawLine(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, mTwoLevelBesselStartPoint.x, mTwoLevelBesselStartPoint.y, mBluePaint);
@@ -206,9 +242,13 @@ public class BesselViewOne extends View {
         mOneBesselPath.moveTo(mTwoLevelBesselStartPoint.x, mTwoLevelBesselStartPoint.y);
         mOneBesselPath.quadTo(mTwoLevelBesselMovePoint.x, mTwoLevelBesselMovePoint.y, mTwoLevelBesselEndPoint.x, mTwoLevelBesselEndPoint.y);
         canvas.drawPath(mOneBesselPath, mBluePaint);
-        canvas.restoreToCount(five);
+    }
 
-        int six = canvas.save();
+    /**
+     * 绘制三阶乘贝塞尔曲线
+     * @param canvas Canvas
+     */
+    private void drawThreeLevelBesselPath(Canvas canvas) {
         mBluePaint.setColor(Color.BLUE - 200);
         mBluePaint.setAlpha(125);
         mBluePaint.setStrokeWidth(2);
@@ -236,9 +276,11 @@ public class BesselViewOne extends View {
         canvas.drawCircle(mThreeLevelBesselMoveOnePoint.x, mThreeLevelBesselMoveOnePoint.y, 10, mBluePaint);
         canvas.drawCircle(mThreeLevelBesselMoveTwoPoint.x, mThreeLevelBesselMoveTwoPoint.y, 10, mBluePaint);
         canvas.drawCircle(mThreeLevelBesselEndPoint.x, mThreeLevelBesselEndPoint.y, 10, mBluePaint);
-        mBluePaint.setColor(Color.BLUE - 100);
+        mBluePaint.setColor(Color.BLUE + 400);
         mBluePaint.setStyle(Paint.Style.STROKE);
         mTwoBesselPath.reset();
+
+        // 三阶贝塞尔曲线
         mTwoBesselPath.moveTo(mThreeLevelBesselStartPoint.x, mThreeLevelBesselStartPoint.y);
         mTwoBesselPath.cubicTo(
                 mThreeLevelBesselMoveOnePoint.x
@@ -248,7 +290,5 @@ public class BesselViewOne extends View {
                 , mThreeLevelBesselEndPoint.x
                 , mThreeLevelBesselEndPoint.y);
         canvas.drawPath(mTwoBesselPath, mBluePaint);
-        canvas.restoreToCount(six);
-
     }
 }
