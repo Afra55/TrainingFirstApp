@@ -57,6 +57,7 @@ import com.afra55.trainingfirstapp.module.customviews.CusstomViewTestActivity;
 import com.afra55.trainingfirstapp.module.customviews.ViewDragHelperTestActivity;
 import com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity;
 import com.afra55.trainingfirstapp.module.image_handle.ImageHandlePixActivity;
+import com.afra55.trainingfirstapp.module.interactivechart.InteractiveChartSampleActivity;
 import com.afra55.trainingfirstapp.module.myanim.MyAnimActivity;
 import com.afra55.trainingfirstapp.module.networkusage_demo.NetworkActivity;
 import com.afra55.trainingfirstapp.module.newsreader.NewsReaderActivity;
@@ -380,6 +381,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(this, AlerTestActivity.class);
             case 36:
                 return new Intent(this, BesselActivity.class);
+            case 37:
+                return new Intent(this, InteractiveChartSampleActivity.class);
         }
         return null;
     }

@@ -370,7 +370,8 @@
 
         <activity android:name=".module.alert.AlerTestActivity" />
         <activity android:name=".base.MPreferenceActivity" />
-        <activity android:name=".module.bessel.BesselActivity"></activity>
+        <activity android:name=".module.bessel.BesselActivity"/>
+        <activity android:name=".module.interactivechart.InteractiveChartSampleActivity"/>
     </application>
 
 </manifest>
