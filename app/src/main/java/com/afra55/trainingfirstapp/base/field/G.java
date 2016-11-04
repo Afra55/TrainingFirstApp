@@ -148,6 +148,8 @@ public class G {
                 return context.getString(R.string.bessel_path);
             case 37:
                 return context.getString(R.string.interactive);
+            case 38:
+                return context.getString(R.string.snackbar);
         }
         return "Lover";
     }

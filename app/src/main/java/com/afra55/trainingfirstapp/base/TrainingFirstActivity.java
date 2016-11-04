@@ -65,6 +65,7 @@ import com.afra55.trainingfirstapp.module.notification.NotificationTestActivity;
 import com.afra55.trainingfirstapp.module.pagerSlidingTabStrip.PagerSlidingTabStripActivity;
 import com.afra55.trainingfirstapp.module.photobyintent.PhotoIntentActivity;
 import com.afra55.trainingfirstapp.module.pingme.PingMeActivity;
+import com.afra55.trainingfirstapp.module.snackbar.SnackbarActivity;
 import com.afra55.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.afra55.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
 import com.afra55.trainingfirstapp.utils.CommontUtils;
@@ -383,6 +384,8 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(this, BesselActivity.class);
             case 37:
                 return new Intent(this, InteractiveChartSampleActivity.class);
+            case 38:
+                return new Intent(this, SnackbarActivity.class);
         }
         return null;
     }

@@ -221,6 +221,7 @@
     <string name="running_in_Emualtor">running in emualtor</string>
     <string name="bessel_path">贝塞尔曲线</string>
     <string name="interactive">表格联动多点触摸</string>
+    <string name="snackbar">Snackbar</string>
 
 
 </resources>
