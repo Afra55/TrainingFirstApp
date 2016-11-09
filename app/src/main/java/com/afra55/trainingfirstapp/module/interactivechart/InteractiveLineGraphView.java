@@ -41,34 +41,19 @@ import android.widget.OverScroller;
 import com.afra55.trainingfirstapp.R;
 
 /**
- * A view representing a simple yet interactive line chart for the function <code>x^3 - x/4</code>.
+ * 一个简单可以互动的折线图， 折线的绘制函数是 <code>x^3 - x/4</code>。
  * <p>
- * This view isn't all that useful on its own; rather it serves as an example of how to correctly
- * implement these types of gestures to perform zooming and scrolling with interesting content
- * types.
+ *  这个 view 实现了用手势去缩放滚动内容视图。
  * <p>
- * The view is interactive in that it can be zoomed and panned using
- * typical <a href="http://developer.android.com/design/patterns/gestures.html">gestures</a> such
- * as double-touch, drag, pinch-open, and pinch-close. This is done using the
- * {@link ScaleGestureDetector}, {@link GestureDetector}, and {@link OverScroller} classes. Note
- * that the platform-provided view scrolling behavior (e.g. {@link View#scrollBy(int, int)} is NOT
- * used.
+ * 这个视图可以通过典型的手势去互动
+ * <a href="http://developer.android.com/design/patterns/gestures.html">gestures</a>
+ * 例如： double-touch, drag, pinch-open, and pinch-close.
+ * 这些功能是通过使用 {@link ScaleGestureDetector}, {@link GestureDetector}, and {@link OverScroller} 类实现的.
+ * 注意：视图滚动没有使用 (e.g. {@link View#scrollBy(int, int)}。
  * <p>
- * The view also demonstrates the correct use of
- * <a href="http://developer.android.com/design/style/touch-feedback.html">touch feedback</a> to
- * indicate to users that they've reached the content edges after a pan or fling gesture. This
- * is done using the {@link EdgeEffectCompat} class.
- * <p>
- * Finally, this class demonstrates the basics of creating a custom view, including support for
- * custom attributes (see the constructors), a simple implementation for
- * {@link #onMeasure(int, int)}, an implementation for {@link #onSaveInstanceState()} and a fairly
- * straightforward {@link Canvas}-based rendering implementation in
- * {@link #onDraw(Canvas)}.
- * <p>
- * Note that this view doesn't automatically support directional navigation or other accessibility
- * methods. Activities using this view should generally provide alternate navigation controls.
- * Activities using this view should also present an alternate, text-based representation of this
- * view's content for vision-impaired users.
+ * 这个视图还演示了如何使用
+ * <a href="http://developer.android.com/design/style/touch-feedback.html">触摸反馈</a> 来表明使用者已经
+ * 通过手势到达了边缘。这个效果使用了 {@link EdgeEffectCompat} 类.
  */
 public class InteractiveLineGraphView extends View {
     private static final String TAG = "InteractiveLineGraphView";
@@ -126,10 +111,10 @@ public class InteractiveLineGraphView extends View {
 
     // Current attribute values and Paints.
     private float mLabelTextSize;
-    private int mLabelSeparation;
+    private int mLabelSeparation; // 标注间的距离
     private int mLabelTextColor;
     private Paint mLabelTextPaint;
-    private int mMaxLabelWidth;
+    private int mMaxLabelWidth; // 标注的最大宽
     private int mLabelHeight;
     private float mGridThickness;
     private int mGridColor;
@@ -243,6 +228,7 @@ public class InteractiveLineGraphView extends View {
      * (Re)initializes {@link Paint} objects based on current attribute values.
      */
     private void initPaints() {
+        // 文本
         mLabelTextPaint = new Paint();
         mLabelTextPaint.setAntiAlias(true);
         mLabelTextPaint.setTextSize(mLabelTextSize);
@@ -250,16 +236,19 @@ public class InteractiveLineGraphView extends View {
         mLabelHeight = (int) Math.abs(mLabelTextPaint.getFontMetrics().top);
         mMaxLabelWidth = (int) mLabelTextPaint.measureText("0000");
 
+        // 网格线
         mGridPaint = new Paint();
         mGridPaint.setStrokeWidth(mGridThickness);
         mGridPaint.setColor(mGridColor);
         mGridPaint.setStyle(Paint.Style.STROKE);
 
+        // 折现显示区域的边框
         mAxisPaint = new Paint();
         mAxisPaint.setStrokeWidth(mAxisThickness);
         mAxisPaint.setColor(mAxisColor);
         mAxisPaint.setStyle(Paint.Style.STROKE);
 
+        // 折线
         mDataPaint = new Paint();
         mDataPaint.setStrokeWidth(mDataThickness);
         mDataPaint.setColor(mDataColor);
@@ -301,7 +290,7 @@ public class InteractiveLineGraphView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // Draws axes and text labels
+        // 绘制轴线和标签
         drawAxes(canvas);
 
         // Clips the next few drawing operations to the content area
@@ -319,7 +308,7 @@ public class InteractiveLineGraphView extends View {
     }
 
     /**
-     * Draws the chart axes and labels onto the canvas.
+     * 绘制图表的轴线和标签。
      */
     private void drawAxes(Canvas canvas) {
         // Computes axis stops (in terms of numerical value and position on screen)
@@ -328,7 +317,7 @@ public class InteractiveLineGraphView extends View {
         computeAxisStops(
                 mCurrentViewport.left,
                 mCurrentViewport.right,
-                mContentRect.width() / mMaxLabelWidth / 2,
+                mContentRect.width() / mMaxLabelWidth / 2, // 每个小网格的宽是 标签 最大宽的两倍
                 mXStopsBuffer);
         computeAxisStops(
                 mCurrentViewport.top,
@@ -406,8 +395,11 @@ public class InteractiveLineGraphView extends View {
     }
 
     /**
-     * Rounds the given number to the given number of significant digits. Based on an answer on
-     * <a href="http://stackoverflow.com/questions/202302">Stack Overflow</a>.
+     * 获取 1 位有效数字。
+     * 1,239,451 返回 1,000,000
+     * 15.1257 返回 20.0
+     * .0681 返回 .07
+     * 详情见<a href="http://stackoverflow.com/questions/202302">Stack Overflow</a>.
      */
     private static float roundToOneSignificantFigure(double num) {
         final float d = (float) Math.ceil((float) Math.log10(num < 0 ? -num : num));
@@ -458,25 +450,27 @@ public class InteractiveLineGraphView extends View {
     }
 
     /**
-     * Computes the set of axis labels to show given start and stop boundaries and an ideal number
-     * of stops between these boundaries.
+     * 计算水平或垂直方向上的标签数量，和相对位置。
      *
-     * @param start The minimum extreme (e.g. the left edge) for the axis.
-     * @param stop The maximum extreme (e.g. the right edge) for the axis.
-     * @param steps The ideal number of stops to create. This should be based on available screen
-     *              space; the more space there is, the more stops should be shown.
-     * @param outStops The destination {@link AxisStops} object to populate.
+     * @param start 左边缘。 -1
+     * @param stop 有边缘。 1
+     * @param steps 网格的数量. 由空间大小决定，越大 数量越多.
+     * @param outStops 需要将结果存储到的对象 {@link AxisStops}.
      */
     private static void computeAxisStops(float start, float stop, int steps, AxisStops outStops) {
-        double range = stop - start;
+        double range = stop - start; // range 代表范围
         if (steps == 0 || range <= 0) {
             outStops.stops = new float[]{};
             outStops.numStops = 0;
             return;
         }
 
-        double rawInterval = range / steps;
+        double rawInterval = range / steps; // 代表小网格占总范围的
+
+        // 只保留一位有效数字用于两个标签的（相对）间隔
         double interval = roundToOneSignificantFigure(rawInterval);
+
+
         double intervalMagnitude = Math.pow(10, (int) Math.log10(interval));
         int intervalSigDigit = (int) (interval / intervalMagnitude);
         if (intervalSigDigit > 5) {
