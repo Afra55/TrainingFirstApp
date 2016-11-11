@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <declare-styleable name="RandomWaveView">
+                <!-- 整体颜色色调 -->
+                <attr name="integralColor" format="color"/>
+
+                <!-- 默认状态下的显示图片 -->
+                <attr name="restDrawable" format="reference" />
+
+                <!-- 运行状态下的显示图片 -->
+                <attr name="startDrawable" format="reference" />
+
+                <!-- 中间线方块的个数 -->
+                <attr name="centerLineDashRectCount" format="integer" />
+
+                <!-- 时间文字大小 -->
+                <attr name="timeTextSize" format="dimension" />
+
+                <!-- 时间文字颜色 -->
+                <attr name="timeTextColor" format="color" />
+        </declare-styleable>
+</resources>

@@ -41,4 +41,6 @@
     <!-- category_tab -->
     <color name="category_tab_text">#ff707070</color>
     <color name="category_tab_highlight_text">#fb664e</color>
+
+    <color name="color_yellow_fad17d">#fad17d</color>
 </resources>
