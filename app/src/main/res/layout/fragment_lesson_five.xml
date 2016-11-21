@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.afra55.trainingfirstapp.module.myanim.fragment.LessonFiveFragment">
+    tools:context="com.afra55.trainingfirstapp.module.my_anim.fragment.LessonFiveFragment">
 
     <LinearLayout
         android:id="@+id/lesson_five_container"

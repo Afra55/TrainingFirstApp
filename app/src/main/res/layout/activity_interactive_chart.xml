@@ -14,7 +14,7 @@
   limitations under the License.
   -->
 
-<com.afra55.trainingfirstapp.module.interactivechart.InteractiveLineGraphView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.afra55.trainingfirstapp.module.interactive_chart.InteractiveLineGraphView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chart"
     android:padding="@dimen/chart_padding"

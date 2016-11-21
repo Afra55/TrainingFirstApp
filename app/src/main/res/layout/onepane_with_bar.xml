@@ -44,7 +44,7 @@
 
     <fragment android:id="@+id/headlines" 
               android:layout_height="fill_parent"
-              android:name="com.afra55.trainingfirstapp.module.newsreader.HeadlinesFragment"
+              android:name="com.afra55.trainingfirstapp.module.news_reader.HeadlinesFragment"
               android:layout_width="match_parent" />
 </LinearLayout>
 <!-- END_INCLUDE(all) -->

@@ -3,7 +3,7 @@
     android:id="@+id/lesson_four_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.afra55.trainingfirstapp.module.myanim.fragment.LessonFourFragment">
+    tools:context="com.afra55.trainingfirstapp.module.my_anim.fragment.LessonFourFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

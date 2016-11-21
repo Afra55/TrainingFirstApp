@@ -17,9 +17,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.afra55.trainingfirstapp.base.BaseActivity;
 import com.afra55.trainingfirstapp.R;
-import com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity;
+import com.afra55.trainingfirstapp.base.BaseActivity;
+import com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity;
 import com.afra55.trainingfirstapp.module.opengl.OpenGLES20Activity;
 
 import java.io.File;

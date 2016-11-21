@@ -152,7 +152,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.swipe_menu.SwipeMenuDemoActvity" />
-        <activity android:name=".module.photobyintent.PhotoIntentActivity" />
+        <activity android:name=".module.photo_by_intent.PhotoIntentActivity" />
         <activity
             android:name=".module.images.DisplayingBitmapsActivity"
             android:launchMode="singleTop" />
@@ -160,54 +160,54 @@
 
         <!-- 动画相关 start -->
         <activity
-            android:name=".module.animdemo.AnimDemoMainActivity"
+            android:name=".module.anim_demo.AnimDemoMainActivity"
             android:label="@string/title_crossfade" />
         <activity
-            android:name=".module.animdemo.CrossfadeActivity"
+            android:name=".module.anim_demo.CrossfadeActivity"
             android:label="@string/title_crossfade"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName=".module.anim_demo.AnimDemoMainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.CardFlipActivity"
+            android:name=".module.anim_demo.CardFlipActivity"
             android:label="@string/title_card_flip"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName=".module.anim_demo.AnimDemoMainActivity"
             android:theme="@style/DarkTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.ScreenSlideActivity"
+            android:name=".module.anim_demo.ScreenSlideActivity"
             android:label="@string/title_screen_slide"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity"
+            android:parentActivityName=".module.anim_demo.AnimDemoMainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.ZoomActivity"
+            android:name=".module.anim_demo.ZoomActivity"
             android:label="@string/title_zoom"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
+            android:parentActivityName=".module.anim_demo.AnimDemoMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity" />
         </activity>
         <activity
-            android:name=".module.animdemo.LayoutChangesActivity"
+            android:name=".module.anim_demo.LayoutChangesActivity"
             android:label="@string/title_layout_changes"
-            android:parentActivityName=".module.animdemo.AnimDemoMainActivity">
+            android:parentActivityName=".module.anim_demo.AnimDemoMainActivity">
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.animdemo.AnimDemoMainActivity" />
+                android:value="com.afra55.trainingfirstapp.module.anim_demo.AnimDemoMainActivity" />
         </activity>
         <!-- 动画相关 end -->
-        <activity android:name=".module.myanim.MyAnimActivity" />
+        <activity android:name=".module.my_anim.MyAnimActivity" />
         <!-- 功能效果 -->
         <activity android:name=".module.circle_menu.CircleMenuActivity" />
 
@@ -257,25 +257,25 @@
                 android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.EffectiveNavigationActivity"
+            android:name=".module.effective_navigation.EffectiveNavigationActivity"
             android:parentActivityName=".base.TrainingFirstActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.CollectionDemoActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
+            android:name=".module.effective_navigation.CollectionDemoActivity"
+            android:parentActivityName=".module.effective_navigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity" />
+                android:value="com.afra55.trainingfirstapp.module.effective_navigation.EffectiveNavigationActivity" />
         </activity>
         <activity
-            android:name=".module.effectivenavigation.navigationdrawerexample.NavigationDrawerActivity"
-            android:parentActivityName=".module.effectivenavigation.EffectiveNavigationActivity">
+            android:name=".module.effective_navigation.navigationdrawerexample.NavigationDrawerActivity"
+            android:parentActivityName=".module.effective_navigation.EffectiveNavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.afra55.trainingfirstapp.module.effectivenavigation.EffectiveNavigationActivity" />
+                android:value="com.afra55.trainingfirstapp.module.effective_navigation.EffectiveNavigationActivity" />
         </activity>
         <activity
             android:name=".module.pingme.PingMeActivity"
@@ -303,9 +303,9 @@
         </activity>
 
         <!-- newsReader -->
-        <activity android:name=".module.newsreader.NewsReaderActivity" />
+        <activity android:name=".module.news_reader.NewsReaderActivity" />
         <activity
-            android:name=".module.newsreader.ArticleActivity"
+            android:name=".module.news_reader.ArticleActivity"
             android:theme="@style/NewsReaderStyle_NoActionBar" />
         <activity
             android:name=".module.customviews.CusstomViewActivity"
@@ -315,7 +315,7 @@
                 android:value="com.afra55.trainingfirstapp.base.TrainingFirstActivity" />
         </activity>
         <activity android:name=".module.customviews.MyOwnCusstomViewActivity" />
-        <activity android:name=".module.pagerSlidingTabStrip.PagerSlidingTabStripActivity" />
+        <activity android:name=".module.pager_sliding_tab_strip.PagerSlidingTabStripActivity" />
         <activity
             android:name=".module.tabcompat.TabCompatMainActivity"
             android:parentActivityName=".base.TrainingFirstActivity">
@@ -371,7 +371,7 @@
         <activity android:name=".module.alert.AlerTestActivity" />
         <activity android:name=".base.MPreferenceActivity" />
         <activity android:name=".module.bessel.BesselActivity" />
-        <activity android:name=".module.interactivechart.InteractiveChartSampleActivity"
+        <activity android:name=".module.interactive_chart.InteractiveChartSampleActivity"
             android:theme="@style/DarkTheme"/>
         <activity android:name=".module.snackbar.SnackbarActivity"/>
     </application>

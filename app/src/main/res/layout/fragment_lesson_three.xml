@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lesson_three_card_container_flt"
-    tools:context="com.afra55.trainingfirstapp.module.myanim.fragment.LessonThreeFragment">
+    tools:context="com.afra55.trainingfirstapp.module.my_anim.fragment.LessonThreeFragment">
 
     <Button
         android:layout_width="wrap_content"
