@@ -371,9 +371,10 @@
         <activity android:name=".module.alert.AlerTestActivity" />
         <activity android:name=".base.MPreferenceActivity" />
         <activity android:name=".module.bessel.BesselActivity" />
-        <activity android:name=".module.interactive_chart.InteractiveChartSampleActivity"
-            android:theme="@style/DarkTheme"/>
-        <activity android:name=".module.snackbar.SnackbarActivity"/>
+        <activity
+            android:name=".module.interactive_chart.InteractiveChartSampleActivity"
+            android:theme="@style/DarkTheme" />
+        <activity android:name=".module.snackbar.SnackbarActivity" />
     </application>
 
 </manifest>
