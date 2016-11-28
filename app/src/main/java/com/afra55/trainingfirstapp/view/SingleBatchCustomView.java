@@ -21,6 +21,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.afra55.trainingfirstapp.R;
+
 /**
  * Created by Victor Yang on 2016/10/14.
  * SingleBatchCustomView
