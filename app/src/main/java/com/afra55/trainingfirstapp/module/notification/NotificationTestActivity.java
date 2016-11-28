@@ -13,6 +13,7 @@ import android.widget.RemoteViews;
 import com.afra55.trainingfirstapp.R;
 import com.afra55.trainingfirstapp.base.BaseActivity;
 import com.afra55.trainingfirstapp.base.field.G;
+import com.afra55.trainingfirstapp.utils.NewMessageNotification;
 
 public class NotificationTestActivity extends BaseActivity {
 
@@ -29,6 +30,9 @@ public class NotificationTestActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.opennotifacation:
+
+                NewMessageNotification.notify(this, "Exxxx Afra", 2);
+
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     showNotifi();
                 }
