@@ -86,6 +86,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".module.other_activity.OtherActivity"
@@ -375,6 +378,16 @@
             android:name=".module.interactive_chart.InteractiveChartSampleActivity"
             android:theme="@style/DarkTheme" />
         <activity android:name=".module.snackbar.SnackbarActivity" />
+        <activity android:name=".module.shortcuts.ShortcutsActivity"/>
+
+        <receiver
+            android:name=".module.shortcuts.ShortcutReceiver"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

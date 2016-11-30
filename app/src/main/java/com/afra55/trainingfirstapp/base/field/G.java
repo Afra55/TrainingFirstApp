@@ -61,7 +61,7 @@ public class G {
         /**
          * 主界面模块个数(按钮点击相关)
          */
-        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 38;
+        public static final int FIRST_ACTIVITY_MODULE_BUTTON_COUNT = 39;
     }
 
     /**
@@ -150,6 +150,8 @@ public class G {
                 return context.getString(R.string.interactive);
             case 38:
                 return context.getString(R.string.snackbar);
+            case 39:
+                return context.getString(R.string.shortcuts_manager);
         }
         return "Lover";
     }

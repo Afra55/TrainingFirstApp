@@ -65,6 +65,7 @@ import com.afra55.trainingfirstapp.module.notification.NotificationTestActivity;
 import com.afra55.trainingfirstapp.module.pager_sliding_tab_strip.PagerSlidingTabStripActivity;
 import com.afra55.trainingfirstapp.module.photo_by_intent.PhotoIntentActivity;
 import com.afra55.trainingfirstapp.module.pingme.PingMeActivity;
+import com.afra55.trainingfirstapp.module.shortcuts.ShortcutsActivity;
 import com.afra55.trainingfirstapp.module.snackbar.SnackbarActivity;
 import com.afra55.trainingfirstapp.module.surface_view.SurfaceViewTestActivity;
 import com.afra55.trainingfirstapp.module.swipe_menu.SwipeMenuDemoActvity;
@@ -105,7 +106,7 @@ public class TrainingFirstActivity extends BaseActivity {
 
         setContentLayout(R.layout.activity_training_first);
         setActionBarLeftBtnText("Exit");
-        setActionBarTitle("主界面");
+        setActionBarTitle("Main");
         setActionBarRightBtnText("Lover");
         initWidget();
         initModule();
@@ -386,6 +387,11 @@ public class TrainingFirstActivity extends BaseActivity {
                 return new Intent(this, InteractiveChartSampleActivity.class);
             case 38:
                 return new Intent(this, SnackbarActivity.class);
+            case 39:
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
+                    showToast("Need android api 25");
+                }
+                return new Intent(this, ShortcutsActivity.class);
         }
         return null;
     }

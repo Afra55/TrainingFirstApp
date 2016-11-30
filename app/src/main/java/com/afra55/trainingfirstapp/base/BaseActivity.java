@@ -228,7 +228,7 @@ public class BaseActivity extends FragmentActivity implements View.OnClickListen
 
     private void exit() {
         if ((System.currentTimeMillis() - exitTime) > 2000) {
-            changeToastState("再按一次退出程序");
+            changeToastState(getString(R.string.click_again_to_exit));
             exitTime = System.currentTimeMillis();
         } else {
 //            finish();

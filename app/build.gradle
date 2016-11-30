@@ -9,16 +9,17 @@ android {
             storePassword '123456'
         }
     }
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId 'com.afra55.trainingfirstapp'
         minSdkVersion 11
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         signingConfig signingConfigs.debug
     }
+
     buildTypes {
         release {
             minifyEnabled false
