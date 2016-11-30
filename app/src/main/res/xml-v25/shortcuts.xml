@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
-        android:shortcutId="compose"
+        android:shortcutId="add_website"
         android:enabled="true"
         android:icon="@drawable/add"
         android:shortcutShortLabel="@string/add_new_website_short"
