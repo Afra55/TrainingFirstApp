@@ -11,10 +11,8 @@
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.afra55.trainingfirstapp"
             android:targetClass="com.afra55.trainingfirstapp.module.shortcuts.ShortcutsActivity" />
-        <!-- If your shortcut is associated with multiple intents, include them
-             here. The last intent in the list is what the user sees when they
-             launch this shortcut. -->
+        <!-- 如果 shortcut 节点包含多个意图，则这个快捷方式会打开最后一个声明的意图. -->
         <categories android:name="android.shortcut.conversation" />
     </shortcut>
-    <!-- Specify more shortcuts here. -->
+    <!-- 在这里指定更多的快捷键. -->
 </shortcuts>
