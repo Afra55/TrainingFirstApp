@@ -238,6 +238,11 @@ public class ShortcutHelper {
         mShortcutManager.enableShortcuts(Arrays.asList(shortcut.getId()));
     }
 
+    /**
+     * 获取站点的 favicon.ico 图标
+     * @param uri uri
+     * @return Bitmap
+     */
     private Bitmap fetchFavicon(Uri uri) {
         final Uri iconUri = uri.buildUpon().path("favicon.ico").build();
         Log.i(TAG, "Fetching favicon from: " + iconUri);
