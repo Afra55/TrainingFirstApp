@@ -63,11 +63,16 @@ public class ShortcutHelper {
     }
 
     public void maybeRestoreAllDynamicShortcuts() {
-        if (mShortcutManager.getDynamicShortcuts().size() == 0) {
-            // NOTE: If this application is always supposed to have dynamic shortcuts, then publish
-            // them here.
-            // Note when an application is "restored" on a new device, all dynamic shortcuts
-            // will *not* be restored but the pinned shortcuts *will*.
+        try {
+            if (mShortcutManager.getDynamicShortcuts().size() == 0) {
+                // NOTE: 如果应用总是有动态的快捷方式, 在这里重新发布他们。
+                // 当应用在另一个设备 被还原时，所有的动态的快捷方式都不会被还原，只有放在桌面的快捷方式才会被还原.
+                if (mShortcutManager.getPinnedShortcuts().size() > 0) {
+                    // 桌面的快捷方式已经被还原了 使用 updateShortcuts(List) 方法确保他们是最新的内容.
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -90,24 +95,28 @@ public class ShortcutHelper {
     }
 
     /**
-     * Return all mutable shortcuts from this app self.
+     * 获取所有的可变的快捷方式.
      */
     public List<ShortcutInfo> getShortcuts() {
-        // Load mutable dynamic shortcuts and pinned shortcuts and put them into a single list
-        // removing duplicates.
+        // 加载可变的动态快捷方式和加载在桌面的快捷方式，
+        // 放在一个 list 里并移除重复的（因为动态的也可能被拖放在桌面上）。
 
         final List<ShortcutInfo> ret = new ArrayList<>();
         final HashSet<String> seenKeys = new HashSet<>();
 
-        // Check existing shortcuts shortcuts
+        // 检查存在的快捷方式
         for (ShortcutInfo shortcut : mShortcutManager.getDynamicShortcuts()) {
             if (!shortcut.isImmutable()) {
+                // 只拿去可更改的快捷方式
                 ret.add(shortcut);
                 seenKeys.add(shortcut.getId());
             }
         }
+
+        // 检查所有的固定在桌面上的快捷方式
         for (ShortcutInfo shortcut : mShortcutManager.getPinnedShortcuts()) {
             if (!shortcut.isImmutable() && !seenKeys.contains(shortcut.getId())) {
+                // 只拿去可更改 和 不重复的快捷方式
                 ret.add(shortcut);
                 seenKeys.add(shortcut.getId());
             }
@@ -116,8 +125,7 @@ public class ShortcutHelper {
     }
 
     /**
-     * Called when the activity starts.  Looks for shortcuts that have been pushed and refreshes
-     * them (but the refresh part isn't implemented yet...).
+     * 当 activity 开始的时候调用.  查找已经发布的快捷方式并刷新他们，异步操作(but the refresh part isn't implemented yet...).
      */
     public void refreshShortcuts(final boolean force) {
         new AsyncTask<Void, Void, Void>() {
@@ -128,7 +136,9 @@ public class ShortcutHelper {
                 final long now = System.currentTimeMillis();
                 final long staleThreshold = force ? now : now - REFRESH_INTERVAL_MS;
 
-                // Check all existing dynamic and pinned shortcut, and if their last refresh
+                // 检测所有存在的动态快捷方式和放在桌面的快捷方式。
+                // 如果上次刷新的时间与当前时间超过了阖值 （REFRESH_INTERVAL_MS), 再更新他们。
+                // and if their last refresh
                 // time is older than a certain threshold, update them.
 
                 final List<ShortcutInfo> updateList = new ArrayList<>();
@@ -137,10 +147,11 @@ public class ShortcutHelper {
                     if (shortcut.isImmutable()) {
                         continue;
                     }
+                    // 遍历所有可更改的快捷方式
 
                     final PersistableBundle extras = shortcut.getExtras();
                     if (extras != null && extras.getLong(EXTRA_LAST_REFRESH) >= staleThreshold) {
-                        // Shortcut still fresh.
+                        // Shortcut 是最新的，就不再刷新它。
                         continue;
                     }
                     Log.i(TAG, "Refreshing shortcut: " + shortcut.getId());
