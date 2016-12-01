@@ -66,16 +66,19 @@ public class ShortcutsActivity extends ListActivity implements View.OnClickListe
     }
 
     /**
-     * Handle the add button.
+     * 添加按钮的点击事件.
      */
     public void onAddPressed(View v) {
         addWebSite();
     }
 
+    /**
+     * 添加站点
+     */
     private void addWebSite() {
         Log.i(TAG, "addWebSite");
 
-        // This is important.  This allows the launcher to build a prediction model.
+        // 这个方法允许加载器构建一个预加载模块.
         mHelper.reportShortcutUsed(ID_ADD_WEBSITE);
 
         final EditText editUri = new EditText(this);

@@ -40,7 +40,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -81,16 +81,11 @@ public class ShortcutHelper {
     }
 
     /**
-     * Use this when interacting with ShortcutManager to show consistent error messages.
+     * 调用 ShortcutManager 的方法后，判断是否被限制.
      */
     private void callShortcutManager(boolean r) {
-        try {
-            if (!r) {
-                showToast(mContext, "Call to ShortcutManager is rate-limited");
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Caught Exception", e);
-            showToast(mContext, "Error while calling ShortcutManager: " + e.toString());
+        if (!r) {
+            showToast(mContext, "Call to ShortcutManager is rate-limited");
         }
     }
 
@@ -137,9 +132,7 @@ public class ShortcutHelper {
                 final long staleThreshold = force ? now : now - REFRESH_INTERVAL_MS;
 
                 // 检测所有存在的动态快捷方式和放在桌面的快捷方式。
-                // 如果上次刷新的时间与当前时间超过了阖值 （REFRESH_INTERVAL_MS), 再更新他们。
-                // and if their last refresh
-                // time is older than a certain threshold, update them.
+                // 如果上次刷新的时间与当前时间间隔超过了阖值 （REFRESH_INTERVAL_MS), 再更新他们。
 
                 final List<ShortcutInfo> updateList = new ArrayList<>();
 
@@ -166,7 +159,12 @@ public class ShortcutHelper {
                 }
                 // Call update.
                 if (updateList.size() > 0) {
-                    callShortcutManager(mShortcutManager.updateShortcuts(updateList));
+                    try {
+                        callShortcutManager(mShortcutManager.updateShortcuts(updateList));
+                    } catch (Exception e) {
+                        Log.e(TAG, "Caught Exception", e);
+                        showToast(mContext, "Error while calling ShortcutManager: " + e.toString());
+                    }
                 }
 
                 return null;
@@ -174,12 +172,19 @@ public class ShortcutHelper {
         }.execute();
     }
 
+    /**
+     * 通过 url 创建快捷方式
+     * @param urlAsString String
+     * @return ShortcutInfo
+     */
     private ShortcutInfo createShortcutForUrl(String urlAsString) {
         Log.i(TAG, "createShortcutForUrl: " + urlAsString);
 
         final ShortcutInfo.Builder b = new ShortcutInfo.Builder(mContext, urlAsString);
 
         final Uri uri = Uri.parse(urlAsString);
+
+        // 设置这个快捷方式的对应的 Intent.
         b.setIntent(new Intent(Intent.ACTION_VIEW, uri));
 
         setSiteInformation(b, uri);
@@ -188,6 +193,13 @@ public class ShortcutHelper {
         return b.build();
     }
 
+    /**
+     * 设置站点信息 icon 和 title
+     *
+     * @param b   ShortcutInfo.Builder
+     * @param uri Uri
+     * @return ShortcutInfo.Builder
+     */
     private ShortcutInfo.Builder setSiteInformation(ShortcutInfo.Builder b, Uri uri) {
         // TODO Get the actual site <title> and use it.
         // TODO Set the current locale to accept-language to get localized title.
@@ -204,6 +216,12 @@ public class ShortcutHelper {
         return b;
     }
 
+    /**
+     * 存储快捷方式的刷新时间
+     *
+     * @param b ShortcutInfo.Builder
+     * @return ShortcutInfo.Builder
+     */
     private ShortcutInfo.Builder setExtras(ShortcutInfo.Builder b) {
         final PersistableBundle extras = new PersistableBundle();
         extras.putLong(EXTRA_LAST_REFRESH, System.currentTimeMillis());
@@ -219,27 +237,36 @@ public class ShortcutHelper {
         }
     }
 
+    /**
+     * 添加站点快捷方式
+     * @param urlAsString String
+     */
     public void addWebSiteShortcut(String urlAsString) {
-        final String uriFinal = urlAsString;
-        final ShortcutInfo shortcut = createShortcutForUrl(normalizeUrl(uriFinal));
-        boolean r = mShortcutManager.addDynamicShortcuts(Arrays.asList(shortcut));
-        callShortcutManager(r);
+        final ShortcutInfo shortcut = createShortcutForUrl(normalizeUrl(urlAsString));
+        try {
+            // 添加动态快捷方式
+            callShortcutManager(mShortcutManager.addDynamicShortcuts(Collections.singletonList(shortcut)));
+        } catch (Exception e) {
+            Log.e(TAG, "Caught Exception", e);
+            showToast(mContext, "Error while calling ShortcutManager: " + e.toString());
+        }
     }
 
     public void removeShortcut(ShortcutInfo shortcut) {
-        mShortcutManager.removeDynamicShortcuts(Arrays.asList(shortcut.getId()));
+        mShortcutManager.removeDynamicShortcuts(Collections.singletonList(shortcut.getId()));
     }
 
     public void disableShortcut(ShortcutInfo shortcut) {
-        mShortcutManager.disableShortcuts(Arrays.asList(shortcut.getId()));
+        mShortcutManager.disableShortcuts(Collections.singletonList(shortcut.getId()));
     }
 
     public void enableShortcut(ShortcutInfo shortcut) {
-        mShortcutManager.enableShortcuts(Arrays.asList(shortcut.getId()));
+        mShortcutManager.enableShortcuts(Collections.singletonList(shortcut.getId()));
     }
 
     /**
      * 获取站点的 favicon.ico 图标
+     *
      * @param uri uri
      * @return Bitmap
      */
@@ -249,8 +276,7 @@ public class ShortcutHelper {
 
         InputStream is = null;
         BufferedInputStream bis = null;
-        try
-        {
+        try {
             URLConnection conn = new URL(iconUri.toString()).openConnection();
             conn.connect();
             is = conn.getInputStream();
