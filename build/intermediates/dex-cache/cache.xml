@@ -3,102 +3,174 @@
 
     <item
         is-multidex="true"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="/Users/yangshuai/.android/build-cache/6ab8e54f5b2cab3c4ee92b64c4d54924acb11ca6/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="80e7873ab283cd66abb88a3bcc15baf297fd6829">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b76265ebb7a8b0b5e22d568df1267f195f3d3e68\classes.dex" />
+        revision="25.0.0"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_81c561c313bfd830a74e3299911fb9e503e32dc1/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jar="/Users/yangshuai/.android/build-cache/d57da7557e1e441414c720a22ae8fc3320066acf/output/jars/libs/internal_impl-25.0.0.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_b8330ed6e69fe94658b20593d6a1582659de714d\classes.dex" />
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_8a000964dac2f966c0d67ae580f0481a3d910bda/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="f69c7d1c50b8c77e371f1557ca065bb52851c4e7">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_70d65ec1dc36994f79db85b218b653d2bfe469c4\classes.dex" />
+        revision="25.0.0"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a5abae2f820fe4230f8f487baf74fd32b12758c8/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.networkbench.newlens.agent.android\nbs.newlens.agent\2.2.7\c52077e2aed871ea21025f307c9aff23a81a1c0f\nbs.newlens.agent-2.2.7.jar"
+        jar="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="c52077e2aed871ea21025f307c9aff23a81a1c0f">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\nbs.newlens.agent-2.2.7_752c07ef5aa72389031e46f86914909a0451eb79\classes.dex" />
+        revision="25.0.0"
+        sha1="be177da35ac0955c7e7dc60f2fb37107d91da302">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8e94b257e0de51c71d8dde5796bf9a71d716f481/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jar="/Users/yangshuai/.android/build-cache/09a97d07aee2b706c67d2f046cb9f6af3a5a44d0/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.1.0_c820c2757b9c153a2fdd49f347072aa131e38fe7\classes.dex" />
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_38b96c17515c8fd9e6b1d610f366c8ba10d21fa4/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jar="/Users/yangshuai/.android/build-cache/73d7b75ceb11a52db9868acb747dac7d543014a5/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.1.0_3a565a0729c76adf2973f100a1fddc15ec80eeb5\classes.dex" />
+        revision="25.0.0"
+        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_372480f1b9f98e6d3445e149649aeb6c74ec5837/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.4\dd9eeb557650c4ad7394df23f0f5cf27a7cfc697\universal-image-loader-1.9.4.jar"
+        jar="/Users/yangshuai/.android/build-cache/437f103a2239c1f7baad8dcfee9d2d2faf3b4b5c/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\universal-image-loader-1.9.4_107050d9d794a9323f2f1202dcbc0b41a0d91c89\classes.dex" />
+        revision="25.0.0"
+        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_25923c11f13f6df7757f8b6fe42e580ea626af65/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jar="/Users/yangshuai/.android/build-cache/713e540eb0c11c86cd806945ed2772f5e18a78a5/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-7.0.1_deb453a129c64b797649f3c7f6e2d3a529ebeff5\classes.dex" />
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_45c94d9cf8f2145da01c5301502235e52ca25edc/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jar="/Users/yangshuai/.android/build-cache/1851cb9583e52aa509dff466db445ef137314ed2/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0_59de01fe25e27c5d93666a28093d8bba66fa4381\classes.dex" />
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee24e52f79e0c711c72836879a80b987b9922b02/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Demo\TrainingFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jar="/Users/yangshuai/.android/build-cache/014507d50cd3e343e9487f236ac9b0117062451a/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.1.0_de704e20c075aba5a8f706d9a7596b915a9575fa\classes.dex" />
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_15120f498577ac0b944673f879bc892b46eb9e0f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Shuai\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.6.0\212387a39088ecd3daff8e3bfc3bdc4123e33c67\okhttp-2.6.0.jar"
+        jar="/Users/yangshuai/.android/build-cache/d57da7557e1e441414c720a22ae8fc3320066acf/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="23.0.1"
-        sha1="212387a39088ecd3daff8e3bfc3bdc4123e33c67">
-        <dex dex="D:\Demo\TrainingFirstApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-2.6.0_92511363711381cd722fdd710257bb2284dd2570\classes.dex" />
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4322fc67ff7e276a5cfd16c127cebcee990b31e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/713e540eb0c11c86cd806945ed2772f5e18a78a5/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_4428faebe57450dea7b1b11334a9f260148d9bdb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/dccbf0fbaa2e16b8e4b3c65e3edd84533cbcabd1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1587f572c17953701f31e849285f5e8b3233b159/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/1851cb9583e52aa509dff466db445ef137314ed2/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_9f062032fcb28cfcaaf489d0a8c11ed0c4e47fd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/bdcd275c3bdf6f1f9420a49082ec1635b4da7a60/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d878ad937abffa51b36f13cf612b3da037dad7ac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/dccbf0fbaa2e16b8e4b3c65e3edd84533cbcabd1/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_10997120e9a08ff5b59022a5a5f7bb836b4d6aec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/7fcd0e2c222c86b3f84cebd99cbcf94f534d9472/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_52af0b06e5273aa6212aa8d7ad2650e933c6f914/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/3d6b5018efde4e96826f0d3e9ba16a9c1d92fe4b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_51d013b0731dc9619ac093fdecc61753c2d192e6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yangshuai/.android/build-cache/014507d50cd3e343e9487f236ac9b0117062451a/output/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/yangshuai/Program/Android/MyProject/TrainingFirstApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_25ba633e1f9a1fe460181156150bf31da5824f87/classes.dex" />
     </item>
 
 </items>
